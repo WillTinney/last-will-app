@@ -38,3 +38,13 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 [0m
+Started GET "/" for 127.0.0.1 at 2016-12-12 08:53:22 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (7.3ms)
+  Rendered shared/_navbar.html.erb (50.5ms)
+  Rendered shared/_flashes.html.erb (0.4ms)
+Completed 200 OK in 7708ms (Views: 7707.2ms | ActiveRecord: 0.0ms)
+
+
