@@ -2,3 +2,44 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.zero-text-margin p {
+  margin: 0;
+}
+#quotes {
+  background-color: #F8F8F9;
+}
+.review-box {
+  background: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+  p {
+    font-size: 16px;
+  }
+}
+#instructions {
+  width: 100%;
+  background-color: #F8F8F9;
+}
+.instruction-list {
+  display: flex;
+  align-items: center;
+}
+.instruction-content {
+  text-align: left;
+}
+#comparison {
+  width: 100%;
+  background-color: #4291A6;
+}
+.comparison-box {
+  background: #F8F8F9;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  p {
+    font-size: 16px;
+    text-align: left;
+  }
+}
+#registration {
+  width: 100%;
+  background-color: #F8F8F9;
+}
