@@ -7,7 +7,9 @@
   <div class="banner-content zero-text-margin">
     <p>Who will look after your children if you die?</p>
     <p>Strangers?</p>
-    <button class="btn btn-secondary">Register your guardian</button>
+    <%= link_to new_user_session_path, class: "white-text" do %>
+      <button class="btn btn-secondary">Register your guardian</button>
+    <% end %>
     <p>Living in the UK and not a Polish citizen? What are your rights?</p>
   </div>
 
@@ -126,3 +128,20 @@
   <p>Protect your family, keep your personal data safe and share your memories</p>
   <button class="btn btn-primary">Register your nomination =></button>
 </div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $(document).ready(function(){
+
+      $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
+      $(".navbar-wagon").addClass("navbar-wagon-fixed");
+
+      $(window).scroll(function(){
+        if($(window).scrollTop()>500)
+          $(".navbar-wagon").css({"background-color": "rgba(66,145,166,1)", "box-shadow": "0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03)"});
+        else
+          $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
+      });
+    });
+  </script>
+<% end %>
