@@ -1,4 +1,4 @@
-class AfterSignupController < ApplicationController
+class AfterSignUpController < ApplicationController
   include Wicked::Wizard
 
   steps :sign_up, :basic_profile, :advanced_profile

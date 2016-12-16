@@ -2,5 +2,5 @@
 <%= form_for(@user, url: wizard_path, method: :put) do |f| %>
   <%= f.text_field :first_name, placeholder: 'Name' %>
   <%= f.submit 'Next', class: 'btn btn-primary' %>
-<%= end %>
+<% end %>
 <%= link_to 'back', previous_wizard_path %>
