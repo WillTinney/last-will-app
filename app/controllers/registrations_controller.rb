@@ -8,6 +8,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   # Redirect to personal details page
   def after_sign_up_path_for(resource)
-    after_sign_up_path(:sign_up)
+    user_after_sign_up_path(@user, :basic_profile)
   end
 end

@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # Routes for core user side
-  resources :users, only: [ :show, :edit, :update ]
-
-  # Routes for wizard sign-up
-  resources :after_sign_up
+  resources :users, only: [ :show, :edit, :update ] do
+    # Routes for wizard sign-up
+    resources :after_sign_up
+  end
 
 end
