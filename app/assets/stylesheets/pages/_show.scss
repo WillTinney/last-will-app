@@ -3,6 +3,9 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.form-control {
+.inner-flex {
+  flex-grow: 1;
+}
+.form-group {
   width: 250px;
 }
