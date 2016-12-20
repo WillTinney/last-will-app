@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212155134) do
+ActiveRecord::Schema.define(version: 20161220094910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guardians", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.string   "last_name"
+    t.string   "citizenship"
+    t.string   "date_of_birth"
+    t.string   "phone_number"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "town"
+    t.string   "postcode"
+    t.string   "country"
+    t.string   "email"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -42,4 +61,5 @@ ActiveRecord::Schema.define(version: 20161212155134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "guardians", "users"
 end
