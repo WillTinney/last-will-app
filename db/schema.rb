@@ -21,16 +21,19 @@ ActiveRecord::Schema.define(version: 20161220094910) do
     t.string   "last_name"
     t.string   "citizenship"
     t.string   "date_of_birth"
+    t.string   "email"
     t.string   "phone_number"
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "town"
     t.string   "postcode"
     t.string   "country"
-    t.string   "email"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "profile_picture"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
   end
 
@@ -48,7 +51,11 @@ ActiveRecord::Schema.define(version: 20161220094910) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
+    t.string   "middle_name"
     t.string   "last_name"
+    t.string   "citizenship"
+    t.string   "date_of_birth"
+    t.string   "phone_number"
     t.string   "address_line_1"
     t.string   "address_line_2"
     t.string   "town"

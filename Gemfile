@@ -20,6 +20,9 @@ gem 'autoprefixer-rails'
 # Sign-up Wizard
 gem 'wicked'
 
+# Country Select for Simple Form
+gem 'country_select'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

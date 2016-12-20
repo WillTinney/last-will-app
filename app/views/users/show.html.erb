@@ -2,3 +2,26 @@
 <p>The user/client's main dashboard</p>
 
 <%= render 'shared/sidebar' %>
+
+<div id="user-details" class="details-box">
+
+  <img src="app/assets/images/user.png" alt="user" class="avatar-large">
+  <p>Edit Profile Picture</p>
+
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :middle_name %>
+    <%= f.input :last_name %>
+    <%= f.input :citizenship %>
+    <%= f.input :date_of_birth %>
+    <%= f.input :phone_number %>
+    <%= f.input :address_line_1 %>
+    <%= f.input :address_line_2 %>
+    <%= f.input :town %>
+    <%= f.input :postcode %>
+    <%= f.input :country %>
+
+    <%= f.button :submit %>
+  <% end %>
+
+</div>

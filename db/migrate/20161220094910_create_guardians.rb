@@ -6,13 +6,16 @@ class CreateGuardians < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.string :citizenship
       t.string :date_of_birth
+      t.string :email
       t.string :phone_number
       t.string :address_line_1
       t.string :address_line_2
       t.string :town
       t.string :postcode
       t.string :country
-      t.string :email
+      t.float :latitude
+      t.float :longitude
+      t.string :profile_picture
       t.references :user, foreign_key: true
 
       t.timestamps
