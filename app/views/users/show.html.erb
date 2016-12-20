@@ -3,6 +3,35 @@
 
 <%= render 'shared/sidebar' %>
 
+<div class="tabs">
+    <%= link_to '#',
+        class: "tab active",
+        id: "profile-tab", remote: true do %>
+      <h3>My Profile</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "people-tab",
+        remote: true do %>
+      <h3>My People</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "photo-tab",
+        remote: true do %>
+      <h3>Photos & Videos</h3>
+    <% end %>
+
+    <%= link_to '#',
+        class: "tab", id: "residence-tab", remote: true do %>
+      <h3>Proof of Residence</h3>
+    <% end %>
+
+    <%= link_to '#',
+        class: "tab",
+        id: "admin-tab", remote: true do %>
+      <h3>Administrative Papers</h3>
+    <% end %>
+</div>
+
 <div id="user-details" class="details-box">
 
   <img src="app/assets/images/user.png" alt="user" class="avatar-large">
