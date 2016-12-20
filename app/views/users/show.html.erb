@@ -3,25 +3,52 @@
 
 <%= render 'shared/sidebar' %>
 
-<div id="user-details" class="details-box">
+<div class="container">
+  <div id="user-details" class="details-box">
 
-  <img src="app/assets/images/user.png" alt="user" class="avatar-large">
-  <p>Edit Profile Picture</p>
+    <img src="app/assets/images/user.png" alt="user" class="avatar-large">
+    <p>Edit Profile Picture</p>
 
-  <%= simple_form_for @user do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :middle_name %>
-    <%= f.input :last_name %>
-    <%= f.input :citizenship %>
-    <%= f.input :date_of_birth %>
-    <%= f.input :phone_number %>
-    <%= f.input :address_line_1 %>
-    <%= f.input :address_line_2 %>
-    <%= f.input :town %>
-    <%= f.input :postcode %>
-    <%= f.input :country %>
+    <%= simple_form_for @user, class: "flex-outer" do |f| %>
+      <ul class="flex-outer">
+        <li>
+          <%= f.input :first_name %>
+        </li>
+        <li>
+          <%= f.input :middle_name %>
+        </li>
+        <li>
+          <%= f.input :last_name %>
+        </li>
+        <li>
+          <%= f.input :citizenship %>
+        </li>
+        <li>
+          <%= f.input :date_of_birth %>
+        </li>
+        <li>
+          <%= f.input :phone_number %>
+        </li>
+        <li>
+          <%= f.input :address_line_1 %>
+        </li>
+        <li>
+          <%= f.input :address_line_2 %>
+        </li>
+        <li>
+          <%= f.input :town %>
+        </li>
+        <li>
+          <%= f.input :postcode %>
+        </li>
+        <li>
+          <%= f.input :country %>
+        </li>
+        <li>
+          <%= f.button :submit %>
+        </li>
+      </ul>
+    <% end %>
 
-    <%= f.button :submit %>
-  <% end %>
-
+  </div>
 </div>
