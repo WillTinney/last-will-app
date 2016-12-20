@@ -1,0 +1,37 @@
+.tabs {
+  display: flex;
+}
+.tabs a {
+  color: #687376;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.tabs h3 {
+  font-size: 17px;
+  font-weight: bold;
+  margin: 0;
+}
+.tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.tab {
+  background: white;
+  flex: 0 0 20%;
+  text-align: center;
+  padding: 20px 0;
+  border: solid grey 1px;
+  opacity: 0.3;
+}
+.tab.active {
+  background: #A3C8D2;
+  color: white;
+  text-decoration: none;
+  opacity: 1;
+}
+#tab-content {
+  margin: 30px 0;
+}
