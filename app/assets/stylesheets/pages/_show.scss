@@ -1,5 +1,8 @@
-.flex-outer li {
+.flex-outer {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.form-control {
+  width: 250px;
 }
