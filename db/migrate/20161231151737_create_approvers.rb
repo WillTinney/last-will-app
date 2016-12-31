@@ -1,6 +1,6 @@
-class CreateGuardians < ActiveRecord::Migration[5.0]
+class CreateApprovers < ActiveRecord::Migration[5.0]
   def change
-    create_table :guardians do |t|
+    create_table :approvers do |t|
       t.string :first_name
       t.string :middle_name
       t.string :last_name
@@ -12,9 +12,6 @@ class CreateGuardians < ActiveRecord::Migration[5.0]
       t.string :address_line_2
       t.string :town
       t.string :postcode
-      t.string :country
-      t.float :latitude
-      t.float :longitude
       t.string :relationship
       t.string :profile_picture
       t.references :user, foreign_key: true
