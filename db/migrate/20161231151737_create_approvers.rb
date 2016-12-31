@@ -6,6 +6,7 @@ class CreateApprovers < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.string :citizenship
       t.date :date_of_birth
+      t.string :email
       t.string :phone_number
       t.string :address_line_1
       t.string :address_line_2
