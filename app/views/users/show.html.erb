@@ -1,154 +1,156 @@
-<h1>Users#show</h1>
-<p>The user/client's main dashboard</p>
+<div class="include-sidebar">
+  <h1>Users#show</h1>
+  <p>The user/client's main dashboard</p>
 
-<%= render 'shared/sidebar' %>
+  <%= render 'shared/sidebar' %>
 
-<div class="tabs">
-    <%= link_to '#',
-        class: "tab tab-header active",
-        id: "my-profile-tab",
-        remote: true do %>
-      <h3>My Profile</h3>
-    <% end %>
+  <div class="tabs">
+      <%= link_to '#',
+          class: "tab tab-header active",
+          id: "my-profile-tab",
+          remote: true do %>
+        <h3>My Profile</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "call-to-action-tab",
-        remote: true do %>
-      <h3>My Call to Action</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "call-to-action-tab",
+          remote: true do %>
+        <h3>My Call to Action</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "personal-details-tab",
-        remote: true do %>
-      <h3>My Personal Details</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "personal-details-tab",
+          remote: true do %>
+        <h3>My Personal Details</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "partner-tab",
-        remote: true do %>
-      <h3>My Partner</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "partner-tab",
+          remote: true do %>
+        <h3>My Partner</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "children-tab",
-        remote: true do %>
-      <h3>My Children</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "children-tab",
+          remote: true do %>
+        <h3>My Children</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "guardian-tab",
-        remote: true do %>
-      <h3>My Guardian Nominations</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "guardian-tab",
+          remote: true do %>
+        <h3>My Guardian Nominations</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "approver-tab",
-        remote: true do %>
-      <h3>My Approvers</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "approver-tab",
+          remote: true do %>
+        <h3>My Approvers</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "friends-and-family-tab",
-        remote: true do %>
-      <h3>My Friends and Family</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "friends-and-family-tab",
+          remote: true do %>
+        <h3>My Friends and Family</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab tab-header",
-        id: "my-digital-assets-tab",
-        remote: true do %>
-      <h3>My Digital Assets</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab tab-header",
+          id: "my-digital-assets-tab",
+          remote: true do %>
+        <h3>My Digital Assets</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "proof-of-residency-tab",
-        remote: true do %>
-      <h3>Proof of Residency</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "proof-of-residency-tab",
+          remote: true do %>
+        <h3>Proof of Residency</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "admin-references-tab",
-        remote: true do %>
-      <h3>Admin References</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "admin-references-tab",
+          remote: true do %>
+        <h3>Admin References</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "photo-library-tab",
-        remote: true do %>
-      <h3>My Photo Library</h3>
-    <% end %>
+      <%= link_to '#',
+          class: "tab",
+          id: "photo-library-tab",
+          remote: true do %>
+        <h3>My Photo Library</h3>
+      <% end %>
 
-    <%= link_to '#',
-        class: "tab",
-        id: "video-library-tab",
-        remote: true do %>
-      <h3>My Video Library</h3>
-    <% end %>
-</div>
+      <%= link_to '#',
+          class: "tab",
+          id: "video-library-tab",
+          remote: true do %>
+        <h3>My Video Library</h3>
+      <% end %>
+  </div>
 
-<div class="container">
-  <div id="tab-content">
-    <!-- Tab content is loaded via AJAX -->
-    <div class="0" id="my-profile-content">
-      <%= render 'users/profile/my_profile' %>
-    </div>
+  <div class="container">
+    <div id="tab-content">
+      <!-- Tab content is loaded via AJAX -->
+      <div class="0" id="my-profile-content">
+        <%= render 'users/profile/my_profile' %>
+      </div>
 
-    <div class="1 hidden" id="call_to_action-content">
-      <%= render 'users/profile/call_to_action' %>
-    </div>
+      <div class="1 hidden" id="call_to_action-content">
+        <%= render 'users/profile/call_to_action' %>
+      </div>
 
-    <div class="2 hidden" id="personal-details-content">
-      <%= render 'users/profile/personal_details' %>
-    </div>
+      <div class="2 hidden" id="personal-details-content">
+        <%= render 'users/profile/personal_details' %>
+      </div>
 
-    <div class="3 hidden" id="partner-content">
-      <%= render 'users/profile/partner' %>
-    </div>
+      <div class="3 hidden" id="partner-content">
+        <%= render 'users/profile/partner' %>
+      </div>
 
-    <div class="4 hidden" id="children-content">
-      <%= render 'users/profile/children' %>
-    </div>
+      <div class="4 hidden" id="children-content">
+        <%= render 'users/profile/children' %>
+      </div>
 
-    <div class="5 hidden" id="guardian-content">
-      <%= render 'users/profile/guardian' %>
-    </div>
+      <div class="5 hidden" id="guardian-content">
+        <%= render 'users/profile/guardian' %>
+      </div>
 
-    <div class="6 hidden" id="approver-content">
-      <%= render 'users/profile/approver' %>
-    </div>
+      <div class="6 hidden" id="approver-content">
+        <%= render 'users/profile/approver' %>
+      </div>
 
-    <div class="7 hidden" id="friends-and-family-content">
-      <%= render 'users/profile/friends_and_family' %>
-    </div>
+      <div class="7 hidden" id="friends-and-family-content">
+        <%= render 'users/profile/friends_and_family' %>
+      </div>
 
-    <div class="8 hidden" id="my-digital-assets-content">
-      <%= render 'users/digital_assets/my_digital_assets' %>
-    </div>
+      <div class="8 hidden" id="my-digital-assets-content">
+        <%= render 'users/digital_assets/my_digital_assets' %>
+      </div>
 
-    <div class="9 hidden" id="proof-of-residency-content">
-      <%= render 'users/digital_assets/proof_of_residency' %>
-    </div>
+      <div class="9 hidden" id="proof-of-residency-content">
+        <%= render 'users/digital_assets/proof_of_residency' %>
+      </div>
 
-    <div class="10 hidden" id="admin-references-content">
-      <%= render 'users/digital_assets/admin_references' %>
-    </div>
+      <div class="10 hidden" id="admin-references-content">
+        <%= render 'users/digital_assets/admin_references' %>
+      </div>
 
-    <div class="11 hidden" id="photo-library-content">
-      <%= render 'users/digital_assets/photo_library' %>
-    </div>
+      <div class="11 hidden" id="photo-library-content">
+        <%= render 'users/digital_assets/photo_library' %>
+      </div>
 
-    <div class="12 hidden" id="video-library-content">
-      <%= render 'users/digital_assets/video_library' %>
+      <div class="12 hidden" id="video-library-content">
+        <%= render 'users/digital_assets/video_library' %>
+      </div>
     </div>
   </div>
 </div>
