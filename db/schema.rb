@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20161220094910) do
     t.string   "middle_name"
     t.string   "last_name"
     t.string   "citizenship"
-    t.string   "date_of_birth"
+    t.date   "date_of_birth"
     t.string   "email"
     t.string   "phone_number"
     t.string   "address_line_1"
