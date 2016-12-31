@@ -1,120 +1,138 @@
 <!-- Sidebar for Core User Dashboard -->
 <div class="sidebar">
-
-  <%= link_to '#',
-    class: "sidebar-tab sidebar-tab-header active",
-    id: "my-profile-sidebar-tab",
-    remote: true do %>
-  <h5><strong>My Profile</strong></h5>
-  <% end %>
-
-  <hr>
-
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "call-to-action-sidebar-tab",
+  <div class="sidebar-header text-center">
+    <h4><strong>Me</strong></h4>
+  </div>
+  <div class="sidebar-tabs">
+    <%= link_to '#',
+      class: "sidebar-tab sidebar-tab-header active",
+      id: "my-profile-sidebar-tab",
       remote: true do %>
-    <h5>My Call to Action</h5>
-  <% end %>
+    <h5><strong>My Profile</strong></h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "personal-details-sidebar-tab",
-      remote: true do %>
-    <h5>My Personal Details</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "call-to-action-sidebar-tab",
+        remote: true do %>
+      <h5>My Call to Action</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "partner-sidebar-tab",
-      remote: true do %>
-    <h5>My Partner</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "personal-details-sidebar-tab",
+        remote: true do %>
+      <h5>My Personal Details</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "children-sidebar-tab",
-      remote: true do %>
-    <h5>My Children</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "partner-sidebar-tab",
+        remote: true do %>
+      <h5>My Partner</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "guardian-sidebar-tab",
-      remote: true do %>
-    <h5>My Guardian Nominations</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "children-sidebar-tab",
+        remote: true do %>
+      <h5>My Children</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "approver-sidebar-tab",
-      remote: true do %>
-    <h5>My Approvers</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "guardian-sidebar-tab",
+        remote: true do %>
+      <h5>My Guardian Nominations</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "friends-and-family-sidebar-tab",
-      remote: true do %>
-    <h5>My Friends and Family</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "approver-sidebar-tab",
+        remote: true do %>
+      <h5>My Approvers</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab sidebar-tab-header",
-      id: "my-digital-assets-sidebar-tab",
-      remote: true do %>
-    <h5><strong>My Digital Assets</strong></h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "friends-and-family-sidebar-tab",
+        remote: true do %>
+      <h5>My Friends and Family</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "proof-of-residency-sidebar-tab",
-      remote: true do %>
-    <h5>Proof of Residency</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab sidebar-tab-header",
+        id: "my-digital-assets-sidebar-tab",
+        remote: true do %>
+      <h5><strong>My Digital Assets</strong></h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "admin-references-sidebar-tab",
-      remote: true do %>
-    <h5>Admin References</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "proof-of-residency-sidebar-tab",
+        remote: true do %>
+      <h5>Proof of Residency</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "photo-library-sidebar-tab",
-      remote: true do %>
-    <h5>My Photo Library</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "admin-references-sidebar-tab",
+        remote: true do %>
+      <h5>Admin References</h5>
+    <% end %>
 
-  <hr>
+    <hr>
 
-  <%= link_to '#',
-      class: "sidebar-tab",
-      id: "video-library-sidebar-tab",
-      remote: true do %>
-    <h5>My Video Library</h5>
-  <% end %>
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "photo-library-sidebar-tab",
+        remote: true do %>
+      <h5>My Photo Library</h5>
+    <% end %>
 
-  <hr>
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "video-library-sidebar-tab",
+        remote: true do %>
+      <h5>My Video Library</h5>
+    <% end %>
+
+    <hr>
+  </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on a different tab changes the content shown on the page
+    $('.sidebar-tab').on('click', function(event){
+      $('.sidebar-tabs').children().removeClass("active");
+      $(this).addClass("active");
+      var childIndex = $(this).index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' + childIndex).removeClass("hidden");
+      window.location.hash = $(this).attr('id').split("-")[0];
+    })
+  </script>
+<% end %>

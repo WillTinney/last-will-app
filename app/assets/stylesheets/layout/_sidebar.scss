@@ -8,7 +8,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #C6E2E8;
+  background-color: #DBF0E7;
   overflow-x: hidden;
   margin-top: 50px;
   transition: 0.5s;
@@ -27,6 +27,22 @@
 .sidebar hr {
   margin: 2px 0;
 }
+.sidebar h4 {
+  color: white;
+}
 .sidebar h5 {
   margin: 5px 0;
+}
+.sidebar-header {
+  padding: 4px 0;
+  margin: 2px 0;
+  background-color: #77C9D3;
+}
+
+// Sidebar Tabs
+.sidebar-tab.active {
+  background-color: #015148;
+  color: white;
+  text-decoration: none;
+  opacity: 1;
 }

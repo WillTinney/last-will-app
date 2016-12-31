@@ -1,154 +1,96 @@
 <div class="include-sidebar">
-  <h1>Users#show</h1>
-  <p>The user/client's main dashboard</p>
 
   <%= render 'shared/sidebar' %>
 
   <div class="tabs">
       <%= link_to '#',
           class: "tab tab-header active",
-          id: "my-profile-tab",
-          remote: true do %>
-        <h3>My Profile</h3>
+          id: "my-profile-tab" do %>
+        <h3>Me</h3>
       <% end %>
 
       <%= link_to '#',
           class: "tab",
-          id: "call-to-action-tab",
-          remote: true do %>
-        <h3>My Call to Action</h3>
+          id: "call-to-action-tab" do %>
+        <h3>Partner</h3>
       <% end %>
 
       <%= link_to '#',
           class: "tab",
-          id: "personal-details-tab",
-          remote: true do %>
-        <h3>My Personal Details</h3>
+          id: "personal-details-tab" do %>
+        <h3>Children</h3>
       <% end %>
 
       <%= link_to '#',
           class: "tab",
-          id: "partner-tab",
-          remote: true do %>
-        <h3>My Partner</h3>
+          id: "partner-tab" do %>
+        <h3>Guardians</h3>
       <% end %>
 
       <%= link_to '#',
           class: "tab",
-          id: "children-tab",
-          remote: true do %>
-        <h3>My Children</h3>
+          id: "children-tab" do %>
+        <h3>Approvers</h3>
       <% end %>
 
       <%= link_to '#',
           class: "tab",
-          id: "guardian-tab",
-          remote: true do %>
-        <h3>My Guardian Nominations</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "approver-tab",
-          remote: true do %>
-        <h3>My Approvers</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "friends-and-family-tab",
-          remote: true do %>
-        <h3>My Friends and Family</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab tab-header",
-          id: "my-digital-assets-tab",
-          remote: true do %>
-        <h3>My Digital Assets</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "proof-of-residency-tab",
-          remote: true do %>
-        <h3>Proof of Residency</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "admin-references-tab",
-          remote: true do %>
-        <h3>Admin References</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "photo-library-tab",
-          remote: true do %>
-        <h3>My Photo Library</h3>
-      <% end %>
-
-      <%= link_to '#',
-          class: "tab",
-          id: "video-library-tab",
-          remote: true do %>
-        <h3>My Video Library</h3>
+          id: "guardian-tab" do %>
+        <h3>Friends & Family</h3>
       <% end %>
   </div>
 
   <div class="container">
     <div id="tab-content">
-      <!-- Tab content is loaded via AJAX -->
       <div class="0" id="my-profile-content">
         <%= render 'users/profile/my_profile' %>
       </div>
 
-      <div class="1 hidden" id="call_to_action-content">
+      <div class="2 hidden" id="call_to_action-content">
         <%= render 'users/profile/call_to_action' %>
       </div>
 
-      <div class="2 hidden" id="personal-details-content">
+      <div class="4 hidden" id="personal-details-content">
         <%= render 'users/profile/personal_details' %>
       </div>
 
-      <div class="3 hidden" id="partner-content">
+      <div class="6 hidden" id="partner-content">
         <%= render 'users/profile/partner' %>
       </div>
 
-      <div class="4 hidden" id="children-content">
+      <div class="8 hidden" id="children-content">
         <%= render 'users/profile/children' %>
       </div>
 
-      <div class="5 hidden" id="guardian-content">
+      <div class="10 hidden" id="guardian-content">
         <%= render 'users/profile/guardian' %>
       </div>
 
-      <div class="6 hidden" id="approver-content">
+      <div class="12 hidden" id="approver-content">
         <%= render 'users/profile/approver' %>
       </div>
 
-      <div class="7 hidden" id="friends-and-family-content">
+      <div class="14 hidden" id="friends-and-family-content">
         <%= render 'users/profile/friends_and_family' %>
       </div>
 
-      <div class="8 hidden" id="my-digital-assets-content">
+      <div class="16 hidden" id="my-digital-assets-content">
         <%= render 'users/digital_assets/my_digital_assets' %>
       </div>
 
-      <div class="9 hidden" id="proof-of-residency-content">
+      <div class="18 hidden" id="proof-of-residency-content">
         <%= render 'users/digital_assets/proof_of_residency' %>
       </div>
 
-      <div class="10 hidden" id="admin-references-content">
+      <div class="20 hidden" id="admin-references-content">
         <%= render 'users/digital_assets/admin_references' %>
       </div>
 
-      <div class="11 hidden" id="photo-library-content">
+      <div class="22 hidden" id="photo-library-content">
         <%= render 'users/digital_assets/photo_library' %>
       </div>
 
-      <div class="12 hidden" id="video-library-content">
+      <div class="24 hidden" id="video-library-content">
         <%= render 'users/digital_assets/video_library' %>
       </div>
     </div>
@@ -158,29 +100,29 @@
 <% content_for(:after_js) do %>
   <script>
 
-    // stores the anchor from the url in a variable
-    var hash = window.location.hash;
+    // // stores the anchor from the url in a variable
+    // var hash = window.location.hash;
 
-    // If page is reloaded then the same tab will be shown
-    if (hash !== "") {
-      $('.tab').removeClass("active");
-      $(hash + '-tab').addClass("active");
-      var childIndex = $(hash + '-tab').index();
-      $('#tab-content').children().addClass("hidden");
-      $('.' +childIndex).removeClass("hidden");
-    }
+    // // If page is reloaded then the same tab will be shown
+    // if (hash !== "") {
+    //   $('.tab').removeClass("active");
+    //   $(hash + '-tab').addClass("active");
+    //   var childIndex = $(hash + '-tab').index();
+    //   $('#tab-content').children().addClass("hidden");
+    //   $('.' + childIndex).removeClass("hidden");
+    // }
 
-    // This makes sure to load the active tab content when first loading the page
-    $('.active').trigger('click');
+    // // This makes sure to load the active tab content when first loading the page
+    // $('.active').trigger('click');
 
-    // Clicking on a different tab changes the content shown on the page
-    $('.tab').on('click', function(event){
-      $('.tabs').children().removeClass("active");
-      $(this).addClass("active");
-      var childIndex = $(this).index();
-      $('#tab-content').children().addClass("hidden");
-      $('.' + childIndex).removeClass("hidden");
-      window.location.hash = $(this).attr('id').split("-")[0];
-    })
+    // // Clicking on a different tab changes the content shown on the page
+    // $('.tab').on('click', function(event){
+    //   $('.tabs').children().removeClass("active");
+    //   $(this).addClass("active");
+    //   var childIndex = $(this).index();
+    //   $('#tab-content').children().addClass("hidden");
+    //   $('.' + childIndex).removeClass("hidden");
+    //   window.location.hash = $(this).attr('id').split("-")[0];
+    // })
   </script>
 <% end %>
