@@ -13,7 +13,6 @@
   margin-top: 50px;
   transition: 0.5s;
 }
-
 .sidebar a {
   padding: 3px 8px 3px 40px;
   text-decoration: none;
@@ -25,4 +24,9 @@
 .sidebar a:hover, .offcanvas a:focus{
   color: #f1f1f1;
 }
-
+.sidebar hr {
+  margin: 2px 0;
+}
+.sidebar h5 {
+  margin: 5px 0;
+}
