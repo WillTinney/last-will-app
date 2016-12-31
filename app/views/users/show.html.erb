@@ -33,54 +33,122 @@
 </div>
 
 <div class="container">
-  <div id="user-details" class="details-box card">
-    
-    <img src="app/assets/images/user.png" alt="user" class="avatar-large">
-    <p>Edit Profile Picture</p>
+  <div id="tab-content">
+    <!-- Tab content is loaded via AJAX -->
+    <div class="0" id="my-profile-content">
+      <div id="user-details" class="details-box card">
 
-    <%= simple_form_for @user do |f| %>
-      <%= f.input :first_name %>
-      <%= f.input :middle_name %>
-      <%= f.input :last_name %>
-      <%= f.input :citizenship %>
-      <%= f.input :date_of_birth %>
-      <%= f.input :phone_number %>
-      <%= f.input :address_line_1 %>
-      <%= f.input :address_line_2 %>
-      <%= f.input :town %>
-      <%= f.input :postcode %>
-      <%= f.input :country %>
+        <img src="app/assets/images/user.png" alt="user" class="avatar-large">
+        <p>Edit Profile Picture</p>
 
-      <%= f.button :submit %>
-    <% end %>
-
-  </div>
-
-  <div class="row">
-      <div id="network-box" class="col-xs-12 col-sm-6 card">
-        <h3>My Network</h3>
-        <hr>
-        <h5>Guardians</h5>
-        <p>2 people</p>
-        <hr>
-        <h5>Approvers</h5>
-        <p>0 people</p>
-        <hr>
-        <h5>Friends and Relatives</h5>
-        <p>0 people</p>
+        <%= simple_form_for(@user) do |f| %>
+          <div class="outer-flex">
+            <div class="inner-flex">
+              <%= f.input :first_name %>
+            </div>
+            <div class="inner-flex">
+              <%= f.input :middle_name %>
+            </div>
+            <div class="inner-flex">
+              <%= f.input :last_name %>
+            </div>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :citizenship %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :date_of_birth %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :phone_number %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :address_line_1 %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :address_line_2 %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :town %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :postcode %>
+          </div>
+          <div class="inner-flex">
+          <%= f.input :country %>
+          </div>
+          <div class="inner-flex">
+          <%= f.button :submit %>
+          </div>
+        <% end %>
       </div>
 
-      <div id="data-box" class="col-xs-10 col-sm-6 card">
-        <h3>My Data</h3>
-        <hr>
-        <h5>Digital Assets</h5>
-        <p>100 Mb</p>
-        <hr>
-        <h5>Administrative References</h5>
-        <p>2 Mb</p>
-        <hr>
-        <h5>Friends and Relatives</h5>
-        <p>3 Documents</p>
+      <div class="row">
+          <div id="network-box" class="col-xs-12 col-sm-6 card">
+            <h3>My Network</h3>
+            <hr>
+            <h5>Guardians</h5>
+            <p>2 people</p>
+            <hr>
+            <h5>Approvers</h5>
+            <p>0 people</p>
+            <hr>
+            <h5>Friends and Relatives</h5>
+            <p>0 people</p>
+          </div>
+
+          <div id="data-box" class="col-xs-10 col-sm-6 card">
+            <h3>My Data</h3>
+            <hr>
+            <h5>Digital Assets</h5>
+            <p>100 Mb</p>
+            <hr>
+            <h5>Administrative References</h5>
+            <p>2 Mb</p>
+            <hr>
+            <h5>Friends and Relatives</h5>
+            <p>3 Documents</p>
+          </div>
       </div>
+    </div>
+
+    <div class="hidden" id="loans-outstanding-content">
+    </div>
+    <div class="hidden" id="loans-declined-content">
+    </div>
+    <div class="hidden" id="loans-repaid-content">
+    </div>
+    <div class="hidden" id="portfolio-content">
+    </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+
+    // stores the anchor from the url in a variable
+    var hash = window.location.hash;
+
+    // If page is reloaded then the same tab will be shown
+    if (hash !== "") {
+      $('.tab').removeClass("active");
+      $(hash + '-tab').addClass("active");
+      var childIndex = $(hash + '-tab').index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' +childIndex).removeClass("hidden");
+    }
+
+    // This makes sure to load the active tab content when first loading the page
+    $('.active').trigger('click');
+
+    // Clicking on a different tab changes the content shown on the page
+    $('.tab').on('click', function(event){
+      $('.tabs').children().removeClass("active");
+      $(this).addClass("active");
+      var childIndex = $(this).index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' +childIndex).removeClass("hidden");
+      window.location.hash = $(this).attr('id').split("-")[0];
+    })
+  </script>
+<% end %>
