@@ -4,31 +4,71 @@
 <%= render 'shared/sidebar' %>
 
 <div class="tabs">
-    <%= link_to '#',
-        class: "tab active",
-        id: "profile-tab", remote: true do %>
+    <%= link_to '#', class: "tab tab-header",
+        remote: true do %>
       <h3>My Profile</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "people-tab",
-        remote: true do %>
-      <h3>My People</h3>
+    <%= link_to '#',
+        class: "tab active",
+        id: "call-to-action-tab", remote: true do %>
+      <h3>My Call to Action</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "photo-tab",
+    <%= link_to '#', class: "tab", id: "personal-details-tab",
         remote: true do %>
-      <h3>Photos & Videos</h3>
+      <h3>My Personal Details</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "partner-tab",
+        remote: true do %>
+      <h3>My Partner</h3>
     <% end %>
 
     <%= link_to '#',
-        class: "tab", id: "residence-tab", remote: true do %>
-      <h3>Proof of Residence</h3>
+        class: "tab", id: "children-tab", remote: true do %>
+      <h3>My Children</h3>
     <% end %>
 
     <%= link_to '#',
         class: "tab",
-        id: "admin-tab", remote: true do %>
-      <h3>Administrative Papers</h3>
+        id: "guardian-tab", remote: true do %>
+      <h3>My Guardian Nominations</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "approver-tab",
+        remote: true do %>
+      <h3>My Approvers</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "friends-and-family-tab",
+        remote: true do %>
+      <h3>My Friends and Family</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab tab-header",
+        remote: true do %>
+      <h3>My Digital Assets</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "proof-of-residency-tab",
+        remote: true do %>
+      <h3>Proof of Residency</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "admin-references-tab",
+        remote: true do %>
+      <h3>Admin References</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "photo-library-tab",
+        remote: true do %>
+      <h3>My Photo Library</h3>
+    <% end %>
+
+    <%= link_to '#', class: "tab", id: "video-library-tab",
+        remote: true do %>
+      <h3>My Video Library</h3>
     <% end %>
 </div>
 
