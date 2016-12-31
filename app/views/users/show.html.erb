@@ -4,69 +4,91 @@
 <%= render 'shared/sidebar' %>
 
 <div class="tabs">
-    <%= link_to '#', class: "tab tab-header",
+    <%= link_to '#',
+        class: "tab tab-header",
         remote: true do %>
       <h3>My Profile</h3>
     <% end %>
 
     <%= link_to '#',
         class: "tab active",
-        id: "call-to-action-tab", remote: true do %>
+        id: "call-to-action-tab",
+        remote: true do %>
       <h3>My Call to Action</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "personal-details-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "personal-details-tab",
         remote: true do %>
       <h3>My Personal Details</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "partner-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "partner-tab",
         remote: true do %>
       <h3>My Partner</h3>
     <% end %>
 
     <%= link_to '#',
-        class: "tab", id: "children-tab", remote: true do %>
+        class: "tab",
+        id: "children-tab",
+        remote: true do %>
       <h3>My Children</h3>
     <% end %>
 
     <%= link_to '#',
         class: "tab",
-        id: "guardian-tab", remote: true do %>
+        id: "guardian-tab",
+        remote: true do %>
       <h3>My Guardian Nominations</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "approver-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "approver-tab",
         remote: true do %>
       <h3>My Approvers</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "friends-and-family-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "friends-and-family-tab",
         remote: true do %>
       <h3>My Friends and Family</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab tab-header",
+    <%= link_to '#',
+        class: "tab tab-header",
         remote: true do %>
       <h3>My Digital Assets</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "proof-of-residency-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "proof-of-residency-tab",
         remote: true do %>
       <h3>Proof of Residency</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "admin-references-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "admin-references-tab",
         remote: true do %>
       <h3>Admin References</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "photo-library-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "photo-library-tab",
         remote: true do %>
       <h3>My Photo Library</h3>
     <% end %>
 
-    <%= link_to '#', class: "tab", id: "video-library-tab",
+    <%= link_to '#',
+        class: "tab",
+        id: "video-library-tab",
         remote: true do %>
       <h3>My Video Library</h3>
     <% end %>
@@ -76,89 +98,55 @@
   <div id="tab-content">
     <!-- Tab content is loaded via AJAX -->
     <div class="0" id="my-profile-content">
-      <div id="user-details" class="details-box card">
-
-        <img src="app/assets/images/user.png" alt="user" class="avatar-large">
-        <p>Edit Profile Picture</p>
-
-        <%= simple_form_for(@user) do |f| %>
-          <div class="outer-flex">
-            <div class="inner-flex">
-              <%= f.input :first_name %>
-            </div>
-            <div class="inner-flex">
-              <%= f.input :middle_name %>
-            </div>
-            <div class="inner-flex">
-              <%= f.input :last_name %>
-            </div>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :citizenship %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :date_of_birth %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :phone_number %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :address_line_1 %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :address_line_2 %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :town %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :postcode %>
-          </div>
-          <div class="inner-flex">
-          <%= f.input :country %>
-          </div>
-          <div class="inner-flex">
-          <%= f.button :submit %>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="row">
-          <div id="network-box" class="col-xs-12 col-sm-6 card">
-            <h3>My Network</h3>
-            <hr>
-            <h5>Guardians</h5>
-            <p>2 people</p>
-            <hr>
-            <h5>Approvers</h5>
-            <p>0 people</p>
-            <hr>
-            <h5>Friends and Relatives</h5>
-            <p>0 people</p>
-          </div>
-
-          <div id="data-box" class="col-xs-10 col-sm-6 card">
-            <h3>My Data</h3>
-            <hr>
-            <h5>Digital Assets</h5>
-            <p>100 Mb</p>
-            <hr>
-            <h5>Administrative References</h5>
-            <p>2 Mb</p>
-            <hr>
-            <h5>Friends and Relatives</h5>
-            <p>3 Documents</p>
-          </div>
-      </div>
+      <%= render 'users/profile/my_profile' %>
     </div>
 
     <div class="hidden" id="loans-outstanding-content">
+      <%= render 'users/profile/call_to_action' %>
     </div>
+
     <div class="hidden" id="loans-declined-content">
+      <%= render 'users/profile/personal_details' %>
     </div>
+
     <div class="hidden" id="loans-repaid-content">
+      <%= render 'users/profile/partner' %>
     </div>
+
     <div class="hidden" id="portfolio-content">
+      <%= render 'users/profile/children' %>
+    </div>
+
+    <div class="hidden" id="loans-outstanding-content">
+      <%= render 'users/profile/guardian' %>
+    </div>
+
+    <div class="hidden" id="loans-declined-content">
+      <%= render 'users/profile/approver' %>
+    </div>
+
+    <div class="hidden" id="loans-repaid-content">
+      <%= render 'users/profile/friends_and_family' %>
+    </div>
+
+    <div class="hidden" id="portfolio-content">
+      <%= render 'users/digital_assets/my_digital_assets' %>
+    </div>
+
+    <div class="hidden" id="loans-outstanding-content">
+      <%= render 'users/digital_assets/proof_of_residency' %>
+    </div>
+
+    <div class="hidden" id="loans-declined-content">
+      <%= render 'users/digital_assets/admin_references' %>
+    </div>
+
+    <div class="hidden" id="loans-repaid-content">
+      <%= render 'users/digital_assets/photo_library' %>
+    </div>
+
+    <div class="hidden" id="portfolio-content">
+      <%= render 'users/digital_assets/video_library' %>
     </div>
   </div>
 </div>
