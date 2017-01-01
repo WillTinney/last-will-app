@@ -23,6 +23,9 @@ gem 'wicked'
 # Country Select for Simple Form
 gem 'country_select'
 
+# Faker Gem for Seed File
+gem 'faker'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

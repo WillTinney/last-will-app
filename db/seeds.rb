@@ -8,7 +8,7 @@
 mobile_string = '07' + ('%09d' % rand(10 ** 9)).to_s
 
 User.create!(email: "test@gmail.com", password: "123123", first_name: "John", last_name: "Hartaway",
-  gender: "male", citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), phone_number: "mobile_string",
+  citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), phone_number: "mobile_string",
   address_line_1: "14 Elder Street", address_line_2: "Shoreditch", town: "London",
   postcode: "E1 6BT")
 
