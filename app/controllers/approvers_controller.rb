@@ -2,6 +2,10 @@ class ApproversController < ApplicationController
   before_action :set_approver, only: [:show, :edit, :update, :destroy]
 
   def index
+    @approvers = Approver.all
+  end
+
+  def show
   end
 
   def new
@@ -9,15 +13,12 @@ class ApproversController < ApplicationController
   end
 
   def create
-    @approver = current_user.guardians.build(approver_params)
+    @approver = current_user.approvers.build(approver_params)
     if @approver.save
       redirect_to user_path(current_user), notice: 'Approver was successfully created.'
     else
       render :new
     end
-  end
-
-  def show
   end
 
   def edit

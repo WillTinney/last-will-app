@@ -15,8 +15,8 @@
       <% end %>
     </div>
     <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
+      <%= link_to "Edit", edit_user_recipient_path(@user), class: "btn btn-transparent btn-default" %>
+      <%= link_to "Delete", user_recipient_path(@user), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
     </div>
   </div>
 
@@ -81,6 +81,6 @@
     </div>
   </div>
 
-  <button>Add new friend or family member</button>
+  <%= link_to "Add New Friend or Family Member", new_user_recipient_path(@user), class: "btn btn-transparent btn-default" %>
 
 </div>
