@@ -10,3 +10,23 @@
 .form-group {
   width: 250px;
 }
+// Core Dashboard Classes
+.profile-box {
+  background-color: #F8F8F9;
+  padding: 8px 24px;
+}
+.detail-box {
+}
+// User My Profile Page
+#user-my-profile {
+  margin: auto;
+  width: 95%;
+}
+.edit-profile-picture {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.edit-profile-picture img {
+  height: 70px;
+}
