@@ -12,21 +12,25 @@
 }
 // Core Dashboard Classes
 .dashboard-box {
-  margin: 250px auto 10px auto;
+  margin: 240px auto 30px auto;
   width: 95%;
 }
-.profile-box {
+.grey-box {
   background-color: #F8F8F9;
   padding: 8px 24px;
 }
-.detail-box {
+.blue-box {
+  color: white;
+  background-color: #4DB3D0;
+  border: 1px solid #969696;
+  border-radius: 3px;
 }
-// User My Profile Page
-.edit-profile-picture {
+.profile-picture-inline {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.edit-profile-picture img {
+.profile-picture-inline img {
   height: 70px;
 }
+

@@ -1,43 +1,73 @@
-<div class="dashboard-box">
-  <%= link_to '#', class: 'edit-profile-picture' do %>
-    <%= image_tag("user.png", class: "avatar-large") %>
-    <p>Edit Profile Picture</p>
-  <% end %>
-  <p>John Smith</p>
+<%= link_to '#', class: 'profile-picture-inline' do %>
+  <%= image_tag("user.png", class: "avatar-large") %>
+  <p>Edit Profile Picture</p>
+<% end %>
+<p>John Hartaway</p>
 
-  <div class="profile-box">
-    <h3>My Call to Action</h3>
-    <div class="detail-box">
-      <div class="name">
-        <p>Will</p>
-      </div>
-      <div class="actions">
-        <p>Add</p>
-        <p>Delete</p>
-      </div>
+<div class="grey-box">
+  <h3>My Call to Action</h3>
+
+  <div class="detail-box">
+    <div class="detail">
+      <p>Will</p>
     </div>
+    <div class="detail">
+      <p>Add</p>
+      <p>Delete</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h3>My Personal Details</h3>
+
+  <hr>
+
+  <h3>My Partner</h3>
+
+  <hr>
+
+  <h3>My Children</h3>
+
+  <hr>
+
+  <h3>Guardians</h3>
+
+  <hr>
+
+  <h3>Approvers</h3>
+
+  <hr>
+
+  <h3>Family and Friends</h3>
+</div>
+
+<br>
+
+<div class="row">
+  <div id="network-box" class="col-xs-12 col-sm-6 card">
+    <h3>My Network</h3>
     <hr>
-
-    <h3>My Personal Details</h3>
-
+    <h5>Guardians</h5>
+    <p>2 people</p>
     <hr>
-
-    <h3>My Partner</h3>
-
+    <h5>Approvers</h5>
+    <p>2 people</p>
     <hr>
+    <h5>Friends and Relatives</h5>
+    <p>2 people</p>
+  </div>
 
-    <h3>My Children</h3>
-
+  <div id="data-box" class="col-xs-10 col-sm-6 card">
+    <h3>My Data</h3>
     <hr>
-
-    <h3>Guardians</h3>
-
+    <h5>Digital Assets</h5>
+    <p>100 Mb</p>
     <hr>
-
-    <h3>Approvers</h3>
-
+    <h5>Administrative References</h5>
+    <p>2 Mb</p>
     <hr>
-
-    <h3>Friends and Family</h3>
+    <h5>Friends and Relatives</h5>
+    <p>3 Documents</p>
   </div>
 </div>

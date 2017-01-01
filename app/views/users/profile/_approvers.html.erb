@@ -1,0 +1,37 @@
+<div class="grey-box">
+  <h2>Approvers</h2>
+
+  <div class="blue-box">
+    <p>Approvers are...</p>
+  </div>
+
+  <h3>My Approvers</h3>
+
+  <div class="detail-box">
+    <div class="detail">
+      <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= image_tag("user.png", class: "avatar-large") %>
+        <h5>George Martin</h5>
+      <% end %>
+    </div>
+    <div class="detail">
+      <p>Edit</p>
+      <p>Delete</p>
+    </div>
+  </div>
+
+  <div class="detail-box">
+    <div class="detail">
+      <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= image_tag("user.png", class: "avatar-large") %>
+        <h5>William Rowley</h5>
+      <% end %>
+    </div>
+    <div class="detail">
+      <p>Edit</p>
+      <p>Delete</p>
+    </div>
+  </div>
+
+  <button>Add new approver</button>
+</div>
