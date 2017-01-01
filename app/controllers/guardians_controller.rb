@@ -11,7 +11,7 @@ class GuardiansController < ApplicationController
   def create
     @guardian = current_user.guardians.build(guardian_params)
     if @guardian.save
-      redirect_to user_path(current_user), notice: 'Loan application was successfully created.'
+      redirect_to user_path(current_user), notice: 'Guardian was successfully created.'
     else
       render :new
     end

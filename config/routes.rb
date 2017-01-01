@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     # Routes for wizard sign-up
     resources :after_sign_up
     resources :guardians
+    resources :approvers
   end
 
 end
