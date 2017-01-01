@@ -1,0 +1,41 @@
+.scrollmenu {
+  background-color: #FBFDFF;
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: horizontal;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
+  -moz-box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
+  box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
+}
+.scrollmenu a {
+  color: black;
+  text-align: center;
+  padding: 6px 10px 3px 10px;
+  text-decoration: none;
+}
+.scrollmenu h3 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 8px 0 5px 0;
+}
+.scrollmenu h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 7px 0 5px 0;
+}
+.scrollmenu a:hover {
+  background-color: #777;
+}
+.scrollbox {
+  padding: 5px 10px;
+  border-right: 1px solid #D2D3D4;
+}
+.scrollbox a {
+  display: inline-block;
+}
+.scrollitem {
+  min-width: 80px;
+  text-align: center;
+  display: inline-block;
+}
