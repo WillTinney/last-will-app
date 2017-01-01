@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'recipients/index'
-
-  get 'recipients/show'
-
-  get 'recipients/new'
-
-  get 'recipients/create'
-
-  get 'recipients/edit'
-
-  get 'recipients/update'
-
-  get 'recipients/destroy'
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
@@ -24,6 +10,7 @@ Rails.application.routes.draw do
     resources :after_sign_up
     resources :guardians
     resources :approvers
+    resources :recipients
   end
 
 end
