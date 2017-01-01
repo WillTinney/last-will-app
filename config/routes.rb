@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :show, :edit, :update ] do
     # Routes for wizard sign-up
     resources :after_sign_up
+    resources :guardians
   end
 
 end
