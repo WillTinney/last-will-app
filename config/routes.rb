@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :after_sign_up
     resources :guardians
     resources :approvers
+    resources :recipients
   end
 
 end

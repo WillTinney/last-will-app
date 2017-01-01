@@ -2,6 +2,7 @@ class GuardiansController < ApplicationController
   before_action :set_guardian, only: [:show, :edit, :update, :destroy]
 
   def index
+    @guardians = Guardian.all
   end
 
   def new
