@@ -1,7 +1,9 @@
 <div id="personal-details" class="details-box card">
 
-  <img src="app/assets/images/user.png" alt="user" class="avatar-large">
-  <p>Edit Profile Picture</p>
+  <%= link_to '#', class: 'edit-profile-picture' do %>
+    <%= image_tag("user.png", class: "avatar-large") %>
+    <p>Edit Profile Picture</p>
+  <% end %>
 
   <%= simple_form_for(@user) do |f| %>
     <div class="outer-flex">
@@ -43,32 +45,4 @@
     <%= f.button :submit %>
     </div>
   <% end %>
-</div>
-
-<div class="row">
-    <div id="network-box" class="col-xs-12 col-sm-6 card">
-      <h3>My Network</h3>
-      <hr>
-      <h5>Guardians</h5>
-      <p>2 people</p>
-      <hr>
-      <h5>Approvers</h5>
-      <p>0 people</p>
-      <hr>
-      <h5>Friends and Relatives</h5>
-      <p>0 people</p>
-    </div>
-
-    <div id="data-box" class="col-xs-10 col-sm-6 card">
-      <h3>My Data</h3>
-      <hr>
-      <h5>Digital Assets</h5>
-      <p>100 Mb</p>
-      <hr>
-      <h5>Administrative References</h5>
-      <p>2 Mb</p>
-      <hr>
-      <h5>Friends and Relatives</h5>
-      <p>3 Documents</p>
-    </div>
 </div>
