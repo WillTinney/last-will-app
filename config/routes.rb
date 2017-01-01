@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'guardians/index'
+
+  get 'guardians/new'
+
+  get 'guardians/create'
+
+  get 'guardians/show'
+
+  get 'guardians/edit'
+
+  get 'guardians/update'
+
+  get 'guardians/destroy'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
