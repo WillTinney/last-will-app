@@ -1,0 +1,27 @@
+.scrollmenu {
+  background-color: #FBFDFF;
+  overflow: auto;
+  white-space: nowrap;
+  display: flex;
+  align-items: horizontal;
+}
+.scrollmenu a {
+  color: black;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+.scrollmenu a:hover {
+  background-color: #777;
+}
+.scrollbox {
+  padding: 5px 10px;
+}
+.scrollbox a {
+  display: inline-block;
+}
+.scrollitem {
+  min-width: 80px;
+  text-align: center;
+  display: inline-block;
+}

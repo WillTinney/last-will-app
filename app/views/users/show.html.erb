@@ -2,42 +2,90 @@
 
   <%= render 'shared/sidebar' %>
 
-  <div class="tabs">
-      <%= link_to '#',
-          class: "tab tab-header active",
-          id: "my-profile-tab" do %>
-        <h3>Me</h3>
-      <% end %>
+  <div class="scrollmenu">
+    <div class="scrollbox">
+      <h3>Me</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h3>John</h3>
+        <% end %>
+      </div>
+    </div>
 
-      <%= link_to '#',
-          class: "tab",
-          id: "call-to-action-tab" do %>
-        <h3>Partner</h3>
-      <% end %>
+    <div class="scrollbox">
+      <h3>Partner</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h3>Edith</h3>
+        <% end %>
+      </div>
+    </div>
 
-      <%= link_to '#',
-          class: "tab",
-          id: "personal-details-tab" do %>
-        <h3>Children</h3>
-      <% end %>
+    <div class="scrollbox">
+      <h3>Children</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h3>Art</h3>
+        <% end %>
+      </div>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h3>Phillip</h3>
+        <% end %>
+      </div>
+    </div>
 
-      <%= link_to '#',
-          class: "tab",
-          id: "partner-tab" do %>
-        <h3>Guardians</h3>
-      <% end %>
+    <div class="scrollbox">
+      <h3>Guardians</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h3>Rebecca</h3>
+        <% end %>
+      </div>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h3>Betty</h3>
+        <% end %>
+      </div>
+    </div>
 
-      <%= link_to '#',
-          class: "tab",
-          id: "children-tab" do %>
-        <h3>Approvers</h3>
-      <% end %>
+    <div class="scrollbox">
+      <h3>Approvers</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h3>George</h3>
+        <% end %>
+      </div>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h3>William</h3>
+        <% end %>
+      </div>
+    </div>
 
-      <%= link_to '#',
-          class: "tab",
-          id: "guardian-tab" do %>
-        <h3>Friends & Family</h3>
-      <% end %>
+    <div class="scrollbox">
+      <h3>Friends & Family</h3>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h3>Martha</h3>
+        <% end %>
+      </div>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h3>Mike</h3>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="container">
