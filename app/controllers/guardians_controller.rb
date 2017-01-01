@@ -1,5 +1,5 @@
 class GuardiansController < ApplicationController
-  before_action :set_loan, only: [:show, :edit, :update]
+  before_action :set_guardian, only: [:show, :edit, :update]
 
   def index
   end
@@ -24,11 +24,13 @@ class GuardiansController < ApplicationController
 
   private
 
-  def set_loan
-    @loan = Loan.find(params[:id])
+  def set_guardian
+    @guardian = Guardian.find(params[:id])
   end
 
-  def loan_params
-    params.require(:loan).permit(:requested_amount, :category, :purpose, :description, :bank_id)
+  def guardian_params
+    params.require(:guardian).permit(:first_name, :middle_name, :last_name, :citizenship,
+      :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
+      :town, :postcode, :relationship, :profile_picture)
   end
 end
