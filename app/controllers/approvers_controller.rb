@@ -39,7 +39,7 @@ class ApproversController < ApplicationController
   private
 
   def set_approver
-    @approver = approver.find(params[:id])
+    @approver = Approver.find(params[:id])
   end
 
   def approver_params
@@ -47,6 +47,4 @@ class ApproversController < ApplicationController
       :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
       :town, :postcode, :relationship, :profile_picture)
   end
-end
-
 end
