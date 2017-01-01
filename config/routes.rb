@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'approvers/index'
+
+  get 'approvers/new'
+
+  get 'approvers/create'
+
+  get 'approvers/edit'
+
+  get 'approvers/update'
+
+  get 'approvers/delete'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
