@@ -1,5 +1,5 @@
 class GuardiansController < ApplicationController
-  before_action :set_guardian, only: [:show, :edit, :update]
+  before_action :set_guardian, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -24,9 +24,16 @@ class GuardiansController < ApplicationController
   end
 
   def update
+   if @guardian.update(guardian_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @guardian.destroy
+    redirect_to guardian_path
   end
 
   private
