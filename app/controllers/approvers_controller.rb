@@ -1,19 +1,52 @@
 class ApproversController < ApplicationController
+  before_action :set_approver, only: [:show, :edit, :update, :destroy]
+
   def index
   end
 
   def new
+    @approver = Approver.new
   end
 
   def create
+    @approver = current_user.guardians.build(approver_params)
+    if @approver.save
+      redirect_to user_path(current_user), notice: 'Approver was successfully created.'
+    else
+      render :new
+    end
+  end
+
+  def show
   end
 
   def edit
   end
 
   def update
+   if @approver.update(approver_params)
+      redirect_to user_path(current_user)
+    else
+      render :edit
+    end
   end
 
-  def delete
+  def destroy
+    @approver.destroy
+    redirect_to user_path(current_user)
   end
+
+  private
+
+  def set_approver
+    @approver = approver.find(params[:id])
+  end
+
+  def approver_params
+    params.require(:approver).permit(:first_name, :middle_name, :last_name, :citizenship,
+      :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
+      :town, :postcode, :relationship, :profile_picture)
+  end
+end
+
 end
