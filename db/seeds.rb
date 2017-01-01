@@ -27,7 +27,7 @@ Approver.create!(relationship: "Friend", first_name: "George", last_name: "Marti
   citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "george@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
   postcode: "T3 5TT")
-Approver.create!(relationship: "Friend", first_name: "William", last_name: "Tinney",
+Approver.create!(relationship: "Friend", first_name: "William", last_name: "Rowley",
   citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "william@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
   postcode: "T3 5TT")
