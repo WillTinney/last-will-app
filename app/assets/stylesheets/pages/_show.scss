@@ -11,6 +11,10 @@
   width: 250px;
 }
 // Core Dashboard Classes
+.dashboard-box {
+  margin: 250px auto 10px auto;
+  width: 95%;
+}
 .profile-box {
   background-color: #F8F8F9;
   padding: 8px 24px;
@@ -18,10 +22,6 @@
 .detail-box {
 }
 // User My Profile Page
-#user-my-profile {
-  margin: auto;
-  width: 95%;
-}
 .edit-profile-picture {
   display: flex;
   flex-direction: row;
