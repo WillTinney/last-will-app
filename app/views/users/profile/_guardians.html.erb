@@ -16,7 +16,7 @@
     </div>
     <div class="detail">
       <%= link_to "Edit", edit_user_guardian_path(@user), class: "btn btn-transparent btn-default" %>
-      <p>Delete</p>
+      <%= link_to "Delete", user_guardian_path(@user), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
     </div>
   </div>
 

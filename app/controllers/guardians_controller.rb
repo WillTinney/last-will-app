@@ -33,7 +33,7 @@ class GuardiansController < ApplicationController
 
   def destroy
     @guardian.destroy
-    redirect_to guardian_path
+    redirect_to user_path(current_user)
   end
 
   private
