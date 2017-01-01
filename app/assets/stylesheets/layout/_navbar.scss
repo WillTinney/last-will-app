@@ -12,8 +12,6 @@
     color: white;
   }
 }
-
-/* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
   position: fixed;
   left: 0px;
@@ -21,26 +19,22 @@
   z-index: 2;
   width: 100%;
 }
-
 /* Navbar logo */
 .navbar-wagon-brand img {
   width: 50px;
 }
-
 /* Navbar right section (with form, links, button) */
 .navbar-wagon-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-
 /* Navbar item */
 .navbar-wagon-item {
   flex: 0 1 auto;
   cursor: pointer;
   padding: 0 20px;
 }
-
 /* Navbar standard link */
 .navbar-wagon-link {
   color: #616668;
@@ -50,7 +44,6 @@
   color: #da552f;
   text-decoration: none;
 }
-
 /* Navbar right button */
 .navbar-wagon-button {
   margin-left: 10px;
@@ -67,7 +60,6 @@
   background: #D23333;
   border-color: #ac2626;
 }
-
 /* Navbar search form */
 .navbar-wagon-search {
   flex: 0 1 300px;

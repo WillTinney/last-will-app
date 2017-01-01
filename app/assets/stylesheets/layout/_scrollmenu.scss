@@ -1,4 +1,8 @@
 .scrollmenu {
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  margin-top: -200px;
   background-color: #FBFDFF;
   overflow: auto;
   white-space: nowrap;
