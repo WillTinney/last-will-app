@@ -4,6 +4,9 @@ class ApproversController < ApplicationController
   def index
   end
 
+  def show
+  end
+
   def new
     @approver = Approver.new
   end
@@ -15,9 +18,6 @@ class ApproversController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
   end
 
   def edit
