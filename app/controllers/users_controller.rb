@@ -17,6 +17,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def call_to_action
+  end
+
   private
 
   def set_user
