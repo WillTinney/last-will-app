@@ -1,7 +1,7 @@
 <div class="scrollmenu">
   <div class="scrollbox text-center">
     <h3>Me</h3>
-    <div class="scrollitem">
+    <div class="scrollitem active" id="scrollmenu-me">
       <%= link_to '#' do %>
         <%= image_tag("user.png", class: "avatar-large") %>
         <h4><%= @user.first_name %></h4>
@@ -78,3 +78,81 @@
     <% end %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Changes active tab after click
+    $('.scrollitem').on('click', function(event){
+      $('.scrollmenu').children().removeClass("active");
+      $(this).addClass("active");
+
+    // AJAX to load tab content without a refresh
+    $('#scrollmenu-me').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/profile",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#call-to-action-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/call_to_action",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#personal-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#approver-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#guardian-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#recipient-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+
+  </script>
+<% end %>
