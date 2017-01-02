@@ -6,7 +6,7 @@
   <div class="sidebar-tabs">
     <%= link_to '#',
       class: "sidebar-tab sidebar-tab-header active",
-      id: "my-profile-sidebar-tab",
+      id: "profile-sidebar-tab",
       remote: true do %>
     <h5><strong>My Profile</strong></h5>
     <% end %>
@@ -33,18 +33,9 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "partner-sidebar-tab",
+        id: "recipient-sidebar-tab",
         remote: true do %>
-      <h5>My Partner</h5>
-    <% end %>
-
-    <hr>
-
-    <%= link_to '#',
-        class: "sidebar-tab",
-        id: "children-sidebar-tab",
-        remote: true do %>
-      <h5>My Children</h5>
+      <h5>My Family and Friends</h5>
     <% end %>
 
     <hr>
@@ -53,7 +44,7 @@
         class: "sidebar-tab",
         id: "guardian-sidebar-tab",
         remote: true do %>
-      <h5>My Guardian Nominations</h5>
+      <h5>My Guardians</h5>
     <% end %>
 
     <hr>
@@ -63,15 +54,6 @@
         id: "approver-sidebar-tab",
         remote: true do %>
       <h5>My Approvers</h5>
-    <% end %>
-
-    <hr>
-
-    <%= link_to '#',
-        class: "sidebar-tab",
-        id: "friends-and-family-sidebar-tab",
-        remote: true do %>
-      <h5>My Family and Friends</h5>
     <% end %>
 
     <hr>
@@ -134,5 +116,73 @@
       $('.' + childIndex).removeClass("hidden");
       window.location.hash = $(this).attr('id').split("-")[0];
     })
+    // AJAX to load tab content without a refresh
+    $('#profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/profile",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#call-to-action-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/call_to_action",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#personal-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#approver-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#guardian-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#recipient-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+
   </script>
 <% end %>

@@ -1,2 +1,22 @@
 <h1>Approvers#new</h1>
 <p>Find me in app/views/approvers/new.html.erb</p>
+
+<%= simple_form_for [current_user, @approver] do |f| %>
+      <%= f.input :first_name %>
+
+      <%= f.input :middle_name %>
+
+      <%= f.input :last_name %>
+  <%= f.input :citizenship %>
+  <%= f.input :date_of_birth %>
+  <%= f.input :email %>
+  <%= f.input :phone_number %>
+  <%= f.input :address_line_1 %>
+  <%= f.input :address_line_2 %>
+  <%= f.input :town %>
+  <%= f.input :postcode %>
+  <%= f.input :country %>
+  <%= f.input :profile_picture %>
+  <%= f.input :relationship %>
+  <%= f.button :submit %>
+<% end %>
