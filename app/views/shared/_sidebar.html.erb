@@ -69,7 +69,7 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "family-and-friends-sidebar-tab",
+        id: "recipient-sidebar-tab",
         remote: true do %>
       <h5>My Family and Friends</h5>
     <% end %>
@@ -157,7 +157,7 @@
           }
       });
     });
-    $('#family-and-friends-sidebar-tab').click(function(e){
+    $('#recipient-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
