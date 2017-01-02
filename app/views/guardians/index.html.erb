@@ -7,30 +7,20 @@
 
   <h3>My Guardians</h3>
 
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h5>Rebecca Jones</h5>
-      <% end %>
+  <% @guardians.each do |guardian| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h5><%= guardian.first_name + " " + guardian.last_name %></h5>
+        <% end %>
+      </div>
+      <div class="detail">
+        <%= link_to "Edit", edit_user_guardian_path(current_user, guardian.id), class: "btn btn-transparent btn-default" %>
+        <%= link_to "Delete", user_guardian_path(current_user, guardian.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
     </div>
-    <div class="detail">
+  <% end %>
 
-    </div>
-  </div>
-
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h5>Betty Hall</h5>
-      <% end %>
-    </div>
-    <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
-    </div>
-  </div>
-
-  <%= link_to "Add New Guardian", new_user_guardian_path(current_user), class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add New Guardian", new_user_guardian_path, class: "btn btn-transparent btn-default" %>
 </div>
