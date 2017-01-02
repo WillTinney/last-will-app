@@ -11,77 +11,70 @@
 
   <div class="scrollbox text-center">
     <h3>Partner</h3>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <%= @user.recipients.where('relationship = ?', 'Partner').each do |partner| %>
+    <% @user.recipients.where('relationship = ?', 'Partner').each do |partner| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
           <h4><%= partner.first_name %></h4>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="scrollbox">
     <h3>Children</h3>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h4>Art</h4>
-      <% end %>
-    </div>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h4>Phillip</h4>
-      <% end %>
-    </div>
+    <% @user.recipients.where('relationship = ?', 'Child').each do |child| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h4><%= child.first_name %></h4>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="scrollbox">
     <h3>Guardians</h3>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h4>Rebecca</h4>
-      <% end %>
-    </div>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h4>Betty</h4>
-      <% end %>
-    </div>
+    <% @user.guardians.each do |guardian| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h4><%= guardian.first_name %></h4>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="scrollbox">
     <h3>Approvers</h3>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h4>George</h4>
-      <% end %>
-    </div>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h4>William</h4>
-      <% end %>
-    </div>
+    <% @user.approvers.each do |approver| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h4><%= approver.first_name %></h4>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <div class="scrollbox">
     <h3>Friends & Family</h3>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h4>Martha</h4>
-      <% end %>
-    </div>
-    <div class="scrollitem">
-      <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h4>Mike</h4>
-      <% end %>
-    </div>
+    <% @user.recipients.where('relationship = ?', 'Mother').each do |recipient| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h4><%= recipient.first_name %></h4>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% @user.recipients.where('relationship = ?', 'Friend').each do |recipient| %>
+      <div class="scrollitem">
+        <%= link_to '#' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h4><%= recipient.first_name %></h4>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
