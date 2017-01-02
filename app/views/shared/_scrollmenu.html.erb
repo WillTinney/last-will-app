@@ -4,7 +4,7 @@
     <div class="scrollitem">
       <%= link_to '#' do %>
         <%= image_tag("user.png", class: "avatar-large") %>
-        <h4>John</h4>
+        <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
   </div>
@@ -14,7 +14,9 @@
     <div class="scrollitem">
       <%= link_to '#' do %>
         <%= image_tag("user2.png", class: "avatar-large") %>
-        <h4>Edith</h4>
+        <%= @user.recipients.where('relationship = ?', 'Partner').each do |partner| %>
+          <h4><%= partner.first_name %></h4>
+        <% end %>
       <% end %>
     </div>
   </div>
