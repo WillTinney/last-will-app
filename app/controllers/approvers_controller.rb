@@ -46,6 +46,6 @@ class ApproversController < ApplicationController
   def approver_params
     params.require(:approver).permit(:first_name, :middle_name, :last_name, :citizenship,
       :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
-      :town, :postcode, :relationship, :profile_picture)
+      :town, :country, :postcode, :relationship, :profile_picture)
   end
 end

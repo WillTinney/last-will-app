@@ -25,7 +25,7 @@ class GuardiansController < ApplicationController
   end
 
   def update
-   if @guardian.update(guardian_params)
+    if @guardian.update(guardian_params)
       redirect_to user_path(current_user)
     else
       render :edit
@@ -46,6 +46,6 @@ class GuardiansController < ApplicationController
   def guardian_params
     params.require(:guardian).permit(:first_name, :middle_name, :last_name, :citizenship,
       :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
-      :town, :postcode, :relationship, :profile_picture)
+      :town, :country, :postcode, :relationship, :profile_picture)
   end
 end

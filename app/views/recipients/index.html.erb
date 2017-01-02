@@ -5,6 +5,24 @@
     <p>Here you add family and friends who...</p>
   </div>
 
+  <% @recipients.each do |recipient| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
+        <% end %>
+      </div>
+      <div class="detail">
+        <p><strong>Relationship:</strong> <%= recipient.relationship %></p>
+      </div>
+      <div class="detail">
+        <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+        <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
+    </div>
+  <% end %>
+
   <h3>My Partner</h3>
 
   <div class="detail-box">
@@ -80,6 +98,6 @@
     </div>
   </div>
 
-  <%= link_to "Add New Friend or Family Member", new_user_recipient_path(current_user), class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add New Friend or Family Member", new_user_recipient_path, class: "btn btn-transparent btn-default" %>
 
 </div>

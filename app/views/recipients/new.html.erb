@@ -2,11 +2,9 @@
 <p>Find me in app/views/recipients/new.html.erb</p>
 
 <%= simple_form_for [current_user, @recipient] do |f| %>
-      <%= f.input :first_name %>
-
-      <%= f.input :middle_name %>
-
-      <%= f.input :last_name %>
+  <%= f.input :first_name %>
+  <%= f.input :middle_name %>
+  <%= f.input :last_name %>
   <%= f.input :citizenship %>
   <%= f.input :date_of_birth %>
   <%= f.input :email %>
