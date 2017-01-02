@@ -69,7 +69,7 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "friends-and-family-sidebar-tab",
+        id: "family-and-friends-sidebar-tab",
         remote: true do %>
       <h5>My Family and Friends</h5>
     <% end %>
@@ -139,12 +139,35 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: "1/approvers",
+          url: <%= @user.id %> + "/approvers",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
+    $('#guardian-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#family-and-friends-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+
   </script>
 <% end %>
