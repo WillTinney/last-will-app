@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     # Routes for wizard sign-up
     resources :after_sign_up
 
+    # User profile page
+    get 'profile', to: 'users#profile'
+
     # User call-to-action page
     get 'call_to_action', to: 'users#call_to_action'
 
