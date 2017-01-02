@@ -134,5 +134,17 @@
       $('.' + childIndex).removeClass("hidden");
       window.location.hash = $(this).attr('id').split("-")[0];
     })
+    // AJAX to load tab content without a refresh
+    $('#approver-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: "1/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
   </script>
 <% end %>

@@ -15,8 +15,6 @@
       <% end %>
     </div>
     <div class="detail">
-      <%= link_to "Edit", edit_user_approver_path(@user), class: "btn btn-transparent btn-default" %>
-      <%= link_to "Delete", user_approver_path(@user), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
     </div>
   </div>
 
@@ -33,5 +31,5 @@
     </div>
   </div>
 
-  <%= link_to "Add New Approver", new_user_approver_path(@user), class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add New Approver", new_user_approver_path, class: "btn btn-transparent btn-default" %>
 </div>
