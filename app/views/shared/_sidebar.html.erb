@@ -139,6 +139,17 @@
           }
       });
     });
+    $('#personal-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
     $('#approver-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
