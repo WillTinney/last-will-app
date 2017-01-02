@@ -5,6 +5,9 @@ class GuardiansController < ApplicationController
     @guardians = Guardian.all
   end
 
+  def show
+  end
+
   def new
     @guardian = Guardian.new
   end
@@ -16,9 +19,6 @@ class GuardiansController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
   end
 
   def edit

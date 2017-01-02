@@ -11,6 +11,7 @@ class CreateApprovers < ActiveRecord::Migration[5.0]
       t.string :address_line_1
       t.string :address_line_2
       t.string :town
+      t.string :country
       t.string :postcode
       t.string :relationship
       t.string :profile_picture
