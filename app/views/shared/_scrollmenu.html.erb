@@ -1,9 +1,9 @@
 <div class="scrollmenu">
   <div class="scrollbox text-center">
     <h3>Me</h3>
-    <div class="scrollitem active" id="scrollmenu-me">
+    <div class="scrollitem active">
       <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
+        <%= image_tag("user.png", class: "avatar-large", id: 'scrollmenu-me') %>
         <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
