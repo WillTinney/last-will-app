@@ -5,7 +5,9 @@
     <p>Here you add family and friends who...</p>
   </div>
 
-  <% @recipients.each do |recipient| %>
+  <h3>My Partner</h3>
+
+  <% @recipients.where('relationship = ?', 'Partner').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
         <%= link_to '#', class: 'profile-picture-inline' do %>
@@ -23,80 +25,65 @@
     </div>
   <% end %>
 
-  <h3>My Partner</h3>
-
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h5>Edith Hartaway</h5>
-      <% end %>
-    </div>
-    <div class="detail">
-
-    </div>
-  </div>
-
   <h3>My Children</h3>
 
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h5>Art Hartaway</h5>
-      <% end %>
+  <% @recipients.where('relationship = ?', 'Child').each do |recipient| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
+        <% end %>
+      </div>
+      <div class="detail">
+        <p><strong>Relationship:</strong> <%= recipient.relationship %></p>
+      </div>
+      <div class="detail">
+        <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+        <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
     </div>
-    <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
-    </div>
-  </div>
-
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h5>Phillip Hartaway</h5>
-      <% end %>
-    </div>
-    <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
-    </div>
-  </div>
+  <% end %>
 
   <h3>Other Family Members</h3>
 
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user2.png", class: "avatar-large") %>
-        <h5>Martha Hartaway</h5>
-      <% end %>
+  <% @recipients.where('relationship = ?', 'Mother').each do |recipient| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+          <%= image_tag("user2.png", class: "avatar-large") %>
+          <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
+        <% end %>
+      </div>
+      <div class="detail">
+        <p><strong>Relationship:</strong> <%= recipient.relationship %></p>
+      </div>
+      <div class="detail">
+        <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+        <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
     </div>
-    <div class="detail">
-      <p><strong>Relationship:</strong> Mother</p>
-    </div>
-    <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
-    </div>
-  </div>
+  <% end %>
 
   <h3>My Friends</h3>
 
-  <div class="detail-box">
-    <div class="detail">
-      <%= link_to '#', class: 'profile-picture-inline' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
-        <h5>Mike Lawson</h5>
-      <% end %>
+  <% @recipients.where('relationship = ?', 'Friend').each do |recipient| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+          <%= image_tag("user.png", class: "avatar-large") %>
+          <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
+        <% end %>
+      </div>
+      <div class="detail">
+        <p><strong>Relationship:</strong> <%= recipient.relationship %></p>
+      </div>
+      <div class="detail">
+        <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+        <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
     </div>
-    <div class="detail">
-      <p>Edit</p>
-      <p>Delete</p>
-    </div>
-  </div>
+  <% end %>
 
   <%= link_to "Add New Friend or Family Member", new_user_recipient_path, class: "btn btn-transparent btn-default" %>
 
