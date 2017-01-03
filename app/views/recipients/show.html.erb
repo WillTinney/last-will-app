@@ -6,6 +6,78 @@
   <p>Here include an overview of the main details, associated files and admin references etc. Like the profile for the user.</p>
 </div>
 
-<% content_for :sidebar do %>
+<% content_for(:sidebar) do %>
   <%= render 'shared/sidebars/sidebar_show' %>
+<% end %>
+
+<% content_for(:after_js) do %>
+  <script>
+    // AJAX to load tab content without a refresh
+    $('#show-profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %>,
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %> + "/notes",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-admin-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %> + "/admin",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-photos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-videos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @recipient.user_id %> + "/recipients" + <%= @recipient.id %>  + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+  </script>
 <% end %>
