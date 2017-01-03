@@ -7,6 +7,7 @@ class RecipientsController < ApplicationController
   end
 
   def show
+    @user = User.where('id = ?', params[:user_id]).first
   end
 
   def new
