@@ -10,8 +10,9 @@
   <% @recipients.where('relationship = ?', 'Partner').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
+          <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         <% end %>
       </div>
@@ -30,8 +31,9 @@
   <% @recipients.where('relationship = ?', 'Child').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
+          <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         <% end %>
       </div>
@@ -50,8 +52,9 @@
   <% @recipients.where('relationship = ?', 'Mother').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
+          <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         <% end %>
       </div>
@@ -70,8 +73,9 @@
   <% @recipients.where('relationship = ?', 'Friend').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
+          <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         <% end %>
       </div>
@@ -88,3 +92,21 @@
   <%= link_to "Add New Friend or Family Member", new_user_recipient_path, class: "btn btn-transparent btn-default" %>
 
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // AJAX to load show page content without a refresh
+    $('.recipient-link').click(function(e){
+      e.preventDefault();
+      var showId = $(this).find("h6").text();
+      $.ajax({
+          type: "GET",
+        url: <%= current_user.id %> + "/recipients/" + showId,
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+  </script>
+<% end %>

@@ -25,6 +25,9 @@
   border: 1px solid #969696;
   border-radius: 3px;
 }
+.detail-box h6 {
+  display: none;
+}
 .profile-picture-inline {
   display: flex;
   flex-direction: row;
