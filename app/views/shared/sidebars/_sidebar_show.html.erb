@@ -1,0 +1,141 @@
+<div class="sidebar">
+  <div class="sidebar-header text-center">
+    <h4><strong></strong></h4>
+  </div>
+  <div class="sidebar-tabs">
+    <%= link_to '#',
+      class: "sidebar-tab sidebar-tab-header active",
+      id: "show-profile-sidebar-tab",
+      remote: true do %>
+    <h5><strong>'s Profile</strong></h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "show-details-tab",
+        remote: true do %>
+      <h5>Details</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "show-notes-sidebar-tab",
+        remote: true do %>
+      <h5>Notes</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "show-admin-sidebar-tab",
+        remote: true do %>
+      <h5>Admin References</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "show-photos-sidebar-tab",
+        remote: true do %>
+      <h5>Photo Library</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "show-videos-sidebar-tab",
+        remote: true do %>
+      <h5>Video Library</h5>
+    <% end %>
+
+    <hr>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on a different tab changes the content shown on the page
+    $('.sidebar-tab').on('click', function(event){
+      $('.sidebar-tabs').children().removeClass("active");
+      $(this).addClass("active");
+      var childIndex = $(this).index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' + childIndex).removeClass("hidden");
+      window.location.hash = $(this).attr('id').split("-")[0];
+    });
+    // AJAX to load tab content without a refresh
+    $('#show-profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/digital",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/proof",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/admin",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-admin-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-photos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-videos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+  </script>
+<% end %>
