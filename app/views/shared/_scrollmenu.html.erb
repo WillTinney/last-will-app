@@ -39,7 +39,7 @@
     <h3>Guardians</h3>
     <% @user.guardians.each do |guardian| %>
       <div class="scrollitem">
-        <%= link_to user_recipient_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
+        <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h4><%= guardian.first_name %></h4>
           <h6><%= guardian.id %></h6>
@@ -52,7 +52,7 @@
     <h3>Approvers</h3>
     <% @user.approvers.each do |approver| %>
       <div class="scrollitem">
-        <%= link_to user_recipient_path(current_user, approver), class: 'scrollmenu-approvers' do %>
+        <%= link_to user_approver_path(current_user, approver), class: 'scrollmenu-approvers' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
           <h4><%= approver.first_name %></h4>
           <h6><%= approver.id %></h6>
