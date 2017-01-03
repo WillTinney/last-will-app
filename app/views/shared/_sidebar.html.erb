@@ -115,7 +115,7 @@
       $('#tab-content').children().addClass("hidden");
       $('.' + childIndex).removeClass("hidden");
       window.location.hash = $(this).attr('id').split("-")[0];
-    })
+    });
     // AJAX to load tab content without a refresh
     $('#profile-sidebar-tab').click(function(e){
       e.preventDefault();
