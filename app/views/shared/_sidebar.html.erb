@@ -60,7 +60,7 @@
 
     <%= link_to '#',
         class: "sidebar-tab sidebar-tab-header",
-        id: "my-digital-assets-sidebar-tab",
+        id: "digital-assets-sidebar-tab",
         remote: true do %>
       <h5><strong>My Digital Assets</strong></h5>
     <% end %>
@@ -132,7 +132,7 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/call_to_action",
+          url: <%= @user.id %> + "/action",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -144,6 +144,17 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#recipient-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -172,17 +183,60 @@
           }
       });
     });
-    $('#recipient-sidebar-tab').click(function(e){
+    $('#digital-assets-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/recipients",
+          url: <%= @user.id %> + "/digital",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-
+    $('#proof-of-residency-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/proof",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#admin-references-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/admin",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#photo-library-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#video-library-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
   </script>
 <% end %>

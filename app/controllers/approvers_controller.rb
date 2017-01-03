@@ -1,5 +1,6 @@
 class ApproversController < ApplicationController
   before_action :set_approver, only: [:show, :edit, :update, :destroy]
+  before_action :set_approver_id, only: [:notes, :admin, :photos, :videos]
 
   def index
     @approvers = Approver.all
@@ -37,10 +38,26 @@ class ApproversController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def notes
+  end
+
+  def admin
+  end
+
+  def photos
+  end
+
+  def videos
+  end
+
   private
 
   def set_approver
     @approver = Approver.find(params[:id])
+  end
+
+  def set_approver_id
+    @approver = Approver.find(params[:approver_id])
   end
 
   def approver_params
