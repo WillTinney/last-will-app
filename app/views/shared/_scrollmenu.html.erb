@@ -134,7 +134,6 @@
     $('.scrollmenu-guardians').click(function(e){
       e.preventDefault();
       var showId = $(this).find("h6").text();
-      console.log('hello')
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/guardians/" + showId,
