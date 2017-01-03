@@ -62,7 +62,7 @@
   </div>
 
   <div class="scrollbox">
-    <h3>Friends & Family</h3>
+    <h3>Other Friends & Family</h3>
     <% @user.recipients.where('relationship = ?', 'Mother').each do |recipient| %>
       <div class="scrollitem">
         <%= link_to '#', class: 'scrollmenu-recipients' do %>
