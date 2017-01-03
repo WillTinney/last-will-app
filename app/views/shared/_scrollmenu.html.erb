@@ -2,8 +2,8 @@
   <div class="scrollbox text-center">
     <h3>Me</h3>
     <div class="scrollitem active">
-      <%= link_to '#' do %>
-        <%= image_tag("user.png", class: "avatar-large", id: 'scrollmenu-me') %>
+      <%= link_to '#', id: 'scrollmenu-me' do %>
+        <%= image_tag("user.png", class: "avatar-large") %>
         <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
@@ -13,9 +13,12 @@
     <h3>Partner</h3>
     <% @user.recipients.where('relationship = ?', 'Partner').each do |partner| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-partner' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h4><%= partner.first_name %></h4>
+          <div class="scrollmenu-id">
+            <h6><%= partner.id %></h6>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -25,9 +28,12 @@
     <h3>Children</h3>
     <% @user.recipients.where('relationship = ?', 'Child').each do |child| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-children' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
           <h4><%= child.first_name %></h4>
+          <div class="scrollmenu-id">
+            <h6><%= child.id %></h6>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -37,9 +43,12 @@
     <h3>Guardians</h3>
     <% @user.guardians.each do |guardian| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-guardians' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h4><%= guardian.first_name %></h4>
+          <div class="scrollmenu-id">
+            <h6><%= guardian.id %></h6>
+          </div>
         <% end %>
       </div>
     <% end %>
@@ -49,9 +58,10 @@
     <h3>Approvers</h3>
     <% @user.approvers.each do |approver| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-approvers' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
           <h4><%= approver.first_name %></h4>
+          <h6><%= approver.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -61,18 +71,20 @@
     <h3>Friends & Family</h3>
     <% @user.recipients.where('relationship = ?', 'Mother').each do |recipient| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-recipients' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h4><%= recipient.first_name %></h4>
+          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
 
     <% @user.recipients.where('relationship = ?', 'Friend').each do |recipient| %>
       <div class="scrollitem">
-        <%= link_to '#' do %>
+        <%= link_to '#', id: 'scrollmenu-recipients' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
           <h4><%= recipient.first_name %></h4>
+          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -83,7 +95,7 @@
   <script>
     // Changes active tab after click
     $('.scrollitem').on('click', function(event){
-      $('.scrollitem').children().removeClass("active");
+      $('.scrollbox').children().removeClass("active");
       $(this).addClass("active");
     });
 
@@ -99,61 +111,65 @@
           }
       });
     });
-    $('#call-to-action-sidebar-tab').click(function(e){
+    $('#scrollmenu-partner').click(function(e){
       e.preventDefault();
+      var menuId = $(this).find("h6").text()
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/call_to_action",
+          url: <%= @user.id %> + "/recipients/" + menuId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-    $('#personal-details-sidebar-tab').click(function(e){
+    $('#scrollmenu-children').click(function(e){
       e.preventDefault();
+      var menuId = $(this).find("h6").text()
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/edit",
+          url: <%= @user.id %> + "/recipients/" + menuId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-    $('#approver-sidebar-tab').click(function(e){
+    $('#scrollmenu-guardians').click(function(e){
       e.preventDefault();
+      var menuId = $(this).find("h6").text()
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/approvers",
+          url: <%= @user.id %> + "/guardians/" + menuId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-    $('#guardian-sidebar-tab').click(function(e){
+    $('#scrollmenu-approvers').click(function(e){
       e.preventDefault();
+      var menuId = $(this).find("h6").text()
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/guardians",
+        url: <%= @user.id %> + "/approvers/" + menuId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-    $('#recipient-sidebar-tab').click(function(e){
+    $('#scrollmenu-recipients').click(function(e){
       e.preventDefault();
+      var menuId = $(this).find("h6").text()
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/recipients",
+          url: <%= @user.id %> + "/recipients/" + menuId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-
   </script>
 <% end %>
