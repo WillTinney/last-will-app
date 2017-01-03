@@ -11,7 +11,22 @@ Rails.application.routes.draw do
     get 'profile', to: 'users#profile'
 
     # User call-to-action page
-    get 'call_to_action', to: 'users#call_to_action'
+    get 'action', to: 'users#action'
+
+    # User digital assets overview page
+    get 'digital', to: 'users#digital'
+
+    # User proof of residency page
+    get 'proof', to: 'users#proof'
+
+    # Useradmin references page
+    get 'admin', to: 'users#admin'
+
+    # User photo library page
+    get 'photos', to: 'users#photos'
+
+    # User video library page
+    get 'videos', to: 'users#videos'
 
     # Guardian Pages
     resources :guardians do
