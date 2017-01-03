@@ -83,8 +83,9 @@
   <script>
     // Changes active tab after click
     $('.scrollitem').on('click', function(event){
-      $('.scrollmenu').children().removeClass("active");
+      $('.scrollitem').children().removeClass("active");
       $(this).addClass("active");
+    });
 
     // AJAX to load tab content without a refresh
     $('#scrollmenu-me').click(function(e){
