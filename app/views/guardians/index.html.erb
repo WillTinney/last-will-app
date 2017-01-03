@@ -9,7 +9,7 @@
   <% @guardians.each do |guardian| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_guardian_path(current_user, guardian.id), class: 'profile-picture-inline' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h5><%= guardian.first_name + " " + guardian.last_name %></h5>
         <% end %>

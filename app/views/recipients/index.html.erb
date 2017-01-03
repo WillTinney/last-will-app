@@ -10,7 +10,7 @@
   <% @recipients.where('relationship = ?', 'Partner').each do |recipient| %>
     <div class="detail-box">
       <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'profile-picture-inline' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         <% end %>
