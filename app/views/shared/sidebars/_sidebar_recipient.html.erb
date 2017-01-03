@@ -1,14 +1,14 @@
 <!-- Sidebar for recipient show page on dashboard -->
 <div class="sidebar">
   <div class="sidebar-header text-center">
-    <h4><strong></strong></h4>
+    <h4><strong><%= @recipient.first_name %></strong></h4>
   </div>
   <div class="sidebar-tabs">
     <%= link_to '#',
       class: "sidebar-tab sidebar-tab-header active",
       id: "show-profile-sidebar-tab",
       remote: true do %>
-    <h5><strong>'s Profile</strong></h5>
+    <h5><strong><%= @recipient.first_name %>'s Profile</strong></h5>
     <% end %>
 
     <hr>
