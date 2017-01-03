@@ -1,8 +1,6 @@
 <div class="include-sidebar">
 
-  <% content_for(:sidebar) do %>
-    <%= render 'shared/sidebars/sidebar_show' %>
-  <% end %>
+  <%= render 'shared/sidebars/sidebar_show' %>
 
   <%= render 'shared/scrollmenu' %>
 
@@ -33,9 +31,6 @@
       </div>
     </div>
   </div>
-
-  <%= yield(:sidebar) %>
-
 </div>
 
 <% content_for(:after_js) do %>

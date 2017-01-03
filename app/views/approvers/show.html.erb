@@ -1,54 +1,106 @@
 <div class="include-sidebar">
 
+  <%= render 'shared/sidebars/sidebar_show' %>
+
   <%= render 'shared/scrollmenu' %>
+
   <div class="dashboard-box">
     <div id="tab-content">
-      <div class="0" id="my-profile-content">
-        <%= render 'users/profile/my_profile' %>
+      <div class="0" id="profile-content">
+        <%= render 'approvers/profile' %>
       </div>
 
-      <div class="2 hidden" id="call_to_action-content">
-        <%= render 'users/profile/call_to_action' %>
+      <div class="2 hidden" id="details-content">
+        <%= render file: 'approvers/edit' %>
       </div>
 
-      <div class="4 hidden" id="personal-details-content">
-        <%= render 'users/profile/personal_details' %>
+      <div class="4 hidden" id="notes-content">
+        <%= render file: 'approvers/notes' %>
       </div>
 
-      <div class="6 hidden" id="family-and-friends-content">
-        <%= render 'users/profile/family_and_friends' %>
+      <div class="6 hidden" id="admin-content">
+        <%= render file: 'approvers/admin' %>
       </div>
 
-      <div class="8 hidden" id="guardian-content">
-        <%= render 'users/profile/guardians' %>
+      <div class="8 hidden" id="photos-content">
+        <%= render file: 'approvers/photos' %>
       </div>
 
-      <div class="10 hidden" id="approver-content">
-        <%= render 'users/profile/approvers' %>
-      </div>
-
-      <div class="12 hidden" id="my-digital-assets-content">
-        <%= render 'users/digital_assets/my_digital_assets' %>
-      </div>
-
-      <div class="14 hidden" id="proof-of-residency-content">
-        <%= render 'users/digital_assets/proof_of_residency' %>
-      </div>
-
-      <div class="16 hidden" id="admin-references-content">
-        <%= render 'users/digital_assets/admin_references' %>
-      </div>
-
-      <div class="18 hidden" id="photo-library-content">
-        <%= render 'users/digital_assets/photo_library' %>
-      </div>
-
-      <div class="20 hidden" id="video-library-content">
-        <%= render 'users/digital_assets/video_library' %>
+      <div class="10 hidden" id="videos-content">
+        <%= render file: 'approvers/videos' %>
       </div>
     </div>
   </div>
-
-  <%= yield(:sidebar) %>
-
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // AJAX to load tab content without a refresh
+    $('#show-profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %>,
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %> + "/notes",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-admin-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %> + "/admin",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-photos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#show-videos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @approver.user_id %> + "/approvers" + <%= @approver.id %>  + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+  </script>
+<% end %>
