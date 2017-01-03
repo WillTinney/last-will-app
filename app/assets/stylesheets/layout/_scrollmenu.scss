@@ -28,8 +28,8 @@
   font-weight: bold;
   margin: 7px 0 5px 0;
 }
-.scrollmenu a:hover {
-  background-color: #777;
+.scrollmenu h6 {
+  display: none;
 }
 .scrollbox {
   padding: 5px 10px;
@@ -42,4 +42,11 @@
   min-width: 80px;
   text-align: center;
   display: inline-block;
+}
+// Scrollmenu Tabs
+.scrollmenu a:hover {
+  box-shadow: 1px 3px 5px 0px rgba(204,204,204,1);
+}
+.scrollitem.active {
+  box-shadow: 1px 3px 5px 0px rgba(204,204,204,1);
 }

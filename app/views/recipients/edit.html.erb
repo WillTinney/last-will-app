@@ -1,5 +1,5 @@
 <div class="grey-box">
-  <h4>Guardian <strong><%= @guardian %></strong></h4>
+  <h4>Recipient <strong><%= @recipient %></strong></h4>
 
   <h4>Details</h4>
 
@@ -8,7 +8,7 @@
     <p>Edit Profile Picture</p>
   <% end %>
 
-  <%= simple_form_for [current_user, @approver] do |f| %>
+  <%= simple_form_for [current_user, @recipient] do |f| %>
     <%= f.input :first_name %>
     <%= f.input :middle_name %>
     <%= f.input :last_name %>
