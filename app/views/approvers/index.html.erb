@@ -6,18 +6,18 @@
   </div>
 
   <% @approvers.each do |approver| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= link_to '#', class: 'profile-picture-inline' do %>
-          <%= image_tag("user.png", class: "avatar-large") %>
-          <h5><%= approver.first_name + " " + approver.last_name %></h5>
-        <% end %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= link_to user_approver_path(current_user, approver.id), class: 'profile-picture-inline' do %>
+            <%= image_tag("user.png", class: "avatar-large") %>
+            <h5><%= approver.first_name + " " + approver.last_name %></h5>
+          <% end %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_approver_path(current_user, approver.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_approver_path(current_user, approver.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
       </div>
-      <div class="detail">
-        <%= link_to "Edit", edit_user_approver_path(current_user, approver.id), class: "btn btn-transparent btn-default" %>
-        <%= link_to "Delete", user_approver_path(current_user, approver.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-      </div>
-    </div>
   <% end %>
 
   <%= link_to "Add New Approver", new_user_approver_path, class: "btn btn-transparent btn-default" %>
