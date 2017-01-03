@@ -1,5 +1,6 @@
 class RecipientsController < ApplicationController
   before_action :set_recipient, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipient_id, only: [:notes, :admin, :photos, :videos]
 
   def index
     @recipients = Recipient.all
@@ -37,10 +38,26 @@ class RecipientsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def notes
+  end
+
+  def admin
+  end
+
+  def photos
+  end
+
+  def videos
+  end
+
   private
 
   def set_recipient
     @recipient = Recipient.find(params[:id])
+  end
+
+  def set_recipient_id
+    @recipient = Recipient.find(params[:recipient_id])
   end
 
   def recipient_params

@@ -1,5 +1,6 @@
 class GuardiansController < ApplicationController
   before_action :set_guardian, only: [:show, :edit, :update, :destroy]
+  before_action :set_guardian_id, only: [:notes, :admin, :photos, :videos]
 
   def index
     @guardians = Guardian.all
@@ -37,10 +38,26 @@ class GuardiansController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def notes
+  end
+
+  def admin
+  end
+
+  def photos
+  end
+
+  def videos
+  end
+
   private
 
   def set_guardian
     @guardian = Guardian.find(params[:id])
+  end
+
+  def set_guardian_id
+    @guardian = Guardian.find(params[:guardian_id])
   end
 
   def guardian_params
