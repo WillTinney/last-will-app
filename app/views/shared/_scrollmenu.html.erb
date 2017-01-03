@@ -109,10 +109,10 @@
     });
     $('.scrollmenu-partner').click(function(e){
       e.preventDefault();
-      var menuId = $(this).find("h6").text();
+      var showId = $(this).find("h6").text();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/recipients/" + menuId,
+          url: <%= @user.id %> + "/recipients/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -121,10 +121,10 @@
     });
     $('.scrollmenu-children').click(function(e){
       e.preventDefault();
-      var menuId = $(this).find("h6").text();
+      var showId = $(this).find("h6").text();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/recipients/" + menuId,
+          url: <%= @user.id %> + "/recipients/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -133,11 +133,11 @@
     });
     $('.scrollmenu-guardians').click(function(e){
       e.preventDefault();
-      var menuId = $(this).find("h6").text();
+      var showId = $(this).find("h6").text();
       console.log('hello')
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/guardians/" + menuId,
+          url: <%= @user.id %> + "/guardians/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -146,10 +146,10 @@
     });
     $('.scrollmenu-approvers').click(function(e){
       e.preventDefault();
-      var menuId = $(this).find("h6").text();
+      var showId = $(this).find("h6").text();
       $.ajax({
           type: "GET",
-        url: <%= @user.id %> + "/approvers/" + menuId,
+        url: <%= @user.id %> + "/approvers/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
@@ -158,10 +158,10 @@
     });
     $('.scrollmenu-recipients').click(function(e){
       e.preventDefault();
-      var menuId = $(this).find("h6").text();
+      var showId = $(this).find("h6").text();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/recipients/" + menuId,
+          url: <%= @user.id %> + "/recipients/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
