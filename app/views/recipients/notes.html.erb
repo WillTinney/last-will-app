@@ -3,5 +3,13 @@
 
   <h3><%= @recipient.first_name + " " + @recipient.last_name %></h3>
 
-  <p>Here include all notes associated with this recipient.</p>
+  <div class="blue-box">
+    <p>Here include all notes associated with this recipient.</p>
+  </div>
+
+  <%= @recipient.notes.each do |note| %>
+    <h4><%= note.title %></h4>
+    <p><%= note.content %></p>
+
+
 </div>

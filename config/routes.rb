@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'notes/new'
+
+  get 'notes/create'
+
+  get 'notes/edit'
+
+  get 'notes/destroy'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
