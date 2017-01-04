@@ -1,2 +1,9 @@
 <h1>Notes#new</h1>
 <p>Find me in app/views/notes/new.html.erb</p>
+
+<%= simple_form_for [current_user, @recipient] do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :middle_name %>
+  <%= f.input :last_name %>
+  <%= f.button :submit %>
+<% end %>

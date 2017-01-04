@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170103210414) do
 
   create_table "notes", force: :cascade do |t|
     t.string   "title"
-    t.string   "content"
+    t.string   "caption"
     t.integer  "approver_id"
     t.integer  "guardian_id"
     t.integer  "recipient_id"
