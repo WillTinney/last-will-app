@@ -1,12 +1,16 @@
 class NotesController < ApplicationController
    before_action :set_note, only: [:edit, :update, :destroy]
 
+  def index
+    @notes = Note.all
+  end
+
   def new
     @note = Note.new
   end
 
   def create
-    @note = current_user.guardians.build(guardian_params)
+    @note = current_user.notes.build(note_params)
     if @note.save
       redirect_to user_path(current_user), notice: 'Note was successfully created.'
     else
@@ -18,7 +22,7 @@ class NotesController < ApplicationController
   end
 
   def update
-    if @note.update(guardian_params)
+    if @note.update(note_params)
       redirect_to user_path(current_user)
     else
       render :edit
@@ -36,7 +40,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
-  def user_params
+  def note_params
     params.require(:note).permit(:title, :content)
   end
 end
