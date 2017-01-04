@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'notes/new'
-
-  get 'notes/create'
-
-  get 'notes/edit'
-
-  get 'notes/destroy'
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
@@ -42,6 +34,7 @@ Rails.application.routes.draw do
       get 'admin', to: 'guardians#admin'
       get 'photos', to: 'guardians#photos'
       get 'videos', to: 'guardians#videos'
+      resources :notes, only: [:new, :edit]
     end
 
     # Approver Pages
@@ -50,6 +43,7 @@ Rails.application.routes.draw do
       get 'admin', to: 'approvers#admin'
       get 'photos', to: 'approvers#photos'
       get 'videos', to: 'approvers#videos'
+      resources :notes, only: [:new, :edit]
     end
 
     # Recipient Pages
@@ -58,6 +52,7 @@ Rails.application.routes.draw do
       get 'admin', to: 'recipients#admin'
       get 'photos', to: 'recipients#photos'
       get 'videos', to: 'recipients#videos'
+      resources :notes, only: [:new, :edit]
     end
 
     # Routes for wizard sign-up
