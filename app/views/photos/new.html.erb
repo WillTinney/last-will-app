@@ -1,2 +1,28 @@
 <h1>Photos#new</h1>
 <p>Find me in app/views/photos/new.html.erb</p>
+
+<% if @approver_present == true %>
+  <%= simple_form_for [current_user, @approver, @note] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :caption %>
+    <%= f.input :url %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit %>
+  <% end %>
+<% elsif @guardian_present == true %>
+  <%= simple_form_for [current_user, @guardian, @note] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :caption %>
+    <%= f.input :url %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit %>
+  <% end %>
+<% elsif @recipient_present == true %>
+  <%= simple_form_for [current_user, @recipient, @note] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :caption %>
+    <%= f.input :url %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

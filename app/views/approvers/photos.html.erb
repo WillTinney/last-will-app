@@ -4,4 +4,6 @@
   <h3><%= @approver.first_name + " " + @approver.last_name %></h3>
 
   <p>Here include all photos associated with this approver.</p>
+
+  <%= link_to "Add Photo", new_user_approver_photo_path(current_user, @approver.id), class: "btn btn-transparent btn-default" %>
 </div>
