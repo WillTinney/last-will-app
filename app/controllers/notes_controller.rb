@@ -11,11 +11,18 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = current_user.@owner.notes.build(note_params)
-    if @note.save
-      redirect_to user_path(current_user), notice: 'Note was successfully created.'
-    else
-      render :new
+    if @approver
+      @note = current_user.approvers.find(@approver.id).notes.create!(note_params)
+      if @note.save
+        raise
+        redirect_to user_path(current_user), notice: 'Note was successfully created.'
+      else
+        render :new
+      end
+    elsif @guardian
+
+    elsif @recipient
+
     end
   end
 
