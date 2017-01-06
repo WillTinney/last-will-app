@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170106172902) do
   create_table "photos", force: :cascade do |t|
     t.string   "title"
     t.string   "caption"
-    t.string   "url"
+    t.string   "photo"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "photo_owner_type"
