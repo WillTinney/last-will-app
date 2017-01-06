@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'admin_refs/index'
+
+  get 'admin_refs/show'
+
+  get 'admin_refs/new'
+
+  get 'admin_refs/create'
+
+  get 'admin_refs/edit'
+
+  get 'admin_refs/update'
+
+  get 'admin_refs/destroy'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
