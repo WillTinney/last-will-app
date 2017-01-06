@@ -1,5 +1,8 @@
 class NotesController < ApplicationController
    before_action :set_note, only: [:edit, :update, :destroy]
+   before_action :set_approver, only: [:new, :create, :edit, :update, :destroy]
+   before_action :set_guardian, only: [:new, :create, :edit, :update, :destroy]
+   before_action :set_recipient, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @notes = Note.all
@@ -38,6 +41,18 @@ class NotesController < ApplicationController
 
   def set_note
     @note = Note.find(params[:id])
+  end
+
+  def set_approver
+    @approver = Approver.find(params[:approver_id])
+  end
+
+  def set_guardian
+    @guardian = Guardian.find(params[:guardian_id])
+  end
+
+  def set_recipient
+    @recipient = Recipient.find(params[:recipient_id])
   end
 
   def note_params
