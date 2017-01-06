@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  get 'photos/index'
+
+  get 'photos/new'
+
+  get 'photos/create'
+
+  get 'photos/edit'
+
+  get 'photos/update'
+
+  get 'photos/destroy'
+
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
