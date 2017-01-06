@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       get 'admin', to: 'approvers#admin'
       get 'photos', to: 'approvers#photos'
       get 'videos', to: 'approvers#videos'
-      resources :notes, only: [:new, :edit, :destroy]
+      resources :notes, only: [:new, :create, :edit, :destroy]
     end
 
     # Recipient Pages

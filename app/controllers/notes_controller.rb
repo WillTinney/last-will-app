@@ -1,8 +1,6 @@
 class NotesController < ApplicationController
    before_action :set_note, only: [:edit, :update, :destroy]
-   before_action :set_approver, only: [:new, :create, :edit, :update, :destroy]
-   before_action :set_guardian, only: [:new, :create, :edit, :update, :destroy]
-   before_action :set_recipient, only: [:new, :create, :edit, :update, :destroy]
+   before_action :set_owner, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @notes = Note.all
@@ -13,7 +11,7 @@ class NotesController < ApplicationController
   end
 
   def create
-    @note = current_user.notes.build(note_params)
+    @note = current_user.@owner.notes.build(note_params)
     if @note.save
       redirect_to user_path(current_user), notice: 'Note was successfully created.'
     else
@@ -43,16 +41,20 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
-  def set_approver
-    @approver = Approver.find(params[:approver_id])
-  end
-
-  def set_guardian
-    @guardian = Guardian.find(params[:guardian_id])
-  end
-
-  def set_recipient
-    @recipient = Recipient.find(params[:recipient_id])
+  def set_owner
+    if params[:approver_id]
+      @approver = Approver.find(params[:approver_id])
+      @owner = @appover
+      @approver_present = true
+    elsif params[:guardian_id] == nil
+      @guardian = Guardian.find(params[:guardian_id])
+      @owner = @guardian
+      @guardian_present = true
+    elsif
+      @recipient = Recipient.find(params[:recipient_id])
+      @owner = @recipient
+      @recipient_present = true
+    end
   end
 
   def note_params

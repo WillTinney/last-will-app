@@ -15,4 +15,10 @@
   <% end %>
 
   <%= link_to "Add Note", new_user_approver_note_path(current_user, @approver.id), class: "btn btn-transparent btn-default" %>
+
+  <%= simple_form_for [current_user, @approver.id] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+  <% end %>
 </div>

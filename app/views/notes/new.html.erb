@@ -1,9 +1,22 @@
 <h1>Notes#new</h1>
 <p>Find me in app/views/notes/new.html.erb</p>
 
-  <%= raise %>
-  <%= simple_form_for [current_user, @recipient] do |f| %>
-    <%= f.input :title%>
+<% if @approver_present == true %>
+  <%= simple_form_for [current_user, @approver, @note] do |f| %>
+    <%= f.input :title %>
     <%= f.input :content %>
     <%= f.button :submit %>
   <% end %>
+<% elsif @guardian_present == true %>
+  <%= simple_form_for [current_user, @guardian, @note] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+  <% end %>
+<% elsif @recipient_present == true %>
+  <%= simple_form_for [current_user, @recipient, @note] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>
+
