@@ -60,12 +60,15 @@ class PhotosController < ApplicationController
   def set_owner
     if params[:approver_id]
       @approver = Approver.find(params[:approver_id])
+      @owner = @approver
       @approver_present = true
     elsif params[:guardian_id]
       @guardian = Guardian.find(params[:guardian_id])
+      @owner = @guardian
       @guardian_present = true
     elsif  params[:recipient_id]
       @recipient = Recipient.find(params[:recipient_id])
+      @owner = @recipient
       @recipient_present = true
     end
   end
