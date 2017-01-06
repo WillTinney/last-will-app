@@ -19,9 +19,19 @@ class NotesController < ApplicationController
         render :new
       end
     elsif @guardian
-
+      @note = current_user.guardians.find(@guardian.id).notes.build(note_params)
+      if @note.save
+        redirect_to user_path(current_user), notice: 'Note was successfully created.'
+      else
+        render :new
+      end
     elsif @recipient
-
+      @note = current_user.recipients.find(@recipient.id).notes.build(note_params)
+      if @note.save
+        redirect_to user_path(current_user), notice: 'Note was successfully created.'
+      else
+        render :new
+      end
     end
   end
 
@@ -52,11 +62,11 @@ class NotesController < ApplicationController
       @approver = Approver.find(params[:approver_id])
       @owner = @appover
       @approver_present = true
-    elsif params[:guardian_id] == nil
+    elsif params[:guardian_id]
       @guardian = Guardian.find(params[:guardian_id])
       @owner = @guardian
       @guardian_present = true
-    elsif
+    elsif  params[:recipient_id]
       @recipient = Recipient.find(params[:recipient_id])
       @owner = @recipient
       @recipient_present = true

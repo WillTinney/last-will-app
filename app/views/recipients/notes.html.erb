@@ -7,7 +7,7 @@
     <p>Here include all notes associated with this recipient.</p>
   </div>
 
-  <%= @recipient.notes.each do |note| %>
+  <% @recipient.notes.each do |note| %>
     <h4><%= note.title %></h4>
     <p><%= note.content %></p>
     <%= link_to "Edit", edit_user_recipient_note_path(current_user, @recipient, note.id), class: "btn btn-transparent btn-default" %>

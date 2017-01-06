@@ -7,7 +7,7 @@
     <p>Here include all notes associated with this guardian.</p>
   </div>
 
-  <%= @guardian.notes.each do |note| %>
+  <% @guardian.notes.each do |note| %>
     <h4><%= note.title %></h4>
     <p><%= note.content %></p>
     <%= link_to "Edit", edit_user_guardian_note_path(current_user, @guardian, note.id), class: "btn btn-transparent btn-default" %>

@@ -11,6 +11,7 @@
   <%= simple_form_for [current_user, @guardian, @note] do |f| %>
     <%= f.input :title %>
     <%= f.input :content %>
+    <%= f.button :submit %>
   <% end %>
 <% elsif @recipient_present == true %>
   <%= simple_form_for [current_user, @recipient, @note] do |f| %>
