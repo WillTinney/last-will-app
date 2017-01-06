@@ -12,7 +12,7 @@ class NotesController < ApplicationController
 
   def create
     if @approver
-      @note = current_user.approvers.find(@approver.id).notes.create!(note_params)
+      @note = current_user.approvers.find(@approver.id).notes.build(note_params)
       if @note.save
         raise
         redirect_to user_path(current_user), notice: 'Note was successfully created.'

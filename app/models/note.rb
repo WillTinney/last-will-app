@@ -1,5 +1,3 @@
 class Note < ApplicationRecord
-  belongs_to :approver
-  belongs_to :guardian
-  belongs_to :recipient
+  belongs_to :owner, polymorphic: true
 end
