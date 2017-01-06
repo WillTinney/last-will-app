@@ -1,6 +1,6 @@
-class CreateAdminRefs < ActiveRecord::Migration[5.0]
+class CreateReferences < ActiveRecord::Migration[5.0]
   def change
-    create_table :admin_refs do |t|
+    create_table :references do |t|
       t.string :title
       t.string :comments
       t.string :document

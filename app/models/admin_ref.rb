@@ -1,5 +1,5 @@
-class AdminRef < ApplicationRecord
-  belongs_to :admin_owner, polymorphic: true
+class Reference < ApplicationRecord
+  belongs_to :reference_owner, polymorphic: true
 
   validates :title, presence: true
   validates :document, presence: true
