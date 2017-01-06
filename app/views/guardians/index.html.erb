@@ -33,7 +33,7 @@
       var showId = $(this).find("h6").text();
       $.ajax({
           type: "GET",
-        url: <%= current_user.id %> + "/guardians/" + showId,
+          url: <%= current_user.id %> + "/guardians/" + showId,
           data: { },
           success: function(data){
               $('#tab-content').html(data);
