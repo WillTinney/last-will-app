@@ -3,5 +3,16 @@
 
   <h3><%= @recipient.first_name + " " + @recipient.last_name %></h3>
 
-  <p>Here include all notes associated with this recipient.</p>
+  <div class="blue-box">
+    <p>Here include all notes associated with this recipient.</p>
+  </div>
+
+  <% @recipient.notes.each do |note| %>
+    <h4><%= note.title %></h4>
+    <p><%= note.content %></p>
+    <%= link_to "Edit", edit_user_recipient_note_path(current_user, @recipient, note.id), class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_recipient_note_path(current_user, @recipient, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
+  <%= link_to "Add Note", new_user_recipient_note_path(current_user, @recipient.id), class: "btn btn-transparent btn-default" %>
 </div>

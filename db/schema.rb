@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161231151737) do
+ActiveRecord::Schema.define(version: 20170106122430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 20161231151737) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.integer  "approver_id"
+    t.integer  "guardian_id"
+    t.integer  "recipient_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
+    t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
+    t.index ["owner_type", "owner_id"], name: "index_notes_on_owner_type_and_owner_id", using: :btree
+    t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
   end
 
   create_table "recipients", force: :cascade do |t|
@@ -113,5 +129,8 @@ ActiveRecord::Schema.define(version: 20161231151737) do
 
   add_foreign_key "approvers", "users"
   add_foreign_key "guardians", "users"
+  add_foreign_key "notes", "approvers"
+  add_foreign_key "notes", "guardians"
+  add_foreign_key "notes", "recipients"
   add_foreign_key "recipients", "users"
 end
