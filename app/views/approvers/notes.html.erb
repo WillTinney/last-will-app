@@ -7,7 +7,7 @@
     <p>Here include all notes associated with this approver.</p>
   </div>
 
-  <%= @approver.notes.each do |note| %>
+  <% @approver.notes.each do |note| %>
     <h4><%= note.title %></h4>
     <p><%= note.content %></p>
     <%= link_to "Edit", edit_user_approver_note_path(current_user, @approver, note.id), class: "btn btn-transparent btn-default" %>
