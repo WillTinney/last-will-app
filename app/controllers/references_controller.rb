@@ -3,7 +3,7 @@ class ReferencesController < ApplicationController
    before_action :set_owner, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @references = reference.all
+    @references = Reference.all
   end
 
   def new

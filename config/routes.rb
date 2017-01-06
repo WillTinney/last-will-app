@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'admin_refs/index'
-
-  get 'admin_refs/show'
-
-  get 'admin_refs/new'
-
-  get 'admin_refs/create'
-
-  get 'admin_refs/edit'
-
-  get 'admin_refs/update'
-
-  get 'admin_refs/destroy'
-
   devise_for :users, controllers: { registrations: 'registrations' }
 
   root to: 'pages#home'
@@ -50,6 +36,7 @@ Rails.application.routes.draw do
       get 'videos', to: 'guardians#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Approver Pages
@@ -60,6 +47,7 @@ Rails.application.routes.draw do
       get 'videos', to: 'approvers#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Recipient Pages
@@ -70,6 +58,7 @@ Rails.application.routes.draw do
       get 'videos', to: 'recipients#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Routes for wizard sign-up
