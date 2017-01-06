@@ -3,7 +3,9 @@
 
   <h3><%= @guardian.first_name + " " + @guardian.last_name %></h3>
 
-  <p>Here include all photos associated with this guardian.</p>
+  <div class="blue-box">
+    <p>Here include all photos associated with this guardian.</p>
+  </div>
 
   <%= link_to "Add Photo", new_user_guardian_photo_path(current_user, @guardian.id), class: "btn btn-transparent btn-default" %>
 </div>

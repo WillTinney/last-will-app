@@ -3,7 +3,9 @@
 
   <h3><%= @recipient.first_name + " " + @recipient.last_name %></h3>
 
-  <p>Here include all photos associated with this recipient.</p>
+  <div class="blue-box">
+    <p>Here include all photos associated with this recipient.</p>
+  </div>
 
   <%= link_to "Add Photo", new_user_recipient_photo_path(current_user, @recipient.id), class: "btn btn-transparent btn-default" %>
 </div>
