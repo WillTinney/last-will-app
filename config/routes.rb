@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     # User proof of residency page
     get 'proof', to: 'users#proof'
 
-    # Useradmin references page
+    # User admin references page
     get 'admin', to: 'users#admin'
 
     # User photo library page
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get 'photos', to: 'guardians#photos'
       get 'videos', to: 'guardians#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Approver Pages
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
       get 'photos', to: 'approvers#photos'
       get 'videos', to: 'approvers#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Recipient Pages
@@ -53,6 +55,7 @@ Rails.application.routes.draw do
       get 'photos', to: 'recipients#photos'
       get 'videos', to: 'recipients#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:new, :create, :edit, :update, :destroy]
     end
 
     # Routes for wizard sign-up

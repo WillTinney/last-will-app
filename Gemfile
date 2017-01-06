@@ -17,6 +17,12 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# File Upload with Cloudinary
+gem 'cloudinary'
+
+# Carrierwave for file uploading
+gem 'carrierwave'
+
 # Sign-up Wizard
 gem 'wicked'
 

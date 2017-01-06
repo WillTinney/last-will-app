@@ -12,22 +12,23 @@ class NotesController < ApplicationController
 
   def create
     if @approver
-      @note = current_user.approvers.find(@approver.id).notes.build(note_params)
+      @note = current_user.approvers.find(@approver.id).notes.create!(note_params)
       if @note.save
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
         render :new
       end
     elsif @guardian
-      @note = current_user.guardians.find(@guardian.id).notes.build(note_params)
+      @note = current_user.guardians.find(@guardian.id).notes.create!(note_params)
       if @note.save
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
         render :new
       end
     elsif @recipient
-      @note = current_user.recipients.find(@recipient.id).notes.build(note_params)
+      @note = current_user.recipients.find(@recipient.id).notes.create!(note_params)
       if @note.save
+        raise
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
         render :new
@@ -60,15 +61,15 @@ class NotesController < ApplicationController
   def set_owner
     if params[:approver_id]
       @approver = Approver.find(params[:approver_id])
-      @owner = @appover
+      @note_owner = @approver
       @approver_present = true
     elsif params[:guardian_id]
       @guardian = Guardian.find(params[:guardian_id])
-      @owner = @guardian
+      @note_owner = @guardian
       @guardian_present = true
     elsif  params[:recipient_id]
       @recipient = Recipient.find(params[:recipient_id])
-      @owner = @recipient
+      @note_owner = @recipient
       @recipient_present = true
     end
   end

@@ -1,3 +1,3 @@
 class Note < ApplicationRecord
-  belongs_to :owner, polymorphic: true
+  belongs_to :note_owner, polymorphic: true
 end

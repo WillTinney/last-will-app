@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170106122430) do
+ActiveRecord::Schema.define(version: 20170106172902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,14 +65,25 @@ ActiveRecord::Schema.define(version: 20170106122430) do
     t.integer  "approver_id"
     t.integer  "guardian_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "owner_type"
-    t.integer  "owner_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "note_owner_type"
+    t.integer  "note_owner_id"
     t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
     t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
-    t.index ["owner_type", "owner_id"], name: "index_notes_on_owner_type_and_owner_id", using: :btree
+    t.index ["note_owner_type", "note_owner_id"], name: "index_notes_on_note_owner_type_and_note_owner_id", using: :btree
     t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "title"
+    t.string   "caption"
+    t.string   "photo"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "photo_owner_type"
+    t.integer  "photo_owner_id"
+    t.index ["photo_owner_type", "photo_owner_id"], name: "index_photos_on_photo_owner_type_and_photo_owner_id", using: :btree
   end
 
   create_table "recipients", force: :cascade do |t|
