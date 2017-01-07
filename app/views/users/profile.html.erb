@@ -52,6 +52,9 @@
       <%= link_to "#" do %>
         <h3>Notes</h3>
       <% end %>
+      <% @user.notes.each do |note| %>
+        <%= note.title %>
+      <% end %>
       <hr>
     </div>
 

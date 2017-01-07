@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107094603) do
+ActiveRecord::Schema.define(version: 20170107181652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,10 +84,12 @@ ActiveRecord::Schema.define(version: 20170107094603) do
     t.datetime "updated_at",      null: false
     t.string   "note_owner_type"
     t.integer  "note_owner_id"
+    t.integer  "user_id"
     t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
     t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
     t.index ["note_owner_type", "note_owner_id"], name: "index_notes_on_note_owner_type_and_note_owner_id", using: :btree
     t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
+    t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -169,5 +171,6 @@ ActiveRecord::Schema.define(version: 20170107094603) do
   add_foreign_key "notes", "approvers"
   add_foreign_key "notes", "guardians"
   add_foreign_key "notes", "recipients"
+  add_foreign_key "notes", "users"
   add_foreign_key "recipients", "users"
 end

@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :approvers, dependent: :destroy
   has_many :recipients, dependent: :destroy
 
+  has_many :notes
+
   # Notes Associations
   # has_many :notes, through: :note_owner, source: :approvers, source_type: "Note"
   # has_many :notes, through: :note_owner, source: :guardians, source_type: "Note"
