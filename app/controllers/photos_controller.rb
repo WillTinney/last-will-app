@@ -13,6 +13,7 @@ class PhotosController < ApplicationController
   def create
     if @approver
       @photo = current_user.approvers.find(@approver.id).photos.build(photo_params)
+      @photo.user_id = current_user.id
       if @photo.save
         redirect_to user_path(current_user), notice: 'Photo was successfully created.'
       else
@@ -20,6 +21,7 @@ class PhotosController < ApplicationController
       end
     elsif @guardian
       @photo = current_user.guardians.find(@guardian.id).photos.build(photo_params)
+      @photo.user_id = current_user.id
       if @photo.save
         redirect_to user_path(current_user), notice: 'Photo was successfully created.'
       else
@@ -27,6 +29,7 @@ class PhotosController < ApplicationController
       end
     elsif @recipient
       @photo = current_user.recipients.find(@recipient.id).photos.build(photo_params)
+      @photo.user_id = current_user.id
       if @photo.save
         redirect_to user_path(current_user), notice: 'Photo was successfully created.'
       else
