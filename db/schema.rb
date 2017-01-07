@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107181652) do
+ActiveRecord::Schema.define(version: 20170107183216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,7 +100,9 @@ ActiveRecord::Schema.define(version: 20170107181652) do
     t.datetime "updated_at",       null: false
     t.string   "photo_owner_type"
     t.integer  "photo_owner_id"
+    t.integer  "user_id"
     t.index ["photo_owner_type", "photo_owner_id"], name: "index_photos_on_photo_owner_type_and_photo_owner_id", using: :btree
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "recipients", force: :cascade do |t|
@@ -132,7 +134,9 @@ ActiveRecord::Schema.define(version: 20170107181652) do
     t.datetime "updated_at",           null: false
     t.string   "reference_owner_type"
     t.integer  "reference_owner_id"
+    t.integer  "user_id"
     t.index ["reference_owner_type", "reference_owner_id"], name: "index_references_on_reference_owner_type_and_reference_owner_id", using: :btree
+    t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -172,5 +176,7 @@ ActiveRecord::Schema.define(version: 20170107181652) do
   add_foreign_key "notes", "guardians"
   add_foreign_key "notes", "recipients"
   add_foreign_key "notes", "users"
+  add_foreign_key "photos", "users"
   add_foreign_key "recipients", "users"
+  add_foreign_key "references", "users"
 end
