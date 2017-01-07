@@ -1,0 +1,25 @@
+<h1>AdminRefs#new</h1>
+<p>Find me in app/views/admin_refs/new.html.erb</p>
+
+<% if @approver_present == true %>
+  <%= simple_form_for [current_user, @approver, @reference] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :comments %>
+    <%= f.input :document %>
+    <%= f.button :submit %>
+  <% end %>
+<% elsif @guardian_present == true %>
+  <%= simple_form_for [current_user, @guardian, @reference] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :comments %>
+    <%= f.input :document %>
+    <%= f.button :submit %>
+  <% end %>
+<% elsif @recipient_present == true %>
+  <%= simple_form_for [current_user, @recipient, @reference] do |f| %>
+    <%= f.input :title %>
+    <%= f.input :comments %>
+    <%= f.input :document %>
+    <%= f.button :submit %>
+  <% end %>
+<% end %>

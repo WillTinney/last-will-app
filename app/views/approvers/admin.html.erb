@@ -3,5 +3,17 @@
 
   <h3><%= @approver.first_name + " " + @approver.last_name %></h3>
 
-  <p>Here include all admin references associated with this approver.</p>
+  <div class="blue-box">
+    <p>Here include all admin references associated with this approver.</p>
+  </div>
+
+  <% @approver.references.each do |reference| %>
+    <h4><%= reference.title %></h4>
+    <p><%= reference.comments %></p>
+    <p><%= reference.document %></p>
+    <%= link_to "Edit", edit_user_approver_reference_path(current_user, @approver, reference.id), class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_approver_reference_path(current_user, @approver, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
+  <%= link_to "Add Reference", new_user_approver_reference_path(current_user, @approver.id), class: "btn btn-transparent btn-default" %>
 </div>

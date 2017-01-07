@@ -1,0 +1,2 @@
+module AdminRefsHelper
+end
