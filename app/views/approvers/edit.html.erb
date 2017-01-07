@@ -1,20 +1,32 @@
-<h1>Approvers#edit</h1>
-<p>Find me in app/views/approvers/edit.html.erb</p>
+<div class="grey-box">
+  <h4>Details</h4>
 
-<%= simple_form_for [current_user, @approver] do |f| %>
-  <%= f.input :first_name %>
-  <%= f.input :middle_name %>
-  <%= f.input :last_name %>
-  <%= f.input :citizenship %>
-  <%= f.input :date_of_birth %>
-  <%= f.input :email %>
-  <%= f.input :phone_number %>
-  <%= f.input :address_line_1 %>
-  <%= f.input :address_line_2 %>
-  <%= f.input :town %>
-  <%= f.input :postcode %>
-  <%= f.input :country %>
-  <%= f.input :profile_picture %>
-  <%= f.input :relationship %>
-  <%= f.button :submit %>
-<% end %>
+  <%= link_to '#', class: 'profile-picture-inline' do %>
+    <%= image_tag("user.png", class: "avatar-large") %>
+    <p>Edit Profile Picture</p>
+  <% end %>
+
+  <%= simple_form_for [current_user, @approver] do |f| <%>
+    <div class="row">
+      <%= f.input :first_name %>
+      <%= f.input :middle_name %>
+      <%= f.input :last_name %>
+    </div>
+    <%= f.input :citizenship %>
+    <%= f.input :date_of_birth %>
+    </div>
+    <%= f.input :email %>
+    <%= f.input :phone_number %>
+    </div>
+    <%= f.input :address_line_1 %>
+    <%= f.input :address_line_2 %>
+    </div>
+    <%= f.input :town %>
+    <%= f.input :postcode %>
+    <%= f.input :country %>
+    </div>
+    <%= f.input :profile_picture %>
+    <%= f.input :relationship %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
