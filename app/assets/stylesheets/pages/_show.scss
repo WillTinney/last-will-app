@@ -28,8 +28,19 @@
   border: 1px solid #969696;
   border-radius: 3px;
 }
+.detail-box {
+  display: flex;
+  justify-content: space-between;
+}
 .detail-box h6 {
   display: none;
+}
+.detail {
+  display: flex;
+  justify-content: space-around;
+}
+.detail p {
+  padding: 0 5px;
 }
 .profile-picture-inline {
   display: flex;
