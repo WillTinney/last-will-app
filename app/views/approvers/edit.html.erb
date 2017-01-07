@@ -4,29 +4,68 @@
   <%= link_to '#', class: 'profile-picture-inline' do %>
     <%= image_tag("user.png", class: "avatar-large") %>
     <p>Edit Profile Picture</p>
+    <!-- Make this uploadable with attachinary -->
   <% end %>
 
-  <%= simple_form_for [current_user, @approver] do |f| <%>
+  <%= simple_form_for [current_user, @approver] do |f| %>
     <div class="row">
-      <%= f.input :first_name %>
-      <%= f.input :middle_name %>
-      <%= f.input :last_name %>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :first_name %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :middle_name %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :last_name %>
+      </div>
     </div>
-    <%= f.input :citizenship %>
-    <%= f.input :date_of_birth %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :citizenship %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :date_of_birth %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :relationship %>
+      </div>
     </div>
-    <%= f.input :email %>
-    <%= f.input :phone_number %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :email %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :phone_number %>
+      </div>
     </div>
-    <%= f.input :address_line_1 %>
-    <%= f.input :address_line_2 %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :address_line_1 %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :address_line_2 %>
+      </div>
     </div>
-    <%= f.input :town %>
-    <%= f.input :postcode %>
-    <%= f.input :country %>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :town %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :postcode %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :country %>
+      </div>
     </div>
-    <%= f.input :profile_picture %>
-    <%= f.input :relationship %>
-    <%= f.button :submit %>
+
+    <div class="row">
+      <div class="col-xs-2 offset-xs-5">
+        <%= f.button :submit %>
+      </div>
+    </div>
   <% end %>
 </div>
