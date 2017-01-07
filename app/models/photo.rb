@@ -4,4 +4,5 @@ class Photo < ApplicationRecord
   validates :title, presence: true
   validates :photo, presence: true
 
+  has_attachment :photo
 end

@@ -74,6 +74,6 @@ class ReferencesController < ApplicationController
   end
 
   def reference_params
-    params.require(:reference).permit(:title, :comments, :document, :document_cache)
+    params.require(:reference).permit(:title, :comments, :document)
   end
 end

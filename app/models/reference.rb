@@ -3,4 +3,6 @@ class Reference < ApplicationRecord
 
   validates :title, presence: true
   validates :document, presence: true
+
+  has_attachment :document
 end
