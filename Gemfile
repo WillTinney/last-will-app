@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise'
 gem 'redis'
+gem 'coffee-rails'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -17,11 +18,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
-# File Upload with Cloudinary
+# Gems for file uploading
 gem 'cloudinary'
-
-# Carrierwave for file uploading
-gem 'carrierwave'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
 
 # Sign-up Wizard
 gem 'wicked'

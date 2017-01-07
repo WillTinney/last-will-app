@@ -10,7 +10,6 @@
   <% @approver.references.each do |reference| %>
     <h4><%= reference.title %></h4>
     <p><%= reference.comments %></p>
-    <p><%= reference.document %></p>
     <%= link_to "Edit", edit_user_approver_reference_path(current_user, @approver, reference.id), class: "btn btn-transparent btn-default" %>
     <%= link_to "Delete", user_approver_reference_path(current_user, @approver, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>

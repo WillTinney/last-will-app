@@ -5,24 +5,21 @@
   <%= simple_form_for [current_user, @approver, @photo] do |f| %>
     <%= f.input :title %>
     <%= f.input :caption %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :photo, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% elsif @guardian_present == true %>
   <%= simple_form_for [current_user, @guardian, @photo] do |f| %>
     <%= f.input :title %>
     <%= f.input :caption %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :photo, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% elsif @recipient_present == true %>
   <%= simple_form_for [current_user, @recipient, @photo] do |f| %>
     <%= f.input :title %>
     <%= f.input :caption %>
-    <%= f.input :photo %>
-    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :photo, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% end %>

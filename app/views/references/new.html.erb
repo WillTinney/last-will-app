@@ -5,21 +5,21 @@
   <%= simple_form_for [current_user, @approver, @reference] do |f| %>
     <%= f.input :title %>
     <%= f.input :comments %>
-    <%= f.input :document %>
+    <%= f.input :document, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% elsif @guardian_present == true %>
   <%= simple_form_for [current_user, @guardian, @reference] do |f| %>
     <%= f.input :title %>
     <%= f.input :comments %>
-    <%= f.input :document %>
+    <%= f.input :document, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% elsif @recipient_present == true %>
   <%= simple_form_for [current_user, @recipient, @reference] do |f| %>
     <%= f.input :title %>
     <%= f.input :comments %>
-    <%= f.input :document %>
+    <%= f.input :document, as: :attachinary %>
     <%= f.button :submit %>
   <% end %>
 <% end %>
