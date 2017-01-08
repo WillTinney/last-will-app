@@ -11,7 +11,7 @@
 
   <div class="scrollbox text-center">
     <h3>Partner</h3>
-    <% @user.recipients.where('relationship = ?', 'Partner').each do |recipient| %>
+    <% @user.show_partner.each do |recipient| %>
       <div class="scrollitem">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
@@ -24,7 +24,7 @@
 
   <div class="scrollbox">
     <h3>Children</h3>
-    <% @user.recipients.where('relationship = ?', 'Child').each do |recipient| %>
+    <% @user.show_children.each do |recipient| %>
       <div class="scrollitem">
         <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
@@ -63,7 +63,7 @@
 
   <div class="scrollbox">
     <h3>Other Friends & Family</h3>
-    <% @user.recipients.where('relationship = ?', 'Mother').each do |recipient| %>
+    <% @user.show_mother.each do |recipient| %>
       <div class="scrollitem">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
           <%= image_tag("user2.png", class: "avatar-large") %>
@@ -73,7 +73,7 @@
       </div>
     <% end %>
 
-    <% @user.recipients.where('relationship = ?', 'Friend').each do |recipient| %>
+    <% @user.show_friends.each do |recipient| %>
       <div class="scrollitem">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
           <%= image_tag("user.png", class: "avatar-large") %>
