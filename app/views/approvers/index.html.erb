@@ -26,18 +26,18 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // AJAX to load show page content without a refresh
-    $('.approver-link').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-        url: <%= current_user.id %> + "/approvers/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
+    // // AJAX to load show page content without a refresh
+    // $('.approver-link').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //     url: <%= current_user.id %> + "/approvers/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
   </script>
 <% end %>
