@@ -78,6 +78,15 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
+        id: "notes-sidebar-tab",
+        remote: true do %>
+      <h5>My Notes</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
         id: "admin-references-sidebar-tab",
         remote: true do %>
       <h5>Admin References</h5>
@@ -199,6 +208,17 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/proof",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/notes",
           data: { },
           success: function(data){
               $('#tab-content').html(data);

@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get 'proof', to: 'users#proof'
 
     # User notes page
-    get 'notes', to: 'user#notes'
+    get 'notes', to: 'users#notes'
 
     # User admin references page
     get 'admin', to: 'users#admin'
