@@ -80,10 +80,10 @@ ActiveRecord::Schema.define(version: 20170107183216) do
     t.integer  "approver_id"
     t.integer  "guardian_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "note_owner_type"
-    t.integer  "note_owner_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "owner_type"
+    t.integer  "owner_id"
     t.integer  "user_id"
     t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
     t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
