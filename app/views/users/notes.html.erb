@@ -1,1 +1,16 @@
-notes.html.erb
+<div class="grey-box">
+  <h2>Notes Library</h2>
+
+  <div class="blue-box">
+    <p>Here you can add notes and leave messages for those that matter to you so that...</p>
+  </div>
+
+  <h3>My Notes</h3>
+  <% @user.notes.each do |note| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= note.title %>
+      </div>
+    </div>
+  <% end %>
+</div>
