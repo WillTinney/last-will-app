@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20170107183216) do
     t.integer  "user_id"
     t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
     t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
-    t.index ["note_owner_type", "note_owner_id"], name: "index_notes_on_note_owner_type_and_note_owner_id", using: :btree
+    t.index ["owner_type", "owner_id"], name: "index_notes_on_owner_type_and_owner_id", using: :btree
     t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
