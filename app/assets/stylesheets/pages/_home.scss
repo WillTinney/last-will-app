@@ -5,6 +5,12 @@
 .zero-text-margin p {
   margin: 0;
 }
+
+.banner-strip{
+  position: absolute;
+  bottom: 0;
+  filter: blur(1px);
+}
 #quotes {
   background-color: #F8F8F9;
 }
@@ -18,13 +24,6 @@
 #instructions {
   width: 100%;
   background-color: #F8F8F9;
-}
-.instruction-list {
-  display: flex;
-  align-items: center;
-}
-.instruction-content {
-  text-align: left;
 }
 #comparison {
   width: 100%;
