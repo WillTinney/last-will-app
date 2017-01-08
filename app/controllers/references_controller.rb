@@ -43,7 +43,7 @@ class ReferencesController < ApplicationController
 
   def update
     if @reference.update(reference_params)
-      redirect_to user_path(current_user)
+      redirect_to :back
     else
       render :edit
     end
