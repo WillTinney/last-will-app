@@ -12,7 +12,7 @@
     <p><%= reference.comments %></p>
     <p><%= reference.document %></p>
 
-    <div id="edit-form"></div>
+    <div id="edit-note-form"></div>
 
     <%= link_to "Edit", edit_user_recipient_reference_path(current_user, @recipient, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
     <%= link_to "Delete", user_recipient_reference_path(current_user, @recipient, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
@@ -20,6 +20,6 @@
 
   <%= link_to "Add Reference", new_user_recipient_reference_path(current_user, @recipient.id), remote: true, class: "btn btn-transparent btn-default" %>
 
-  <div id="new-form"></div>
+  <div id="new-note-form"></div>
 
 </div>

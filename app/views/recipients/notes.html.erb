@@ -11,7 +11,7 @@
     <h4><%= note.title %></h4>
     <p><%= note.content %></p>
 
-    <div id="edit-form"></div>
+    <div id="edit-note-form"></div>
 
     <%= link_to "Edit", edit_user_recipient_note_path(current_user, @recipient, note.id), remote: true, class: "btn btn-transparent btn-default" %>
     <%= link_to "Delete", user_recipient_note_path(current_user, @recipient, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
@@ -19,5 +19,5 @@
 
   <%= link_to "Add Note", new_user_recipient_note_path(current_user, @recipient.id), remote: true, class: "btn btn-transparent btn-default" %>
 
-  <div id="new-form"></div>
+  <div id="new-note-form"></div>
 </div>
