@@ -33,15 +33,6 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "recipient-sidebar-tab",
-        remote: true do %>
-      <h5>My Family and Friends</h5>
-    <% end %>
-
-    <hr>
-
-    <%= link_to '#',
-        class: "sidebar-tab",
         id: "guardian-sidebar-tab",
         remote: true do %>
       <h5>My Guardians</h5>
@@ -54,6 +45,15 @@
         id: "approver-sidebar-tab",
         remote: true do %>
       <h5>My Approvers</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab",
+        id: "recipient-sidebar-tab",
+        remote: true do %>
+      <h5>My Family and Friends</h5>
     <% end %>
 
     <hr>
@@ -159,17 +159,6 @@
           }
       });
     });
-    $('#recipient-sidebar-tab').click(function(e){
-      e.preventDefault();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients",
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
     $('#approver-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
@@ -186,6 +175,17 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').html(data);
+          }
+      });
+    });
+    $('#recipient-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
