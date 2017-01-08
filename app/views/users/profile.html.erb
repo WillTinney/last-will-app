@@ -24,22 +24,84 @@
   <hr>
 
   <h3>My Partner</h3>
-
+    <% @user.show_partner.each do |recipient| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= recipient.first_name + ' ' + recipient.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
   <hr>
 
   <h3>My Children</h3>
-
+    <% @user.show_children.each do |recipient| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= recipient.first_name + ' ' + recipient.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
   <hr>
 
   <h3>Guardians</h3>
-
+    <% @user.guardians.each do |guardian| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= guardian.first_name + ' ' + guardian.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, guardian.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, guardian.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
   <hr>
 
   <h3>Approvers</h3>
-
+    <% @user.approvers.each do |approver| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= approver.first_name + ' ' + approver.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, approver.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, approver.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
   <hr>
 
   <h3>Family and Friends</h3>
+    <% @user.show_mother.each do |recipient| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= recipient.first_name + ' ' + recipient.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
+    <% @user.show_friends.each do |recipient| %>
+      <div class="detail-box">
+        <div class="detail">
+          <%= recipient.first_name + ' ' + recipient.last_name %>
+        </div>
+        <div class="detail">
+          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
+          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        </div>
+      </div>
+    <% end %>
 </div>
 
 <br>
