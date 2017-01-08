@@ -10,9 +10,9 @@
   <% @guardian.notes.each do |note| %>
     <h4><%= note.title %></h4>
     <p><%= note.content %></p>
-    <%= link_to "Edit", edit_user_guardian_note_path(current_user, @guardian, note.id), class: "btn btn-transparent btn-default" %>
+    <%= link_to "Edit", edit_user_guardian_note_path(current_user, @guardian, note.id), remote: true, class: "btn btn-transparent btn-default" %>
     <%= link_to "Delete", user_guardian_note_path(current_user, @guardian, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Note", new_user_guardian_note_path(current_user, @guardian.id), class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add Note", new_user_guardian_note_path(current_user, @guardian.id), remote: true, class: "btn btn-transparent btn-default" %>
 </div>

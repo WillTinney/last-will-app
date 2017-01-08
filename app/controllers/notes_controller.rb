@@ -9,10 +9,6 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
-    respond_to do |format|
-      format.js {render action: 'new'}
-      format.html
-    end
   end
 
   def create
@@ -44,10 +40,6 @@ class NotesController < ApplicationController
   end
 
   def edit
-    respond_to do |format|
-      format.js {render action: 'edit'}
-      format.html
-    end
   end
 
   def update
