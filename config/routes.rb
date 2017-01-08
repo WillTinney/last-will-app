@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     # User proof of residency page
     get 'proof', to: 'users#proof'
 
+    # User notes page
+    get 'notes', to: 'user#notes'
+
     # User admin references page
     get 'admin', to: 'users#admin'
 
