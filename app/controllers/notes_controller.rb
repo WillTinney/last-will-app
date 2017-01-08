@@ -13,6 +13,7 @@ class NotesController < ApplicationController
   def create
     if @approver
       @note = current_user.approvers.find(@approver.id).notes.create!(note_params)
+      @note.user_id = current_user.id
       if @note.save
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
@@ -20,6 +21,7 @@ class NotesController < ApplicationController
       end
     elsif @guardian
       @note = current_user.guardians.find(@guardian.id).notes.create!(note_params)
+      @note.user_id = current_user.id
       if @note.save
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
@@ -27,8 +29,8 @@ class NotesController < ApplicationController
       end
     elsif @recipient
       @note = current_user.recipients.find(@recipient.id).notes.create!(note_params)
+      @note.user_id = current_user.id
       if @note.save
-        raise
         redirect_to user_path(current_user), notice: 'Note was successfully created.'
       else
         render :new
@@ -75,6 +77,6 @@ class NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title, :content)
+    params.require(:note).permit(:title, :content, :user_id)
   end
 end

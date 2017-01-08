@@ -13,6 +13,7 @@ class ReferencesController < ApplicationController
   def create
     if @approver
       @reference = current_user.approvers.find(@approver.id).references.build(reference_params)
+      @reference.user_id = current_user.id
       if @reference.save
         redirect_to user_path(current_user), notice: 'Reference was successfully created.'
       else
@@ -20,6 +21,7 @@ class ReferencesController < ApplicationController
       end
     elsif @guardian
       @reference = current_user.guardians.find(@guardian.id).references.build(reference_params)
+      @reference.user_id = current_user.id
       if @reference.save
         redirect_to user_path(current_user), notice: 'Reference was successfully created.'
       else
@@ -27,6 +29,7 @@ class ReferencesController < ApplicationController
       end
     elsif @recipient
       @reference = current_user.recipients.find(@recipient.id).references.build(reference_params)
+      @reference.user_id = current_user.id
       if @reference.save
         redirect_to user_path(current_user), notice: 'Reference was successfully created.'
       else

@@ -19,14 +19,29 @@
   background-color: #F8F8F9;
   padding: 8px 24px;
 }
+.grey-box a {
+  color: black;
+}
 .blue-box {
   color: white;
   background-color: #4DB3D0;
   border: 1px solid #969696;
   border-radius: 3px;
 }
+.detail-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .detail-box h6 {
   display: none;
+}
+.detail {
+  display: flex;
+  justify-content: space-around;
+}
+.detail p {
+  padding: 0 5px;
 }
 .profile-picture-inline {
   display: flex;
@@ -36,4 +51,3 @@
 .profile-picture-inline img {
   height: 70px;
 }
-

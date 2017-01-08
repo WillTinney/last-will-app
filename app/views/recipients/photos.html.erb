@@ -7,5 +7,12 @@
     <p>Here include all photos associated with this recipient.</p>
   </div>
 
+  <% @recipient.photos.each do |photo| %>
+    <h4><%= photo.title %></h4>
+    <p><%= photo.caption %></p>
+    <%= link_to "Edit", edit_user_recipient_photo_path(current_user, @recipient, photo.id), class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_recipient_photo_path(current_user, @recipient, photo.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
   <%= link_to "Add Photo", new_user_recipient_photo_path(current_user, @recipient.id), class: "btn btn-transparent btn-default" %>
 </div>

@@ -3,18 +3,31 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
   has_many :guardians, dependent: :destroy
   has_many :approvers, dependent: :destroy
   has_many :recipients, dependent: :destroy
+  has_many :notes, dependent: :destroy
+  has_many :references, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   # Relationship Methods
+  def show_partner
+    recipients.where('relationship = ?', 'Partner')
+  end
 
   def show_children
+    recipients.where('relationship = ?', 'Child')
   end
 
   def show_other_family
   end
 
+  def show_mother
+    recipients.where('relationship = ?', 'Mother')
+  end
+
   def show_friends
+    recipients.where('relationship = ?', 'Friend')
   end
 end
