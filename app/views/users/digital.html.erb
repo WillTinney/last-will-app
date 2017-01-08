@@ -5,18 +5,60 @@
     <p>You can pass on digital assets so that...</p>
   </div>
 
+  <h3>My Data</h3>
+  <hr>
+
   <div class="row">
-    <div class="col-xs-10 col-sm-6 card">
-      <h3>My Data</h3>
-      <hr>
-      <h5>Digital Assets</h5>
-      <p>100 Mb</p>
-      <hr>
-      <h5>Administrative References</h5>
-      <p>2 Mb</p>
-      <hr>
-      <h5>Friends and Relatives</h5>
+    <div class="col-xs-12 col-sm-6 card">
+      <h5>Total Assets</h5>
       <p>3 Documents</p>
+      <p>8 Photos</p>
+      <p>1 Video</p>
+      <p>28 Mb</p>
+    </div>
+  </div>
+
+  <h3>My Uploads</h3>
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Notes</h3>
+      <% end %>
+      <hr>
+      <% @user.notes.each do |note| %>
+          <p><%= note.title %><p>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Administration References</h3>
+      <% end %>
+      <hr>
+      <% @user.references.each do |reference| %>
+        <p><%= reference.title %><p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Photos</h3>
+      <% end %>
+      <hr>
+      <% @user.photos.each do |photo| %>
+        <p><%= photo.title %><p>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Video Messages</h3>
+      <% end %>
+      <hr>
     </div>
   </div>
 </div>

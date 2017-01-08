@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :set_user_id, only: [:profile, :call_to_action, :digital, :proof, :admin, :photos, :videos]
+  before_action :set_user_id, only: [:profile, :call_to_action, :digital, :proof, :notes, :admin, :photos, :videos]
 
   def show
   end
@@ -28,6 +28,9 @@ class UsersController < ApplicationController
   end
 
   def proof
+  end
+
+  def notes
   end
 
   def admin
