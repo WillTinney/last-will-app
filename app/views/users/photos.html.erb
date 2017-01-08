@@ -5,4 +5,12 @@
     <p>Here you can add photos and memories that...</p>
   </div>
 
+  <h3>My Photos</h3>
+  <% @user.photos.each do |photo| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= photo.title %>
+      </div>
+    </div>
+  <% end %>
 </div>

@@ -1,6 +1,16 @@
 <div class="grey-box">
   <h2>Admin References</h2>
+
   <div class="blue-box">
     <p>Here you can administrative documents and data that...</p>
   </div>
+
+  <h3>My References</h3>
+  <% @user.references.each do |reference| %>
+    <div class="detail-box">
+      <div class="detail">
+        <%= reference.title %>
+      </div>
+    </div>
+  <% end %>
 </div>
