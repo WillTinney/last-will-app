@@ -78,18 +78,18 @@
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "notes-sidebar-tab",
+        id: "admin-references-sidebar-tab",
         remote: true do %>
-      <h5>My Notes</h5>
+      <h5>Admin References</h5>
     <% end %>
 
     <hr>
 
     <%= link_to '#',
         class: "sidebar-tab",
-        id: "admin-references-sidebar-tab",
+        id: "notes-sidebar-tab",
         remote: true do %>
-      <h5>Admin References</h5>
+      <h5>My Notes</h5>
     <% end %>
 
     <hr>
@@ -214,22 +214,22 @@
           }
       });
     });
-    $('#notes-sidebar-tab').click(function(e){
+    $('#admin-references-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/notes",
+          url: <%= @user.id %> + "/admin",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
           }
       });
     });
-    $('#admin-references-sidebar-tab').click(function(e){
+    $('#notes-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/admin",
+          url: <%= @user.id %> + "/notes",
           data: { },
           success: function(data){
               $('#tab-content').html(data);
