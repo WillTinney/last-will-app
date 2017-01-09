@@ -2,12 +2,14 @@
   <%= render 'shared/navbars/navbar_sign_up' %>
 <% end %>
 
-<h2>Basic Profile</h2>
+<div class="sign-up-box">
+  <h2>Basic Profile</h2>
 
-<%= form_for(@user, url: wizard_path, method: :put) do |f| %>
-  <%= f.text_field :first_name, placeholder: 'First Name' %>
-  <%= f.text_field :last_name, placeholder: 'Last Name' %>
-  <%= f.submit 'Next', class: 'btn btn-primary' %>
-<% end %>
+  <%= form_for(@user, url: wizard_path, method: :put) do |f| %>
+    <%= f.text_field :first_name, placeholder: 'First Name' %>
+    <%= f.text_field :last_name, placeholder: 'Last Name' %>
+    <%= f.submit 'Next', class: 'btn btn-primary' %>
+  <% end %>
 
-<%= link_to 'back', previous_wizard_path %>
+  <%= link_to 'back', previous_wizard_path %>
+</div>
