@@ -2,9 +2,13 @@
   <%= render 'shared/navbars/navbar_sign_up' %>
 <% end %>
 
-<div class="navbar-box"></div>
+<div class="navbar-box">
+  <h3>Please enter some basic details about yourself.</h3>
 
-<div class="sign-up-box">
+  <p>This is important so we identify you and set up an account.</p>
+</div>
+
+<div class="sign-up-box text-center">
   <h2>Basic Profile</h2>
 
   <%= form_for(@user, url: wizard_path, method: :put) do |f| %>
