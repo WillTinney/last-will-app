@@ -66,22 +66,73 @@ section {
   background-color: #F8F8F9;
 }
 #comparison {
-  width: 100%;
-  height: 50vh;
   background-color: #4291A6;
 }
 .comparison-box {
   background: #F8F8F9;
-  margin-top: 20px;
-  margin-bottom: 20px;
   border-radius: 5px;
+  border: 1px solid rgb(150,150,150);
+  padding: 20px;
+  position: relative;
   p {
     font-size: 16px;
     text-align: left;
   }
-  li {
+  ul {
     list-style: none;
     padding-left: 0;
+  }
+  h3 {
+    font-size: 50px;
+  }
+}
+.comparison-li{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  max-height: 50px;
+  p {
+    flex: 0 0 90%;
+    word-wrap: break-word;
+  }
+  i {
+    flex: 0 0 auto;
+  }
+}
+.comparison-icon {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  border: 2px solid rgb(150,150,150);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comparison-icon.green, p.green {
+  color: #015249;
+}
+.my-will {
+  color: #015249;
+}
+.lawyer-will {
+  color: rgb(140,140,140);
+}
+.versus-circle{
+  position: absolute;
+  right: -65px;
+  top: 75px;
+  z-index: 2;
+  border-radius: 50%;
+  border: 2px solid rgb(150,150,150);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  p {
+    font-size: 40px;
   }
 }
 #registration {
