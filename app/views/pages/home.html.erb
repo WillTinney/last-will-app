@@ -182,12 +182,8 @@
 <%= content_for(:after_js) do %>
   <script>
     $(document).ready(function(){
-
-      $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
-      $(".navbar-wagon").addClass("navbar-wagon-fixed");
-
       $(window).scroll(function(){
-        if($(window).scrollTop()>500)
+        if($(window).scrollTop()>300)
           $(".navbar-wagon").css({"background-color": "rgba(66,145,166,1)", "box-shadow": "0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03)"});
         else
           $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
