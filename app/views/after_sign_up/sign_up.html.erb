@@ -1,3 +1,5 @@
-<h2>Sign-up</h2>
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
 
 <%= render "devise/registrations/new" %>
