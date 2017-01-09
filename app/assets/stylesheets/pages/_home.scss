@@ -2,6 +2,12 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+section {
+  padding: 100px 0;
+}
+section h2 {
+  margin-bottom: 40px
+}
 .zero-text-margin p {
   margin: 0;
 }
@@ -30,7 +36,6 @@
 }
 #instructions {
   width: 100%;
-  padding: 100px 0;
   background-color: #F8F8F9;
 }
 #instructions h4 {
