@@ -3,5 +3,7 @@
 //= require bootstrap-sprockets
 //= require jquery-fileupload/basic
 //= require cloudinary/jquery.cloudinary
+//= require jquery.cloud9carousel
+//= require cloud9carouselInit
 //= require attachinary
 //= require_tree .
