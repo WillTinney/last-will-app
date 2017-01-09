@@ -30,9 +30,17 @@
 }
 #instructions {
   width: 100%;
-  height: 100vh;
-  padding: 20% 0;
+  padding: 100px 0;
   background-color: #F8F8F9;
+}
+#instructions h4 {
+  font-weight: bold;
+}
+.feature {
+  padding: 5px 40px;
+}
+.feature-image {
+  height: 150px;
 }
 #caroussel{
   width: 100%;
