@@ -11,8 +11,6 @@
 </div>
 
 <div class="sign-up-box text-center">
-  <h2>Basic Profile</h2>
-
   <%= simple_form_for(@user, url: wizard_path, method: :put, class: "sign-up-form") do |f| %>
     <%= f.input :first_name, placeholder: 'First Name' %>
     <%= f.input :last_name, placeholder: 'Last Name' %>
