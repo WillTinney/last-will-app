@@ -126,21 +126,21 @@
 }
 
 // Sign-Up Navbar Animation
-@keyframes dropHeader {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+// @keyframes dropHeader {
+//   0% {
+//     transform: translateY(-100%);
+//   }
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
 
-#sign-up-navbar {
-  height: 30%;
-  padding: 30px;
+// #sign-up-navbar {
+//   height: 30%;
+//   padding: 30px;
 
-  animation-name: dropHeader;
-  animation-iteration-count: 1;
-  animation-timing-function: ease-out;
-  animation-duration: 0.6s;
-}
+//   animation-name: dropHeader;
+//   animation-iteration-count: 1;
+//   animation-timing-function: ease-out;
+//   animation-duration: 0.6s;
+// }
