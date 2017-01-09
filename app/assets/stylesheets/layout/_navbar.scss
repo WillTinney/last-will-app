@@ -136,9 +136,9 @@
 }
 
 #sign-up-navbar {
+  height: 30%;
   padding: 30px;
 
-  /* this section calls the dropHeader animation we defined above */
   animation-name: dropHeader;
   animation-iteration-count: 1;
   animation-timing-function: ease-out;
