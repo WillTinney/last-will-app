@@ -1,6 +1,3 @@
-<h1>Photos#new</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
-
 <% if @approver_present == true %>
   <%= simple_form_for [current_user, @approver, @photo] do |f| %>
     <%= f.input :title %>

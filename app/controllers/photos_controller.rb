@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
       @photo = current_user.approvers.find(@approver.id).photos.build(photo_params)
       @photo.user_id = current_user.id
       if @photo.save
-        redirect_to user_path(current_user), notice: 'Photo was successfully created.'
+        redirect_to :back, notice: 'Photo was successfully created.'
       else
         render :new
       end
@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
       @photo = current_user.guardians.find(@guardian.id).photos.build(photo_params)
       @photo.user_id = current_user.id
       if @photo.save
-        redirect_to user_path(current_user), notice: 'Photo was successfully created.'
+        redirect_to :back, notice: 'Photo was successfully created.'
       else
         render :new
       end
@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
       @photo = current_user.recipients.find(@recipient.id).photos.build(photo_params)
       @photo.user_id = current_user.id
       if @photo.save
-        redirect_to user_path(current_user), notice: 'Photo was successfully created.'
+        redirect_to :back, notice: 'Photo was successfully created.'
       else
         render :new
       end
@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
 
   def update
     if @photo.update(photo_params)
-      redirect_to user_path(current_user)
+      redirect_to :back
     else
       render :edit
     end
@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo.destroy
-    redirect_to user_path(current_user)
+    redirect_to :back
   end
 
   private
