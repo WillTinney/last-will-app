@@ -14,5 +14,5 @@
     <%= link_to "Delete", user_guardian_photo_path(current_user, @guardian, photo.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Photo", new_user_guardian_photo_path(current_user, @guardian.id), class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add Photo", new_user_guardian_photo_path(current_user, @guardian.id), remote: true, class: "btn btn-transparent btn-default" %>
 </div>
