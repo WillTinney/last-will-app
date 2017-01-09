@@ -2,16 +2,23 @@
   <%= render 'shared/navbars/navbar_sign_up' %>
 <% end %>
 
-<h2>Advanced Profile</h2>
+<div class="navbar-box">
+  <div class="container">
+    <h3>Here you can fill in more details to complete your profile.</h3>
 
-<%= form_for(@user, url: user_path(@user), method: :put) do |f| %>
-  <%= f.text_field :address_line_1, placeholder: 'Address Line 1' %>
-  <%= f.text_field :address_line_2, placeholder: 'Address Line 2' %>
-  <%= f.text_field :town, placeholder: 'Town' %>
-  <%= f.text_field :country, placeholder: 'Country' %>
-  <%= f.text_field :postcode, placeholder: 'Postcode' %>
-  <%= f.submit 'Complete', class: 'btn btn-primary' %>
-<% end %>
+    <p>Please enter as much information as possible so your details can be properly stored</p>
+  </div>
+</div>
 
-<%= link_to 'back', previous_wizard_path %>
+<div class="sign-up-box text-center">
+  <%= simple_form_for(@user, url: user_path(@user), method: :put) do |f| %>
+    <%= f.input :address_line_1, placeholder: 'Address Line 1' %>
+    <%= f.input :address_line_2, placeholder: 'Address Line 2' %>
+    <%= f.input :town, placeholder: 'Town' %>
+    <%= f.input :country, placeholder: 'Country' %>
+    <%= f.input :postcode, placeholder: 'Postcode' %>
+    <%= f.submit 'Complete', class: 'btn btn-primary' %>
+  <% end %>
 
+  <%= link_to 'back', previous_wizard_path %>
+</div>
