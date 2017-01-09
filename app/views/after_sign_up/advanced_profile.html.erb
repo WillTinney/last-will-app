@@ -1,3 +1,7 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
+
 <h2>Advanced Profile</h2>
 
 <%= form_for(@user, url: user_path(@user), method: :put) do |f| %>
