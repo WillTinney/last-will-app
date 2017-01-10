@@ -1,15 +1,33 @@
-<h2>Forgot your password?</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
 <% end %>
+
+<div class="navbar-box">
+  <div class="container">
+    <h3>Please sign-in to enter your account</h3>
+
+    <p>using the email and your set password.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h2>Forgot your password?</h2>
+
+      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :email, required: true, autofocus: true %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Send me reset password instructions" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= render "devise/shared/links" %>
