@@ -68,5 +68,12 @@
       console.log('hello')
       $('#proof-upload-form').removeClass('invisible');
     });
+
+    // Removing upload edit form after update
+    $('#proof-upload-form button').on('click', function(e) {
+      e.prevent_default;
+      $('#proof-upload-form').addClass('invisible');
+      $('#proof-upload-edit').removeClass('invisible');
+    });
   </script>
 <% end %>
