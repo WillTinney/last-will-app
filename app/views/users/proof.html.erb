@@ -6,7 +6,7 @@
   </div>
 
   <% if @user.proof_of_residency %>
-    <%= @user.proof_of_residency %>
+    <%= cl_image_tag(@user.proof_of_residency, { size: '250x250'}) %>
     <%= @user.proof_comments %>
   <% else %>
     <%= simple_form_for(@user) do |f| %>
