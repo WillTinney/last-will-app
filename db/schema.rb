@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170107183216) do
+ActiveRecord::Schema.define(version: 20170110113929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,14 +80,14 @@ ActiveRecord::Schema.define(version: 20170107183216) do
     t.integer  "approver_id"
     t.integer  "guardian_id"
     t.integer  "recipient_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "owner_type"
-    t.integer  "owner_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "note_owner_type"
+    t.integer  "note_owner_id"
     t.integer  "user_id"
     t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
     t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
-    t.index ["owner_type", "owner_id"], name: "index_notes_on_owner_type_and_owner_id", using: :btree
+    t.index ["note_owner_type", "note_owner_id"], name: "index_notes_on_note_owner_type_and_note_owner_id", using: :btree
     t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
@@ -166,6 +166,8 @@ ActiveRecord::Schema.define(version: 20170107183216) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "profile_picture"
+    t.string   "proof_of_residency"
+    t.string   "proof_comments"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

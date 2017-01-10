@@ -4,4 +4,16 @@
   <div class="blue-box">
     <p>In order to authenticate your...</p>
   </div>
+
+  <% if @user.proof_of_residency %>
+    <%= @user.proof_of_residency %>
+    <%= @user.proof_comments %>
+  <% else %>
+    <%= simple_form_for(@user) do |f| %>
+      <%= f.input :proof_of_residency, as: :attachinary %>
+      <%= f.input :proof_comments %>
+      <%= f.button :submit %>
+    <% end %>
+  <% end %>
+
 </div>
