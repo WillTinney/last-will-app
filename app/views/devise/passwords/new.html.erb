@@ -4,15 +4,16 @@
 
 <div class="navbar-box">
   <div class="container">
-    <h3>Please sign-in to enter your account</h3>
+    <h3>To reset your password please enter your email below</h3>
 
-    <p>using the email and your set password.</p>
+    <p>You should receive an email within 5 minutes with instructions.</p>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
+      <br>
       <h2>Forgot your password?</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
@@ -23,11 +24,11 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Send me reset password instructions" %>
+          <%= f.button :submit, "Reset Password" %>
         </div>
       <% end %>
+
+      <%= render "devise/shared/links" %>
     </div>
   </div>
 </div>
-
-<%= render "devise/shared/links" %>
