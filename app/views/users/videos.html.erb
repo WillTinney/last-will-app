@@ -8,22 +8,18 @@
   <h3>My Videos</h3>
 
   <div id="webcam"></div>
+  <video id="gum" autoplay muted></video>
+  <video id="recorded" autoplay loop></video>
 
+  <div class="video-buttons">
+    <button id="record" disabled>Start Recording</button>
+    <button id="play" disabled>Play</button>
+    <button id="download" disabled>Download</button>
+  </div>
 </div>
 
-  <div id="container">
-    <video id="gum" autoplay muted></video>
-    <video id="recorded" autoplay loop></video>
-
-    <div>
-      <button id="record" disabled>Start Recording</button>
-      <button id="play" disabled>Play</button>
-      <button id="download" disabled>Download</button>
-    </div>
-  </div>
-
-  <!-- include adapter for srcObject shim -->
-  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<!-- include adapter for srcObject shim -->
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
 <script>
   'use strict';
