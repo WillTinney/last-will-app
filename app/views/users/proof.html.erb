@@ -6,8 +6,12 @@
   </div>
 
   <% if @user.proof_of_residency %>
-    <%= cl_image_tag(@user.proof_of_residency, { size: '250x250'}) %>
-    <%= @user.proof_comments %>
+    <h3>Your proof of residency:</h3>
+    <div id="proof-image">
+      <%= cl_image_tag(@user.proof_of_residency, { size: '250x250'}) %>
+    </div>
+    <h4>Comments</h4>
+    <p><%= @user.proof_comments %></p>
   <% else %>
     <%= simple_form_for(@user) do |f| %>
       <%= f.input :proof_of_residency, as: :attachinary %>
