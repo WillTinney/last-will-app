@@ -7,36 +7,47 @@
 
   <h3>My Videos</h3>
 
-    <div class="detail-box">
-      <div class="detail">
-
-      </div>
-    </div>
+<video autoplay></video>
 
 </div>
 
 <script>
   var errorCallback = function(e) {
-    console.log('Reeeejected!', e);
+    console.log('It ain\'t working!', e);
   };
 
   function hasGetUserMedia() {
     return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
   }
 
-  if (hasGetUserMedia()) {
-    // Not showing vendor prefixes.
-    navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
-      var video = document.querySelector('video');
-      video.src = window.URL.createObjectURL(localMediaStream);
+  navigator.getUserMedia  = navigator.getUserMedia ||
+                            navigator.webkitGetUserMedia ||
+                            navigator.mozGetUserMedia ||
+                            navigator.msGetUserMedia;
 
-      // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-      // See crbug.com/110938.
-      video.onloadedmetadata = function(e) {
-        // Ready to go. Do some stuff.
-      };
+  var video = document.querySelector('video');
+
+  if (navigator.getUserMedia) {
+    navigator.getUserMedia({audio: true, video: true}, function(stream) {
+      video.src = window.URL.createObjectURL(stream);
     }, errorCallback);
   } else {
-    alert('getUserMedia() is not supported in your browser');
+    video.src = 'somevideo.webm'; // fallback.
   }
+
+  // if (hasGetUserMedia()) {
+  //   // Not showing vendor prefixes.
+  //   navigator.getUserMedia({video: true, audio: true}, function(localMediaStream) {
+  //     var video = document.querySelector('video');
+  //     video.src = window.URL.createObjectURL(localMediaStream);
+
+  //     // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
+  //     // See crbug.com/110938.
+  //     video.onloadedmetadata = function(e) {
+  //       // Ready to go. Do some stuff.
+  //     };
+  //   }, errorCallback);
+  // } else {
+  //   alert('Video recordings are not supported in your browser');
+  // }
 </script>
