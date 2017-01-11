@@ -16,6 +16,13 @@
     <button id="play" disabled>Play</button>
     <button id="download" disabled>Download</button>
   </div>
+
+  <div class="video-form">
+    <%= simple_form_for[current_user, @video] do |f| %>
+      <%= f.input :video, as: :attachinary %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 </div>
 
 <!-- include adapter for srcObject shim -->
