@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'assignees/index'
+
+  get 'assignees/show'
+
+  get 'assignees/new'
+
+  get 'assignees/create'
+
+  get 'assignees/edit'
+
+  get 'assignees/update'
+
+  get 'assignees/destroy'
+
   get 'videos/index'
 
   get 'videos/show'
