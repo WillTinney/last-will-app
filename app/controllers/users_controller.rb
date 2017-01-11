@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def videos
+    @video = Video.new
   end
 
   private

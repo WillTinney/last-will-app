@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :notes, dependent: :destroy
   has_many :references, dependent: :destroy
   has_many :photos, dependent: :destroy
+  has_one :video, dependent: :destroy
 
   # Relationship Methods
   def show_partner
