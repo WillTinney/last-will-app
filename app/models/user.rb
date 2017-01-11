@@ -6,8 +6,11 @@ class User < ApplicationRecord
 
   has_attachment :proof_of_residency
 
-  has_many :guardians, dependent: :destroy
+  # delegate :approvers, :guardians, :recipients, to: :assignees
+
+  has_many :assignees, dependent: :destroy
   has_many :approvers, dependent: :destroy
+  has_many :guardians, dependent: :destroy
   has_many :recipients, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :references, dependent: :destroy
