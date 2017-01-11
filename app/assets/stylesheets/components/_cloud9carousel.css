@@ -14,6 +14,7 @@
   width: 80%;
   height: 300px;
   margin: 12px auto;
+  animation: opacityFade 0.5s ease-in;
 }
 @media (min-width: 768px) {
   .cloud9-carousel {
@@ -21,6 +22,11 @@
     height: 460px;
     margin-right: 0;
   }
+}
+@keyframes opacityFade {
+  0% { opacity:0.01; };
+  50% { opacity:0.01; };
+  100% { opacity:1; };
 }
 #item-title {
   color: #F31414;

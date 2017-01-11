@@ -2,12 +2,21 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-section {
+.home-section {
   padding: 150px 0;
 
   h2 {
-    margin-bottom: 40px
+    margin-bottom: 40px;
+    font-weight: 500;
   }
+  p {
+    font-weight: 300;
+    font-size: 20px;
+  }
+}
+.call-to-action-text p {
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .zero-text-margin p {
   margin: 0;
