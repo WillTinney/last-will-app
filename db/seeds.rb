@@ -26,15 +26,15 @@ Assignee.create!(relationship: "Cousin", first_name: "Betty", last_name: "Hall",
 Assignee.create!(relationship: "Friend", first_name: "George", last_name: "Martin",
   citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "george@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
-  postcode: "T3 5TT", user_id: "1", profile_picture: "user.png", type: "Approver"
+  postcode: "T3 5TT", user_id: "1", profile_picture: "user.png", type: "Approver")
 Assignee.create!(relationship: "Friend", first_name: "William", last_name: "Rowley",
   citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "william@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
-  postcode: "T3 5TT", user_id: "1", profile_picture: "user.png", type: "Approver"
+  postcode: "T3 5TT", user_id: "1", profile_picture: "user.png", type: "Approver")
 Assignee.create!(relationship: "Friend", first_name: "Rachel", last_name: "Green",
   citizenship: "", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "rachel@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
-  postcode: "T3 5TT", user_id: "1", profile_picture: "user2.png", type: "Approver"
+  postcode: "T3 5TT", user_id: "1", profile_picture: "user2.png", type: "Approver")
 
 # Partner
 Assignee.create!(relationship: "Partner", first_name: "Edith", last_name: "Hartaway",
