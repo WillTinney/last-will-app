@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  post '/subscribe' to: 'pages#subscribe'
+  post '/subscribe', to: 'pages#subscribe'
 
   # Routes for core user side
   resources :users, only: [ :show, :edit, :update ] do
