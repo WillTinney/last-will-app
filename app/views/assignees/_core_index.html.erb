@@ -21,5 +21,5 @@
     </div>
   <% end %>
 
-  <%= link_to "Add New " + @type, new_user_assignee_path, class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add New " + @type, new_user_assignee_path(current_user, @type), class: "btn btn-transparent btn-default" %>
 </div>

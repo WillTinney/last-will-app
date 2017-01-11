@@ -89,6 +89,6 @@
     </div>
   <% end %>
 
-  <%= link_to "Add New Friend or Family Member", new_user_recipient_path, class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add New Friend or Family Member", new_user_assignee_path(current_user, @type), class: "btn btn-transparent btn-default" %>
 
 </div>
