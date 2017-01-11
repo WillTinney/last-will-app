@@ -4,7 +4,7 @@
   <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
 
   <div class="blue-box">
-    <p>Here include all photos associated with this <%= @assignee.capitalize %>.</p>
+    <p>Here include all photos associated with this <%= @assignee.type.downcase %>.</p>
   </div>
 
   <% @assignee.photos.each do |photo| %>
@@ -13,11 +13,11 @@
 
     <div id="edit-photo-form"></div>
 
-    <%= link_to "Edit", edit_user_approver_photo_path(current_user, @assignee, photo.id), remote: true, class: "btn btn-transparent btn-default" %>
-    <%= link_to "Delete", user_approver_photo_path(current_user, @assignee, photo.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Edit", edit_user_assignee_photo_path(current_user, @assignee, photo.id), remote: true, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_assignee_photo_path(current_user, @assignee, photo.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Photo", new_user_approver_photo_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add Photo", new_user_assignee_photo_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
 
   <div id="new-photo-form"></div>
 

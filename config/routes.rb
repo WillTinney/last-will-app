@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     # Assignee Pages
     resources :assignees do
       get 'notes', to: 'assignees#notes'
-      get 'admin', to: 'assignees#admin'
+      get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
       get 'videos', to: 'assignees#videos'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     # Approver Pages
     resources :approvers, controller: 'assignees', type: 'Approver' do
       get 'notes', to: 'assignees#notes'
-      get 'admin', to: 'assignees#admin'
+      get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
       get 'videos', to: 'assignees#videos'
     end
@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     # Guardian Pages
     resources :guardians, controller: 'assignees', type: 'Guardian' do
       get 'notes', to: 'assignees#notes'
-      get 'admin', to: 'assignees#admin'
+      get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
       get 'videos', to: 'assignees#videos'
     end
@@ -49,7 +49,7 @@ Rails.application.routes.draw do
     # Approver Pages
     resources :recipients, controller: 'assignees', type: 'Recipient' do
       get 'notes', to: 'assignees#notes'
-      get 'admin', to: 'assignees#admin'
+      get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
       get 'videos', to: 'assignees#videos'
     end

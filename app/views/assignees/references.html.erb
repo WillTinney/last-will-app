@@ -13,11 +13,11 @@
 
     <div id="edit-reference-form"></div>
 
-    <%= link_to "Edit", edit_user_approver_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
-    <%= link_to "Delete", user_approver_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Reference", new_user_approver_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
 
   <div id="new-reference-form"></div>
 

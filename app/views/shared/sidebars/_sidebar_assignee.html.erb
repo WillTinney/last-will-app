@@ -62,14 +62,14 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // // Clicking on a different tab changes the content shown on the page
-    // $('.sidebar-tab').on('click', function(event){
-    //   $('.sidebar-tabs').children().removeClass("active");
-    //   $(this).addClass("active");
-    //   var childIndex = $(this).index();
-    //   $('#tab-content').children().addClass("hidden");
-    //   $('.' + childIndex).removeClass("hidden");
-    //   window.location.hash = $(this).attr('id').split("-")[0];
-    // });
+    // Clicking on a different tab changes the content shown on the page
+    $('.sidebar-tab').on('click', function(event){
+      $('.sidebar-tabs').children().removeClass("active");
+      $(this).addClass("active");
+      var childIndex = $(this).index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' + childIndex).removeClass("hidden");
+      window.location.hash = $(this).attr('id').split("-")[0];
+    });
   </script>
 <% end %>
