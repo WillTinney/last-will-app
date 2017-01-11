@@ -1,9 +1,10 @@
 class AssigneesController < ApplicationController
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
   before_action :set_assignee_id, only: [:notes, :admin, :photos, :videos]
+  before_action :set_type
 
   def index
-    @approvers = Assignee.all
+    @assignees = Assignee.all
   end
 
   def show
@@ -59,6 +60,10 @@ class AssigneesController < ApplicationController
 
   def set_assignee_id
     @assignee = Assignee.find(params[:assignee_id])
+  end
+
+  def set_type
+    @type = params[:type]
   end
 
   def approver_params
