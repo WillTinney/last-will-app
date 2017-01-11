@@ -1,2 +1,8 @@
-var notice = ("<div class='email-notice'>Successfully Subscribed!</div>");
-$('#registration').append(notice);
+<% error ||= nil %>
+$('#registration .email-notice').remove();
+<% if error.present? %>
+  $('#registration').append("<div class='email-error email-notice'><%= error %></div>");
+<% else %>
+  var notice = ("<div class='email-notice email-success'>Successfully Subscribed!</div>");
+  $('#registration').append(notice);
+<% end %>

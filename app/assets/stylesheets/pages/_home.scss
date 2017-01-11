@@ -164,9 +164,14 @@
 .email-notice {
   font-weight: 500;
   color: white;
-  background-color: #40BA45;
   border-radius: 5px;
   display: inline-block;
   margin: 20px auto 0 auto;
   padding: 5px 50px
+}
+.email-error {
+  background-color: #E22D2D;
+}
+.email-success {
+  background-color: #40BA45;
 }

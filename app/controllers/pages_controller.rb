@@ -6,11 +6,14 @@ class PagesController < ApplicationController
   end
 
   def subscribe
-
-    subscribe_user_to_mailchimp
     respond_to do |format|
-      format.js
-    end
+      begin
+        subscribe_user_to_mailchimp
+      rescue Gibbon::MailChimpError => e
+        format.js { render :subscribe, locals: { error: e.body["detail"] }  }
+      end
+        format.js
+end
   end
 
   private
