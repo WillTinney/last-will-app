@@ -1,1 +1,23 @@
-notes.html.erb
+<div class="grey-box">
+  <h2><%= @assignee.type.capitalize %> Notes Page</h2>
+
+  <h3><%= @asssignee.first_name + " " + @asssignee.last_name %></h3>
+
+  <div class="blue-box">
+    <p>Here include all notes associated with this <%= assignee.type %>.</p>
+  </div>
+
+  <% @asssignee.notes.each do |note| %>
+    <h4><%= note.title %></h4>
+    <p><%= note.content %></p>
+
+    <div id="edit-note-form"></div>
+
+    <%= link_to "Edit", edit_user_approver_note_path(current_user, @asssignee, note.id), remote: true, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_approver_note_path(current_user, @asssignee, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
+  <%= link_to "Add Note", new_user_approver_note_path(current_user, @asssignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+
+  <div id="new-note-form"></div>
+</div>

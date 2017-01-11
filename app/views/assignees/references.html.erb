@@ -1,1 +1,24 @@
-references.html.erb
+<div class="grey-box">
+  <h2><%= @assignee.type.capitalize %> Admin Page</h2>
+
+  <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
+
+  <div class="blue-box">
+    <p>Here include all admin references associated with this <%= @assignee.type %>.</p>
+  </div>
+
+  <% @assignee.references.each do |reference| %>
+    <h4><%= reference.title %></h4>
+    <p><%= reference.comments %></p>
+
+    <div id="edit-reference-form"></div>
+
+    <%= link_to "Edit", edit_user_approver_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_approver_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
+  <%= link_to "Add Reference", new_user_approver_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+
+  <div id="new-reference-form"></div>
+
+</div>

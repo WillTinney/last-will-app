@@ -1,10 +1,10 @@
 <h2><%= @assignee.first_name + ' ' + @assignee.try(:middle_name).to_s + ' ' + @assignee.last_name %></h2>
 
 <div class="grey-box">
-  <h3><%= @assignee.type %></h3>
+  <h3><%= @assignee.type.capitalize %></h3>
 
   <div class="blue-box">
-    <p>You have listed <%= @assignee.first_name %> as an <%= @assignee.type.downcase %>. This means... [assignee type description] </p>
+    <p>You have listed <%= @assignee.first_name %> as an <%= @assignee.typ %>. This means... [assignee type description] </p>
   </div>
 
   <%= link_to '#' do %>
