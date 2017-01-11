@@ -29,12 +29,31 @@ Rails.application.routes.draw do
       resources :photos, only: [:new, :create, :edit, :update, :destroy]
       resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
+
+    # Approver Pages
     resources :approvers, controller: 'assignees', type: 'Approver' do
       get 'notes', to: 'assignees#notes'
       get 'admin', to: 'assignees#admin'
       get 'photos', to: 'assignees#photos'
       get 'videos', to: 'assignees#videos'
     end
+
+    # Guardian Pages
+    resources :guardians, controller: 'assignees', type: 'Guardian' do
+      get 'notes', to: 'assignees#notes'
+      get 'admin', to: 'assignees#admin'
+      get 'photos', to: 'assignees#photos'
+      get 'videos', to: 'assignees#videos'
+    end
+
+    # Approver Pages
+    resources :recipients, controller: 'assignees', type: 'Recipient' do
+      get 'notes', to: 'assignees#notes'
+      get 'admin', to: 'assignees#admin'
+      get 'photos', to: 'assignees#photos'
+      get 'videos', to: 'assignees#videos'
+    end
+
     # Routes for wizard sign-up
     resources :after_sign_up
 
