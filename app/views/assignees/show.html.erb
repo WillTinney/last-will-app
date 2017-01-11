@@ -39,13 +39,15 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // Changes the active scrollmenu tab to the current user
+    // Changes active tab after click
     $('.scrollbox').children().removeClass("active");
+
     var assigneeId = <%= @assignee.id %>
 
-    // Try iterating through then if contains approverId addclass()
-    if ($('.scrollitem h6').text().includes(approverId)) {
-      $('.scrollitem').find("h6").includes(approverId).addClass("active");
+    $('.scrollitem h6').filter(function () {
+        return $(this).text() == assigneeId;
+    }).parentsUntil('.scrollmenu').addClass('active');
+
     // AJAX to load tab content without a refresh
 //     $('#show-profile-sidebar-tab').click(function(e){
 //       e.preventDefault();
