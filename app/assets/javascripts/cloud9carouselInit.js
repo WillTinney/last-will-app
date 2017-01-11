@@ -12,7 +12,7 @@ $(document).ready(function(){
     $("#cloud9-carousel").Cloud9Carousel( {
       xRadius: 130,
       yRadius: 60,
-      farScale: 0.1,
+      farScale: 0.05,
       autoPlay: 1,
       bringToFront: true
     } );

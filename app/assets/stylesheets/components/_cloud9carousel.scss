@@ -52,6 +52,17 @@
     font-size: 15px !important;
   }
 }
+@media (max-width: 768px) {
+  .cloud9-item{
+    border: none;
+    width: 300px;
+    height: 300px;
+    font-size: 10px;
+  }
+  .carousel-image{
+    max-width: 50px;
+  }
+}
 .carousel-image {
   margin-top: 20px;
   max-width: 200px;
