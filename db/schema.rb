@@ -15,27 +15,6 @@ ActiveRecord::Schema.define(version: 20170111124924) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "approvers", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "citizenship"
-    t.date     "date_of_birth"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "town"
-    t.string   "country"
-    t.string   "postcode"
-    t.string   "relationship"
-    t.string   "profile_picture"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["user_id"], name: "index_approvers_on_user_id", using: :btree
-  end
-
   create_table "assignees", force: :cascade do |t|
     t.string   "first_name"
     t.string   "middle_name"
@@ -73,44 +52,14 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
-  create_table "guardians", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "citizenship"
-    t.date     "date_of_birth"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "town"
-    t.string   "postcode"
-    t.string   "country"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "relationship"
-    t.string   "profile_picture"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["user_id"], name: "index_guardians_on_user_id", using: :btree
-  end
-
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
-    t.integer  "approver_id"
-    t.integer  "guardian_id"
-    t.integer  "recipient_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "note_owner_type"
-    t.integer  "note_owner_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["approver_id"], name: "index_notes_on_approver_id", using: :btree
-    t.index ["guardian_id"], name: "index_notes_on_guardian_id", using: :btree
-    t.index ["note_owner_type", "note_owner_id"], name: "index_notes_on_note_owner_type_and_note_owner_id", using: :btree
-    t.index ["recipient_id"], name: "index_notes_on_recipient_id", using: :btree
+    t.index ["assignee_id"], name: "index_notes_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
@@ -118,46 +67,23 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.string   "title"
     t.string   "caption"
     t.string   "photo"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "photo_owner_type"
-    t.integer  "photo_owner_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["photo_owner_type", "photo_owner_id"], name: "index_photos_on_photo_owner_type_and_photo_owner_id", using: :btree
+    t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
-  end
-
-  create_table "recipients", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "middle_name"
-    t.string   "last_name"
-    t.string   "citizenship"
-    t.date     "date_of_birth"
-    t.string   "email"
-    t.string   "phone_number"
-    t.string   "address_line_1"
-    t.string   "address_line_2"
-    t.string   "town"
-    t.string   "country"
-    t.string   "postcode"
-    t.string   "relationship"
-    t.string   "profile_picture"
-    t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["user_id"], name: "index_recipients_on_user_id", using: :btree
   end
 
   create_table "references", force: :cascade do |t|
     t.string   "title"
     t.string   "comments"
     t.string   "document"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "reference_owner_type"
-    t.integer  "reference_owner_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
-    t.index ["reference_owner_type", "reference_owner_id"], name: "index_references_on_reference_owner_type_and_reference_owner_id", using: :btree
+    t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
 
@@ -204,15 +130,12 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
   end
 
-  add_foreign_key "approvers", "users"
   add_foreign_key "assignees", "users"
-  add_foreign_key "guardians", "users"
-  add_foreign_key "notes", "approvers"
-  add_foreign_key "notes", "guardians"
-  add_foreign_key "notes", "recipients"
+  add_foreign_key "notes", "assignees"
   add_foreign_key "notes", "users"
+  add_foreign_key "photos", "assignees"
   add_foreign_key "photos", "users"
-  add_foreign_key "recipients", "users"
+  add_foreign_key "references", "assignees"
   add_foreign_key "references", "users"
   add_foreign_key "videos", "users"
 end
