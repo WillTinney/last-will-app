@@ -121,3 +121,32 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+// Navbar for landing page
+#navbar-home {
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+// Sign-Up Navbar Animation
+// @keyframes dropHeader {
+//   0% {
+//     transform: translateY(-100%);
+//   }
+//   100% {
+//     transform: translateY(0);
+//   }
+// }
+
+#sign-up-navbar {
+  box-shadow: none;
+}
+// #sign-up-navbar {
+//   height: 30%;
+//   padding: 30px;
+
+//   animation-name: dropHeader;
+//   animation-iteration-count: 1;
+//   animation-timing-function: ease-out;
+//   animation-duration: 0.6s;
+// }

@@ -58,14 +58,19 @@
 }
 .feature {
   padding: 5px 40px;
+  h4 {
+    margin-bottom: 20px;
+  }
 }
 .feature-image {
-  height: 150px;
+  height: 100px;
+  margin-bottom: 10px;
 }
 #feedback {
   color: white;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 90vh;
 
 }
 #caroussel{
@@ -76,6 +81,9 @@
 }
 #comparison {
   background-color: #4291A6;
+  h2 {
+    color: white;
+  }
 }
 .comparison-box {
   background: #F8F8F9;
@@ -157,9 +165,16 @@
   }
 }
 #registration {
+  padding: 60px 0;
   width: 100%;
   height: 50vh;
   background-color: #F8F8F9;
+  h2 {
+    margin-bottom: 30px;
+  }
+  p {
+    margin-bottom: 50px;
+  }
 }
 .email-notice {
   font-weight: 500;

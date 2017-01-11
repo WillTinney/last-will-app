@@ -1,23 +1,21 @@
-class CreateGuardians < ActiveRecord::Migration[5.0]
+class CreateAssignees < ActiveRecord::Migration[5.0]
   def change
-    create_table :guardians do |t|
+    create_table :assignees do |t|
       t.string :first_name
       t.string :middle_name
       t.string :last_name
+      t.string :relationship
       t.string :citizenship
-      t.date :date_of_birth
+      t.string :date_of_birth
       t.string :email
       t.string :phone_number
       t.string :address_line_1
       t.string :address_line_2
       t.string :town
-      t.string :postcode
       t.string :country
-      t.float :latitude
-      t.float :longitude
-      t.string :relationship
+      t.string :postcode
       t.string :profile_picture
-      t.references :user, foreign_key: true
+      t.string :type
 
       t.timestamps
     end

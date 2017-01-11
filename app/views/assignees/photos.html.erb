@@ -1,0 +1,24 @@
+<div class="grey-box">
+  <h2><%= @assignee.type.capitalize %> Photos Page</h2>
+
+  <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
+
+  <div class="blue-box">
+    <p>Here include all photos associated with this <%= @assignee.capitalize %>.</p>
+  </div>
+
+  <% @assignee.photos.each do |photo| %>
+    <h4><%= photo.title %></h4>
+    <p><%= photo.caption %></p>
+
+    <div id="edit-photo-form"></div>
+
+    <%= link_to "Edit", edit_user_approver_photo_path(current_user, @assignee, photo.id), remote: true, class: "btn btn-transparent btn-default" %>
+    <%= link_to "Delete", user_approver_photo_path(current_user, @assignee, photo.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+  <% end %>
+
+  <%= link_to "Add Photo", new_user_approver_photo_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+
+  <div id="new-photo-form"></div>
+
+</div>

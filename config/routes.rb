@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
 
+  get 'assignees/index'
+
+  get 'assignees/show'
+
+  get 'assignees/new'
+
+  get 'assignees/create'
+
+  get 'assignees/edit'
+
+  get 'assignees/update'
+
+  get 'assignees/destroy'
+
+  get 'videos/index'
+
+  get 'videos/show'
+
+  get 'videos/new'
+
+  get 'videos/create'
+
+  get 'videos/edit'
+
+  get 'videos/update'
+
+  get 'videos/destroy'
+
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users, controllers: { registrations: 'registrations' }
