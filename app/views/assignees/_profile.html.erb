@@ -1,0 +1,54 @@
+<h2><%= @assignee.first_name + ' ' + @assignee.try(:middle_name).to_s + ' ' + @assignee.last_name %></h2>
+
+<div class="grey-box">
+  <h3><%= @assignee.type %></h3>
+
+  <div class="blue-box">
+    <p>You have listed <%= @assignee.first_name %> as an <%= @assignee.type.downcase %>. This means... [assignee type description] </p>
+  </div>
+
+  <%= link_to '#' do %>
+    <h5>See <%= @assignee.first_name %>'s details.</h5>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Notes</h3>
+      <% end %>
+      <hr>
+      <% @assignee.notes.each do |note| %>
+        <p><%= note.title %><p>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Administration References</h3>
+      <% end %>
+      <hr>
+      <% @assignee.references.each do |reference| %>
+        <p><%= reference.title %><p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Photos</h3>
+      <% end %>
+      <hr>
+      <% @assignee.photos.each do |photo| %>
+        <p><%= photo.title %><p>
+      <% end %>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 card">
+      <%= link_to "#" do %>
+        <h3>Video Messages</h3>
+      <% end %>
+      <hr>
+    </div>
+  </div>
+</div>
