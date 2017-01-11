@@ -18,7 +18,7 @@
   </div>
 
   <div class="video-form">
-    <%= simple_form_for(current_user, @video) do |f| %>
+    <%= simple_form_for [current_user, @video] do |f| %>
       <%= f.input :video, as: :attachinary %>
       <%= f.submit %>
     <% end %>
