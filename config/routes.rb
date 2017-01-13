@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'digital', to: 'users#digital'
     get 'proof', to: 'users#proof'
     get 'notes', to: 'users#notes'
-    get 'admin', to: 'users#admin'
+    get 'references', to: 'users#references'
     get 'photos', to: 'users#photos'
     get 'videos', to: 'users#videos'
 
