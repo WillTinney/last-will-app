@@ -1,14 +1,17 @@
 // Core Dashboard Classes
 .dashboard-box {
   margin-top: 200px;
+  height: 100%;
   background-color: #F8F8F9;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
 }
 .grey-box {
   width: 95%;
-  min-height: 100%;
   padding: 8px 24px;
   margin: auto;
-  background-size: cover;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
