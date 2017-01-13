@@ -2,64 +2,59 @@
   <%= render 'shared/navbar' %>
 <% end %>
 
-<div class="include-sidebar">
+<%= content_for(:sidebar) do %>
+  <%= render 'shared/sidebars/sidebar_core' %>
+<% end %>
 
-  <%= render 'shared/scrollmenu' %>
+<div class="dashboard-box">
+  <div id="tab-content">
+    <div class="0" id="my-profile-content">
+      <%= render file: 'users/profile' %>
+    </div>
 
-  <div class="dashboard-box">
-    <div id="tab-content">
-      <div class="0" id="my-profile-content">
-        <%= render file: 'users/profile' %>
-      </div>
+    <div class="2 hidden" id="call_to_action-content">
+      <%= render 'users/profile/call_to_action' %>
+    </div>
 
-      <div class="2 hidden" id="call_to_action-content">
-        <%= render 'users/profile/call_to_action' %>
-      </div>
+    <div class="4 hidden" id="personal-details-content">
+      <%= render 'users/profile/personal_details' %>
+    </div>
 
-      <div class="4 hidden" id="personal-details-content">
-        <%= render 'users/profile/personal_details' %>
-      </div>
+    <div class="6 hidden" id="guardian-content">
+      <%= render 'users/profile/guardians' %>
+    </div>
 
-      <div class="6 hidden" id="guardian-content">
-        <%= render 'users/profile/guardians' %>
-      </div>
+    <div class="8 hidden" id="approver-content">
+      <%= render 'users/profile/approvers' %>
+    </div>
 
-      <div class="8 hidden" id="approver-content">
-        <%= render 'users/profile/approvers' %>
-      </div>
+    <div class="10 hidden" id="family-and-friends-content">
+      <%= render 'users/profile/family_and_friends' %>
+    </div>
 
-      <div class="10 hidden" id="family-and-friends-content">
-        <%= render 'users/profile/family_and_friends' %>
-      </div>
+    <div class="12 hidden" id="my-digital-assets-content">
+      <%= render 'users/digital_assets/my_digital_assets' %>
+    </div>
 
-      <div class="12 hidden" id="my-digital-assets-content">
-        <%= render 'users/digital_assets/my_digital_assets' %>
-      </div>
+    <div class="14 hidden" id="proof-of-residency-content">
+      <%= render 'users/digital_assets/proof_of_residency' %>
+    </div>
 
-      <div class="14 hidden" id="proof-of-residency-content">
-        <%= render 'users/digital_assets/proof_of_residency' %>
-      </div>
+    <div class="16 hidden" id="admin-references-content">
+      <%= render 'users/digital_assets/admin_references' %>
+    </div>
 
-      <div class="16 hidden" id="admin-references-content">
-        <%= render 'users/digital_assets/admin_references' %>
-      </div>
+    <div class="18 hidden" id="notes-content">
+      <%= render file: 'users/notes' %>
+    </div>
 
-      <div class="18 hidden" id="notes-content">
-        <%= render file: 'users/notes' %>
-      </div>
+    <div class="20 hidden" id="photo-library-content">
+      <%= render 'users/digital_assets/photo_library' %>
+    </div>
 
-      <div class="20 hidden" id="photo-library-content">
-        <%= render 'users/digital_assets/photo_library' %>
-      </div>
-
-      <div class="22 hidden" id="video-library-content">
-        <%= render 'users/digital_assets/video_library' %>
-      </div>
+    <div class="22 hidden" id="video-library-content">
+      <%= render 'users/digital_assets/video_library' %>
     </div>
   </div>
-
-  <%= content_for(:sidebar) do %>
-    <%= render 'shared/sidebars/sidebar_core' %>
-  <% end %>
 </div>
 

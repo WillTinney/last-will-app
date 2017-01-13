@@ -13,9 +13,9 @@
     <div class="include-sidebar">
       <%= yield(:sidebar) %>
       <%= render 'shared/scrollmenu' %>
+      <%= render 'shared/flashes' %>
+      <%= yield %>
     </div>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <%= yield(:after_js) %>
