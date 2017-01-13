@@ -58,7 +58,8 @@
     </div>
   </div>
 
-  <%= yield(:sidebar) %>
-
+  <%= content_for(:sidebar) do %>
+    <%= render 'shared/sidebars/sidebar_core' %>
+  <% end %>
 </div>
 

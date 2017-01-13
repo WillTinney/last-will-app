@@ -11,7 +11,7 @@
   <body>
     <%= yield(:navbar) %>
     <div class="include-sidebar">
-      <%= render 'shared/sidebars/sidebar_core' %>
+      <%= yield(:sidebar) %>
       <%= render 'shared/scrollmenu' %>
     </div>
     <%= render 'shared/flashes' %>
