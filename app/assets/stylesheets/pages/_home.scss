@@ -2,12 +2,21 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-section {
-  padding: 50px 0;
+.home-section {
+  padding: 150px 0;
 
   h2 {
-    margin-bottom: 40px
+    margin-bottom: 40px;
+    font-weight: 500;
   }
+  p {
+    font-weight: 300;
+    font-size: 20px;
+  }
+}
+.call-to-action-text p {
+  margin-top: 50px;
+  margin-bottom: 20px;
 }
 .zero-text-margin p {
   margin: 0;
@@ -140,7 +149,19 @@ section {
   height: 100px;
   width: 100px;
   p {
-    font-size: 30px;
+    font-size: 40px;
+    margin-bottom: 0;
+  }
+}
+@media (max-width: 768px) {
+  .versus-circle{
+    top: 330px;
+    left: 140px;
+    height: 70px;
+    width: 70px;
+    p {
+      font-size: 30px;
+    }
   }
 }
 #registration {
@@ -152,6 +173,20 @@ section {
     margin-bottom: 30px;
   }
   p {
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
+}
+.email-notice {
+  font-weight: 500;
+  color: white;
+  border-radius: 5px;
+  display: inline-block;
+  margin: 20px auto 0 auto;
+  padding: 5px 50px
+}
+.email-error {
+  background-color: #E22D2D;
+}
+.email-success {
+  background-color: #40BA45;
 }

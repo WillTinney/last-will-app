@@ -32,6 +32,9 @@ gem 'country_select'
 # Faker Gem for Seed File
 gem 'faker'
 
+# Gibbon gem to wrap MailChimp API
+gem 'gibbon'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
