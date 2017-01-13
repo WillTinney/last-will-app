@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def photos
   end
 
-  def videos
+  def video
     @video = Video.new
   end
 
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name,
+    params.require(:user).permit(:email, :first_name, :middle_name, :last_name,
       :address_line_1, :address_line_2, :town, :country, :postcode,
       :latitude, :longitude, :profile_picture, :proof_of_residency,
       :proof_comments)

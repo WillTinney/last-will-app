@@ -17,16 +17,18 @@ Rails.application.routes.draw do
     get 'digital', to: 'users#digital'
     get 'proof', to: 'users#proof'
     get 'notes', to: 'users#notes'
-    get 'admin', to: 'users#admin'
+    get 'references', to: 'users#references'
     get 'photos', to: 'users#photos'
-    get 'videos', to: 'users#videos'
+    get 'video', to: 'users#video'
+
+    resources :videos
 
     # Assignee Pages
     resources :assignees do
       get 'notes', to: 'assignees#notes'
       get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
-      get 'videos', to: 'assignees#videos'
+      get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:new, :create, :edit, :update, :destroy]
       resources :references, only: [:new, :create, :edit, :update, :destroy]
@@ -37,7 +39,7 @@ Rails.application.routes.draw do
       get 'notes', to: 'assignees#notes'
       get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
-      get 'videos', to: 'assignees#videos'
+      get 'video', to: 'assignees#video'
     end
 
     # Guardian Pages
@@ -45,7 +47,7 @@ Rails.application.routes.draw do
       get 'notes', to: 'assignees#notes'
       get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
-      get 'videos', to: 'assignees#videos'
+      get 'video', to: 'assignees#video'
     end
 
     # Approver Pages
@@ -53,7 +55,7 @@ Rails.application.routes.draw do
       get 'notes', to: 'assignees#notes'
       get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
-      get 'videos', to: 'assignees#videos'
+      get 'video', to: 'assignees#video'
     end
 
     # Routes for wizard sign-up

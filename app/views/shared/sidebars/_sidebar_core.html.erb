@@ -218,7 +218,7 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/admin",
+          url: <%= @user.id %> + "/references",
           data: { },
           success: function(data){
               $('#tab-content').html(data);

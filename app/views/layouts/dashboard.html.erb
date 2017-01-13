@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyWill</title>
+    <title>Dashboard</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
     <%= yield(:navbar) %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' || 'assignees' && params[:action] == 'show' %>
-      <div class="include-sidebar">
-        <%= yield(:sidebar) %>
-        <%= render 'shared/scrollmenu' %>
-        <%= render 'shared/flashes' %>
-        <%= yield %>
-      </div>
-    <% else %>
+    <%= raise %>
+    <div class="include-sidebar">
+      <%= yield(:sidebar) %>
+      <%= render 'shared/scrollmenu' %>
       <%= render 'shared/flashes' %>
       <%= yield %>
-    <% end %>
+    </div>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <%= yield(:after_js) %>
