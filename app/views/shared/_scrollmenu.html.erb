@@ -86,86 +86,80 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <!-- <script>
-    // Changes active tab after click
-    $('.scrollitem').on('click', function(event){
-      $('.scrollbox').children().removeClass("active");
-      $(this).addClass("active");
-    });
-
-    // AJAX to load tab content without a refresh
-    $('.scrollmenu-me').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass("active");
-      $('#profile-sidebar-tab').addClass("active");
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/profile",
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-    $('.scrollmenu-partner').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-    $('.scrollmenu-children').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-    $('.scrollmenu-guardians').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/guardians/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-    $('.scrollmenu-approvers').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-        url: <%= @user.id %> + "/approvers/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-    $('.scrollmenu-recipients').click(function(e){
-      e.preventDefault();
-      var showId = $(this).find("h6").text();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients/" + showId,
-          data: { },
-          success: function(data){
-              $('#tab-content').html(data);
-          }
-      });
-    });
-  </script> -->
+  <script>
+    // // AJAX to load tab content without a refresh
+    // $('.scrollmenu-me').click(function(e){
+    //   e.preventDefault();
+    //   $('.sidebar-tabs').children().removeClass("active");
+    //   $('#profile-sidebar-tab').addClass("active");
+    //   $.ajax({
+    //       type: "GET",
+    //       url: <%= @user.id %> + "/profile",
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+    // $('.scrollmenu-partner').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //       url: <%= @user.id %> + "/recipients/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+    // $('.scrollmenu-children').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //       url: <%= @user.id %> + "/recipients/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+    // $('.scrollmenu-guardians').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //       url: <%= @user.id %> + "/guardians/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+    // $('.scrollmenu-approvers').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //     url: <%= @user.id %> + "/approvers/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+    // $('.scrollmenu-recipients').click(function(e){
+    //   e.preventDefault();
+    //   var showId = $(this).find("h6").text();
+    //   $.ajax({
+    //       type: "GET",
+    //       url: <%= @user.id %> + "/recipients/" + showId,
+    //       data: { },
+    //       success: function(data){
+    //           $('#tab-content').html(data);
+    //       }
+    //   });
+    // });
+  </script>
 <% end %>
