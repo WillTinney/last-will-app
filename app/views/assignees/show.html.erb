@@ -2,37 +2,34 @@
   <%= render 'shared/navbar' %>
 <% end %>
 
-<div class="include-sidebar">
-
+<% content_for(:sidebar) do %>
   <%= render 'shared/sidebars/sidebar_assignee' %>
+<% end %>
 
-  <%= render 'shared/scrollmenu' %>
+<div class="dashboard-box">
+  <div id="tab-content">
+    <div class="0" id="profile-content">
+      <%= render 'assignees/profile' %>
+    </div>
 
-  <div class="dashboard-box">
-    <div id="tab-content">
-      <div class="0" id="profile-content">
-        <%= render 'assignees/profile' %>
-      </div>
+    <div class="2 hidden" id="details-content">
+      <%= render file: 'assignees/edit' %>
+    </div>
 
-      <div class="2 hidden" id="details-content">
-        <%= render file: 'assignees/edit' %>
-      </div>
+    <div class="4 hidden" id="notes-content">
+      <%= render file: 'assignees/notes' %>
+    </div>
 
-      <div class="4 hidden" id="notes-content">
-        <%= render file: 'assignees/notes' %>
-      </div>
+    <div class="6 hidden" id="admin-content">
+      <%= render file: 'assignees/references' %>
+    </div>
 
-      <div class="6 hidden" id="admin-content">
-        <%= render file: 'assignees/references' %>
-      </div>
+    <div class="8 hidden" id="photos-content">
+      <%= render file: 'assignees/photos' %>
+    </div>
 
-      <div class="8 hidden" id="photos-content">
-        <%= render file: 'assignees/photos' %>
-      </div>
-
-      <div class="10 hidden" id="videos-content">
-        <%= render file: 'assignees/videos' %>
-      </div>
+    <div class="10 hidden" id="videos-content">
+      <%= render file: 'assignees/videos' %>
     </div>
   </div>
 </div>
