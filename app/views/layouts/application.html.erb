@@ -11,7 +11,7 @@
   <body>
     <%= yield(:navbar) %>
     <% if params[:controller] == 'users' || 'assignees' %>
-      <div class="include-sidebar">
+      <div class="<%= 'include-sidebar' if params[:action] == 'show' %>">
         <%= yield(:sidebar) %>
         <%= render 'shared/scrollmenu' %>
         <%= render 'shared/flashes' %>
