@@ -53,7 +53,7 @@
     </div>
 
     <div class="22 hidden" id="video-library-content">
-      <%= render file: 'users/videos' %>
+      <%# render file: 'users/video' %>
     </div>
   </div>
 </div>
@@ -74,6 +74,7 @@
     });
     $('#call-to-action-sidebar-tab').click(function(e){
       e.preventDefault();
+      console.log('hello')
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/action",
