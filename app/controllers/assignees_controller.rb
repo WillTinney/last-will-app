@@ -1,4 +1,6 @@
 class AssigneesController < ApplicationController
+  layout 'dashboard'
+
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
   before_action :set_assignee_id, only: [:notes, :admin, :photos, :videos]
   before_action :set_type

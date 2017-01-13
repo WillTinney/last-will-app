@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout 'dashboard'
+
   before_action :set_user, only: [:show, :edit, :update]
   before_action :set_user_id, only: [:profile, :call_to_action, :digital, :proof, :notes, :admin, :photos, :videos]
 
