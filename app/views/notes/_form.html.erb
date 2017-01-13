@@ -1,19 +1,5 @@
-<% if @approver_present == true %>
-  <%= simple_form_for [current_user, @approver, @note] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-  <% end %>
-<% elsif @guardian_present == true %>
-  <%= simple_form_for [current_user, @guardian, @note] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-  <% end %>
-<% elsif @recipient_present == true %>
-  <%= simple_form_for [current_user, @recipient, @note] do |f| %>
-    <%= f.input :title %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-  <% end %>
+<%= simple_form_for [current_user, @assignee, @note] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
 <% end %>
