@@ -10,10 +10,14 @@
   <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
     <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
       <div class="card">
-        <%= image_tag("user2.png", class: "avatar") %>
+        <div class="card-avatar">
+          <%= image_tag("user2.png", class: "avatar") %>
+        </div>
         <div class="card-description">
           <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
+        </div>
+        <div class="card-buttons">
           <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
           <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
         </div>

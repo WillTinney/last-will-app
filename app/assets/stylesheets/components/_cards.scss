@@ -1,15 +1,20 @@
 .card {
   height: 175px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background: white;
   color: white;
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.card-avatar {
+
 }
 .card-description {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+
 }
 .card-description h2 {
   font-size: 24px;
