@@ -38,28 +38,36 @@
       <div class="profile-card" id="action-card">
         <h4>Call to Action</h4>
         <hr>
-
+        <p>*bugle icon*</p>
+        <p>Your call to action is:</p>
+        <p><strong>Brexit</strong></p>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="profile-card" id="guardian-card">
         <h4>Guardians</h4>
         <hr>
-
+        <% @user.guardians.each do |guardian| %>
+          <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="profile-card" id="approver-card">
         <h4>Approvers</h4>
         <hr>
-
+        <% @user.approvers.each do |approver| %>
+          <p><%= approver.first_name + ' ' + approver.last_name %></p>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="profile-card" id="recipient-card">
         <h4>Friends & Family</h4>
         <hr>
-
+        <% @user.recipients.each do |recipient| %>
+          <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
+        <% end %>
       </div>
     </div>
   </div>
