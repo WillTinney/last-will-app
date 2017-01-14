@@ -1,25 +1,22 @@
-<div class="header-box">
+<div class="container-box">
   <h2>My <%= @type.capitalize %>s</h2>
 
   <div class="blue-box">
     <p><%= @type.capitalize %>s are...</p>
   </div>
-</div>
-
-<div class="grey-box">
 
   <% @assignees.where('type = ?', @type).each do |assignee| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= link_to user_approver_path(current_user, assignee.id), class: 'assignee-link profile-picture-inline' do %>
-          <%= image_tag("user.png", class: "avatar") %>
-          <h6><%= assignee.id %></h6>
-          <h5><%= assignee.first_name + " " + assignee.last_name %></h5>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= link_to user_assignee_path(current_user, assignee.id) do %>
+          <%= image_tag("user2.png", class: "avatar") %>
+          <div class="card-description">
+            <h6><%= assignee.id %></h6>
+            <h5><%= assignee.first_name + " " + assignee.last_name %></h5>
+            <%= link_to "Edit", edit_user_assignee_path(current_user, assignee.id), class: "btn btn-transparent btn-default" %>
+            <%= link_to "Delete", user_assignee_path(current_user, assignee.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+          </div>
         <% end %>
-      </div>
-      <div class="detail">
-        <%= link_to "Edit", edit_user_assignee_path(current_user, assignee.id), class: "btn btn-transparent btn-default" %>
-        <%= link_to "Delete", user_assignee_path(current_user, assignee.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
       </div>
     </div>
   <% end %>
