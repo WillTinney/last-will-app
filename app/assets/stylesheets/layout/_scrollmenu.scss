@@ -15,6 +15,11 @@
   -moz-box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
   box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
 }
+@media (min-width: 1400px) {
+  .scrollmenu {
+    border-bottom: medium solid #57BB90;
+  }
+}
 .scrollmenu a {
   color: black;
   text-align: center;
@@ -34,23 +39,6 @@
 .scrollmenu h6 {
   display: none;
 }
-.scrollmenu::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-  background-color: #DBF0E7;
-}
-
-.scrollmenu::-webkit-scrollbar
-{
-  height: 6px;
-  background-color: #DBF0E7;
-}
-
-.scrollmenu::-webkit-scrollbar-thumb
-{
-  background-color: #57BB90;
-}
-
 .scrollbox {
   padding: 5px 10px;
   border-right: 1px solid #D2D3D4;
@@ -69,4 +57,16 @@
 }
 .scrollitem.active {
   box-shadow: 1px 3px 5px 0px rgba(204,204,204,1);
+}
+// Scrollbar
+.scrollmenu::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #DBF0E7;
+}
+.scrollmenu::-webkit-scrollbar {
+  height: 6px;
+  background-color: #DBF0E7;
+}
+.scrollmenu::-webkit-scrollbar-thumb {
+  background-color: #57BB90;
 }
