@@ -1,4 +1,4 @@
-<div class="grey-box">
+<div class="container-box">
   <h2>Family and Friends</h2>
 
   <div class="blue-box">
@@ -8,21 +8,25 @@
   <h3>My Partner</h3>
 
   <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
-    <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+    <div class="col-xs-12 col-md-6">
       <div class="card">
-        <div class="card-avatar">
-          <%= image_tag("user2.png", class: "avatar") %>
-        </div>
+        <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+          <div class="card-avatar">
+            <%= image_tag("user2.png", class: "avatar-card") %>
+          </div>
+        <% end %>
+
         <div class="card-description">
           <h6><%= recipient.id %></h6>
           <h5><%= recipient.first_name + " " + recipient.last_name %></h5>
         </div>
+
         <div class="card-buttons">
           <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
           <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
 
   <h3>My Children</h3>
