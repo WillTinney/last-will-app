@@ -49,6 +49,17 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.platform {
+  height: 100px;
+  width: 100px;
+  border: 100px solid white;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .invisible {
   display: none;
 }
