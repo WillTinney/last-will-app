@@ -13,6 +13,10 @@
   margin-top: 50px;
   transition: 0.5s;
 }
+.sidebar i {
+  font-size: 15px;
+  width: 20px;
+}
 .sidebar a {
   padding: 3px 8px 3px 40px;
   text-decoration: none;
@@ -23,12 +27,14 @@
 }
 .sidebar hr {
   margin: 2px 0;
+  border-color: #DBF0E7;
 }
 .sidebar h4 {
   color: white;
 }
 .sidebar h5 {
   margin: 5px 0;
+  padding-left: 8px;
 }
 .sidebar-header {
   padding: 4px 0;
@@ -36,6 +42,13 @@
   background-color: #77C9D3;
 }
 // Sidebar Tabs
+.sidebar-item {
+
+  display: inline-block;
+}
+.sidebar-tab {
+
+}
 .sidebar a:hover {
   color: #f1f1f1;
   background-color: #5D908A;
@@ -45,4 +58,10 @@
   color: white;
   text-decoration: none;
   opacity: 1;
+}
+.profile-tab i {
+  color: #57BB90;
+}
+.digital-tab i {
+  color: #77C9D3;
 }

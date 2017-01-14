@@ -1,11 +1,13 @@
 .scrollmenu {
-  position: fixed;
   z-index: 1;
-  width: 100%;
   height: 150px;
-  margin-top: -190px;
+  margin-top: 50px;
+  // width: -moz-calc(100% - 250px);
+  // width: -webkit-calc(100% - 250px);
+  // width: calc(100% - 250px);
+  // margin-top: -150px;
   background-color: #FBFDFF;
-  overflow: auto;
+  overflow-x: auto;
   white-space: nowrap;
   display: flex;
   align-items: horizontal;
@@ -13,21 +15,26 @@
   -moz-box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
   box-shadow: 0px 3px 5px 0px rgba(224,224,224,1);
 }
+@media (min-width: 1400px) {
+  .scrollmenu {
+    border-bottom: medium solid #57BB90;
+  }
+}
 .scrollmenu a {
   color: black;
   text-align: center;
-  padding: 6px 10px 3px 10px;
+  padding: 5px 10px 2px 10px;
   text-decoration: none;
 }
 .scrollmenu h3 {
   font-size: 16px;
   font-weight: bold;
-  margin: 8px 0 5px 0;
+  margin: 7px 0 4px 0;
 }
 .scrollmenu h4 {
   font-size: 14px;
   font-weight: bold;
-  margin: 7px 0 5px 0;
+  margin: 6px 0 4px 0;
 }
 .scrollmenu h6 {
   display: none;
@@ -46,8 +53,31 @@
 }
 // Scrollmenu Tabs
 .scrollmenu a:hover {
-  box-shadow: 1px 3px 5px 0px rgba(204,204,204,1);
+  img {
+    box-shadow: 0px 0px 20px 0px #77C9D3;
+  }
+}
+.scrollmenu.active {
 }
 .scrollitem.active {
-  box-shadow: 1px 3px 5px 0px rgba(204,204,204,1);
+  h4 {
+    color: #77C9D3;
+  }
+  img {
+    border: 4px solid #77C9D3;
+    height: 75px;
+    width: 75px;
+  }
+}
+// Scrollbar
+.scrollmenu::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #DBF0E7;
+}
+.scrollmenu::-webkit-scrollbar {
+  height: 6px;
+  background-color: #DBF0E7;
+}
+.scrollmenu::-webkit-scrollbar-thumb {
+  background-color: #57BB90;
 }
