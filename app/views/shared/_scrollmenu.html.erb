@@ -3,7 +3,7 @@
     <h3>Me</h3>
     <div class="scrollitem <%= 'active' if @approver.nil? && @guardian.nil? && @recipient.nil? %>">
       <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
-        <%= image_tag("user.png", class: "avatar-large") %>
+        <%= image_tag("user.png", class: "avatar") %>
         <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
@@ -14,7 +14,7 @@
     <% @user.show_partner.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
-          <%= image_tag("user2.png", class: "avatar-large") %>
+          <%= image_tag("user2.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
           <h6><%= recipient.id %></h6>
         <% end %>
@@ -27,7 +27,7 @@
     <% @user.show_children.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
-          <%= image_tag("user.png", class: "avatar-large") %>
+          <%= image_tag("user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
           <h6><%= recipient.id %></h6>
         <% end %>
@@ -40,7 +40,7 @@
     <% @user.guardians.each do |guardian| %>
       <div class="scrollitem <%= 'active' if @guardian && @guardian.id == guardian.id %>">
         <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
-          <%= image_tag("user2.png", class: "avatar-large") %>
+          <%= image_tag("user2.png", class: "avatar") %>
           <h4><%= guardian.first_name %></h4>
           <h6><%= guardian.id %></h6>
         <% end %>
@@ -53,7 +53,7 @@
     <% @user.approvers.each do |approver| %>
       <div class="scrollitem <%= 'active' if @approver && @approver.id == approver.id %>">
         <%= link_to user_approver_path(current_user, approver), class: 'scrollmenu-approvers' do %>
-          <%= image_tag("user.png", class: "avatar-large") %>
+          <%= image_tag("user.png", class: "avatar") %>
           <h4><%= approver.first_name %></h4>
           <h6><%= approver.id %></h6>
         <% end %>
@@ -66,7 +66,7 @@
     <% @user.show_mother.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <%= image_tag("user2.png", class: "avatar-large") %>
+          <%= image_tag("user2.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
           <h6><%= recipient.id %></h6>
         <% end %>
@@ -76,7 +76,7 @@
     <% @user.show_friends.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <%= image_tag("user.png", class: "avatar-large") %>
+          <%= image_tag("user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
           <h6><%= recipient.id %></h6>
         <% end %>

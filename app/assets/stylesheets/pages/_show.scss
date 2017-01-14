@@ -1,5 +1,6 @@
 // Core Dashboard Classes
 .dashboard-box {
+  margin-top: 200px;
   margin-top: -30px;
   min-height: 762px;
   height: 100%;
@@ -43,11 +44,13 @@
 }
 .profile-picture-inline {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 .profile-picture-inline img {
-  height: 70px;
+  margin-top: 20px;
+  height: 100px;
 }
 .invisible {
   display: none;
