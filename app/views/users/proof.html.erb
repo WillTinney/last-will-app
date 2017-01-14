@@ -7,45 +7,47 @@
     <p>In order to authenticate your...</p>
   </div>
 
-  <% if @user.proof_of_residency %>
+  <div id="proof-of-residency">
+    <% if @user.proof_of_residency %>
 
-    <h3>Your proof of residency:</h3>
-    <div id="proof-image">
-      <%= cl_image_tag(@user.proof_of_residency, { size: '250x250'}) %>
-    </div>
-    <div class="invisible" id="proof-upload-form">
+      <h3>Your proof of residency:</h3>
+      <div id="proof-image">
+        <%= cl_image_tag(@user.proof_of_residency, { size: '250x250'}) %>
+      </div>
+      <div class="invisible" id="proof-upload-form">
+        <%= simple_form_for(@user) do |f| %>
+          <%= f.input :proof_of_residency, as: :attachinary %>
+          <%= f.button :submit, "Update Proof of Residency" %>
+        <% end %>
+      </div>
+      <div class="text-center">
+        <p class="btn btn-transparent btn-default" id="proof-upload-edit">Edit</p>
+        <p class="btn btn-transparent btn-default">Remove</p>
+      </div>
+      <h4>Comments</h4>
+      <div id="proof-comment-content">
+        <p><%= @user.proof_comments %></p>
+      </div>
+      <div class="invisible" id="proof-comment-form">
+        <%= simple_form_for(@user) do |f| %>
+          <%= f.input :proof_comments %>
+          <%= f.button :submit, "Update Proof of Residency" %>
+        <% end %>
+      </div>
+      <p class="btn btn-transparent btn-default" id="proof-comment-edit">Edit</p>
+
+    <% else %>
+
+      <h5>You have not uploaded a proof of residency.</h5>
+      <p>Please use the form below to do so:</p>
       <%= simple_form_for(@user) do |f| %>
         <%= f.input :proof_of_residency, as: :attachinary %>
-        <%= f.button :submit %>
-      <% end %>
-    </div>
-    <div class="text-center">
-      <p class="btn btn-transparent btn-default" id="proof-upload-edit">Edit</p>
-      <p class="btn btn-transparent btn-default">Remove</p>
-    </div>
-    <h4>Comments</h4>
-    <div id="proof-comment-content">
-      <p><%= @user.proof_comments %></p>
-    </div>
-    <div class="invisible" id="proof-comment-form">
-      <%= simple_form_for(@user) do |f| %>
         <%= f.input :proof_comments %>
-        <%= f.button :submit %>
+        <%= f.button :submit, "Submit Proof of Residency" %>
       <% end %>
-    </div>
-    <p class="btn btn-transparent btn-default" id="proof-comment-edit">Edit</p>
 
-  <% else %>
-
-    <h5>You have not uploaded a proof of residency.</h5>
-    <p>Please use the form below to do so:</p>
-    <%= simple_form_for(@user) do |f| %>
-      <%= f.input :proof_of_residency, as: :attachinary %>
-      <%= f.input :proof_comments %>
-      <%= f.button :submit %>
     <% end %>
-
-  <% end %>
+  </div>
 
 </div>
 

@@ -10,10 +10,14 @@
   -o-background-size: cover;
   -webkit-background-size: cover;
 }
+.header-box {
+  width: 95%;
+  margin: auto;
+}
 .grey-box {
   width: 95%;
   padding: 8px 24px;
-  margin: auto;
+  margin: 20px auto;
   background-color: white;
   border-radius: 2px;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);

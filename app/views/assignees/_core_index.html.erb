@@ -1,9 +1,12 @@
-<div class="grey-box">
+<div class="header-box">
   <h2>My <%= @type.capitalize %>s</h2>
 
   <div class="blue-box">
     <p><%= @type.capitalize %>s are...</p>
   </div>
+</div>
+
+<div class="grey-box">
 
   <% @assignees.where('type = ?', @type).each do |assignee| %>
     <div class="detail-box">
