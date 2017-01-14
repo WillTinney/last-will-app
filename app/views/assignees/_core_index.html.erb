@@ -9,7 +9,7 @@
     <div class="detail-box">
       <div class="detail">
         <%= link_to user_approver_path(current_user, assignee.id), class: 'assignee-link profile-picture-inline' do %>
-          <%= image_tag("user.png", class: "avatar-large") %>
+          <%= image_tag("user.png", class: "avatar") %>
           <h6><%= assignee.id %></h6>
           <h5><%= assignee.first_name + " " + assignee.last_name %></h5>
         <% end %>
