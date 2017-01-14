@@ -10,9 +10,14 @@
   -o-background-size: cover;
   -webkit-background-size: cover;
 }
-.header-box {
+.container-box {
   width: 95%;
   margin: auto;
+}
+.header-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .grey-box {
   width: 95%;
@@ -59,11 +64,15 @@
 .invisible {
   display: none;
 }
+.button-height-default {
+  height: 36px;
+  margin-bottom: 10px;
+}
 // Navigation Icons
 .platform-box {
   display: flex;
   justify-content: space-around;
-  margin: 0 20px;
+  margin: 20px 20px 5px 20px;
 }
 .platform {
   background: white;

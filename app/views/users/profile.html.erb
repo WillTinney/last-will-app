@@ -32,32 +32,46 @@
   </div>
 </div>
 
-<h3 class="title-margin">My Digital Assets</h3>
+<br>
 
-<div class="platform-box">
-  <div class="platform platform-digital">
-    <i class="fa fa-home" aria-hidden="true"></i>
-    <h4>Proof of Residency</h4>
-  </div>
-
-  <div class="platform platform-digital">
-    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-    <h4>Admin References</h4>
-  </div>
-
-  <div class="platform platform-digital">
-    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-    <h4>Notes</h4>
-  </div>
-
-  <div class="platform platform-digital">
-    <i class="fa fa-camera" aria-hidden="true"></i>
-    <h4>Photos</h4>
-  </div>
-
-  <div class="platform platform-digital">
-    <i class="fa fa-video-camera" aria-hidden="true"></i>
-    <h4>Videos</h4>
+<div class="container-box">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="profile-card" id="action-card">
+        <h4>Call to Action</h4>
+        <hr>
+        <p>*bugle icon*</p>
+        <p>Your call to action is:</p>
+        <p><strong>Brexit</strong></p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="profile-card" id="guardian-card">
+        <h4>Guardians</h4>
+        <hr>
+        <% @user.guardians.each do |guardian| %>
+          <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="profile-card" id="approver-card">
+        <h4>Approvers</h4>
+        <hr>
+        <% @user.approvers.each do |approver| %>
+          <p><%= approver.first_name + ' ' + approver.last_name %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="profile-card" id="recipient-card">
+        <h4>Friends & Family</h4>
+        <hr>
+        <% @user.recipients.each do |recipient| %>
+          <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -167,7 +181,7 @@
   <h3>My Digital Assets</h3>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 col-sm-6">
       <%= link_to "#" do %>
         <h3>Notes</h3>
       <% end %>
@@ -177,7 +191,7 @@
       <hr>
     </div>
 
-    <div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 col-sm-6">
       <%= link_to "#" do %>
         <h3>Administration References</h3>
       <% end %>
@@ -186,14 +200,14 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 col-sm-6">
       <%= link_to "#" do %>
         <h3>Photos</h3>
       <% end %>
       <hr>
     </div>
 
-    <div class="col-xs-12 col-sm-6 card">
+    <div class="col-xs-12 col-sm-6">
       <%= link_to "#" do %>
         <h3>Video Messages</h3>
       <% end %>
