@@ -58,9 +58,11 @@
   }
 }
 .scrollmenu.active {
-  color: #77C9D3;
 }
 .scrollitem.active {
+  h4 {
+    color: #77C9D3;
+  }
   img {
     border: 4px solid #77C9D3;
     height: 75px;
