@@ -49,14 +49,16 @@
   align-items: center;
   margin-bottom: 20px;
 }
+.invisible {
+  display: none;
+}
+// Navigation Icons
 .platform-box {
   display: flex;
   justify-content: space-around;
   margin: 0 20px;
 }
 .platform {
-  height: 150px;
-  width: 150px;
   background: white;
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
@@ -65,15 +67,75 @@
   justify-content: center;
   align-items: center;
 }
-.platform i {
-  font-size: 55px;
-}
 .platform h4 {
-  font-size: 14px;
   font-weight: bold;
+  text-align: center;
 }
-.invisible {
-  display: none;
+@media (min-width:320px) {
+  .platform {
+    height: 50px;
+    width: 50px;
+  }
+  .platform i {
+    font-size: 16px;
+  }
+  .platform h4 {
+    font-size: 8px;
+    margin: 2px;
+  }
+}
+@media (min-width:481px) {
+  .platform {
+    height: 70px;
+    width: 70px;
+  }
+  .platform i {
+    font-size: 20px;
+  }
+  .platform h4 {
+    font-size: 10px;
+    margin: 3px;
+  }
+}
+@media (min-width:720px) {
+  .platform {
+    height: 95px;
+    width: 95px;
+  }
+  .platform i {
+    font-size: 30px;
+  }
+  .platform h4 {
+    font-size: 12px;
+  }
+}
+@media (min-width:961px) {
+  .platform {
+    height: 120px;
+    width: 120px;
+  }
+  .platform i {
+    font-size: 45px;
+  }
+  .platform h4 {
+    font-size: 13px;
+    margin-top: 2px;
+    max-width: 80px;
+  }
+}
+@media (min-width:1200px) {
+  .platform {
+    height: 150px;
+    width: 150px;
+  }
+  .platform i {
+    font-size: 55px;
+  }
+  .platform h4 {
+    font-size: 14px;
+    margin-top: 8px;
+    max-width: 100px;
+  }
 }
 // Proof of Residency Page
 #proof-image img {
