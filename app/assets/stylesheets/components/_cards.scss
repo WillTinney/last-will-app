@@ -2,12 +2,16 @@
   height: 175px;
   margin: 20px 0;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
+  border-radius: 2px;
   background-size: cover !important;
   background: white;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+.card a {
+
 }
 .card h6 {
   display: none;
@@ -27,4 +31,7 @@
 .card-buttons {
   display: flex;
   flex-direction: column;
+}
+.black-text {
+  color: black;
 }
