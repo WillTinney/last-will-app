@@ -63,3 +63,22 @@ Assignee.create!(relationship: "Friend", first_name: "Mike", last_name: "Lawson"
   citizenship: "UK", date_of_birth: Faker::Date.between(25.years.ago, 50.years.ago), email: "mike@gmail.com", phone_number: mobile_string,
   address_line_1: "11 Test Road", address_line_2: "Test Cresent", town: "Testville",
   postcode: "T3 5TT", user_id: "1", profile_picture: "user.png", type: "Recipient")
+
+# Notes
+10.times do
+  Note.create!(title: Faker::Lorem.sentence(word_count=3), content: Faker::Lorem.paragraph, assignee_id: rand(1..10).to_s, user_id: "1")
+end
+
+# Documents
+5.times do
+  Reference.create!(title: Faker::Commerce.department, comments: "Faker::Lorem.sentence", document: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471075/document_dwvexg.jpg",
+    assignee_id: rand(1..10).to_s, user_id: "1")
+end
+
+# Photos
+Photo.create!(title: Faker::Commerce.product_nameFaker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
