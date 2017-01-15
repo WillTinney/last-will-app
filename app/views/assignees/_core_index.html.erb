@@ -1,7 +1,7 @@
 <div class="container-box">
   <div class="header-box">
     <h2>My <%= @type.capitalize %>s</h2>
-    <%= link_to "Add New " + @type, new_user_assignee_path(current_user, @type), class: "btn btn-transparent btn-default button-height-default" %>
+    <%= link_to "Add New " + @type, new_user_assignee_path(current_user, @type), remote: true, class: "btn btn-transparent btn-default button-height-default" %>
   </div>
 
   <div class="blue-box">

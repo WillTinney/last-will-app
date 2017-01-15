@@ -1,25 +1,27 @@
-<br>
+<div id="assignee-index">
+  <br>
 
-<% if @type == "Recipient" %>
-  <%= render 'assignees/recipient_index' %>
-<% else %>
-  <%= render 'assignees/core_index' %>
-<% end %>
+  <% if @type == "Recipient" %>
+    <%= render 'assignees/recipient_index' %>
+  <% else %>
+    <%= render 'assignees/core_index' %>
+  <% end %>
 
-<% content_for(:after_js) do %>
-  <script>
-    // // AJAX to load show page content without a refresh
-    // $('.approver-link').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //     url: <%= current_user.id %> + "/approvers/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-  </script>
-<% end %>
+  <% content_for(:after_js) do %>
+    <script>
+      // // AJAX to load show page content without a refresh
+      // $('.approver-link').click(function(e){
+      //   e.preventDefault();
+      //   var showId = $(this).find("h6").text();
+      //   $.ajax({
+      //       type: "GET",
+      //     url: <%= current_user.id %> + "/approvers/" + showId,
+      //       data: { },
+      //       success: function(data){
+      //           $('#tab-content').html(data);
+      //       }
+      //   });
+      // });
+    </script>
+  <% end %>
+</div>
