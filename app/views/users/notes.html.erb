@@ -1,6 +1,6 @@
 <br>
 
-<div class="grey-box">
+<div class="container-box">
   <h2>Notes Library</h2>
 
   <div class="blue-box">
@@ -10,9 +10,9 @@
   <h3>My Notes</h3>
   <% @user.notes.each do |note| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card">
-        <%= cl_image_tag("document_dwvexg.jpg") %>
-        <h5><%= note.title %></h5>
+      <div class="alt-card">
+        <h5><strong><%= note.title %></strong></h5>
+        <p><%= note.content %></p>
         <p>Edit + delete buttons</p>
       </div>
     </div>
