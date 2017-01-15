@@ -66,19 +66,19 @@ Assignee.create!(relationship: "Friend", first_name: "Mike", last_name: "Lawson"
 
 # Notes
 10.times do
-  Note.create!(title: Faker::Lorem.sentence(word_count=3), content: Faker::Lorem.paragraph, assignee_id: rand(1..10).to_s, user_id: "1")
+  Note.create!(title: Faker::Book.title, content: Faker::Lorem.paragraph, assignee_id: rand(1..10).to_s, user_id: "1")
 end
 
-# Documents
-5.times do
-  Reference.create!(title: Faker::Commerce.department, comments: "Faker::Lorem.sentence", document: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471075/document_dwvexg.jpg",
-    assignee_id: rand(1..10).to_s, user_id: "1")
-end
+# # Documents
+# 5.times do
+#   Reference.create!(title: Faker::Commerce.department, comments: "Faker::Lorem.sentence", document: "document_dwvexg.jpg",
+#     assignee_id: rand(1..10).to_s, user_id: "1")
+# end
 
-# Photos
-Photo.create!(title: Faker::Commerce.product_nameFaker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
-  assignee_id: rand(1..10).to_s, user_id: "1")
-Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
-  assignee_id: rand(1..10).to_s, user_id: "1")
-Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "http://res.cloudinary.com/dv2qtdzv0/image/upload/v1484471324/girl_vlismu.jpg",
-  assignee_id: rand(1..10).to_s, user_id: "1")
+# # Photos
+# Photo.create!(title: Faker::Commerce.product_nameFaker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "girl_vlismu.jpg",
+#   assignee_id: rand(1..10).to_s, user_id: "1")
+# Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "lake_aska66.jpg",
+#   assignee_id: rand(1..10).to_s, user_id: "1")
+# Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "bike_vqsgzk.jpg",
+#   assignee_id: rand(1..10).to_s, user_id: "1")
