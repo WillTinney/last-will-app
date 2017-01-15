@@ -9,9 +9,11 @@
 
   <h3>My References</h3>
   <% @user.references.each do |reference| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= reference.title %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card">
+        <%= cl_image_tag("document_dwvexg.jpg") %>
+        <h5><%= reference.title %></h5>
+        <p>Edit + delete buttons</p>
       </div>
     </div>
   <% end %>
