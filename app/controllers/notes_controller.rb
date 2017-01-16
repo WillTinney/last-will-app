@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:edit, :update, :destroy]
-  before_action :set_owner, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
   respond_to :html, :js
 
   def index
@@ -12,30 +12,12 @@ class NotesController < ApplicationController
   end
 
   def create
-    if @approver
-      @note = current_user.approvers.find(@approver.id).notes.create!(note_params)
-      @note.user_id = current_user.id
-      if @note.save
-        redirect_to :back, notice: 'Note was successfully created.'
-      else
-        render :new
-      end
-    elsif @guardian
-      @note = current_user.guardians.find(@guardian.id).notes.create!(note_params)
-      @note.user_id = current_user.id
-      if @note.save
-        redirect_to :back, notice: 'Note was successfully created.'
-      else
-        render :new
-      end
-    elsif @recipient
-      @note = current_user.recipients.find(@recipient.id).notes.create!(note_params)
-      @note.user_id = current_user.id
-      if @note.save
-        redirect_to :back, notice: 'Note was successfully created.'
-      else
-        render :new
-      end
+    @note = current_user.assignees.find(@assignee.id).notes.create!(note_params)
+    @note[:user_id] = @assignee.user_id
+    if @note.save
+      redirect_to :back, notice: 'Note was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -61,23 +43,11 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
   end
 
-  def set_owner
-    if params[:approver_id]
-      @approver = Approver.find(params[:approver_id])
-      @note_owner = @approver
-      @approver_present = true
-    elsif params[:guardian_id]
-      @guardian = Guardian.find(params[:guardian_id])
-      @note_owner = @guardian
-      @guardian_present = true
-    elsif  params[:recipient_id]
-      @recipient = Recipient.find(params[:recipient_id])
-      @note_owner = @recipient
-      @recipient_present = true
-    end
+  def set_assignee
+    @assignee = Assignee.find(params[:assignee_id] || params[:approver_id] || params[:guardian_id] || params[:recipient_id])
   end
 
   def note_params
-    params.require(:note).permit(:title, :content, :user_id)
+    params.require(:note).permit(:title, :content, :assignee_id)
   end
 end

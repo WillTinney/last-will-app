@@ -1,6 +1,35 @@
 <br>
 
-<h2><%= @assignee.first_name + ' ' + @assignee.try(:middle_name).to_s + ' ' + @assignee.last_name %></h2>
+<h2 class="title-margin"><%= @assignee.first_name + ' ' + @assignee.try(:middle_name).to_s + ' ' + @assignee.last_name %></h2>
+
+<div class="platform-box">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-details-icon" do %>
+    <i class="fa fa-user" aria-hidden="true"></i>
+    <h4>Details</h4>
+  <% end %>
+
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-notes-icon" do %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    <h4>Notes</h4>
+  <% end %>
+
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-admin-icon" do %>
+    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+    <h4>Admin</h4>
+  <% end %>
+
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-photo-icon" do %>
+    <i class="fa fa-camera" aria-hidden="true"></i>
+    <h4>Photos</h4>
+  <% end %>
+
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-video-icon" do %>
+    <i class="fa fa-video-camera" aria-hidden="true"></i>
+    <h4>Videos</h4>
+  <% end %>
+</div>
+
+<br>
 
 <div class="grey-box">
   <h3><%= @assignee.type.capitalize %></h3>
@@ -30,7 +59,7 @@
       <% end %>
       <hr>
       <% @assignee.references.each do |reference| %>
-        <p><%= reference.title %><p>
+        <p><%= reference.document %><p>
       <% end %>
     </div>
   </div>

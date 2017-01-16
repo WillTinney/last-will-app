@@ -36,4 +36,5 @@ class User < ApplicationRecord
   def show_friends
     recipients.where('relationship = ?', 'Friend')
   end
+
 end

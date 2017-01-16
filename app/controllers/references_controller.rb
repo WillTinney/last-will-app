@@ -1,6 +1,6 @@
 class ReferencesController < ApplicationController
    before_action :set_reference, only: [:edit, :update, :destroy]
-   before_action :set_owner, only: [:new, :create, :edit, :update, :destroy]
+   before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @references = Reference.all
@@ -11,30 +11,12 @@ class ReferencesController < ApplicationController
   end
 
   def create
-    if @approver
-      @reference = current_user.approvers.find(@approver.id).references.build(reference_params)
-      @reference.user_id = current_user.id
-      if @reference.save
-        redirect_to :back, notice: 'Reference was successfully created.'
-      else
-        render :new
-      end
-    elsif @guardian
-      @reference = current_user.guardians.find(@guardian.id).references.build(reference_params)
-      @reference.user_id = current_user.id
-      if @reference.save
-        redirect_to :back, notice: 'Reference was successfully created.'
-      else
-        render :new
-      end
-    elsif @recipient
-      @reference = current_user.recipients.find(@recipient.id).references.build(reference_params)
-      @reference.user_id = current_user.id
-      if @reference.save
-        redirect_to :back, notice: 'Reference was successfully created.'
-      else
-        render :new
-      end
+    @reference = current_user.assignees.find(@assignee.id).references.create!(reference_params)
+    @reference[:user_id] = @assignee.user_id
+    if @reference.save
+      redirect_to :back, notice: 'Reference was successfully uploaded.'
+    else
+      render :new
     end
   end
 
@@ -60,20 +42,8 @@ class ReferencesController < ApplicationController
     @reference = Reference.find(params[:id])
   end
 
-  def set_owner
-    if params[:approver_id]
-      @approver = Approver.find(params[:approver_id])
-      @photo_owner = @approver
-      @approver_present = true
-    elsif params[:guardian_id]
-      @guardian = Guardian.find(params[:guardian_id])
-      @photo_owner = @guardian
-      @guardian_present = true
-    elsif  params[:recipient_id]
-      @recipient = Recipient.find(params[:recipient_id])
-      @photo_owner = @recipient
-      @recipient_present = true
-    end
+  def set_assignee
+    @assignee = Assignee.find(params[:assignee_id] || params[:approver_id] || params[:guardian_id] || params[:recipient_id])
   end
 
   def reference_params

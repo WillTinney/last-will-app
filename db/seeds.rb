@@ -69,16 +69,16 @@ Assignee.create!(relationship: "Friend", first_name: "Mike", last_name: "Lawson"
   Note.create!(title: Faker::Book.title, content: Faker::Lorem.paragraph, assignee_id: rand(1..10).to_s, user_id: "1")
 end
 
-# # Documents
-# 5.times do
-#   Reference.create!(title: Faker::Commerce.department, comments: "Faker::Lorem.sentence", document: "document_dwvexg.jpg",
-#     assignee_id: rand(1..10).to_s, user_id: "1")
-# end
+# Documents
+5.times do
+  Reference.create!(title: Faker::Commerce.department, comments: "Faker::Lorem.sentence", document_seed: "document_dwvexg.jpg",
+    assignee_id: rand(1..10).to_s, user_id: "1")
+end
 
-# # Photos
-# Photo.create!(title: Faker::Commerce.product_nameFaker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "girl_vlismu.jpg",
-#   assignee_id: rand(1..10).to_s, user_id: "1")
-# Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "lake_aska66.jpg",
-#   assignee_id: rand(1..10).to_s, user_id: "1")
-# Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo: "bike_vqsgzk.jpg",
-#   assignee_id: rand(1..10).to_s, user_id: "1")
+# Photos
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "girl_vlismu.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "lake_aska66.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "bike_vqsgzk.jpg",
+  assignee_id: rand(1..10).to_s, user_id: "1")
