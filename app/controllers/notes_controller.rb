@@ -43,7 +43,7 @@ class NotesController < ApplicationController
   end
 
   def set_assignee
-    @assignee = params[:assignee]
+    @assignee = Assignee.find(params[:assignee_id] || params[:approver_id] || params[:guardian_id] || params[:recipient_id])
   end
 
   def note_params

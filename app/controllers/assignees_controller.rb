@@ -47,6 +47,7 @@ class AssigneesController < ApplicationController
   end
 
   def notes
+    @note = Note.new
   end
 
   def admin

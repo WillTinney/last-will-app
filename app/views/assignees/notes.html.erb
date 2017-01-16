@@ -19,7 +19,7 @@
     <%= link_to "Delete", user_assignee_note_path(current_user, @assignee, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Note", new_user_assignee_note_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+  <%= link_to "Add Note", new_user_assignee_note_path(current_user, @assignee, @note), remote: true, class: "btn btn-transparent btn-default" %>
 
   <div id="new-note-form"></div>
 </div>
