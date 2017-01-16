@@ -6,30 +6,30 @@
 <h3 class="title-margin">My Profile</h3>
 
 <div class="platform-box">
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-action-icon" do %>
     <i class="fa fa-bell-o" aria-hidden="true"></i>
     <h4>Call to Action</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-details-icon" do %>
     <i class="fa fa-id-card-o" aria-hidden="true"></i>
     <h4>Personal Details</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-guardian-icon" do %>
     <i class="fa fa-eye" aria-hidden="true"></i>
     <h4>Guardians</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-approver-icon" do %>
     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
     <h4>Approvers</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-recipient-icon" do %>
     <i class="fa fa-users" aria-hidden="true"></i>
     <h4>Friends and Family</h4>
-  </div>
+  <% end %>
 </div>
 
 <br>
