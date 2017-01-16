@@ -3,30 +3,30 @@
 <h2 class="title-margin"><%= @assignee.first_name + ' ' + @assignee.try(:middle_name).to_s + ' ' + @assignee.last_name %></h2>
 
 <div class="platform-box">
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-details-icon" do %>
     <i class="fa fa-user" aria-hidden="true"></i>
     <h4>Details</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-notes-icon" do %>
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     <h4>Notes</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-admin-icon" do %>
     <i class="fa fa-file-text-o" aria-hidden="true"></i>
     <h4>Admin</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-photo-icon" do %>
     <i class="fa fa-camera" aria-hidden="true"></i>
     <h4>Photos</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "assignee-video-icon" do %>
     <i class="fa fa-video-camera" aria-hidden="true"></i>
     <h4>Videos</h4>
-  </div>
+  <% end %>
 </div>
 
 <br>
