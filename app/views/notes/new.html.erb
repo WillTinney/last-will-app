@@ -1,0 +1,6 @@
+<%= simple_form_for [current_user, @assignee, @note] do |f| %>
+  <%= raise %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.button :submit %>
+<% end %>
