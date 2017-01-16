@@ -1,0 +1,6 @@
+console.log('Assignee create')
+// Remove current tab content
+$('.container-box').remove()
+
+// Add form to tab content
+$('#tab-content').html("<%= j render file: 'assignees/index' %>");

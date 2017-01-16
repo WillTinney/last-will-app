@@ -1,4 +1,4 @@
-<div class="details-box">
+<div class="container-box">
 
   <h2><%= @type %> Creation</h2>
 
@@ -7,7 +7,8 @@
     <p>Change Picture</p>
   <% end %>
 
-  <%= simple_form_for(@user, @assignee) do |f| %>
+  <%= simple_form_for(@user, @assignee), remote: true do |f| %>
+    <%= f.hidden_field, value: @type %>
     <div class="form-container">
       <div class="row">
         <div class="col-xs-12 col-sm-4">

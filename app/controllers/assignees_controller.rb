@@ -5,7 +5,6 @@ class AssigneesController < ApplicationController
 
   def index
     @assignees = Assignee.all
-    @assignee = Assignee.new
   end
 
   def show
@@ -19,9 +18,15 @@ class AssigneesController < ApplicationController
   def create
     @assignee = current_user.assignees.build(assignee_params)
     if @assignee.save
-      redirect_to user_path(current_user), notice: 'Assignee was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to user_path(current_user), notice: 'Assignee was successfully created.' }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js
+      end
     end
   end
 
