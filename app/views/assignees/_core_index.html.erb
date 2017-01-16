@@ -1,9 +1,8 @@
 <div class="container-box">
   <div class="header-box">
     <h2>My <%= @type.capitalize %>s</h2>
-    <%= link_to "Add New " + @type, new_user_assignee_path(current_user, [@assignee, @type]), class: "btn btn-transparent btn-default button-height-default" %>
+    <%= link_to "Add New " + @type, new_user_assignee_path(current_user, @type), class: "btn btn-transparent btn-default button-height-default" %>
   </div>
-
   <div class="blue-box">
     <p><%= @type.capitalize %>s are...</p>
   </div>
@@ -23,4 +22,23 @@
       </div>
     </div>
   <% end %>
+
+  <%= simple_form_for [current_user, @type] do |f| %>
+    <%= f.input :first_name %>
+    <%= f.input :middle_name %>
+    <%= f.input :last_name %>
+    <%= f.input :citizenship %>
+    <%= f.input :date_of_birth %>
+    <%= f.input :email %>
+    <%= f.input :phone_number %>
+    <%= f.input :address_line_1 %>
+    <%= f.input :address_line_2 %>
+    <%= f.input :town %>
+    <%= f.input :postcode %>
+    <%= f.input :country %>
+    <%= f.input :profile_picture %>
+    <%= f.input :relationship %>
+    <%= f.button :submit %>
+  <% end %>
+
 </div>

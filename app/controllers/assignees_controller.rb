@@ -63,7 +63,11 @@ class AssigneesController < ApplicationController
   end
 
   def set_type
-    @type = params[:type]
+    if params[:type]
+      @type = params[:type]
+    else
+      @type = params[:format]
+    end
   end
 
   def type
