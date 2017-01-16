@@ -15,7 +15,7 @@
         <div class="card">
           <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
             <div class="card-avatar">
-              <%= image_tag("user2.png", class: "avatar-card") %>
+              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
             </div>
           <% end %>
 
@@ -43,7 +43,7 @@
         <div class="card">
           <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
             <div class="card-avatar">
-              <%= image_tag("user2.png", class: "avatar-card") %>
+              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
             </div>
           <% end %>
 
@@ -71,7 +71,7 @@
         <div class="card">
           <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
             <div class="card-avatar">
-              <%= image_tag("user2.png", class: "avatar-card") %>
+              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
             </div>
           <% end %>
 
@@ -99,7 +99,7 @@
         <div class="card">
           <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
             <div class="card-avatar">
-              <%= image_tag("user2.png", class: "avatar-card") %>
+              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
             </div>
           <% end %>
 
