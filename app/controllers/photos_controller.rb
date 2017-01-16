@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
    before_action :set_photo, only: [:edit, :update, :destroy]
-   before_action :set_owner, only: [:new, :create, :edit, :update, :destroy]
+   before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @photos = Photo.all
@@ -11,30 +11,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-    if @approver
-      @photo = current_user.approvers.find(@approver.id).photos.build(photo_params)
-      @photo.user_id = current_user.id
-      if @photo.save
-        redirect_to :back, notice: 'Photo was successfully created.'
-      else
-        render :new
-      end
-    elsif @guardian
-      @photo = current_user.guardians.find(@guardian.id).photos.build(photo_params)
-      @photo.user_id = current_user.id
-      if @photo.save
-        redirect_to :back, notice: 'Photo was successfully created.'
-      else
-        render :new
-      end
-    elsif @recipient
-      @photo = current_user.recipients.find(@recipient.id).photos.build(photo_params)
-      @photo.user_id = current_user.id
-      if @photo.save
-        redirect_to :back, notice: 'Photo was successfully created.'
-      else
-        render :new
-      end
+    @photo = current_user.assignees.find(@assignee.id).notes.create!(note_params)
+    if @photo.save
+      redirect_to :back, notice: 'Note was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -60,20 +41,8 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
-  def set_owner
-    if params[:approver_id]
-      @approver = Approver.find(params[:approver_id])
-      @photo_owner = @approver
-      @approver_present = true
-    elsif params[:guardian_id]
-      @guardian = Guardian.find(params[:guardian_id])
-      @photo_owner = @guardian
-      @guardian_present = true
-    elsif  params[:recipient_id]
-      @recipient = Recipient.find(params[:recipient_id])
-      @photo_owner = @recipient
-      @recipient_present = true
-    end
+  def set_assignee
+    @assignee = Assignee.find(params[:assignee_id] || params[:approver_id] || params[:guardian_id] || params[:recipient_id])
   end
 
   def photo_params
