@@ -19,13 +19,13 @@ class AssigneesController < ApplicationController
     @assignee = current_user.assignees.build(assignee_params)
     if @assignee.save
       respond_to do |format|
-        format.html { redirect_to user_path(current_user), notice: 'Assignee was successfully created.' }
         format.js
+        format.html { redirect_to user_path(current_user), notice: 'Assignee was successfully created.' }
       end
     else
       respond_to do |format|
-        format.html { render :new }
         format.js
+        format.html { render :new }
       end
     end
   end

@@ -7,8 +7,8 @@
     <p>Change Picture</p>
   <% end %>
 
-  <%= simple_form_for(@user, @assignee), remote: true do |f| %>
-    <%= f.hidden_field, value: @type %>
+  <%= simple_form_for [current_user, @assignee] do |f| %>
+    <%= f.hidden_field :type, value: @type %>
     <div class="form-container">
       <div class="row">
         <div class="col-xs-12 col-sm-4">
