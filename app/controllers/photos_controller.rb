@@ -11,9 +11,10 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = current_user.assignees.find(@assignee.id).notes.create!(note_params)
+    @photo = current_user.assignees.find(@assignee.id).photos.create!(photo_params)
+    @photo[:user_id] = @assignee.user_id
     if @photo.save
-      redirect_to :back, notice: 'Note was successfully created.'
+      redirect_to :back, notice: 'Photo was successfully uploaded.'
     else
       render :new
     end

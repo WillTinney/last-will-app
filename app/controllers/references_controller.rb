@@ -11,9 +11,10 @@ class ReferencesController < ApplicationController
   end
 
   def create
-    @reference = current_user.assignees.find(@assignee.id).notes.create!(note_params)
+    @reference = current_user.assignees.find(@assignee.id).references.create!(reference_params)
+    @reference[:user_id] = @assignee.user_id
     if @reference.save
-      redirect_to :back, notice: 'Note was successfully created.'
+      redirect_to :back, notice: 'Reference was successfully uploaded.'
     else
       render :new
     end

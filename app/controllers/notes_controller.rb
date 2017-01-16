@@ -13,6 +13,7 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.assignees.find(@assignee.id).notes.create!(note_params)
+    @note[:user_id] = @assignee.user_id
     if @note.save
       redirect_to :back, notice: 'Note was successfully created.'
     else
