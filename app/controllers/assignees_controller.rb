@@ -5,6 +5,7 @@ class AssigneesController < ApplicationController
 
   def index
     @assignees = Assignee.all
+    @assignee = Assignee.new
   end
 
   def show
@@ -16,7 +17,7 @@ class AssigneesController < ApplicationController
   end
 
   def create
-    @assignee = current_user.approvers.build(assignee_params)
+    @assignee = current_user.assignees.build(assignee_params)
     if @assignee.save
       redirect_to user_path(current_user), notice: 'Assignee was successfully created.'
     else
@@ -65,7 +66,7 @@ class AssigneesController < ApplicationController
   def set_type
     if params[:type]
       @type = params[:type]
-    else
+    elsif params[:format]
       @type = params[:format]
     end
   end
@@ -75,7 +76,7 @@ class AssigneesController < ApplicationController
   end
 
   def assignee_params
-    params.require(type.underscore.to_sym).permit(:first_name, :middle_name, :last_name, :citizenship,
+    params.require(:assignee).permit(:first_name, :middle_name, :last_name, :citizenship,
       :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
       :town, :country, :postcode, :relationship, :profile_picture, :type)
   end
