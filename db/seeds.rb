@@ -76,7 +76,7 @@ end
 end
 
 # Photos
-Photo.create!(title: Faker::Commerce.product_nameFaker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "girl_vlismu.jpg",
+Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "girl_vlismu.jpg",
   assignee_id: rand(1..10).to_s, user_id: "1")
 Photo.create!(title: Faker::Commerce.product_name, caption: Faker::Lorem.sentence, photo_seed: "lake_aska66.jpg",
   assignee_id: rand(1..10).to_s, user_id: "1")

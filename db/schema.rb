@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111124924) do
+ActiveRecord::Schema.define(version: 20170116143421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "photo_seed"
     t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
@@ -80,9 +81,10 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.string   "comments"
     t.string   "document"
     t.integer  "assignee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.string   "document_seed"
     t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
