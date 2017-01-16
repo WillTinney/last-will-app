@@ -6,30 +6,30 @@
 <h3 class="title-margin">My Profile</h3>
 
 <div class="platform-box">
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-action-icon" do %>
     <i class="fa fa-bell-o" aria-hidden="true"></i>
     <h4>Call to Action</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-details-icon" do %>
     <i class="fa fa-id-card-o" aria-hidden="true"></i>
     <h4>Personal Details</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-guardian-icon" do %>
     <i class="fa fa-eye" aria-hidden="true"></i>
     <h4>Guardians</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-approver-icon" do %>
     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
     <h4>Approvers</h4>
-  </div>
+  <% end %>
 
-  <div class="platform platform-profile">
+  <%= link_to "#", class: "platform platform-profile", id: "user-recipient-icon" do %>
     <i class="fa fa-users" aria-hidden="true"></i>
     <h4>Friends and Family</h4>
-  </div>
+  <% end %>
 </div>
 
 <br>
@@ -37,7 +37,7 @@
 <div class="container-box">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="profile-card" id="action-card">
+      <div class="alt-card" id="action-card">
         <h4>Call to Action</h4>
         <hr>
         <p>*bugle icon*</p>
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="profile-card" id="guardian-card">
+      <div class="alt-card" id="guardian-card">
         <h4>Guardians</h4>
         <hr>
         <% @user.guardians.each do |guardian| %>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="profile-card" id="approver-card">
+      <div class="alt-card" id="approver-card">
         <h4>Approvers</h4>
         <hr>
         <% @user.approvers.each do |approver| %>
@@ -64,7 +64,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="profile-card" id="recipient-card">
+      <div class="alt-card" id="recipient-card">
         <h4>Friends & Family</h4>
         <hr>
         <% @user.recipients.each do |recipient| %>

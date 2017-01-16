@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170111124924) do
+ActiveRecord::Schema.define(version: 20170116143421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,7 +123,8 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.string   "photo_owner_type"
     t.integer  "photo_owner_id"
     t.integer  "user_id"
-    t.index ["photo_owner_type", "photo_owner_id"], name: "index_photos_on_photo_owner_type_and_photo_owner_id", using: :btree
+    t.string   "photo_seed"
+    t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
@@ -152,12 +153,12 @@ ActiveRecord::Schema.define(version: 20170111124924) do
     t.string   "title"
     t.string   "comments"
     t.string   "document"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "reference_owner_type"
-    t.integer  "reference_owner_id"
+    t.integer  "assignee_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
-    t.index ["reference_owner_type", "reference_owner_id"], name: "index_references_on_reference_owner_type_and_reference_owner_id", using: :btree
+    t.string   "document_seed"
+    t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
 

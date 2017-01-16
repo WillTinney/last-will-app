@@ -9,7 +9,11 @@ r/* -------------------------------------
 }
 .alert-info {
   background: $green;
+  color: white;
 }
 .alert-warning {
   background: $red;
+}
+.close:hover {
+  color: #98DBCA;
 }

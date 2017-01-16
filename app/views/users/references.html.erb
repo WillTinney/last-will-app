@@ -1,17 +1,18 @@
 <br>
 
-<div class="grey-box">
+<div class="container-box">
   <h2>Admin References</h2>
 
   <div class="blue-box">
     <p>Here you can administrative documents and data that...</p>
   </div>
 
-  <h3>My References</h3>
   <% @user.references.each do |reference| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= reference.title %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="asset-card text-center">
+        <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
+        <h5><strong>For:</strong> <%= Assignee.find(reference.assignee_id).first_name %></h5>
+        <p>Edit + delete buttons</p>
       </div>
     </div>
   <% end %>

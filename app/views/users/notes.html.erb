@@ -1,17 +1,18 @@
 <br>
 
-<div class="grey-box">
+<div class="container-box">
   <h2>Notes Library</h2>
 
   <div class="blue-box">
     <p>Here you can add notes and leave messages for those that matter to you so that...</p>
   </div>
 
-  <h3>My Notes</h3>
   <% @user.notes.each do |note| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= note.title %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="alt-card">
+        <h5><strong><%= note.title %></strong></h5>
+        <p><%= note.content %></p>
+        <p>Edit + delete buttons</p>
       </div>
     </div>
   <% end %>

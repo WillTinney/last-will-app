@@ -1,17 +1,18 @@
 <br>
 
-<div class="grey-box">
+<div class="container-box">
   <h2>Photo Library</h2>
 
   <div class="blue-box">
     <p>Here you can add photos and memories that...</p>
   </div>
 
-  <h3>My Photos</h3>
   <% @user.photos.each do |photo| %>
-    <div class="detail-box">
-      <div class="detail">
-        <%= photo.title %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="asset-card text-center">
+        <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
+        <h5><strong>For:</strong> <%= Assignee.find(photo.assignee_id).first_name %></h5>
+        <p>Edit + delete buttons</p>
       </div>
     </div>
   <% end %>
