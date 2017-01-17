@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     get 'references', to: 'users#references'
     get 'photos', to: 'users#photos'
     get 'video', to: 'users#video'
+    resources :call_to_action, only: [:new, :create, :edit, :update, :destroy]
 
     resources :videos
 
