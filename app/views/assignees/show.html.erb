@@ -45,6 +45,9 @@
         return $(this).text() == assigneeId;
     }).parentsUntil('.scrollmenu').addClass('active');
 
+    // When refreshing page the same tab loads
+    // (have to find a way to send a param to the url as file: render is being used and no #mytab in the url)
+
     // AJAX to load tab content without a refresh
 //     $('#show-profile-sidebar-tab').click(function(e){
 //       e.preventDefault();
@@ -113,7 +116,7 @@
 //       });
 //     });
 
-    // Clicking on platform icons loads on profile tab loads tab content
+    // Clicking on platform icons on profile tab loads tab content
     $('#assignee-details-icon').click(function(e){
       e.preventDefault();
       $('.sidebar-tabs').children().removeClass('active');
