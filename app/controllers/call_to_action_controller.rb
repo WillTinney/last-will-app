@@ -24,7 +24,7 @@ class CallToActionController < ApplicationController
 
   def update
     if @call_to_action.update(call_to_action_params)
-      redirect_to :back
+      redirect_to user_path(@user)
     else
       render :edit
     end

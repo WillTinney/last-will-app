@@ -18,7 +18,9 @@
     <h3>Your call to action:</h3>
     <h4><strong><%= @call_to_action.event %></strong></h4>
 
-    <%= link_to "Edit", edit_user_call_to_action_path(@user, @call_to_action), class: "btn btn-transparent" %>
+    <div id="edit-action-form"></div>
+
+    <%= link_to "Edit", edit_user_call_to_action_path(@user, @call_to_action), remote: true, class: "btn btn-transparent" %>
     <%= link_to "Remove", user_call_to_action_path(@user, @call_to_action), method: :delete, class: "btn btn-transparent" %>
 
   <% else %>
