@@ -36,7 +36,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // Changes active tab after click
+    // Changes active scrollmenu user
     $('.scrollbox').children().removeClass("active");
 
     var assigneeId = <%= @assignee.id %>
@@ -112,5 +112,42 @@
 //           }
 //       });
 //     });
+
+    // Clicking on platform icons loads on profile tab loads tab content
+    $('#assignee-details-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-details-sidebar-tab').addClass('active');
+      $('#details-content').removeClass('hidden');
+    });
+    $('#assignee-notes-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-notes-sidebar-tab').addClass('active');
+      $('#notes-content').removeClass('hidden');
+    });
+    $('#assignee-admin-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-admin-sidebar-tab').addClass('active');
+      $('#admin-content').removeClass('hidden');
+    });
+    $('#assignee-photo-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-photos-sidebar-tab').addClass('active');
+      $('#photos-content').removeClass('hidden');
+    });
+    $('#assignee-video-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-videos-sidebar-tab').addClass('active');
+      $('#videos-content').removeClass('hidden');
+    });
   </script>
 <% end %>
