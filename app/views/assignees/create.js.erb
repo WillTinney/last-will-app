@@ -1,8 +1,11 @@
-<% if @review.persisted? %>
+<% if @assignee.persisted? %>
   console.log('Assignee create')
   // Remove current tab content
   $('.container-box').remove()
 
   // Add form to tab content
-  $('#tab-content').html("<%= j render file: 'assignees/index' %>");
+  $('#tab-content').html("<%= j render file: 'assignees/index', type: @assignee.type %>");
+<% else %>
+  console.log('Assignee create fail')
+  $('#tab-content').html("<%= j render 'assignees/form', user: @user, assignee: @assignee %>");
 <% end %>
