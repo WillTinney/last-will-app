@@ -70,6 +70,43 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card" id="admin-card">
+        <h4>Admin Reference</h4>
+        <hr>
+        <% @user.references.each do |reference| %>
+          <p><%= reference.title %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card" id="note-card">
+        <h4>Notes</h4>
+        <hr>
+        <% @user.notes.each do |note| %>
+          <p><%= note.title %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card" id="photo-card">
+        <h4>Photos</h4>
+        <hr>
+        <% @user.photos.each do |photo| %>
+          <p><%= photo.title %></p>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card" id="video-card">
+        <h4>Videos</h4>
+        <hr>
+        <% @user.video.title if @user.video %>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="grey-box">
