@@ -34,7 +34,7 @@
 <div class="container-box">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="action-card">
+      <div class="alt-card card-overflow" id="action-card">
         <h4>Call to Action</h4>
         <hr>
         <p>*bugle icon*</p>
@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="guardian-card">
+      <div class="alt-card card-overflow" id="guardian-card">
         <h4>Guardians</h4>
         <hr>
         <% @user.guardians.each do |guardian| %>
@@ -52,7 +52,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="approver-card">
+      <div class="alt-card card-overflow" id="approver-card">
         <h4>Approvers</h4>
         <hr>
         <% @user.approvers.each do |approver| %>
@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="recipient-card">
+      <div class="alt-card card-overflow" id="recipient-card">
         <h4>Friends & Family</h4>
         <hr>
         <% @user.recipients.each do |recipient| %>
@@ -73,7 +73,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="admin-card">
+      <div class="alt-card card-overflow" id="admin-card">
         <h4>Admin Reference</h4>
         <hr>
         <% @user.references.each do |reference| %>
@@ -82,7 +82,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="note-card">
+      <div class="alt-card card-overflow" id="note-card">
         <h4>Notes</h4>
         <hr>
         <% @user.notes.each do |note| %>
@@ -91,7 +91,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="photo-card">
+      <div class="alt-card card-overflow" id="photo-card">
         <h4>Photos</h4>
         <hr>
         <% @user.photos.each do |photo| %>
@@ -100,7 +100,7 @@
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card" id="video-card">
+      <div class="alt-card card-overflow" id="video-card">
         <h4>Videos</h4>
         <hr>
         <% @user.video.title if @user.video %>
