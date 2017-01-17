@@ -1,4 +1,7 @@
-class ShowController < ApplicationController
+class CallToActionController < ApplicationController
+  def show
+  end
+
   def new
   end
 

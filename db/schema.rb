@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116143421) do
+ActiveRecord::Schema.define(version: 20170117082933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 20170116143421) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
+  end
+
+  create_table "call_to_actions", force: :cascade do |t|
+    t.string   "event"
+    t.string   "event_type"
+    t.datetime "release_date"
+    t.boolean  "approver_confirmation"
+    t.integer  "approver_count"
+    t.integer  "user_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["user_id"], name: "index_call_to_actions_on_user_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
@@ -134,6 +146,7 @@ ActiveRecord::Schema.define(version: 20170116143421) do
   end
 
   add_foreign_key "assignees", "users"
+  add_foreign_key "call_to_actions", "users"
   add_foreign_key "notes", "assignees"
   add_foreign_key "notes", "users"
   add_foreign_key "photos", "assignees"
