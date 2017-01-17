@@ -13,40 +13,16 @@
 
   <hr>
 
-  <% if @user.call_to_action? %>
+  <% if @call_to_action %>
 
     <h3>Your call to action:</h3>
     <h4><strong><%= @call_to_action %></strong></h4>
-    <div class="invisible" id="proof-upload-form">
-      <%= simple_form_for(@user) do |f| %>
-        <%= f.input :proof_of_residency, as: :attachinary %>
-        <%= f.button :submit, "Update Proof of Residency" %>
-      <% end %>
-    </div>
-    <div class="text-center">
-      <p class="btn btn-transparent btn-default" id="proof-upload-edit">Edit</p>
-      <p class="btn btn-transparent btn-default">Remove</p>
-    </div>
-    <h4>Comments</h4>
-    <div id="proof-comment-content">
-      <p><%= @user.proof_comments %></p>
-    </div>
-    <div class="invisible" id="proof-comment-form">
-      <%= simple_form_for(@user) do |f| %>
-        <%= f.input :proof_comments %>
-        <%= f.button :submit, "Update Proof of Residency" %>
-      <% end %>
-    </div>
-    <p class="btn btn-transparent btn-default" id="proof-comment-edit">Edit</p>
 
   <% else %>
 
     <h5>You have not uploaded a call to action.</h5>
     <p>Please use the form below to do so:</p>
-    <%= simple_form_for(@user, @call_to_action) do |f| %>
-      <%= f.input :event, as: :attachinary %>
-      <%= f.button :submit, "Confirm Call To Action" %>
-    <% end %>
+
 
   <% end %>
 </div>
