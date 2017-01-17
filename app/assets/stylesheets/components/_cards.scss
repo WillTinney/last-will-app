@@ -52,7 +52,7 @@
     margin: 4px 0;
   }
 }
-.card-overflow {
+.card-content {
   overflow-y: auto;
   white-space: nowrap;
 }
@@ -66,7 +66,19 @@
   border-left: 12px solid #F6EFA6;
 }
 #recipient-card {
-  border-left: 12px solid #F67754;
+  border-left: 12px solid #D17A22;
+}
+#admin-card {
+  border-left: 12px solid #D9F9A5;
+}
+#note-card {
+  border-left: 12px solid #A50104;
+}
+#photo-card {
+  border-left: 12px solid #95B2B8;
+}
+#video-card {
+  border-left: 12px solid #307351;
 }
 // Asset Cards
 .asset-card {

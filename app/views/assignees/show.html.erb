@@ -36,7 +36,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // Changes active tab after click
+    // Changes active scrollmenu user
     $('.scrollbox').children().removeClass("active");
 
     var assigneeId = <%= @assignee.id %>
@@ -44,6 +44,9 @@
     $('.scrollitem h6').filter(function () {
         return $(this).text() == assigneeId;
     }).parentsUntil('.scrollmenu').addClass('active');
+
+    // When refreshing page the same tab loads
+    // (have to find a way to send a param to the url as file: render is being used and no #mytab in the url)
 
     // AJAX to load tab content without a refresh
 //     $('#show-profile-sidebar-tab').click(function(e){
@@ -112,5 +115,42 @@
 //           }
 //       });
 //     });
+
+    // Clicking on platform icons on profile tab loads tab content
+    $('#assignee-details-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-details-sidebar-tab').addClass('active');
+      $('#details-content').removeClass('hidden');
+    });
+    $('#assignee-notes-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-notes-sidebar-tab').addClass('active');
+      $('#notes-content').removeClass('hidden');
+    });
+    $('#assignee-admin-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-admin-sidebar-tab').addClass('active');
+      $('#admin-content').removeClass('hidden');
+    });
+    $('#assignee-photo-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-photos-sidebar-tab').addClass('active');
+      $('#photos-content').removeClass('hidden');
+    });
+    $('#assignee-video-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-content').addClass('hidden');
+      $('#show-videos-sidebar-tab').addClass('active');
+      $('#videos-content').removeClass('hidden');
+    });
   </script>
 <% end %>

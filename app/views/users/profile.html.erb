@@ -37,36 +37,44 @@
       <div class="alt-card card-overflow" id="action-card">
         <h4>Call to Action</h4>
         <hr>
-        <p>*bugle icon*</p>
-        <p>Your call to action is:</p>
-        <p><strong>Brexit</strong></p>
+        <div class="card-content">
+          <p>*bugle icon*</p>
+          <p>Your call to action is:</p>
+          <p><strong>Brexit</strong></p>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="guardian-card">
         <h4>Guardians</h4>
         <hr>
-        <% @user.guardians.each do |guardian| %>
-          <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.guardians.each do |guardian| %>
+            <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="approver-card">
         <h4>Approvers</h4>
         <hr>
-        <% @user.approvers.each do |approver| %>
-          <p><%= approver.first_name + ' ' + approver.last_name %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.approvers.each do |approver| %>
+            <p><%= approver.first_name + ' ' + approver.last_name %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="recipient-card">
         <h4>Friends & Family</h4>
         <hr>
-        <% @user.recipients.each do |recipient| %>
-          <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.recipients.each do |recipient| %>
+            <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
@@ -76,34 +84,42 @@
       <div class="alt-card card-overflow" id="admin-card">
         <h4>Admin Reference</h4>
         <hr>
-        <% @user.references.each do |reference| %>
-          <p><%= reference.title %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.references.each do |reference| %>
+            <p><%= reference.title %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="note-card">
         <h4>Notes</h4>
         <hr>
-        <% @user.notes.each do |note| %>
-          <p><%= note.title %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.notes.each do |note| %>
+            <p><%= note.title %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="photo-card">
         <h4>Photos</h4>
         <hr>
-        <% @user.photos.each do |photo| %>
-          <p><%= photo.title %></p>
-        <% end %>
+        <div class="card-content">
+          <% @user.photos.each do |photo| %>
+            <p><%= photo.title %></p>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="col-xs-12 col-sm-6 col-md-3">
       <div class="alt-card card-overflow" id="video-card">
         <h4>Videos</h4>
         <hr>
-        <% @user.video.title if @user.video %>
+        <div class="card-content">
+          <% @user.video.title if @user.video %>
+        </div>
       </div>
     </div>
   </div>
@@ -251,3 +267,74 @@
 </div>
 
 <br>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on platform icons loads on profile tab loads tab content
+    $('#user-action-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#call-to-action-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/call_to_action",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#user-details-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#personal-details-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#user-guardian-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#guardian-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#user-approver-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#approver-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#user-recipient-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#recipient-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>
