@@ -16,13 +16,20 @@
   <% if @call_to_action %>
 
     <h3>Your call to action:</h3>
-    <h4><strong><%= @call_to_action %></strong></h4>
+    <h4><strong><%= @call_to_action.event %></strong></h4>
+
+    <%= link_to "Edit", edit_user_call_to_action_path(@user, @call_to_action), class: "btn btn-transparent" %>
+    <%= link_to "Remove", user_call_to_action_path(@user, @call_to_action), method: :delete, class: "btn btn-transparent" %>
 
   <% else %>
 
     <h5>You have not uploaded a call to action.</h5>
     <p>Please use the form below to do so:</p>
 
+    <%= simple_form_for [@user, @new_call_to_action], url: user_call_to_action_index_path, method: :post do |f| %>
+      <%= f.input :event %>
+      <%= f.button :submit, "Confirm Call To Action" %>
+    <% end %>
 
   <% end %>
 </div>

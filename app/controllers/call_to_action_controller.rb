@@ -1,5 +1,6 @@
 class CallToActionController < ApplicationController
   before_action :set_call_to_action, only: [:index, :edit, :update, :destroy]
+
   def index
     @new_call_to_action = CallToAction.new
   end
@@ -9,7 +10,8 @@ class CallToActionController < ApplicationController
   end
 
   def create
-    @call_to_action = current_user.call_to_actions.create!(call_to_action_params)
+    @call_to_action = CallToAction.create!(call_to_action_params)
+    @call_to_action[:user_id] = @user.id
     if @call_to_action.save
       redirect_to :back, notice: 'Call to Action was successfully created.'
     else
@@ -30,7 +32,7 @@ class CallToActionController < ApplicationController
 
   def destroy
     @call_to_action.destroy
-    redirect_to user_path(current_user)
+    redirect_to user_path(@user)
   end
 
   def approve_release
@@ -40,7 +42,7 @@ class CallToActionController < ApplicationController
   private
 
   def set_call_to_action
-    @call_to_action = current_user.call_to_actions.last
+    @call_to_action = @user.call_to_action if @user.call_to_action
   end
 
   def call_to_action_params
