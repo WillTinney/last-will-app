@@ -43,6 +43,8 @@
   border-radius: 2px;
   background-size: cover !important;
   background: white;
+  overflow-y: auto;
+  white-space: nowrap;
   display: flex;
   flex-direction: column;
   align-items: center;
