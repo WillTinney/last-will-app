@@ -52,6 +52,10 @@
     margin: 4px 0;
   }
 }
+.card-overflow {
+  overflow-y: auto;
+  white-space: nowrap;
+}
 #action-card {
   border-left: 12px solid #63B0CD;
 }
