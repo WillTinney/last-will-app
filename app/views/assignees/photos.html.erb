@@ -38,10 +38,12 @@
     $('.photo-link').click(function(e){
       e.preventDefault();
       var photoId = $(this).data('photo-id');
+      var assigneeId = <%= @assignee.id %>;
+      var userId = <%= @user.id %>;
       $('#tab-content').empty();
       $.ajax({
           type: "GET",
-          url: "/photos/" + photoId,
+          url: "/users/" + userId + "/assignees/" + assigneeId + "/photos/" + photoId,
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
