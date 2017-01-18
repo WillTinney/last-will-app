@@ -13,8 +13,9 @@
   <% @assignee.references.each do |reference| %>
     <div class="col-xs-12 col-sm-4">
       <div class="reference-card text-centert">
-        <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
-
+        <%= link_to user_assignee_reference_path(current_user, @assignee, reference) do %>
+          <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
+        <% end %>
         <h4><%= reference.title %></h4>
         <p><%= reference.comments %></p>
 

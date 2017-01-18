@@ -31,8 +31,8 @@ Rails.application.routes.draw do
       get 'photos', to: 'assignees#photos'
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
-      resources :photos, only: [:new, :create, :edit, :update, :destroy]
-      resources :references, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
+      resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
     end
 
     # Approver Pages
