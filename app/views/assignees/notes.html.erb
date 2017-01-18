@@ -13,7 +13,7 @@
   <% @assignee.notes.each do |note| %>
     <div class="col-xs-12 col-md-6">
       <div class="alt-card">
-        <div class="note-spacing" id="assignee-note">
+        <div class="note-spacing" id="assignee-note-<%= note.id %>">
           <h5><strong><%= note.title %></strong></h5>
           <p><%= note.content %></p>
 
@@ -24,7 +24,7 @@
 
 
         </div>
-        <div class="note-form" id="edit-note-form"></div>
+        <div class="note-form" id="edit-note-form-<%= note.id %>"></div>
       </div>
     </div>
   <% end %>
