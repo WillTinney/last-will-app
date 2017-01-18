@@ -12,12 +12,12 @@
 
   <% @assignee.photos.each do |photo| %>
     <div class="col-xs-12 col-sm-4">
-      <div class="asset-card text-center">
+      <div class="reference-card text-center">
         <%= link_to user_assignee_photo_path(current_user, @assignee, photo), class: "photo-link", "data-photo-id" => photo.id do %>
           <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
         <% end %>
-        <h5><strong>For:</strong> <%= Assignee.find(photo.assignee_id).first_name %></h5>
-
+          <h4><%= photo.title %></h4>
+          <p><%= photo.caption %></p>
         <div id="edit-photo-form"></div>
 
         <div class="card-buttons">
