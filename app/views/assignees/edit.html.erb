@@ -1,9 +1,9 @@
 <br>
 
-<div class="grey-box">
+<div class="container-box">
   <%= link_to '#', class: 'profile-picture-inline' do %>
-    <%= image_tag("user.png", class: "avatar-large") %>
-    <p>Change Picture</p>
+    <%= image_tag(@assignee.profile_picture, class: "avatar-large") %>
+    <p class="black-text">Change Picture</p>
     <!-- Make this uploadable with attachinary -->
   <% end %>
 

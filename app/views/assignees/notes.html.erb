@@ -2,11 +2,9 @@
 
 <div class="container-box">
   <div class="header-box">
-    <h2><%= @assignee.type.capitalize %> Notes Page</h2>
+    <h2>Notes for <%= @assignee.first_name.capitalize %></h2>
     <%= link_to "Add New Note", new_user_assignee_note_path(current_user, @assignee, @note), remote: true, class: "btn btn-transparent btn-default button-height-default" %>
   </div>
-
-  <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
 
   <div class="blue-box">
     <p>Here include all notes associated with this <%= @assignee.type %>.</p>

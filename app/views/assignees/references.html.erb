@@ -2,11 +2,9 @@
 
 <div class="container-box">
   <div class="header-box">
-    <h2><%= @assignee.type.capitalize %> Admin Page</h2>
+    <h2>Admin for <%= @assignee.first_name.capitalize %></h2>
     <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default button-height-default" %>
   </div>
-
-  <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
 
   <div class="blue-box">
     <p>Here include all admin references associated with this <%= @assignee.type %>.</p>
