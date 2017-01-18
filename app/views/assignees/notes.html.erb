@@ -14,17 +14,19 @@
 
   <% @assignee.notes.each do |note| %>
     <div class="col-xs-12 col-md-6">
-      <div class="alt-card note-spacing">
-        <h5><strong><%= note.title %></strong></h5>
-        <p><%= note.content %></p>
+      <div class="alt-card">
+        <div class="note-spacing" id="assignee-note">
+          <h5><strong><%= note.title %></strong></h5>
+          <p><%= note.content %></p>
 
-        <div class="button-box">
-          <%= link_to "Edit", edit_user_assignee_note_path(current_user, @assignee, note.id), remote: true, class: "btn btn-success btn-default" %>
-          <%= link_to "Delete", user_assignee_note_path(current_user, @assignee, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+          <div class="button-box">
+            <%= link_to "Edit", edit_user_assignee_note_path(current_user, @assignee, note.id), remote: true, class: "btn btn-success btn-default" %>
+            <%= link_to "Delete", user_assignee_note_path(current_user, @assignee, note.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+          </div>
+
+
         </div>
-
         <div id="edit-note-form"></div>
-
       </div>
     </div>
   <% end %>
