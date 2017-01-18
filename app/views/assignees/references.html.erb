@@ -13,13 +13,21 @@
   </div>
 
   <% @assignee.references.each do |reference| %>
-    <h4><%= reference.title %></h4>
-    <p><%= reference.comments %></p>
+    <div class="col-xs-12 col-sm-4">
+      <div class="reference-card text-centert">
+        <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
 
-    <div id="edit-reference-form"></div>
+        <h4><%= reference.title %></h4>
+        <p><%= reference.comments %></p>
 
-    <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
-    <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+        <div class="card-buttons">
+          <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-success btn-default" %>
+          <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+        </div>
+        <div id="edit-reference-form"></div>
+
+      </div>
+    </div>
   <% end %>
 
 
