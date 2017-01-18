@@ -54,7 +54,7 @@
         <hr>
         <div class="card-content">
           <% @user.guardians.each do |guardian| %>
-            <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
+            <p><%= link_to guardian.first_name + ' ' + guardian.last_name, user_assignee_path(@user, guardian) %></p>
           <% end %>
         </div>
       </div>
@@ -65,7 +65,8 @@
         <hr>
         <div class="card-content">
           <% @user.approvers.each do |approver| %>
-            <p><%= approver.first_name + ' ' + approver.last_name %></p>
+            <p><%= link_to approver.first_name + ' ' + approver.last_name, user_assignee_path(@user, approver) %></p>
+            <p><%=  %></p>
           <% end %>
         </div>
       </div>
@@ -76,7 +77,7 @@
         <hr>
         <div class="card-content">
           <% @user.recipients.each do |recipient| %>
-            <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
+            <p><%= link_to recipient.first_name + ' ' + recipient.last_name, user_assignee_path(@user, recipient) %></p>
           <% end %>
         </div>
       </div>
