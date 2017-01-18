@@ -1,9 +1,12 @@
 class ReferencesController < ApplicationController
-   before_action :set_reference, only: [:edit, :update, :destroy]
+   before_action :set_reference, only: [:show, :edit, :update, :destroy]
    before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @references = Reference.all
+  end
+
+  def show
   end
 
   def new

@@ -43,7 +43,7 @@ Rails.application.routes.draw do
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-      resources :references, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
     end
 
     # Guardian Pages
@@ -54,7 +54,7 @@ Rails.application.routes.draw do
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-      resources :references, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
     end
 
     # Recipient Pages
@@ -65,7 +65,7 @@ Rails.application.routes.draw do
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
       resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-      resources :references, only: [:new, :create, :edit, :update, :destroy]
+      resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
     end
 
     # Routes for wizard sign-up
