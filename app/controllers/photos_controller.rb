@@ -1,9 +1,12 @@
 class PhotosController < ApplicationController
-   before_action :set_photo, only: [:edit, :update, :destroy]
+   before_action :set_photo, only: [:show, :edit, :update, :destroy]
    before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @photos = Photo.all
+  end
+
+  def show
   end
 
   def new

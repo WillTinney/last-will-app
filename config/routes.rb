@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       get 'photos', to: 'assignees#photos'
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
-      resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
       resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
@@ -53,18 +53,18 @@ Rails.application.routes.draw do
       get 'photos', to: 'assignees#photos'
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
-      resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
       resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
-    # Approver Pages
+    # Recipient Pages
     resources :recipients, controller: 'assignees', type: 'Recipient' do
       get 'notes', to: 'assignees#notes'
       get 'references', to: 'assignees#references'
       get 'photos', to: 'assignees#photos'
       get 'video', to: 'assignees#video'
       resources :notes, only: [:new, :create, :edit, :update, :destroy]
-      resources :photos, only: [:new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
       resources :references, only: [:new, :create, :edit, :update, :destroy]
     end
 
