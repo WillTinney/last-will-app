@@ -1,6 +1,12 @@
 <br>
 
-<h2 class="title-margin">My Profile</h2>
+<div class="header-box">
+  <h2 class="title-margin">My Profile</h2>
+  <%= link_to "#", class: "btn btn-info btn-default", id: "digital-icon" do %>
+    <i class="fa fa-cloud cloud-icon" aria-hidden="true"></i>
+    <h4>Digital Assets</h4>
+  <% end %>
+</div>
 
 <div class="platform-box">
   <%= link_to "#", class: "platform platform-profile", id: "user-action-icon" do %>
@@ -127,7 +133,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    // Clicking on platform icons loads on profile tab loads tab content
+    // Clicking on platform icons on profile tab loads tab content
     $('#user-action-icon').click(function(e){
       e.preventDefault();
       $('.sidebar-tabs').children().removeClass('active');
@@ -187,6 +193,20 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    // Clicking on digital assets icon loads tab content
+    $('#digital-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#digital-assets-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/digital",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
