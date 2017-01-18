@@ -2,4 +2,5 @@
   <h3><%= @photo.title %></h3>
   <%= cl_image_tag(@photo.photo_seed, width: 200, height: 150) %>
   <p><%= @photo.caption %></p>
+  <%= link_to "Back", user_assignee_path(@user, @photo.assignee_id) %>
 </div>

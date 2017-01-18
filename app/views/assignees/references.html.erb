@@ -13,7 +13,7 @@
   <% @assignee.references.each do |reference| %>
     <div class="col-xs-12 col-sm-4">
       <div class="reference-card text-centert">
-        <%= link_to user_assignee_reference_path(current_user, @assignee, reference) do %>
+        <%= link_to user_assignee_reference_path(current_user, @assignee, reference), "data-reference-id" => reference.id do %>
           <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
         <% end %>
         <h4><%= reference.title %></h4>

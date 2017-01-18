@@ -13,7 +13,7 @@
   <% @assignee.photos.each do |photo| %>
     <div class="col-xs-12 col-sm-4">
       <div class="asset-card text-center">
-        <%= link_to user_assignee_photo_path(current_user, @assignee, photo) do %>
+        <%= link_to user_assignee_photo_path(current_user, @assignee, photo), class: "photo-link", "data-photo-id" => photo.id do %>
           <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
         <% end %>
         <h5><strong>For:</strong> <%= Assignee.find(photo.assignee_id).first_name %></h5>
@@ -31,3 +31,22 @@
   <div id="new-photo-form"></div>
 
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on photo loads relevant show page
+    $('.photo-link').click(function(e){
+      e.preventDefault();
+      var photoId = $(this).data('photo-id');
+      $('#tab-content').empty();
+      $.ajax({
+          type: "GET",
+          url: "/photos/" + photoId,
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>
