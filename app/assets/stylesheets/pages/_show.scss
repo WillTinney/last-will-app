@@ -64,6 +64,7 @@
 .invisible {
   display: none;
 }
+// Buttons
 .button-height-default {
   height: 36px;
   margin-bottom: 10px;
@@ -166,6 +167,36 @@
     margin-top: 8px;
     max-width: 100px;
   }
+}
+.cloud-icon {
+  font-size: 20px;
+  margin-right: 8px;
+}
+#digital-icon {
+  background: #77C9D3;
+  border-color: #6EB7CC;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#digital-icon:hover {
+  background: #63B0CD;
+}
+#profile-icon {
+  background: #5EC193;
+  border-color: #57BB90;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+#profile-icon:hover {
+  background: #1ABC9C;
 }
 // Proof of Residency Page
 #proof-image img {

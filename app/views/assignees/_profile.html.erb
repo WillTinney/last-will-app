@@ -31,6 +31,53 @@
 
 <br>
 
+<div class="container-box">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card card-overflow" id="action-card">
+        <h4>Notes</h4>
+        <hr>
+        <div class="card-content">
+          <% @assignee.notes.each do |note| %>
+            <p><%= note.title %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card card-overflow" id="guardian-card">
+        <h4>Admin References</h4>
+        <hr>
+        <div class="card-content">
+          <% @assignee.references.each do |reference| %>
+            <p><%= reference.title %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card card-overflow" id="approver-card">
+        <h4>Photos</h4>
+        <hr>
+        <div class="card-content">
+          <% @assignee.photos.each do |photo| %>
+            <p><%= photo.title %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="alt-card card-overflow" id="recipient-card">
+        <h4>Videos</h4>
+        <hr>
+        <div class="card-content">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="grey-box">
   <h3><%= @assignee.type.capitalize %></h3>
 

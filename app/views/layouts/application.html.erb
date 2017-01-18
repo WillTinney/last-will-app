@@ -10,7 +10,7 @@
   </head>
   <body>
     <%= yield(:navbar) %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' || 'assignees' && params[:action] == 'show' %>
+    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'show' %>
       <div class="include-sidebar">
         <%= yield(:sidebar) %>
         <%= render 'shared/scrollmenu' %>

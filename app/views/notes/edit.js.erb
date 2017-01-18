@@ -1,1 +1,3 @@
-$('#edit-note-form').html("<%= j (render 'notes/form')%>");
+$('#assignee-note-<%= @note.id %>').empty()
+
+$('#edit-note-form-<%= @note.id %>').html("<%= j (render 'notes/form')%>");

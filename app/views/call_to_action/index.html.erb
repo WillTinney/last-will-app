@@ -16,7 +16,10 @@
   <% if @call_to_action %>
 
     <h3>Your call to action:</h3>
-    <h4><strong><%= @call_to_action.event %></strong></h4>
+
+    <div id="action-details">
+      <h4><strong><%= @call_to_action.event %></strong></h4>
+    </div>
 
     <div id="edit-action-form"></div>
 

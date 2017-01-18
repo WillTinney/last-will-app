@@ -1,7 +1,15 @@
 <br>
 
 <div class="container-box">
-  <h2>My Digital Assets</h2>
+  <div class="header-box">
+    <h2>My Digital Assets</h2>
+    <%= link_to "#", class: "btn btn-info btn-default", id: "profile-icon" do %>
+      <i class="fa fa-user cloud-icon" aria-hidden="true"></i>
+      <h4>Profile</h4>
+    <% end %>
+  </div>
+
+  <br>
 
   <div class="blue-box">
     <p>You can pass on digital assets so that...</p>
@@ -154,6 +162,20 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    // Clicking on digital assets icon loads tab content
+    $('#profile-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#profile-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/profile",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);

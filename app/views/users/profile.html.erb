@@ -1,6 +1,12 @@
 <br>
 
-<h3 class="title-margin">My Profile</h3>
+<div class="header-box">
+  <h2 class="title-margin">My Profile</h2>
+  <%= link_to "#", class: "btn btn-info btn-default", id: "digital-icon" do %>
+    <i class="fa fa-cloud cloud-icon" aria-hidden="true"></i>
+    <h4>Digital Assets</h4>
+  <% end %>
+</div>
 
 <div class="platform-box">
   <%= link_to "#", class: "platform platform-profile", id: "user-action-icon" do %>
@@ -29,8 +35,6 @@
   <% end %>
 </div>
 
-<br>
-
 <div class="container-box">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-3">
@@ -38,9 +42,10 @@
         <h4>Call to Action</h4>
         <hr>
         <div class="card-content">
-          <p>*bugle icon*</p>
           <p>Your call to action is:</p>
-          <p><strong>Brexit</strong></p>
+          <%= link_to "#" do %>
+            <p><strong><%= @user.call_to_action.event %></strong></p>
+          <% end %>
         </div>
       </div>
     </div>
@@ -50,7 +55,7 @@
         <hr>
         <div class="card-content">
           <% @user.guardians.each do |guardian| %>
-            <p><%= guardian.first_name + ' ' + guardian.last_name %></p>
+            <p><%= link_to guardian.first_name + ' ' + guardian.last_name, user_assignee_path(@user, guardian) %></p>
           <% end %>
         </div>
       </div>
@@ -61,7 +66,8 @@
         <hr>
         <div class="card-content">
           <% @user.approvers.each do |approver| %>
-            <p><%= approver.first_name + ' ' + approver.last_name %></p>
+            <p><%= link_to approver.first_name + ' ' + approver.last_name, user_assignee_path(@user, approver) %></p>
+            <p><%=  %></p>
           <% end %>
         </div>
       </div>
@@ -72,7 +78,7 @@
         <hr>
         <div class="card-content">
           <% @user.recipients.each do |recipient| %>
-            <p><%= recipient.first_name + ' ' + recipient.last_name %></p>
+            <p><%= link_to recipient.first_name + ' ' + recipient.last_name, user_assignee_path(@user, recipient) %></p>
           <% end %>
         </div>
       </div>
@@ -125,152 +131,11 @@
   </div>
 </div>
 
-<div class="grey-box">
-  <h3>My Call to Action</h3>
-
-  <div class="detail-box">
-    <div class="detail">
-      <p>Will</p>
-    </div>
-    <div class="detail">
-      <p>Add</p>
-      <p>Delete</p>
-    </div>
-  </div>
-
-  <hr>
-
-  <h3>My Personal Details</h3>
-
-  <hr>
-
-  <h3>My Partner</h3>
-    <% @user.show_partner.each do |recipient| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= recipient.first_name + ' ' + recipient.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <hr>
-
-  <h3>My Children</h3>
-    <% @user.show_children.each do |recipient| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= recipient.first_name + ' ' + recipient.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <hr>
-
-  <h3>Guardians</h3>
-    <% @user.guardians.each do |guardian| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= guardian.first_name + ' ' + guardian.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, guardian.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, guardian.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <hr>
-
-  <h3>Approvers</h3>
-    <% @user.approvers.each do |approver| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= approver.first_name + ' ' + approver.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, approver.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, approver.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-  <hr>
-
-  <h3>Family and Friends</h3>
-    <% @user.show_mother.each do |recipient| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= recipient.first_name + ' ' + recipient.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-    <% @user.show_friends.each do |recipient| %>
-      <div class="detail-box">
-        <div class="detail">
-          <%= recipient.first_name + ' ' + recipient.last_name %>
-        </div>
-        <div class="detail">
-          <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-transparent btn-default" %>
-          <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
-        </div>
-      </div>
-    <% end %>
-</div>
-
-<br>
-
-<div class="grey-box">
-  <h3>My Digital Assets</h3>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= link_to "#" do %>
-        <h3>Notes</h3>
-      <% end %>
-      <% @user.notes.each do |note| %>
-        <%= note.title %>
-      <% end %>
-      <hr>
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <%= link_to "#" do %>
-        <h3>Administration References</h3>
-      <% end %>
-      <hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= link_to "#" do %>
-        <h3>Photos</h3>
-      <% end %>
-      <hr>
-    </div>
-
-    <div class="col-xs-12 col-sm-6">
-      <%= link_to "#" do %>
-        <h3>Video Messages</h3>
-      <% end %>
-      <hr>
-    </div>
-  </div>
-</div>
-
 <br>
 
 <% content_for(:after_js) do %>
   <script>
-    // Clicking on platform icons loads on profile tab loads tab content
+    // Clicking on platform icons on profile tab loads tab content
     $('#user-action-icon').click(function(e){
       e.preventDefault();
       $('.sidebar-tabs').children().removeClass('active');
@@ -330,6 +195,20 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    // Clicking on digital assets icon loads tab content
+    $('#digital-icon').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass('active');
+      $('#digital-assets-sidebar-tab').addClass('active')
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/digital",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);

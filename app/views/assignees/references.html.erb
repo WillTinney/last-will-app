@@ -1,26 +1,57 @@
 <br>
 
-<div class="grey-box">
-  <h2><%= @assignee.type.capitalize %> Admin Page</h2>
-
-  <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
+<div class="container-box">
+  <div class="header-box">
+    <h2>Admin for <%= @assignee.first_name.capitalize %></h2>
+    <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default button-height-default" %>
+  </div>
 
   <div class="blue-box">
     <p>Here include all admin references associated with this <%= @assignee.type %>.</p>
   </div>
 
   <% @assignee.references.each do |reference| %>
-    <h4><%= reference.title %></h4>
-    <p><%= reference.comments %></p>
+    <div class="col-xs-12 col-sm-4">
+      <div class="reference-card text-centert">
+        <%= link_to user_assignee_reference_path(current_user, @assignee, reference), class: "reference-link", "data-reference-id" => reference.id do %>
+          <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
+        <% end %>
+        <h4><%= reference.title %></h4>
+        <p><%= reference.comments %></p>
 
-    <div id="edit-reference-form"></div>
+        <div class="card-buttons">
+          <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-success btn-default" %>
+          <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+        </div>
+        <div id="edit-reference-form"></div>
 
-    <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @assignee, reference.id), remote: true, class: "btn btn-transparent btn-default" %>
-    <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
+      </div>
+    </div>
   <% end %>
 
-  <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+
 
   <div id="new-reference-form"></div>
 
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on reference loads relevant show page
+    $('.reference-link').click(function(e){
+      e.preventDefault();
+      var referenceId = $(this).data('reference-id');
+      var assigneeId = <%= @assignee.id %>;
+      var userId = <%= @user.id %>;
+      $('#tab-content').empty();
+      $.ajax({
+          type: "GET",
+          url: "/users/" + userId + "/assignees/" + assigneeId + "/references/" + referenceId,
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>
