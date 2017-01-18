@@ -88,11 +88,16 @@
   align-items: center;
 }
 .note-spacing {
+  height: 90%;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+.note-form {
+  width: 90%;
+  padding: 5px 5px 12px 5px;
 }
 .reference-card {
   height: 280px;
