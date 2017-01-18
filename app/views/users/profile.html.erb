@@ -42,9 +42,10 @@
         <h4>Call to Action</h4>
         <hr>
         <div class="card-content">
-          <p>*bugle icon*</p>
           <p>Your call to action is:</p>
-          <p><strong>Brexit</strong></p>
+          <%= link_to "#" do %>
+            <p><strong><%= @user.call_to_action.event %></strong></p>
+          <% end %>
         </div>
       </div>
     </div>
