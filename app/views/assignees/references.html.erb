@@ -1,7 +1,10 @@
 <br>
 
-<div class="grey-box">
-  <h2><%= @assignee.type.capitalize %> Admin Page</h2>
+<div class="container-box">
+  <div class="header-box">
+    <h2><%= @assignee.type.capitalize %> Admin Page</h2>
+    <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default button-height-default" %>
+  </div>
 
   <h3><%= @assignee.first_name + " " + @assignee.last_name %></h3>
 
@@ -19,7 +22,7 @@
     <%= link_to "Delete", user_assignee_reference_path(current_user, @assignee, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-transparent btn-default" %>
   <% end %>
 
-  <%= link_to "Add Reference", new_user_assignee_reference_path(current_user, @assignee.id), remote: true, class: "btn btn-transparent btn-default" %>
+
 
   <div id="new-reference-form"></div>
 
