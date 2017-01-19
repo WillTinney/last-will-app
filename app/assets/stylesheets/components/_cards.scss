@@ -29,6 +29,9 @@
 .black-text {
   color: black;
 }
+.black-links a {
+  color: black;
+}
 // Profile Cards
 .alt-card {
   height: 220px;
@@ -44,9 +47,6 @@
     border: 1px solid grey;
     width: 95%;
     margin: 4px 0;
-  }
-  a {
-    color: black;
   }
 }
 .card-content {
