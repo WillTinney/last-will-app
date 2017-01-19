@@ -64,6 +64,13 @@
 .invisible {
   display: none;
 }
+.assignees img:hover {
+  box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.4);
+}
+.push-right {
+  margin-top: 0;
+  margin-left: 10px;
+}
 // Buttons
 .button-height-default {
   height: 36px;
@@ -172,18 +179,21 @@
   font-size: 20px;
   margin-right: 8px;
 }
-#digital-icon {
+.btn-ice {
   background: #77C9D3;
   border-color: #6EB7CC;
+}
+.btn-ice:hover {
+  background: #63B0CD;
+  border-color: #6EB7CC;
+}
+#digital-icon {
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.3);
   margin: 0 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-}
-#digital-icon:hover {
-  background: #63B0CD;
 }
 #profile-icon {
   background: #5EC193;
@@ -203,4 +213,17 @@
   display: block;
   margin: 0 auto;
   padding: 10px 0;
+}
+// Asset Show Pages
+.show-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.show-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
