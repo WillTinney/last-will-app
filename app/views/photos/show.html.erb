@@ -1,6 +1,11 @@
 <div class="container-box">
-  <h3><%= @photo.title %></h3>
-  <%= cl_image_tag(@photo.photo_seed, width: 200, height: 150) %>
-  <p><%= @photo.caption %></p>
-  <%= link_to "Back", user_assignee_path(@user, @photo.assignee_id) %>
+  <div class="header-box">
+    <%= link_to "Back", user_assignee_path(@user, @photo.assignee_id), class: "title-margin btn btn-transparent btn-default" %>
+  </div>
+  <div class="photo-box">
+    <%= cl_image_tag(@photo.photo_seed, width: 800, height: 600) %>
+
+    <h3><%= @photo.title %></h3>
+    <p><%= @photo.caption %></p>
+  </div>
 </div>
