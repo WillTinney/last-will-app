@@ -12,7 +12,10 @@
       <div class="asset-card text-center">
         <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
         <h5><strong>For:</strong> <%= Assignee.find(reference.assignee_id).first_name %></h5>
-        <p>Edit + delete buttons</p>
+                <div class="card-buttons">
+          <%= link_to "Edit", edit_user_assignee_reference_path(current_user, reference.assignee_id, reference.id), remote: true, class: "btn btn-success btn-default" %>
+          <%= link_to "Delete", user_assignee_reference_path(current_user, reference.assignee_id, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+        </div>
       </div>
     </div>
   <% end %>
