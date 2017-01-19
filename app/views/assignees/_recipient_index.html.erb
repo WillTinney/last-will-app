@@ -8,114 +8,116 @@
     <p>Here you add family and friends who...</p>
   </div>
 
-  <h3>My Partner</h3>
-  <div class="row">
-    <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
-            <div class="card-avatar">
-              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-            </div>
-          <% end %>
+  <div class="assignees">
+    <h3>My Partner</h3>
+    <div class="row">
+      <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+              <div class="card-avatar">
+                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+              </div>
 
-          <div class="card-description">
-            <div class="card-detail">
-              <h6><%= recipient.id %></h6>
-              <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-              <h5><%= recipient.relationship %></h5>
-            </div>
-            <div class="card-detail">
-              <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
-              <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+              <div class="card-description">
+                <div class="card-detail">
+                  <h6><%= recipient.id %></h6>
+                  <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                  <h5><%= recipient.relationship %></h5>
+                </div>
+                <div class="card-detail">
+                  <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
+                  <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <h3>My Children</h3>
+
+    <div class="row">
+      <% @assignees.where('type = ? and relationship = ?', @type, 'Child').each do |recipient| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+              <div class="card-avatar">
+                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+              </div>
+            <% end %>
+
+            <div class="card-description">
+              <div class="card-detail">
+                <h6><%= recipient.id %></h6>
+                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                <h5><%= recipient.relationship %></h5>
+              </div>
+              <div class="card-detail">
+                <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
+                <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <h3>My Children</h3>
+    <h3>Other Family Members</h3>
 
-  <div class="row">
-    <% @assignees.where('type = ? and relationship = ?', @type, 'Child').each do |recipient| %>
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
-            <div class="card-avatar">
-              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-            </div>
-          <% end %>
+    <div class="row">
+      <% @assignees.where('type = ? and relationship = ?', @type, 'Mother').each do |recipient| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+              <div class="card-avatar">
+                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+              </div>
+            <% end %>
 
-          <div class="card-description">
-            <div class="card-detail">
-              <h6><%= recipient.id %></h6>
-              <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-              <h5><%= recipient.relationship %></h5>
-            </div>
-            <div class="card-detail">
-              <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
-              <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-
-  <h3>Other Family Members</h3>
-
-  <div class="row">
-    <% @assignees.where('type = ? and relationship = ?', @type, 'Mother').each do |recipient| %>
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
-            <div class="card-avatar">
-              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-            </div>
-          <% end %>
-
-          <div class="card-description">
-            <div class="card-detail">
-              <h6><%= recipient.id %></h6>
-              <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-              <h5><%= recipient.relationship %></h5>
-            </div>
-            <div class="card-detail">
-              <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
-              <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+            <div class="card-description">
+              <div class="card-detail">
+                <h6><%= recipient.id %></h6>
+                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                <h5><%= recipient.relationship %></h5>
+              </div>
+              <div class="card-detail">
+                <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
+                <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
 
-  <h3>My Friends</h3>
+    <h3>My Friends</h3>
 
-  <div class="row">
-    <% @assignees.where('type = ? and relationship = ?', @type, 'Friend').each do |recipient| %>
-      <div class="col-xs-12 col-md-6">
-        <div class="card">
-          <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
-            <div class="card-avatar">
-              <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-            </div>
-          <% end %>
+    <div class="row">
+      <% @assignees.where('type = ? and relationship = ?', @type, 'Friend').each do |recipient| %>
+        <div class="col-xs-12 col-md-6">
+          <div class="card">
+            <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
+              <div class="card-avatar">
+                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+              </div>
+            <% end %>
 
-          <div class="card-description">
-            <div class="card-detail">
-              <h6><%= recipient.id %></h6>
-              <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-              <h5><%= recipient.relationship %></h5>
-            </div>
-            <div class="card-detail">
-              <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
-              <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+            <div class="card-description">
+              <div class="card-detail">
+                <h6><%= recipient.id %></h6>
+                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                <h5><%= recipient.relationship %></h5>
+              </div>
+              <div class="card-detail">
+                <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
+                <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

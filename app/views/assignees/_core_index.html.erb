@@ -8,12 +8,12 @@
     <p><%= @type.capitalize %>s are...</p>
   </div>
 
-  <div id="assignees">
+  <div class="assignees">
     <% @assignees.where('type = ?', @type).each do |assignee| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card">
           <%= link_to user_assignee_path(current_user, assignee.id) do %>
-            <%= image_tag(assignee.profile_picture, class: "avatar") %>
+            <%= image_tag(assignee.profile_picture, class: "avatar-card push-right") %>
             <div class="card-description">
               <h6><%= assignee.id %></h6>
               <h5 class="black-text"><strong><%= assignee.first_name + " " + assignee.last_name %></strong></h5>
