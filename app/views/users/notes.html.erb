@@ -8,9 +8,13 @@
   </div>
 
   <% @user.notes.each do |note| %>
-    <div class="col-xs-12 col-sm-4">
+    <div class="col-xs-12 col-sm-6">
       <div class="alt-card">
-        <h5><strong><%= note.title %></strong></h5>
+        <div class="note-title">
+            <h5><strong><%= note.title %></strong></h5>
+
+            <h5><strong>For:</strong> <%= Assignee.find(note.assignee_id).first_name %></h5>
+        </div>
         <p><%= note.content %></p>
         <p>Edit + delete buttons</p>
       </div>

@@ -18,19 +18,22 @@
               <div class="card-avatar">
                 <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
               </div>
+            <% end %>
 
-              <div class="card-description">
-                <div class="card-detail">
+            <div class="card-description">
+              <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
+                <div class="black-text">
                   <h6><%= recipient.id %></h6>
                   <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
                   <h5><%= recipient.relationship %></h5>
                 </div>
-                <div class="card-detail">
-                  <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
-                  <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
-                </div>
+              <% end %>
+
+              <div class="card-detail">
+                <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
+                <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
               </div>
-            <% end %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -49,11 +52,14 @@
             <% end %>
 
             <div class="card-description">
-              <div class="card-detail">
-                <h6><%= recipient.id %></h6>
-                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-                <h5><%= recipient.relationship %></h5>
-              </div>
+              <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
+                <div class="black-text">
+                  <h6><%= recipient.id %></h6>
+                  <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                  <h5><%= recipient.relationship %></h5>
+                </div>
+              <% end %>
+
               <div class="card-detail">
                 <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
                 <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
@@ -77,11 +83,14 @@
             <% end %>
 
             <div class="card-description">
-              <div class="card-detail">
-                <h6><%= recipient.id %></h6>
-                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-                <h5><%= recipient.relationship %></h5>
-              </div>
+              <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
+                <div class="black-text">
+                  <h6><%= recipient.id %></h6>
+                  <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                  <h5><%= recipient.relationship %></h5>
+                </div>
+              <% end %>
+
               <div class="card-detail">
                 <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
                 <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
@@ -105,11 +114,14 @@
             <% end %>
 
             <div class="card-description">
-              <div class="card-detail">
-                <h6><%= recipient.id %></h6>
-                <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
-                <h5><%= recipient.relationship %></h5>
-              </div>
+              <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
+                <div class="black-text">
+                  <h6><%= recipient.id %></h6>
+                  <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
+                  <h5><%= recipient.relationship %></h5>
+                </div>
+              <% end %>
+
               <div class="card-detail">
                 <%= link_to "Edit", edit_user_recipient_path(current_user, recipient.id), class: "btn btn-success btn-default" %>
                 <%= link_to "Delete", user_recipient_path(current_user, recipient.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
