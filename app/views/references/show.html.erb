@@ -1,6 +1,14 @@
+<br>
+
 <div class="container-box">
-  <h3><%= @reference.title %></h3>
-  <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
-  <p><%= @reference.comments %></p>
-  <%= link_to "Back", user_assignee_path(@user, @reference.assignee_id) %>
+  <div class="show-box">
+    <div class="show-image">
+      <%= cl_image_tag("document_dwvexg.jpg", width: 550, height: 700) %>
+    </div>
+    <div class="show-description">
+      <h3><%= @reference.title %></h3>
+      <p><%= @reference.comments %></p>
+      <%= link_to "Back", user_assignee_path(@user, @reference.assignee_id), class: "btn btn-transparent btn-default" %>
+    </div>
+  </div>
 </div>

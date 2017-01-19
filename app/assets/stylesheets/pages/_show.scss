@@ -205,7 +205,13 @@
   padding: 10px 0;
 }
 // Asset Show Pages
-.photo-box {
+.show-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.show-details {
   display: flex;
   flex-direction: column;
   align-items: center;
