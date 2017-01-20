@@ -10,7 +10,7 @@ class AssetPolicy < ApplicationPolicy
   end
 
   def new?
-    user_is_owner?
+    true
   end
 
   def edit?
@@ -22,6 +22,10 @@ class AssetPolicy < ApplicationPolicy
   end
 
   def update?
+    user_is_owner?
+  end
+
+  def destroy?
     user_is_owner?
   end
 

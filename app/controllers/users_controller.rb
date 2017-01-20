@@ -3,14 +3,16 @@ class UsersController < ApplicationController
   before_action :set_user_id, only: [:profile, :call_to_action, :digital, :proof, :notes, :admin, :photos, :videos]
 
   def show
+    authorize @user
   end
 
   def edit
+    authorize @user
   end
 
   def update
     @user = User.find(params[:id])
-
+    authorize @user
     if @user.update_attributes(user_params)
       redirect_to user_path(@user)
     else
@@ -19,27 +21,35 @@ class UsersController < ApplicationController
   end
 
   def profile
+    authorize @user
   end
 
   def call_to_action
+    authorize @user
   end
 
   def digital
+    authorize @user
   end
 
   def proof
+    authorize @user
   end
 
   def notes
+    authorize @user
   end
 
   def admin
+    authorize @user
   end
 
   def photos
+    authorize @user
   end
 
   def video
+    authorize @user
     @video = Video.new
   end
 
