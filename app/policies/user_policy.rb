@@ -49,7 +49,7 @@ class UserPolicy < ApplicationPolicy
     user_is_user?
   end
 
-  def admin?
+  def references?
     user_is_user?
   end
 

@@ -16,7 +16,11 @@
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% if recipient.profile_picture %>
+                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% else %>
+                  <%= image_tag("user.png", class: "avatar") %>
+                <% end %>
               </div>
             <% end %>
 
@@ -47,7 +51,11 @@
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% if recipient.profile_picture %>
+                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% else %>
+                  <%= image_tag("user.png", class: "avatar") %>
+                <% end %>
               </div>
             <% end %>
 
@@ -78,7 +86,11 @@
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% if recipient.profile_picture %>
+                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% else %>
+                  <%= image_tag("user.png", class: "avatar") %>
+                <% end %>
               </div>
             <% end %>
 
@@ -109,7 +121,11 @@
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% if recipient.profile_picture %>
+                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
+                <% else %>
+                  <%= image_tag("user.png", class: "avatar") %>
+                <% end %>
               </div>
             <% end %>
 

@@ -44,7 +44,6 @@ class CallToActionController < ApplicationController
   def approve_release
   end
 
-
   private
 
   def set_call_to_action

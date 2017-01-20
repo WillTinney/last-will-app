@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     authorize @user
   end
 
-  def admin
+  def references
     authorize @user
   end
 
