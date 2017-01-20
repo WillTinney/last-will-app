@@ -82,7 +82,7 @@ class AssigneesController < ApplicationController
   end
 
   def assignee_params
-    params.require(:assignee).permit(:first_name, :middle_name, :last_name, :citizenship,
+    params.require(type ? type.downcase.to_sym : :assignee).permit(:first_name, :middle_name, :last_name, :citizenship,
       :date_of_birth, :email, :phone_number, :address_line_1, :address_line_2,
       :town, :country, :postcode, :relationship, :profile_picture, :type)
   end
