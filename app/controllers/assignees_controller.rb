@@ -9,14 +9,17 @@ class AssigneesController < ApplicationController
 
   def show
     @user = User.where('id = ?', params[:user_id]).first
+    authorize @assignee
   end
 
   def new
     @assignee = Assignee.new
+    authorize @assignee
   end
 
   def create
     @assignee = current_user.assignees.build(assignee_params)
+    authorize @assignee
     if @assignee.save
       respond_to do |format|
         format.js
