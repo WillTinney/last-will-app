@@ -4,16 +4,18 @@ class NotesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @notes = Note.all
+    @notes = policy_scope(Note)
   end
 
   def new
     @note = Note.new
+    authorize @note
   end
 
   def create
     @note = current_user.assignees.find(@assignee.id).notes.create!(note_params)
     @note[:user_id] = @assignee.user_id
+    authorize @note
     if @note.save
       redirect_to :back, notice: 'Note was successfully created.'
     else
@@ -22,9 +24,11 @@ class NotesController < ApplicationController
   end
 
   def edit
+    authorize @note
   end
 
   def update
+    authorize @note
     if @note.update(note_params)
       redirect_to :back
     else
@@ -33,6 +37,7 @@ class NotesController < ApplicationController
   end
 
   def destroy
+    authorize @note
     @note.destroy
     redirect_to user_path(current_user)
   end
