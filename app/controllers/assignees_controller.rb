@@ -4,7 +4,8 @@ class AssigneesController < ApplicationController
   before_action :set_type
 
   def index
-    @assignees = Assignee.all
+    # @assignees = Assignee.all
+    @assignees = policy_scope(Assignee)
   end
 
   def show
@@ -34,10 +35,12 @@ class AssigneesController < ApplicationController
   end
 
   def edit
+    authorize @assignee
   end
 
   def update
-   if @assignee.update(assignee_params)
+    authorize @assignee
+    if @assignee.update(assignee_params)
       redirect_to user_path(current_user)
     else
       render :edit
@@ -45,6 +48,7 @@ class AssigneesController < ApplicationController
   end
 
   def destroy
+    authorize @assignee
     @assignee.destroy
     redirect_to user_path(current_user)
   end
