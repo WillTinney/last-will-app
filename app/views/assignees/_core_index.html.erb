@@ -13,7 +13,11 @@
       <div class="col-xs-12 col-sm-4">
         <div class="card">
           <%= link_to user_assignee_path(current_user, assignee.id) do %>
-            <%= image_tag(assignee.profile_picture, class: "avatar-card push-right") %>
+            <% if assignee.profile_picture %>
+              <%= image_tag(assignee.profile_picture, class: "avatar-card push-right") %>
+            <% else %>
+              <%= image_tag("user.png", class: "avatar") %>
+            <% end %>
             <div class="card-description">
               <h6><%= assignee.id %></h6>
               <h5 class="black-text"><strong><%= assignee.first_name + " " + assignee.last_name %></strong></h5>

@@ -4,19 +4,23 @@ class AssigneesController < ApplicationController
   before_action :set_type
 
   def index
-    @assignees = Assignee.all
+    # @assignees = Assignee.all
+    @assignees = policy_scope(Assignee)
   end
 
   def show
     @user = User.where('id = ?', params[:user_id]).first
+    authorize @assignee
   end
 
   def new
     @assignee = Assignee.new
+    authorize @assignee
   end
 
   def create
     @assignee = current_user.assignees.build(assignee_params)
+    authorize @assignee
     if @assignee.save
       respond_to do |format|
         format.js
@@ -31,10 +35,12 @@ class AssigneesController < ApplicationController
   end
 
   def edit
+    authorize @assignee
   end
 
   def update
-   if @assignee.update(assignee_params)
+    authorize @assignee
+    if @assignee.update(assignee_params)
       redirect_to user_path(current_user)
     else
       render :edit
@@ -42,6 +48,7 @@ class AssigneesController < ApplicationController
   end
 
   def destroy
+    authorize @assignee
     @assignee.destroy
     redirect_to user_path(current_user)
   end
