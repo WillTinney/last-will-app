@@ -9,12 +9,13 @@ class User < ApplicationRecord
   # delegate :approvers, :guardians, :recipients, to: :assignees
 
   has_many :assignees, dependent: :destroy
-  has_many :approvers, dependent: :destroy
-  has_many :guardians, dependent: :destroy
-  has_many :recipients, dependent: :destroy
-  has_many :notes, dependent: :destroy
-  has_many :references, dependent: :destroy
-  has_many :photos, dependent: :destroy
+    has_many :approvers, dependent: :destroy
+    has_many :guardians, dependent: :destroy
+    has_many :recipients, dependent: :destroy
+  has_many :assets, dependent: :destroy
+    has_many :notes, dependent: :destroy
+    has_many :references, dependent: :destroy
+    has_many :photos, dependent: :destroy
   has_many :videos, dependent: :destroy
   has_one :call_to_action, dependent: :destroy
 

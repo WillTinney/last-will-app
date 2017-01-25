@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
 
+  get 'assets/index'
+
+  get 'assets/show'
+
+  get 'assets/new'
+
+  get 'assets/edit'
+
+  get 'assets/create'
+
+  get 'assets/update'
+
+  get 'assets/destroy'
+
+  get 'digital_assets/index'
+
+  get 'digital_assets/show'
+
+  get 'digital_assets/new'
+
+  get 'digital_assets/edit'
+
+  get 'digital_assets/create'
+
+  get 'digital_assets/update'
+
+  get 'digital_assets/destroy'
+
   mount Attachinary::Engine => "/attachinary"
 
   devise_for :users, controllers: { registrations: 'registrations' }

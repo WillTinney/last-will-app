@@ -1,4 +1,3 @@
-class Note < ApplicationRecord
+class Note < Asset
   belongs_to :user
-  belongs_to :note_owner, polymorphic: true
 end
