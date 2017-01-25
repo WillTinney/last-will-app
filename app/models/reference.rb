@@ -3,5 +3,5 @@ class Reference < Asset
 
   validates :title, presence: true
 
-  has_attachment :document
+  has_attachment :asset
 end

@@ -1,2 +1,19 @@
-<h1>Assets#show</h1>
-<p>Find me in app/views/assets/show.html.erb</p>
+<div class="container-box">
+  <div class="header-box">
+
+  </div>
+  <div class="asset-box">
+    <%= cl_image_tag(@asset.photo_seed, width: 800, height: 600) %>
+
+    <h3><%= @asset.title %></h3>
+    <p><%= @asset.caption %></p>
+    <div class="card-buttons">
+      <%= link_to "Edit", edit_user_assignee_photo_path(current_user, @asset.assignee_id, @asset), remote: true, class: "btn btn-success btn-default" %>
+      <%= link_to "Delete", user_assignee_photo_path(current_user, @asset.assignee_id, @asset), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+    </div>
+  </div>
+  <br>
+  <%= link_to "Back", user_assignee_path(@user, @asset.assignee_id), class: "title-margin btn btn-transparent btn-default" %>
+  <div id="edit-asset-form"></div>
+  <div id="new-asset-form"></div>
+</div>

@@ -1,0 +1,7 @@
+<%= simple_form_for [current_user, @assignee, @asset] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :asset, as: :attachinary %>
+  <%= f.button :submit %>
+<% end %>
+

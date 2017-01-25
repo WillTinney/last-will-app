@@ -3,5 +3,5 @@ class Photo < Asset
 
   validates :title, presence: true
 
-  has_attachment :photo
+  has_attachment :asset
 end

@@ -1,3 +1,3 @@
-class Note < Asset
+class Note < ApplicationRecord
   belongs_to :user
 end
