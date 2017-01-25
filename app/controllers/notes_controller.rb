@@ -1,7 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:edit, :update, :destroy]
   before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
-  respond_to :html, :js
 
   def index
     @notes = policy_scope(Note)

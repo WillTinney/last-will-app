@@ -11,7 +11,7 @@
   <div class="assignees">
     <h3>My Partner</h3>
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
+      <% @assignees.show_partner.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
@@ -45,7 +45,7 @@
     <h3>My Children</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Child').each do |recipient| %>
+      <% @assignees.show_children.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
@@ -79,7 +79,7 @@
     <h3>Other Family Members</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? AND relationship != ? AND relationship != ? AND relationship != ?', @type, 'Friend', 'Partner', 'Child').each do |recipient| %>
+      <% @assignees.show_other_family.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
@@ -113,7 +113,7 @@
     <h3>My Friends</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Friend').each do |recipient| %>
+      <% @assignees.show_friends.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
