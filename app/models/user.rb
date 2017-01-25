@@ -27,7 +27,13 @@ class User < ApplicationRecord
     recipients.where('relationship = ?', 'Child')
   end
 
+  def show_other
+    recipients.where(['relationship != ? AND relationship != ?', 'Partner', 'Child'])
+  end
+
   def show_other_family
+    recipients.where('relationship != ? AND relationship != ? AND relationship != ?',
+     'Friend', 'Partner', 'Child')
   end
 
   def show_mother

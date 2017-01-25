@@ -75,20 +75,7 @@
 
   <div class="scrollbox">
     <h3>Other Friends & Family</h3>
-    <% @user.show_mother.each do |recipient| %>
-      <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
-        <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <% if recipient.profile_picture %>
-            <%= image_tag(recipient.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
-          <h4><%= recipient.first_name %></h4>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% @user.show_friends.each do |recipient| %>
+    <% @user.show_other.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
           <% if recipient.profile_picture %>

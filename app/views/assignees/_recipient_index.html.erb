@@ -79,7 +79,7 @@
     <h3>Other Family Members</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Mother').each do |recipient| %>
+      <% @assignees.where('type = ? AND relationship != ? AND relationship != ? AND relationship != ?', @type, 'Friend', 'Partner', 'Child').each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
