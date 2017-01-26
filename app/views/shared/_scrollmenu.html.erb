@@ -14,13 +14,8 @@
     <% @user.show_partner.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
-          <% if recipient.profile_picture %>
-            <%= image_tag(recipient.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
+          <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -31,13 +26,8 @@
     <% @user.show_children.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
-          <% if recipient.profile_picture %>
-            <%= image_tag(recipient.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
+          <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -48,13 +38,8 @@
     <% @user.guardians.each do |guardian| %>
       <div class="scrollitem <%= 'active' if @guardian && @guardian.id == guardian.id %>">
         <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
-          <% if guardian.profile_picture %>
-            <%= image_tag(guardian.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
+          <%= image_tag(guardian.profile_picture || "user.png", class: "avatar") %>
           <h4><%= guardian.first_name %></h4>
-          <h6><%= guardian.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -65,13 +50,8 @@
     <% @user.approvers.each do |approver| %>
       <div class="scrollitem <%= 'active' if @approver && @approver.id == approver.id %>">
         <%= link_to user_approver_path(current_user, approver), class: 'scrollmenu-approvers' do %>
-          <% if approver.profile_picture %>
-            <%= image_tag(approver.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
+          <%= image_tag(approver.profile_picture || "user.png", class: "avatar") %>
           <h4><%= approver.first_name %></h4>
-          <h6><%= approver.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -79,30 +59,11 @@
 
   <div class="scrollbox">
     <h3>Other Friends & Family</h3>
-    <% @user.show_mother.each do |recipient| %>
+    <% @user.show_other.each do |recipient| %>
       <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <% if recipient.profile_picture %>
-            <%= image_tag(recipient.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
+          <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
-        <% end %>
-      </div>
-    <% end %>
-
-    <% @user.show_friends.each do |recipient| %>
-      <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
-        <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <% if recipient.profile_picture %>
-            <%= image_tag(recipient.profile_picture, class: "avatar") %>
-          <% else %>
-            <%= image_tag("user.png", class: "avatar") %>
-          <% end %>
-          <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>

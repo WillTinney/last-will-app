@@ -11,23 +11,18 @@
   <div class="assignees">
     <h3>My Partner</h3>
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Partner').each do |recipient| %>
+      <% @assignees.show_partner.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <% if recipient.profile_picture %>
-                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-                <% else %>
-                  <%= image_tag("user.png", class: "avatar") %>
-                <% end %>
+                <%= image_tag(recipient.profile_picture || "user.png", class: "avatar-card") %>
               </div>
             <% end %>
 
             <div class="card-description">
               <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
                 <div class="black-text">
-                  <h6><%= recipient.id %></h6>
                   <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
                   <h5><%= recipient.relationship %></h5>
                 </div>
@@ -46,23 +41,18 @@
     <h3>My Children</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Child').each do |recipient| %>
+      <% @assignees.show_children.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <% if recipient.profile_picture %>
-                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-                <% else %>
-                  <%= image_tag("user.png", class: "avatar") %>
-                <% end %>
+                <%= image_tag(recipient.profile_picture || "user.png", class: "avatar-card") %>
               </div>
             <% end %>
 
             <div class="card-description">
               <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
                 <div class="black-text">
-                  <h6><%= recipient.id %></h6>
                   <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
                   <h5><%= recipient.relationship %></h5>
                 </div>
@@ -81,23 +71,18 @@
     <h3>Other Family Members</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Mother').each do |recipient| %>
+      <% @assignees.show_other_family.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <% if recipient.profile_picture %>
-                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-                <% else %>
-                  <%= image_tag("user.png", class: "avatar") %>
-                <% end %>
+                <%= image_tag(recipient.profile_picture || "user.png", class: "avatar-card") %>
               </div>
             <% end %>
 
             <div class="card-description">
               <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
                 <div class="black-text">
-                  <h6><%= recipient.id %></h6>
                   <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
                   <h5><%= recipient.relationship %></h5>
                 </div>
@@ -116,23 +101,18 @@
     <h3>My Friends</h3>
 
     <div class="row">
-      <% @assignees.where('type = ? and relationship = ?', @type, 'Friend').each do |recipient| %>
+      <% @assignees.show_friends.each do |recipient| %>
         <div class="col-xs-12 col-md-6">
           <div class="card">
             <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link profile-picture-inline' do %>
               <div class="card-avatar">
-                <% if recipient.profile_picture %>
-                  <%= image_tag(recipient.profile_picture, class: "avatar-card") %>
-                <% else %>
-                  <%= image_tag("user.png", class: "avatar") %>
-                <% end %>
+                <%= image_tag(recipient.profile_picture || "user.png", class: "avatar-card") %>
               </div>
             <% end %>
 
             <div class="card-description">
               <%= link_to user_recipient_path(current_user, recipient.id), class: 'recipient-link card-detail' do %>
                 <div class="black-text">
-                  <h6><%= recipient.id %></h6>
                   <h5><strong><%= recipient.first_name + " " + recipient.last_name %></strong></h5>
                   <h5><%= recipient.relationship %></h5>
                 </div>
