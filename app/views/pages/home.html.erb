@@ -25,7 +25,6 @@
 </div>
 
 <!-- Caroussel - Medias -->
-
 <div class="wrapper">
   <section id="media-quotes" class="container content-section text-center home-section">
     <h2>Why?</h2>
@@ -33,26 +32,36 @@
     <div id="carousel-container">
     <div class="cloud9-carousel" id="cloud9-carousel">
 
-      <div class="cloud9-item pink-border">
-        <p>“In absence of guardian nomination it can take up to 26 weeks for kids to join their relatives after their parents disappear."</p>
-        <%= image_tag('Law_Society.png', class: "carousel-image") %>
+      <div class="cloud9-item teal-border black-links">
+        <%= link_to "http://www.independent.co.uk/news/uk/home-news/immigration-eu-citizens-brexit-referendum-deportation-home-office-3-million-a7451476.html", target: "_blank" do %>
+          <p>“One million EU citizens in Britain 'at risk of deportation' amid surge in permanent residency applications since Brexit vote"</p>
+          <%= image_tag('Independent_logo.png', class: "carousel-image") %>
+        <% end %>
       </div>
 
-      <div class="cloud9-item purple-border">
-        <p>“EU family Law and passport does not apply to UK.</p>
-        <%= image_tag('European_Commission.png', class: "carousel-image") %>
+      <div class="cloud9-item orange-border black-links">
+        <%= link_to "https://www.theguardian.com/politics/2016/dec/14/eu-citizens-collect-proof-of-living-in-uk-helena-kenney-qc-lords-brexit-reports", target: "_blank" do %>
+          <p>“EU citizens should collect proof of living in the UK"</p>
+          <%= image_tag('theguardian.png', class: "carousel-image") %>
+        <% end %>
       </div>
-      <div class="cloud9-item aqua-border">
-        <p>“Prove your right to live in the UK as an EU citizen"</p>
-        <%= image_tag('logo-govuk.png', class: "carousel-image") %>
+      <div class="cloud9-item purple-border black-links">
+        <%= link_to "https://www.gov.uk/eea-registration-certificate/overview", target: "_blank" do %>
+          <p>“Prove your right to live in the UK as an EU citizen"</p>
+          <%= image_tag('logo-govuk.png', class: "carousel-image") %>
+        <% end %>
       </div>
-      <div class="cloud9-item orange-border">
-        <p>“EU citizens urged to collect evidence they lived in UK prior to Brexit vote"</p>
-        <%= image_tag('Independent_logo.png', class: "carousel-image") %>
+      <div class="cloud9-item brown-border black-links">
+        <%= link_to "http://www.independent.co.uk/news/uk/home-news/brexit-eu-citizens-nationals-europe-lords-committee-helena-kennedy-eu-documents-prove-uk-britain-a7475171.html", target: "_blank" do %>
+          <p>“EU citizens urged to collect evidence they lived in UK prior to Brexit vote"</p>
+          <%= image_tag('Independent_logo.png', class: "carousel-image") %>
+        <% end %>
       </div>
-      <div class="cloud9-item blue-border">
-        <p>“Over 24,000 children are bereaved of a parent each year in Britain and yet very few people have chosen a legal guardian for their little ones"</p>
-        <%= image_tag('telegraph_logo.png', class: "carousel-image") %>
+      <div class="cloud9-item green-border black-links">
+        <%= link_to "http://www.theweek.co.uk/brexit/73161/will-eu-citizens-be-allowed-to-stay-in-uk-after-brexit", target: "_blank" do %>
+          <p>“Will EU citizens be allowed to stay after brexit?"</p>
+          <%= image_tag('theweek.png', class: "carousel-image") %>
+        <% end %>
       </div>
     </div>
     </div>
