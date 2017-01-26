@@ -2,19 +2,48 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+.home-image {
+  position: relative;
+  img {
+    width: 100%;
+    max-height: 80%;
+  }
+  h2 {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    span {
+      color: white;
+      font: bold 48px/90px Helvetica, Sans-Serif;
+      letter-spacing: -1px;
+      background: black;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      .spacer {
+        padding: 0 5px;
+      }
+    }
+  }
+}
+.banner-button {
+  position: absolute;
+  top: 70%;
+  right: 10px;
+}
 .home-section {
-  padding: 150px 0;
+  padding: 80px 0;
 
   h2 {
-    margin-bottom: 40px;
-    font-weight: 500;
+    color: #6B648A;
+    margin-bottom: 30px;
+    font-weight: bold;
   }
   p {
     font-weight: 300;
     font-size: 20px;
   }
 }
-
 .call-to-action-text p {
   margin-top: 50px;
   margin-bottom: 20px;
@@ -22,10 +51,10 @@
 .zero-text-margin p {
   margin: 0;
 }
-.banner{
-  height: 100vh;
+#home-banner{
+  height: 85vh;
+  width: 100%;
 }
-
 .banner-float{
   text-align: left;
   font-size: 14px;
@@ -35,13 +64,21 @@
   bottom: 0;
   filter: blur(1px);
 }
-
+#home-arrow {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 10px 0;
+}
 .fa-chevron-down{
-  font-size: 26px;
+  font-size: 50px;
+  color: #6B648A;
 }
 
 #quotes {
   background-color: #F8F8F9;
+}
+#media-quotes {
+  padding-top: 30px;
 }
 .review-box {
   background: rgba(240, 240, 240, 0.4);
@@ -57,7 +94,7 @@
 }
 #instructions {
   width: 100%;
-  background-color: #F8F8F9;
+  background-color: #EEE9E8;
   h4 {
     font-weight: bold;
   }
@@ -84,12 +121,6 @@
   height: 100vh;
   padding: 20% 0;
   background-color: #F8F8F9;
-}
-#comparison {
-  background-color: #4291A6;
-  h2 {
-    color: white;
-  }
 }
 .comparison-box {
   background: #F8F8F9;
@@ -174,7 +205,7 @@
   padding: 60px 0;
   width: 100%;
   height: 50vh;
-  background-color: #F8F8F9;
+  background-color: #EEE9E8;
   h2 {
     margin-bottom: 30px;
   }

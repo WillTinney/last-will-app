@@ -10,6 +10,11 @@
 #carousel-container {
   margin: 30px auto;
 }
+// @media (min-width: 992px) {
+//   #carousel-container {
+//     margin-left: 17.5%;
+//   }
+// }
 .cloud9-carousel {
   width: 80%;
   height: 300px;
@@ -67,18 +72,18 @@
   margin-top: 20px;
   max-width: 200px;
 }
-.pink-border{
-  border-color: #EFB9C0;
-}
-.purple-border{
-  border-color: #C1A2D2;
-}
-.aqua-border{
-  border-color: #6ABFCC;
+.teal-border{
+  border-color: #8BC9BA;
 }
 .orange-border{
-  border-color: #F5A623;
+  border-color: #FAA000;
 }
-.blue-border{
-  border-color: #82B5C4;
+.purple-border{
+  border-color: #6B648A;
+}
+.brown-border{
+  border-color: #B6A09D;
+}
+.green-border{
+  border-color: #015148;
 }
