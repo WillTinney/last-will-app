@@ -3,32 +3,46 @@
 <% end %>
 
 <!-- Banner  -->
-<div class="banner slide" id="home-banner" style="background-image: linear-gradient(-225deg, rgba(74,5,126,0.2) 0%, rgba(94,4,140,0.2) 50%), url(<%= image_path('banner3.jpg') %>);">
-  <div class="banner-float">
-    <p>Brexit means lots of uncertainties...</p>
-    <h4>We help you to protect your resident status. We provide you with the infrastructure of trust for the Home Office.
-    </h4>
-    <h4>You collect, save and deliver your proofs of presence on time.</h4>
+<div class="home-image">
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <%= image_tag('banner1.jpg') %>
   </div>
 
-  <div class="banner-content zero-text-margin">
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <%= image_tag('banner2.jpg') %>
+  </div>
 
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <%= image_tag('banner3.jpg') %>
+  </div>
+
+
+  <%= image_tag('banner3.jpg', class: "home-slides") %>
+
+  <h2><span> Brexit Hedge:<span class='spacer'></span><br><span class='spacer'></span>Protect your residency</span></h2>
+
+  <div class="banner-button">
     <%= link_to new_user_session_path, class: "white-text" do %>
       <button class="btn btn-secondary white-button">Enroll now for our Beta Version</button>
     <% end %>
-    <p></p>
   </div>
+</div>
+
+<!-- Floating Arrow -->
+<div id="home-arrow">
   <div class="floating">
     <i class="fa fa-chevron-down" aria-hidden="true"></i>
   </div>
-
 </div>
 
 <!-- Caroussel - Medias -->
 <div class="wrapper">
   <section id="media-quotes" class="container content-section text-center home-section">
     <h2>Why?</h2>
-    <p>Theresa May has not defined new immigration control rules yet and the eligibility criteria remain very uncertain. History and recent political events remind us we need to be prepared to protect us and our relatives.</p>
+    <p>Theresa May has not defined new immigration control rules yet and the eligibility criteria remain very uncertain.<br>History and recent political events remind us we need to be prepared to protect us and our relatives.</p>
     <div id="carousel-container">
     <div class="cloud9-carousel" id="cloud9-carousel">
 
@@ -70,28 +84,29 @@
 
 <!-- What do we do for you? -->
 <section class="container text-center home-section" id="instructions">
-  <h2>What we do for you</h2>
+  <h2>What does MyWill do for me?</h2>
+  <p>MyWill helps EU citizens living in the UK protect their right to stay post Brexit.<br>MyWill provide a unique infrastructure of authenticity and trust, and give people the ability to unlock data.<br>MyWill servers are based in Norway.</p>
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
       <%= image_tag('NotaUK.png', class: "feature-image") %>
-      <h4>Not a UK Citizen</h4>
-      <p class="text-justify">Brexit is threatening your eligibility to stay in the UK. You could lose most of your rights. We have created a unique web application to get prepared for adverse events. No delay, no missing document, no undesirable or adminstrative error possible.</p>
+      <h4>Collect and Save</h4>
+      <p class="text-justify">We help you to collect your proof of residency. We also securely save them to keep your personal data confidential. <strong>We never distribute or sell your data to anyone.</strong></p>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
       <%= image_tag('Vault1.png', class: "feature-image") %>
-      <h4>Protect your data and your family</h4>
-      <p class="text-justify">We designate your guardians. You store your proofs of residency prior to the 23rd of June 2016. You save your will, your messages, any information and data you would like to pass to your friends and family. We use the Blockchain infrastructure for your guardian nomination authenticity and we also store your personal data through two layers of security.</p>
+      <h4>Unlock</h4>
+      <p class="text-justify">We offer a unique and secure unlocking process of your data and send it <strong>only to the people individually designated by you.</strong> </p>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
       <%= image_tag('network1.png', class: "feature-image") %>
-      <h4>A unique unlocking process</h4>
-      <p class="text-justify">We follow a strict process to release your data if you decide not do it yourself. Your approvers unlock the data on the call to action you have defined. Then, we authorise guardians to access their private portal to back you up. We can deliver your proofs of residency to the Home Office directly if you want it.</p>
+      <h4>Authenticate</h4>
+      <p class="text-justify">We ensure the authenticity of data thanks to blockchain technology. We also use <strong>UK Guardians to confirm your information.</strong></p>
     </div>
   </div>
 </section>
@@ -122,7 +137,8 @@
 
 <section class="home-section" id="comparison">
   <div class="container text-center">
-    <h2>Why MyWill?</h2>
+    <h2>Do I need to pay to use MyWill?</h2>
+    <p>To ensure the privacy of personal data MyWill pays for secure server storage.<br>MyWill does <strong>not</strong> redistribute or sell your data.</p>
     <div class="row">
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <div class="comparison-box my-will">
@@ -206,25 +222,19 @@
     });
 
     // Cycle banner images
-    // var imageIndex = 0;
-    // var imagesArray = [
-    //     "<%= asset_path 'banner1.jpg' %>",
-    //     "<%= asset_path 'banner2.jpg' %>",
-    //     "<%= asset_path 'banner3.jpg' %>"
-    // ];
-    // console.log(imagesArray)
+  var myIndex = 0;
+  carousel();
 
-    // function changeBackground(){
-    //     var index = imageIndex++ % imagesArray.length;
-    //     $("#home-banner").css("background","url('"+ imagesArray[index] +"')");
-
-    //     $('#home-banner .slide').fadeOut('slow', function(){
-    //       $(this).css({
-    //         backgroundImage: 'url(' + [imageIndex] + ')'
-    //       }).show();
-    //     });
-    // };
-
-    // setInterval(changeBackground, 8000);
+  function carousel() {
+      var i;
+      var x = document.getElementsByClassName("home_slides");
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}
+      x[myIndex-1].style.display = "block";
+      setTimeout(carousel, 9000);
+  }
   </script>
 <% end %>
