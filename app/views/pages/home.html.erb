@@ -3,7 +3,7 @@
 <% end %>
 
 <!-- Banner  -->
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,128,0.4) 0%, rgba(0,36,51,0.4) 50%), url(<%= image_path('banner3.jpg') %>);">
+<div class="banner slide" id="home-banner" style="background-image: linear-gradient(-225deg, rgba(74,5,126,0.2) 0%, rgba(94,4,140,0.2) 50%), url(<%= image_path('banner3.jpg') %>);">
   <div class="banner-float">
     <p>Brexit means lots of uncertainties...</p>
     <h4>We help you to protect your resident status. We provide you with the infrastructure of trust for the Home Office.
@@ -24,43 +24,12 @@
 
 </div>
 
-
-<!-- What do we do for you? -->
-<section class="container text-center home-section" id="instructions">
-  <h2>What we do for you</h2>
-  <div class="col-xs-12 col-sm-4">
-    <div class="flexbox-vertical feature">
-      <%= image_tag('NotaUK.png', class: "feature-image") %>
-      <h4>Not a UK Citizen</h4>
-      <p class="text-justify">Brexit is threatening your eligibility to stay in the UK. You could lose most of your rights. We have created a unique web application to get prepared for adverse events. No delay, no missing document, no undesirable or adminstrative error possible.</p>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-4">
-    <div class="flexbox-vertical feature">
-      <%= image_tag('Vault1.png', class: "feature-image") %>
-      <h4>Protect your data and your family</h4>
-      <p class="text-justify">We designate your guardians. You store your proofs of residency prior to the 23rd of June 2016. You save your will, your messages, any information and data you would like to pass to your friends and family. We use the Blockchain infrastructure for your guardian nomination authenticity and we also store your personal data through two layers of security.</p>
-    </div>
-  </div>
-
-  <div class="col-xs-12 col-sm-4">
-    <div class="flexbox-vertical feature">
-      <%= image_tag('network1.png', class: "feature-image") %>
-      <h4>A unique unlocking process</h4>
-      <p class="text-justify">We follow a strict process to release your data if you decide not do it yourself. Your approvers unlock the data on the call to action you have defined. Then, we authorise guardians to access their private portal to back you up. We can deliver your proofs of residency to the Home Office directly if you want it.</p>
-    </div>
-  </div>
-</section>
-
-
 <!-- Caroussel - Medias -->
 
 <div class="wrapper">
   <section id="media-quotes" class="container content-section text-center home-section">
-    <h2>...because you need to be ready.</h2>
-    <p>European Citizens will soon not benefit from the same rights.<br>History and recent political
-    events remind us we need to be prepared to protect us and our relatives.</p>
+    <h2>Why?</h2>
+    <p>Theresa May has not defined new immigration control rules yet and the eligibility criteria remain very uncertain. History and recent political events remind us we need to be prepared to protect us and our relatives.</p>
     <div id="carousel-container">
     <div class="cloud9-carousel" id="cloud9-carousel">
 
@@ -89,6 +58,34 @@
     </div>
   </section>
 </div>
+
+<!-- What do we do for you? -->
+<section class="container text-center home-section" id="instructions">
+  <h2>What we do for you</h2>
+  <div class="col-xs-12 col-sm-4">
+    <div class="flexbox-vertical feature">
+      <%= image_tag('NotaUK.png', class: "feature-image") %>
+      <h4>Not a UK Citizen</h4>
+      <p class="text-justify">Brexit is threatening your eligibility to stay in the UK. You could lose most of your rights. We have created a unique web application to get prepared for adverse events. No delay, no missing document, no undesirable or adminstrative error possible.</p>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">
+    <div class="flexbox-vertical feature">
+      <%= image_tag('Vault1.png', class: "feature-image") %>
+      <h4>Protect your data and your family</h4>
+      <p class="text-justify">We designate your guardians. You store your proofs of residency prior to the 23rd of June 2016. You save your will, your messages, any information and data you would like to pass to your friends and family. We use the Blockchain infrastructure for your guardian nomination authenticity and we also store your personal data through two layers of security.</p>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-4">
+    <div class="flexbox-vertical feature">
+      <%= image_tag('network1.png', class: "feature-image") %>
+      <h4>A unique unlocking process</h4>
+      <p class="text-justify">We follow a strict process to release your data if you decide not do it yourself. Your approvers unlock the data on the call to action you have defined. Then, we authorise guardians to access their private portal to back you up. We can deliver your proofs of residency to the Home Office directly if you want it.</p>
+    </div>
+  </div>
+</section>
 
 <!-- Feedback -->
 <section class="home-section" id="feedback" style="background-image: linear-gradient(-225deg, rgba(0,101,128,0.4) 0%, rgba(0,36,51,0.4) 50%), url(<%= image_path('banner2.jpg') %>);">
@@ -189,6 +186,7 @@
 
 <%= content_for(:after_js) do %>
   <script>
+    // Navbar colour change on scroll
     $(document).ready(function(){
       $(window).scroll(function(){
         if($(window).scrollTop()>400)
@@ -197,5 +195,27 @@
           $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
       });
     });
+
+    // Cycle banner images
+    // var imageIndex = 0;
+    // var imagesArray = [
+    //     "<%= asset_path 'banner1.jpg' %>",
+    //     "<%= asset_path 'banner2.jpg' %>",
+    //     "<%= asset_path 'banner3.jpg' %>"
+    // ];
+    // console.log(imagesArray)
+
+    // function changeBackground(){
+    //     var index = imageIndex++ % imagesArray.length;
+    //     $("#home-banner").css("background","url('"+ imagesArray[index] +"')");
+
+    //     $('#home-banner .slide').fadeOut('slow', function(){
+    //       $(this).css({
+    //         backgroundImage: 'url(' + [imageIndex] + ')'
+    //       }).show();
+    //     });
+    // };
+
+    // setInterval(changeBackground, 8000);
   </script>
 <% end %>

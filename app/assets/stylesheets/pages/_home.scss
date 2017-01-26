@@ -22,10 +22,14 @@
 .zero-text-margin p {
   margin: 0;
 }
-.banner{
-  height: 100vh;
+#home-banner{
+  height: 80vh;
+  width: 100%;
 }
-
+.slide {
+  height: 80vh;
+  width: 100%;
+}
 .banner-float{
   text-align: left;
   font-size: 14px;
