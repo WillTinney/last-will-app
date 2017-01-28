@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_attachment :proof_of_residency
+  has_attachment :profile_picture
 
   # delegate :approvers, :guardians, :recipients, to: :assignees
 
