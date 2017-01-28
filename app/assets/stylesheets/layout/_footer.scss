@@ -3,13 +3,14 @@
   box-shadow: 1px 0 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   background: #57BB90;
   transition: all 0.3s ease;
-  height: 150px;
+  height: 160px;
   padding-bottom: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
   p {
+
     margin: 1px 0;
   }
   h3 {
@@ -22,6 +23,15 @@
   max-width: 30%;
 }
 #site-map {
+  margin-left: 10px;
+}
+.column-flex {
   display: flex;
   flex-direction: row;
+}
+.site-column {
+  margin: 0 10px;
+}
+#disclaimer {
+  margin-top: 25px;
 }
