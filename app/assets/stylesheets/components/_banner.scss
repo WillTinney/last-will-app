@@ -19,13 +19,23 @@
   margin-bottom: 20px;
   }
 }
+#home-banner{
+  height: 85vh;
+  width: 100%;
+}
 .banner-float {
   position: absolute;
   top: 10%;
   left: 10%;
 }
-.banner-content {
-  margin-top: 15%;
+.banner-float{
+  text-align: left;
+  font-size: 14px;
+}
+.banner-strip{
+  position: absolute;
+  bottom: 0;
+  filter: blur(1px);
 }
 .banner-strip {
   width: 100%;
@@ -37,4 +47,16 @@
   p {
     margin: 0;
   }
+}
+.banner-content {
+  margin-top: 15%;
+}
+#home-arrow {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 10px 0;
+}
+.fa-chevron-down{
+  font-size: 50px;
+  color: #6B648A;
 }

@@ -1,5 +1,3 @@
-/* Main class */
-
 .navbar-wagon {
   background: #57BB90;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
@@ -129,26 +127,6 @@
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: none;
 }
-
-// Sign-Up Navbar Animation
-// @keyframes dropHeader {
-//   0% {
-//     transform: translateY(-100%);
-//   }
-//   100% {
-//     transform: translateY(0);
-//   }
-// }
-
 #sign-up-navbar {
   box-shadow: none;
 }
-// #sign-up-navbar {
-//   height: 30%;
-//   padding: 30px;
-
-//   animation-name: dropHeader;
-//   animation-iteration-count: 1;
-//   animation-timing-function: ease-out;
-//   animation-duration: 0.6s;
-// }

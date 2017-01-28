@@ -1,22 +1,27 @@
 // Your footer style
 .footer {
   box-shadow: 1px 0 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  background: $sky-blue;
+  background: #57BB90;
   transition: all 0.3s ease;
-  display: flex;
-  height: 60px;
+  height: 150px;
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-around;
-}
-
-.about .contact .legal {
-  flex: 0 0 20%;
-}
-
-.footer h2 {
+  p {
+    margin: 1px 0;
+  }
+  h3 {
   color: white;
-  font-size: 16px;
-  font-size: bold;
+  font-size: 20px;
+  font-weight: bold;
+  }
 }
-
+.footer-item {
+  max-width: 30%;
+}
+#site-map {
+  display: flex;
+  flex-direction: row;
+}
