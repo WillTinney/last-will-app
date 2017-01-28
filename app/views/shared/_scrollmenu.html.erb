@@ -3,7 +3,8 @@
     <h3>Me</h3>
     <div class="scrollitem <%= 'active' if @approver.nil? && @guardian.nil? && @recipient.nil? %>">
       <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
-        <%= image_tag(current_user.profile_picture || "user.png", class: "avatar") %>
+      <%= cl_image_tag(current_user.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+
         <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
@@ -16,6 +17,7 @@
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
           <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
+          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -28,6 +30,7 @@
         <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
           <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
+          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -40,6 +43,7 @@
         <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
           <%= image_tag(guardian.profile_picture || "user.png", class: "avatar") %>
           <h4><%= guardian.first_name %></h4>
+          <h6><%= guardian.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -52,6 +56,7 @@
         <%= link_to user_approver_path(current_user, approver), class: 'scrollmenu-approvers' do %>
           <%= image_tag(approver.profile_picture || "user.png", class: "avatar") %>
           <h4><%= approver.first_name %></h4>
+          <h6><%= approver.id %></h6>
         <% end %>
       </div>
     <% end %>
@@ -64,6 +69,7 @@
         <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
           <%= image_tag(recipient.profile_picture || "user.png", class: "avatar") %>
           <h4><%= recipient.first_name %></h4>
+          <h6><%= recipient.id %></h6>
         <% end %>
       </div>
     <% end %>
