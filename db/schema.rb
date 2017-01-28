@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117082933) do
+ActiveRecord::Schema.define(version: 20170128221804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 20170117082933) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["user_id"], name: "index_call_to_actions_on_user_id", using: :btree
+  end
+
+  create_table "digital_assets", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "asset"
+    t.string   "type"
+    t.string   "asset_seed"
+    t.integer  "assignee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["assignee_id"], name: "index_digital_assets_on_assignee_id", using: :btree
   end
 
   create_table "notes", force: :cascade do |t|
@@ -131,6 +143,7 @@ ActiveRecord::Schema.define(version: 20170117082933) do
     t.string   "gender"
     t.string   "proof_of_residency"
     t.string   "proof_comments"
+    t.string   "profile_picture_seed"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -147,6 +160,7 @@ ActiveRecord::Schema.define(version: 20170117082933) do
 
   add_foreign_key "assignees", "users"
   add_foreign_key "call_to_actions", "users"
+  add_foreign_key "digital_assets", "assignees"
   add_foreign_key "notes", "assignees"
   add_foreign_key "notes", "users"
   add_foreign_key "photos", "assignees"

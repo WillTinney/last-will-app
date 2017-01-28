@@ -3,7 +3,7 @@
     <h3>Me</h3>
     <div class="scrollitem <%= 'active' if @approver.nil? && @guardian.nil? && @recipient.nil? %>">
       <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
-        <%= image_tag(current_user.profile_picture, class: "avatar") %>
+        <%= image_tag(current_user.profile_picture || "user.png", class: "avatar") %>
         <h4><%= @user.first_name %></h4>
       <% end %>
     </div>
