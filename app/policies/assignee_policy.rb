@@ -11,7 +11,7 @@ class AssigneePolicy < ApplicationPolicy
   end
 
   def new?
-    user_is_owner?
+    true
   end
 
   def edit?

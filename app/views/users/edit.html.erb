@@ -1,9 +1,15 @@
 <div id="personal-details" class="details-box">
 
-  <%= link_to '#', class: 'profile-picture-inline' do %>
-    <%= image_tag("user.png", class: "avatar-large") %>
-    <p>Change Picture</p>
-  <% end %>
+  <div>
+    <%= link_to '#', class: 'profile-picture-inline' do %>
+      <%= image_tag(current_user.profile_picture || "user.png", class: "avatar-large") %>
+      <p>Change Picture</p>
+      <%= simple_form_for @user, html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
+        <%= f.input :profile_picture, as: :attachinary, label: false, input_html: { class: 'profile-upload'} %>
+        <%= f.submit "Upload", class: 'profile-upload'  %>
+      <% end %>
+    <% end %>
+  </div>
 
   <%= simple_form_for(@user) do |f| %>
     <div class="form-container">
@@ -66,3 +72,13 @@
     </div>
   <% end %>
 </div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $('.profile-picture-inline').click(function(e) {
+      e.preventDefault;
+      console.log('hello')
+      $('.edit-profile-picture').removeClass('invisible');
+    });
+  </script>
+<% end %>

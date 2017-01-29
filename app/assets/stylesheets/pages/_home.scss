@@ -51,29 +51,6 @@
 .zero-text-margin p {
   margin: 0;
 }
-#home-banner{
-  height: 85vh;
-  width: 100%;
-}
-.banner-float{
-  text-align: left;
-  font-size: 14px;
-}
-.banner-strip{
-  position: absolute;
-  bottom: 0;
-  filter: blur(1px);
-}
-#home-arrow {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0 10px 0;
-}
-.fa-chevron-down{
-  font-size: 50px;
-  color: #6B648A;
-}
-
 #quotes {
   background-color: #F8F8F9;
 }
@@ -204,6 +181,7 @@
 #registration {
   padding: 60px 0;
   width: 100%;
+  max-height: 400px;
   height: 50vh;
   background-color: #EEE9E8;
   h2 {
