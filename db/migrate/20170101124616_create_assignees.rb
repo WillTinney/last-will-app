@@ -14,7 +14,7 @@ class CreateAssignees < ActiveRecord::Migration[5.0]
       t.string :town
       t.string :country
       t.string :postcode
-      t.string :profile_picture, default: "user3.png"
+      t.string :profile_picture
       t.string :type
 
       t.timestamps

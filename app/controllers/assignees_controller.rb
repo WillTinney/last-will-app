@@ -1,7 +1,9 @@
 class AssigneesController < ApplicationController
+  protect_from_forgery except: :new
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
   before_action :set_assignee_id, only: [:notes, :admin, :photos, :videos]
   before_action :set_type
+
 
   def index
     # @assignees = Assignee.all

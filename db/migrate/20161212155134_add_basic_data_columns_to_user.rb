@@ -13,7 +13,7 @@ class AddBasicDataColumnsToUser < ActiveRecord::Migration[5.0]
     add_column :users, :postcode, :string
     add_column :users, :latitude, :float
     add_column :users, :longitude, :float
-    add_column :users, :profile_picture, :string, default: "user.png"
+    add_column :users, :profile_picture, :string
     add_column :users, :gender, :string
   end
 end
