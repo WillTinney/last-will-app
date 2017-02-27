@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213145549) do
+ActiveRecord::Schema.define(version: 20170227175407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 20170213145549) do
     t.string   "country"
     t.string   "postcode"
     t.string   "profile_picture"
+    t.string   "profile_picture_seed"
     t.string   "type"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["user_id"], name: "index_assignees_on_user_id", using: :btree
   end
 
@@ -53,23 +54,53 @@ ActiveRecord::Schema.define(version: 20170213145549) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "call_to_actions", force: :cascade do |t|
+    t.string   "event"
+    t.string   "event_type"
+    t.datetime "release_date"
+    t.boolean  "approver_confirmation"
+    t.integer  "approver_count"
+    t.integer  "user_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["user_id"], name: "index_call_to_actions_on_user_id", using: :btree
+  end
+
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "assignee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["assignee_id"], name: "index_notes_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
 
-  create_table "proofs", force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
+    t.string   "photo"
+    t.string   "title"
+    t.string   "caption"
+    t.integer  "assignee_id"
+    t.integer  "user_id"
+    t.string   "photo_seed"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+  end
+
+  create_table "references", force: :cascade do |t|
     t.string   "document"
     t.string   "title"
     t.string   "comments"
+    t.integer  "assignee_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_proofs_on_user_id", using: :btree
+    t.string   "document_seed"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
+    t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -100,6 +131,7 @@ ActiveRecord::Schema.define(version: 20170213145549) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "profile_picture"
+    t.string   "profile_picture_seed"
     t.boolean  "partner",                default: false
     t.integer  "number_of_children"
     t.integer  "number_of_guardians"
@@ -113,5 +145,23 @@ ActiveRecord::Schema.define(version: 20170213145549) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "videos", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.string   "video"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_videos_on_user_id", using: :btree
+  end
+
+  add_foreign_key "assignees", "users"
+  add_foreign_key "call_to_actions", "users"
+  add_foreign_key "notes", "assignees"
   add_foreign_key "notes", "users"
+  add_foreign_key "photos", "assignees"
+  add_foreign_key "photos", "users"
+  add_foreign_key "references", "assignees"
+  add_foreign_key "references", "users"
+  add_foreign_key "videos", "users"
 end

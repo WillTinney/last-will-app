@@ -7,6 +7,8 @@ class CreateReferences < ActiveRecord::Migration[5.0]
       t.references :assignee, foreign_key: true
       t.references :user, foreign_key: true
 
+      t.string :document_seed
+
       t.timestamps
     end
   end
