@@ -134,23 +134,23 @@
 
       <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="alt-card black-links">
-          <% if @user.proofs.empty? %>
+          <%# if @user.proofs.empty? %>
             <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('No proof of residency') %></span></i>
-          <% end %>
-          <h4 class="profile-card-link"><%= link_to t("Proof of Residency"), user_proofs_path(current_user) %><span class="card-tooltip"><%= t('my proof tooltip') %></span></h4>
+          <%# end %>
+          <h4 class="profile-card-link"><%# link_to t("Proof of Residency"), user_proofs_path(current_user) %><span class="card-tooltip"><%= t('my proof tooltip') %></span></h4>
           <hr>
           <div class="card-content card-overflow">
-            <% if !@user.proofs.empty? %>
+            <%# if !@user.proofs.empty? %>
 
-              <% @user.proofs.each do |proof| %>
-                <p>- <%= proof.title %></strong></p>
-              <% end %>
+              <%# @user.proofs.each do |proof| %>
+                <!-- <p>- <%# proof.title %></strong></p> -->
+              <%# end %>
 
-            <% else %>
+            <%# else %>
 
-              <p><%= link_to t('assign proof'), user_proofs_path(current_user), class: "proof-card" %></p>
+              <p><%# link_to t('assign proof'), user_proofs_path(current_user), class: "proof-card" %></p>
 
-            <% end %>
+            <%# end %>
           </div>
         </div>
       </div>
