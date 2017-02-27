@@ -16,6 +16,7 @@ class CreateAssignees < ActiveRecord::Migration[5.0]
       t.string :postcode
       t.string :profile_picture
       t.string :type
+      t.references :user, foreign_key: true
 
       t.timestamps
     end

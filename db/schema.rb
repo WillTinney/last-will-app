@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "postcode"
     t.string   "profile_picture"
     t.string   "type"
+    t.integer  "user_id"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.integer  "user_id"
     t.string   "profile_picture_seed", default: "user3.png"
     t.index ["user_id"], name: "index_assignees_on_user_id", using: :btree
   end
@@ -69,9 +69,9 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "title"
     t.string   "content"
     t.integer  "assignee_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.index ["assignee_id"], name: "index_notes_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
   end
@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "caption"
     t.string   "photo"
     t.integer  "assignee_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.string   "photo_seed"
     t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
@@ -94,9 +94,9 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "comments"
     t.string   "document"
     t.integer  "assignee_id"
+    t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "user_id"
     t.string   "document_seed"
     t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_references_on_user_id", using: :btree

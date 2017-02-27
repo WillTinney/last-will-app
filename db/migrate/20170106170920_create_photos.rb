@@ -5,6 +5,7 @@ class CreatePhotos < ActiveRecord::Migration[5.0]
       t.string :caption
       t.string :photo
       t.references :assignee, foreign_key: true
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
