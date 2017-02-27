@@ -1,0 +1,21 @@
+<br>
+
+<div class="container-box">
+  <div class="show-box">
+    <div class="show-image">
+      <%= cl_image_tag("document_dwvexg.jpg", width: 550, height: 700) %>
+    </div>
+    <div class="show-description">
+      <h3><%= @reference.title %></h3>
+      <p><%= @reference.comments %></p>
+      <div class="card-buttons">
+        <%= link_to "Edit", edit_user_assignee_reference_path(current_user, @reference.assignee_id, @reference), remote: true, class: "btn btn-success btn-default" %>
+        <%= link_to "Delete", user_assignee_reference_path(current_user, @reference.assignee_id, @reference), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+      </div>
+      <br>
+      <%= link_to "Back", user_assignee_path(@user, @reference.assignee_id), class: "btn btn-transparent btn-default" %>
+      <div id="edit-reference-form"></div>
+      <div id="new-reference-form"></div>
+    </div>
+  </div>
+</div>

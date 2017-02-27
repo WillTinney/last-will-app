@@ -1,0 +1,47 @@
+<br>
+
+<div class="container-box">
+  <h2>Admin References</h2>
+
+  <div class="blue-box">
+    <p>Here you can administrative documents and data that...</p>
+  </div>
+
+  <% @user.references.each do |reference| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="asset-card text-center">
+        <%= link_to user_assignee_reference_path(current_user, reference.assignee_id, reference), class: "reference-link", "data-reference-id" => reference.id, "data-assignee-id" => reference.assignee_id do %>
+          <%= cl_image_tag("document_dwvexg.jpg", width: 200, height: 150) %>
+        <% end %>
+        <h5><strong>For:</strong> <%= Assignee.find(reference.assignee_id).first_name %></h5>
+        <div class="card-buttons">
+          <%= link_to "#", class: "btn btn-info btn-default btn-ice reference-link", "data-reference-id" => reference.id, "data-assignee-id" => reference.assignee_id do %>
+            View
+          <% end %>
+          <%= link_to "Delete", user_assignee_reference_path(current_user, reference.assignee_id, reference.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on reference loads relevant show page
+    $('.reference-link').click(function(e){
+      e.preventDefault();
+      var referenceId = $(this).data('reference-id');
+      var assigneeId = $(this).data('assignee-id');
+      var userId = <%= @user.id %>;
+      $('#tab-content').empty();
+      $.ajax({
+          type: "GET",
+          url: "/users/" + userId + "/assignees/" + assigneeId + "/references/" + referenceId,
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>

@@ -1,0 +1,6 @@
+<%= simple_form_for [current_user, @assignee, @reference] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :comments %>
+  <%= f.input :document, as: :attachinary %>
+  <%= f.button :submit %>
+<% end %>

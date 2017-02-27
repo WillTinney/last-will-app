@@ -13,3 +13,63 @@
     </div>
   </div>
 </div>
+
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbar' %>
+<% end %>
+
+<% content_for(:sidebar) do %>
+  <%= render 'shared/sidebars/sidebar_core' %>
+<% end %>
+
+<div class="dashboard-box">
+  <div id="tab-content">
+    <div class="0" id="my-profile-content">
+      <%= render file: 'users/profile' %>
+    </div>
+
+    <div class="2 hidden" id="call_to_action-content">
+<!--       <%# render file: 'call_to_action/index' %>
+ -->    </div>
+
+    <div class="4 hidden" id="personal-details-content">
+      <%= render file: 'users/edit' %>
+    </div>
+
+    <div class="6 hidden" id="guardian-content">
+      <%= render 'users/profile/guardians' %>
+    </div>
+
+    <div class="8 hidden" id="approver-content">
+      <%= render 'users/profile/approvers' %>
+    </div>
+
+    <div class="10 hidden" id="family-and-friends-content">
+      <%= render 'users/profile/family_and_friends' %>
+    </div>
+
+    <div class="12 hidden" id="my-digital-assets-content">
+      <%= render file: 'users/digital' %>
+    </div>
+
+    <div class="14 hidden" id="proof-of-residency-content">
+      <%= render file: 'users/proof' %>
+    </div>
+
+    <div class="16 hidden" id="admin-references-content">
+      <%= render 'users/digital_assets/admin_references' %>
+    </div>
+
+    <div class="18 hidden" id="notes-content">
+      <%= render file: 'users/notes' %>
+    </div>
+
+    <div class="20 hidden" id="photo-library-content">
+      <%= render file: 'users/photos' %>
+    </div>
+
+    <div class="22 hidden" id="video-library-content">
+      <%# render file: 'users/video' %>
+    </div>
+  </div>
+</div>
