@@ -1,28 +1,34 @@
 <div class="footer">
   <div class="footer-item">
-    <h3 id="site-map">Site Map</h3>
+    <h3 id="site-map"><%= t('Site Map') %></h3>
     <div class="column-flex">
       <div class="site-column">
-        <p>Home</p>
-        <p>How it works</p>
-        <p>Pricing</p>
-        <p>About</p>
+        <%= link_to root_path do %>
+          <p id="footer-home"><%= t('Home') %></p>
+        <% end %>
+        <%= link_to root_path + "#instructions" do %>
+          <p id="footer-how"><%= t('How it works') %></p>
+        <% end %>
       </div>
       <div class="site-column">
-        <p>Contact</p>
-        <p>Careers</p>
-        <p>Terms & Conditions</p>
-        <p>Privacy Policy</p>
+        <%= link_to contact_path do %>
+          <p id="footer-contact"><%= t('Contact') %></p>
+        <% end %>
+        <%= link_to root_path + "#comparison" do %>
+          <p id="footer-price"><%= t('Pricing') %></p>
+        <% end %>
+        <!-- <p id="footer-careers"><%= t('Careers') %></p> -->
+        <!-- <p id="footer-terms"><%= t('Terms & Conditions') %></p> -->
       </div>
     </div>
   </div>
   <div class="footer-item" id="find-us">
-    <h3>Find Us</h3>
-    <p>MyWill</p>
+    <h3><%= t('Find Us') %></h3>
+    <p>IglooWorld LTD</p>
     <p>23a South End Road</p>
     <p>London NW3 2PT</p>
   </div>
   <div class="footer-item" id="disclaimer">
-    <p>MyWill is an online service that provides digital storage services through a trusted infrastructure. We are not a law firm and are not a substitute for a lawyer's advice about complex family issues.</p>
+    <p><%= t('footer description') %></p>
   </div>
 </div>

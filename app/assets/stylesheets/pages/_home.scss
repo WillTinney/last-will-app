@@ -1,47 +1,122 @@
 /* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
+ * Additional Home Page Clases
  * ------------------------------------- */
-.home-image {
+.home-banner {
   position: relative;
-  img {
-    width: 100%;
-    max-height: 80%;
-  }
+  overflow-y: hidden;
+  overflow-x: hidden;
   h2 {
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
-    span {
-      color: white;
-      font: bold 48px/90px Helvetica, Sans-Serif;
-      letter-spacing: -1px;
-      background: black;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      .spacer {
-        padding: 0 5px;
-      }
+  }
+}
+.home-banner-image {
+  width: 100%;
+  max-height: 600px;
+}
+@media (max-width: 600px) {
+  .home-banner-image {
+    max-height: 500px;
+  }
+}
+@media (max-width: 1000px) {
+  .home-banner-image {
+    width: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .home-banner-image {
+    object-fit: cover;
+    min-width: 100%;
+    max-height: 800px;
+  }
+}
+@media (max-width: 720px) {
+  #standard-title {
+    visibility: hidden;
+  }
+  #mobile-title {
+    margin-top: 50px;
+  }
+}
+@media (min-width: 720px) {
+  #mobile-title {
+    visibility: hidden;
+  }
+}
+.overflow-hidden {
+  overflow: hidden;
+}
+@media (max-width: 580px) {
+  .home-banner {
+    background-color: #E7DFDD;
+  }
+  .banner-space {
+    background: #E7DFDD;
+  }
+}
+.banner-text {
+  color: $background-grey;
+  align-self: flex-start;
+  z-index: 10;
+  h4 {
+    font-size: 22px;
+  }
+  h5 {
+    font-size: 20px;
+    font-style: italic;
+    position: center;
+    color: #EEEEEE;
+  }
+}
+@media (max-width: 600px) {
+  .banner-text {
+    h4 {
+      font-size: 18px;
+    }
+    h5 {
+      font-size: 16px;
     }
   }
 }
+
+#bt-1 {
+  margin: 9% 8% 1% 8%;
+}
+@media (max-width: 720px) {
+  #bt-1 {
+    margin: 18% 8% 1% 8%;
+  }
+}
+@media (max-width: 500px) {
+  #bt-1 {
+    margin: 20% 8% 0 8%;
+  }
+}
+#bt-2 {
+  margin: 4% 8% 2% 8%;
+}
 .banner-button {
-  position: absolute;
-  top: 70%;
-  right: 10px;
+  z-index: 10;
+  h4 {
+    font-size: 18px;
+    font-weight: 400;
+  }
 }
 .home-section {
-  padding: 80px 0;
-
+  padding: 60px 0 80px 0;
   h2 {
-    color: #6B648A;
+    color: $purple;
     margin-bottom: 30px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 600;
   }
   p {
-    font-weight: 300;
-    font-size: 20px;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 0 10px;
   }
 }
 .call-to-action-text p {
@@ -55,12 +130,13 @@
   background-color: #F8F8F9;
 }
 #media-quotes {
-  padding-top: 30px;
+  padding-top: 50px;
 }
 .review-box {
-  background: rgba(240, 240, 240, 0.4);
+  background: rgba(240, 240, 240, 0.8);
+  margin-top: 30px;
   padding: 20px 10px 10px 10px;
-  height: 250px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,39 +147,58 @@
 }
 #instructions {
   width: 100%;
-  background-color: #EEE9E8;
+  background-color: #E7DFDD;
   h4 {
-    font-weight: bold;
+    font-weight: 500;
   }
 }
 .feature {
-  padding: 5px 40px;
+  padding: 5px 10%;
   h4 {
     margin-bottom: 20px;
+    font-weight: 600;
+  }
+  p {
+    font-size: 16px;
   }
 }
-.feature-image {
-  height: 100px;
-  margin-bottom: 10px;
+.feature-image-vault {
+  height: 120px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.feature-image-guardian {
+  height: 120px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.feature-image-proof {
+  height: 120px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 #feedback {
   color: white;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
-
+  height: 70vh;
 }
-#caroussel{
+@media (max-width: 767px) {
+  #feedback {
+    height: 900px;
+  }
+}
+#carousel-container{
   width: 100%;
-  height: 100vh;
-  padding: 20% 0;
+  height: 65vh;
+  padding-bottom: 20px;
   background-color: #F8F8F9;
 }
 .comparison-box {
   background: #F8F8F9;
   border-radius: 5px;
-  border: 1px solid rgb(150,150,150);
-  padding: 20px;
+  border: 3px solid rgb(230,230,230);
+  padding: 1  0px;
   position: relative;
   p {
     font-size: 16px;
@@ -114,14 +209,24 @@
     padding-left: 0;
   }
   h3 {
-    font-size: 50px;
+    font-size: 30px;
+    margin-top: 5px;
+  }
+  h5 {
+    font-size: 18px;
+  }
+  hr {
+    border: 1px solid rgb(230,230,230);
+  }
+  i {
+    margin-bottom: 12px;
   }
 }
 .comparison-li{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 15px 0;
+  margin: 15px 50px;
   max-height: 50px;
   p {
     flex: 0 0 90%;
@@ -139,12 +244,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 5px;
 }
 .comparison-icon.green, p.green {
-  color: #015249;
+  color: $orange;
 }
 .my-will {
-  color: #015249;
+  color: $orange;
 }
 .lawyer-will {
   color: rgb(140,140,140);
@@ -156,7 +262,7 @@
   z-index: 2;
   border-radius: 50%;
   border: 2px solid rgb(150,150,150);
-  background-color: white;
+  background-color: #F8F8F8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -179,16 +285,23 @@
   }
 }
 #registration {
-  padding: 60px 0;
   width: 100%;
+  min-height: 380px;
   max-height: 400px;
   height: 50vh;
-  background-color: #EEE9E8;
+  background-color: #E7DFDD;
   h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   p {
+    padding: 0 15%;
+    margin-top: 10px;
     margin-bottom: 30px;
+  }
+}
+@media (max-width: 500px) {
+  #registration {
+    height: 55vh;
   }
 }
 .email-notice {
@@ -204,4 +317,33 @@
 }
 .email-success {
   background-color: #40BA45;
+}
+
+.home-flashes {
+  position: absolute;
+  top: 65px;
+  z-index: 11;
+  width: 100%;
+}
+
+// Banner slideshow
+#slideshow {
+  position: relative;
+  width: 100%;
+}
+#slideshow > img {
+  position: absolute;
+  top: 0;
+  // top: 10px;
+  // left: 10px;
+}
+@media (max-width: 1200px) {
+  .banner-space {
+    padding-top: 5%;
+  }
+}
+@media (min-width: 1201px) {
+  .banner-space {
+    padding-top: 70px;
+  }
 }

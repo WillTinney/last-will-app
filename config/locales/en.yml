@@ -1,23 +1,246 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  View: "View"
+  New: "New"
+  Create: "Create"
+  Edit: "Edit"
+  Delete: "Delete"
+  Next: "Next"
+  Back: "Back"
+  back: "back"
+  Save: "Save"
+  Back to Profile: "Back to Profile"
+  "No": "No"
+  "Yes": "Yes"
+  OK: "OK"
+  Cancel: "Cancel"
+  Send: "Send"
+
+  # I18n
+  English: "English"
+  French: "Francais"
+  Spanish: “Espanol”
+  Polish: “XXX”
+
+  # Home Page
+  banner quote: "\"Under the Government’s Brexit bill, over 3 million EU citizens living in the UK now face an uncertain future.\""
+  Protect your residency right: "Protect your Residency Right. Don’t let the Border Forces make your life impossible."
+  collect proof, designate guardians: "Collect proof. Designate Guardians."
+  access anytime, anywhere: "Access them at anytime, from anywhere."
+  protect your resident status: "Protect your Resident Status"
+  Why BrexitHedge: "Why BrexitHedge?"
+  why description html: "Residency Rights that will apply to EU Citizens remain uncertain. BrexitHedge help you to build up <strong>a Trust Infrastructure for UK Authorities</strong>. History and recent political events remind us <strong>we need to be prepared for any situation</strong> and to protect our relatives."
+  what does it do for me: "What does BrexitHedge do for me?"
+  what description 1: "BrexitHedge helps EU citizens living in the UK protect their residency right to stay post Brexit."
+  what description 2: "BrexitHedge provide a unique infrastructure of authenticity and trust, and give people the ability to access their data anywhere they are."
+  Collect and Save: "Collect and Save"
+  collect description html: "We help you to collect your proofs of residency. We also securely save them to keep your personal data confidential. <strong>We never distribute or sell your data to anyone</strong>."
+  Designate Guardians: "Designate Guardians"
+  designate description html: "You designate UK Citizens who can testify you match the criteria defined by the government to stay in the UK."
+  Unlock and Prove: "Unlock and Prove"
+  unlock description html: "You unlock your data from anywhere and send them to any institution, as the Home Office or an employer. BrexitHedge send a summary of your data asking guardians to confirm your situation."
+  Act now: "Act now!"
+  home quote 1: "\"I live in constant uncertainty and dread. Like many others, I feel like I’ve invested my entire adulthood into this country. If I have to I can leave, but many others can’t.\""
+  quote owner 1: "Sylvie, Polish, PhD student"
+  home quote 2: "\"My worry is not so much about being kicked out but that my life is here. I have lived here for 18 years, been employed and paid taxes without a break.\""
+  quote owner 2: "Monika, 46, German, senior director in customer service in large consumer company"
+  do I need to pay: "Do I need to pay to use BrexitHedge?"
+  is completely: "BrexitHedge is"
+  Free: "Free."
+  made EU for EU: "Made by EU citizens for EU citizens."
+  trust infrastructure: "Trust infrastructure: storage and authenticity"
+  designate guardians: "Designate your guardians"
+  unlock anywhere: "Unlock your data access from anywhere"
+  update anytime: "Update anytime"
+  sign up now to prove residency: "Sign up now to prove your right to residency"
+  call to sign up text: "In absence of future residency rules for EU citizens living in the UK, hedge your situation and be able to proove your right to stay anytime from anywhere."
+
+  # Profile Page
+  My Details: "My Details"
+  Citizen: "Citizen"
+  citizenship required: "Please enter your citizenship"
+  DoB: "Date of Birth"
+  date of birth required: "Please enter your date of birth"
+  Email: "Email"
+  Phone Number: "Phone Number"
+  phone number required: "Please enter your phone number"
+  Address: "Address"
+  address required: "Please enter your address"
+  details incomplete tooltip: "Details still to complete"
+
+  My Partner: "My Partner"
+  assign a partner: "You have not assigned a partner. Click here to add a partner."
+  My Children: "My Children"
+  assign children: "You have not assigned any children. Click here to add a child."
+  My Guardians: "My Guardians"
+  assign guardians: "You have not assigned any guardians. Click here to add a guardian."
+  Proof of Residency: "Proof of Residency"
+  No proof of residency: 'No proof of residency'
+  assign proof: "You have not uploaded any proof of residency. Click here to go to our secure upload form."
+  Notes: "Notes"
+  assign notes: "You have not created any notes. Click here to go to open your notes library."
+
+  # My Details
+  details tooltip: "The more accurate and complete the information you provide, the easier it will to prove your residency"
+  Change Picture: "Change Picture"
+  Upload: "Upload"
+  Title: "Title"
+  Email: "Email"
+  First name: "First name"
+  Middle name: "Middle name"
+  Last name: "Last name"
+  Citizenship: "Citizenship"
+  Date of birth: "Date of birth"
+  Phone number: "Phone number"
+  Address line 1: "Address line 1"
+  Address line 2: "Address line 2"
+  City: "City"
+  Postcode: "Postcode"
+  Country: "Country"
+
+  # Unlock Data
+  Unlocking your data: "Unlocking your data"
+  unlock tooltip: "Unlocking your data allows you to share your proofs of residency and your guardian’s details."
+  unlock description: "Unlocking your data involves sending an email to designated recipients in order to provide tangible proofs of your historical residency."
+  successfully unlocked data: "You have successfully unlocked your data!"
+  Unlock data: "Unlock data"
+  unlock warning: "*This is a permanent unlock of your data and cannot be undone"
+  Data unlock email: "Data unlock email:"
+  send data warning: "This is a permanent unlocking of the data you have provided to official sources. Continue?"
+
+  # Children Index
+  Add Child: "Add Child"
+  New Child: "New Child"
+
+  # Guardian Index
+  Add New: "Add New"
+  guardian explanation: "Guardians are UK Citizens who can testify you match the residency criteria defined by the government"
+  New Guardian: "New Guardian"
+  New Partner: "New Partner"
+
+  # Proof of Residency
+  Your Proof of Residency: "Your Proof of Residency"
+  Add Document: "Add Document"
+  proof tooltip: "By including as much documentation as possible on your UK residency you give yourself the best chance of protection."
+  Are you sure: "Are you sure?"
+  proof description: "In this section, you save all evidence that you’ve been living in the UK, such as gas or electricity bills, council tax receipt, and letters from government departments (HMRC, State School, NHS, etc...). It is also in your interest to show evidence that you’ve been working, studying, self-employed, self-sufficient or looking for work, such as payslips, P60 forms and bank statements.  You could be asked to send those documents to UK authorities as the Home Office if you need to justify your residency historical and your social situation."
+  not uploaded residency: "You have not uploaded a proof of residency."
+  please use form below: "Please use the form below to do so:"
+  Submit Proof of Residency: "Submit Proof of Residency"
+  Document: "Document"
+  Comments: "Comments"
+  Update Proof: "Update Proof"
+
+  # Notes Library
+  Notes Library: "Notes Library"
+  Add Note: "Add Note"
+  note description html: "In this section, you write notes to explain your particular situation or anything you think either guardians or UK Authorities should know about your situation (historical addresses, employment, etc...)."
+  note description 2: "In this section, you write notes to explain your particular situation or anything you think either guardians or UK Authorities should know about your situation."
+  not added notes: "You have not yet added any notes."
+  Content: "Content"
+
+  # Scrollmenu
+  Home: "Home"
+  Profile: "Profile"
+  Me: "Me"
+  Partner: "Partner"
+  Children: "Children"
+  Guardians: "Guardians"
+  Digital Assets: "Digital Assets"
+  My Notes: "My Notes"
+  Unlock Data: "Unlock Data"
+
+  # Navbar
+  Sign Up: "Sign Up"
+  Login: "Login"
+  Log Out: "Log Out"
+  Profile: "Profile"
+  About: "About us"
+  Contact: "Contact"
+
+  # Footer
+  Site Map: "Site Map"
+  Home: "Home"
+  How it works: "How it works"
+  Pricing: "Pricing"
+  Contact: "Contact"
+  Careers: "Careers"
+  Terms & Conditions: "Terms & Conditions"
+  Find Us: "Find Us"
+  footer description: "BrexitHedge is an online service that provides digital storage services through a trusted infrastructure. We are not a law firm and are not a substitute for a lawyer's advice about complex UK residency right issues."
+
+  # Sign-Up Wizard
+  You: "You"
+  Partner: "Partner"
+  Children: "Children"
+  Guardians: "Guardians"
+  enter details about yourself: "Please enter some basic details about yourself."
+  this is important because: "This is important so we are able to identify you and set up your account."
+  what is your nationality: "What is your nationality?"
+  when were you born: "When were you born?"
+  Contact information: "Contact information"
+  contact description: "Please enter your phone number and address so that you can be contacted if necessary."
+  guardian header: "Please enter the details of people you trust."
+  what is your number: "What is your number?"
+  what is your address: "What is your primary UK address?"
+  Your Children: "Your Children"
+  details about your children: "Please enter some basic details about your children."
+  how many children: "How many children do you have?"
+  ask child name:
+    one: "What is the name of your first child?"
+    other: "What is the name of your next child?"
+  how many guardians: "How many guardians would you like to designate?"
+  ask guardian name:
+    one: "What is the name of your first guardian?"
+    other: "What is the name of your next guardian?"
+  guardian brief description: "Guardians are UK Citizens who can testify you match the residency criteria defined by the government."
+  guardian footnote: "*guardian details can be edited at any time"
+  Partner information: "Partner information"
+  partner description: "Please enter some basic details about your partner."
+  do you have a partner: "Do you have a partner or spouse?"
+  what is your partners name: "What is your partner's name?"
+
+  # Devise
+  Sign up: "Sign up"
+  Log in: "Log in"
+  Password: "Password"
+  welcome to: "Welcome to BrexitHedge"
+  to resend follow instructions: "To resend confirmation please follow the instructions below."
+  Resend confirmation instructions: "Resend confirmation instructions"
+  Welcome: "Welcome"
+  Hello: "Hello"
+  Change your password: "Change your password"
+  New password: "New password"
+  Confirm your new password: "Confirm your new password"
+  Change my password: "Change my password"
+  To reset your password please enter your email below: "To reset your password please enter your email below"
+  recieve email in 5 minutes: "You should receive an email within 5 minutes with instructions"
+  Forgot your password: "Forgot your password?"
+  Reset Password: "Reset Password"
+  Currently waiting confirmation for: "Currently waiting confirmation for:"
+  leave it blank if you don't want to change it: "leave it blank if you don't want to change it"
+  we need your current password to confirm your changes: "we need your current password to confirm your changes"
+  Cancel my account: "Cancel my account"
+  first email and password: "First off you need to sign-up with your email address and set a password."
+  sign in to enter: "Please sign-in to enter your account"
+  using your email and password: "using your email and set password."
+  Forgot your password: "Forgot your password?"
+  Didn't receive confirmation instructions: "Didn't receive confirmation instructions?"
+  Didn't receive unlock instructions: "Didn't receive unlock instructions?"
+  Resend unlock instructions: "Resend unlock instructions"
+
+  # About Page
+  About Us: "About Us"
+  about description: "IglooWorld Ltd is a London based Tech StartUp that provides a trust infrastructure solutions to citizens for a better management of their future."
+  Our Vision: "Our Vision"
+  vision description: "We are looking to help everyone, no matter what their circumstances, go through challenging time and obtain as much as possible support. We've started this journey by giving everybody access to free service and to hold that as long as possible. By combining a brand which people trust, a product which is beautiful to use and amazing technology, we deliver a unique experience that helps people take control of their residence status."
+  Our Team: "Our Team"
+  sandrine description: "Co-Founder and CEO. With Brexit, Sandrine has been thinking about data, privacy, citizenship and residency rights. It all comes together in BrexitHedge."
+  will description: "Will is the full stack Dev Guru. By keeping our users at the centre of everything we build, he makes sure that BrexitHedge is always a pleasure to use."
+  julien description: "Co-Founder. Julien has a strong background in financial services and tech. He helps us realise product vision and to deliver the right product features."
+
+  # Contact Page
+  Get in touch: "Get in touch"
+  Contact Us: "Contact Us"
+  Careers: "Careers"
+  careers description: "In our IglooWorld we are always looking for talented people with an entrepreneurial spirit and generating bright ideas for our users. Please contact us by email in sending your Curriculum Vitae and a smart introduction to contact@brexithedge.com."
+

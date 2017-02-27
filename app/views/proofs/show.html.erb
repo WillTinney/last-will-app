@@ -1,0 +1,19 @@
+<div class="container-box">
+  <div class="header-box">
+
+  </div>
+  <div class="photo-box">
+    <%= cl_image_tag(@proof.document.path, width: 800, height: 600) %>
+
+    <h3><%= @proof.title %></h3>
+    <p><%= @proof.comments %></p>
+    <div class="card-buttons">
+      <%= link_to t("Edit"), edit_user_assignee_photo_path(current_user, @proof), remote: true, class: "btn btn-success btn-default" %>
+      <%= link_to t("Delete"), user_assignee_photo_path(current_user, @proof), data: {confirm: t('Are you sure')}, method: :delete, class: "btn btn-danger btn-default" %>
+    </div>
+  </div>
+  <br>
+  <%= link_to t("Back"), user_proofs_path(@user), class: "title-margin btn btn-transparent btn-default" %>
+  <div id="edit-proof-form"></div>
+  <div id="new-proof-form"></div>
+</div>

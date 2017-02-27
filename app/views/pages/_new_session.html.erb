@@ -1,0 +1,44 @@
+<div class="container modal-form">
+  <div class="row">
+    <div class="col-sm-5 col-md-4 col-lg-3 bg-grey">
+      <br>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+        <div class="form-inputs">
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :email, required: false, autofocus: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :password, required: false %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Log in" %>
+        </div>
+      <% end %>
+
+      <div class="link-buttons">
+        <%= link_to "Sign up", new_registration_path(resource_name), "data-backdrop": "false", "data-dismiss": "modal", id: "modal-signup" %><br />
+        <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $('#modal-signup').on('click', function(e) {
+      e.preventDefault();
+      $('.signup-modal-sm').modal('toggle');
+    });
+  </script>
+<% end %>

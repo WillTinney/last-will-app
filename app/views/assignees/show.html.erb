@@ -2,34 +2,14 @@
   <%= render 'shared/navbar' %>
 <% end %>
 
-<% content_for(:sidebar) do %>
-  <%= render 'shared/sidebars/sidebar_assignee' %>
-<% end %>
-
-<div class="dashboard-box">
+<div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
   <div id="tab-content">
-    <div class="0" id="profile-content">
-      <%= render 'assignees/profile' %>
-    </div>
-
-    <div class="2 hidden" id="details-content">
-      <%= render file: 'assignees/edit' %>
-    </div>
-
-    <div class="4 hidden" id="notes-content">
-      <%= render file: 'assignees/notes' %>
-    </div>
-
-    <div class="6 hidden" id="admin-content">
-      <%= render file: 'assignees/references' %>
-    </div>
-
-    <div class="8 hidden" id="photos-content">
-      <%= render file: 'assignees/photos' %>
-    </div>
-
-    <div class="10 hidden" id="videos-content">
-      <%= render file: 'assignees/videos' %>
+    <div class="container">
+      <br>
+      <div class="grey-box relative">
+        <i class="fa fa-question-circle question-circle" aria-hidden="true"><span class="question-tooltip"><%= t('details tooltip') %></span></i>
+        <%= render file: 'assignees/edit' %>
+      </div>
     </div>
   </div>
 </div>
@@ -45,112 +25,85 @@
         return $(this).text() == assigneeId;
     }).parentsUntil('.scrollmenu').addClass('active');
 
-    // When refreshing page the same tab loads
-    // (have to find a way to send a param to the url as file: render is being used and no #mytab in the url)
+    // Progress bar
+    function step_process(from, to, dir) {
+        if (typeof(dir) === 'undefined') dir = 'asc';
+        var old_move = '';
+        var new_start = '';
 
-    // AJAX to load tab content without a refresh
-//     $('#show-profile-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %>,
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
-//     $('#show-details-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %> + "/edit",
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
-//     $('#show-notes-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %> + "/notes",
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
-//     $('#show-admin-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %> + "/references",
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
-//     $('#show-photos-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %> + "/photos",
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
-//     $('#show-videos-sidebar-tab').click(function(e){
-//       e.preventDefault();
-//       $.ajax({
-//           type: "GET",
-//           url: <%= @assignee.id %>  + "/videos",
-//           data: { },
-//           success: function(data){
-//               $('#tab-content').html(data);
-//           }
-//       });
-//     });
+        var speed = 500;
 
-    // Clicking on platform icons on profile tab loads tab content
-    $('#assignee-details-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#profile-content').addClass('hidden');
-      $('#show-details-sidebar-tab').addClass('active');
-      $('#details-content').removeClass('hidden');
+        if (dir == 'asc') {
+            old_move = '-';
+            new_start = '';
+        } else if (dir == 'desc') {
+            old_move = '';
+            new_start = '-';
+        }
+
+        $('#block'+from).animate({left: old_move+'100%'}, speed, function() {
+            $(this).css({left: '100%', 'background-color':'transparent', 'z-index':'2'});
+            $(this).addClass('invisible');
+        });
+        $('#block'+to).css({'z-index': '3', left:new_start+'100%'}).animate({left: '0%'}, speed, function() {
+            $(this).removeClass('invisible');
+            $(this).css({'z-index':'2'});
+        });
+
+        if (Math.abs(from-to) === 1) {
+            // Next Step
+            if (from < to) $("#step"+from).addClass('complete').removeClass('current');
+            else $("#step"+from).removeClass('complete').removeClass('current');
+            var width = (parseInt(to) - 1) * 20;
+            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, speed, function() {
+                $("#step"+to).removeClass('complete').addClass('current');
+            });
+        } else {
+            // Move to Step
+            var steps = Math.abs(from-to);
+            var step_speed = speed / steps;
+            if (from < to) {
+                move_to_step(from, to, 'asc', step_speed);
+            } else {
+                move_to_step(from, to, 'desc', step_speed);
+            }
+        }
+    }
+
+    function move_to_step(step, end, dir, step_speed) {
+        if (dir == 'asc') {
+            $("#step"+step).addClass('complete').removeClass('current');
+            var width = (parseInt(step+1) - 1) * 20;
+            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
+                $("#step"+(step+1)).removeClass('complete').addClass('current');
+                if (step+1 < end) move_to_step((step+1), end, dir, step_speed);
+            });
+        } else {
+            $("#step"+step).removeClass('complete').removeClass('current');
+            var width = (parseInt(step-1) - 1) * 20;
+            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
+                $("#step"+(step-1)).removeClass('complete').addClass('current');
+                if (step-1 > end) move_to_step((step-1), end, dir, step_speed);
+            });
+        }
+    }
+
+    $(document).ready(function() {
+        $("body").on("click", ".progress_bar .step.complete", function() {
+            var from = $(this).parent().find('.current').data('step');
+            var to = $(this).data('step');
+            var dir = "desc";
+            if (from < to) dir = "asc";
+
+            step_process(from, to, dir);
+        });
     });
-    $('#assignee-notes-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#profile-content').addClass('hidden');
-      $('#show-notes-sidebar-tab').addClass('active');
-      $('#notes-content').removeClass('hidden');
-    });
-    $('#assignee-admin-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#profile-content').addClass('hidden');
-      $('#show-admin-sidebar-tab').addClass('active');
-      $('#admin-content').removeClass('hidden');
-    });
-    $('#assignee-photo-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#profile-content').addClass('hidden');
-      $('#show-photos-sidebar-tab').addClass('active');
-      $('#photos-content').removeClass('hidden');
-    });
-    $('#assignee-video-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#profile-content').addClass('hidden');
-      $('#show-videos-sidebar-tab').addClass('active');
-      $('#videos-content').removeClass('hidden');
+
+    // Edit profile picture form
+    $('.profile-picture-inline').click(function(e) {
+      e.preventDefault;
+      console.log('hello')
+      $('.edit-profile-picture').removeClass('invisible');
     });
   </script>
 <% end %>

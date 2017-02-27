@@ -1,3 +1,6 @@
+/* -------------------------------------
+ * Buttons
+ * ------------------------------------- */
 .white-button{
   background-color: white;
   color: black;
@@ -5,10 +8,223 @@
   box-shadow: 0 2px 2px rgba(0,0,0,0.2);
   padding: 10px 30px;
 }
+#banner-button {
+  color: $black;
+  background: $background-grey;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 60px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 30%;
+}
+@media (max-width: 600px) {
+  #banner-button {
+    font-size: 18px;
+    padding: 8px 30px;
+    margin-top: 60px;
+  }
+}
+@media (max-width: 1000px) {
+  #banner-button {
+    margin-top: 20%;
+  }
+}
+@media (max-width: 1200px) {
+  #banner-button {
+    margin-bottom: 20%;
+  }
+}
+#banner-button:hover {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.6);
+}
+.orange-button {
+  background: $teal;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 40px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 5px 10px 5px;
+}
+@media (max-width: 450px) {
+  .nav-buttons {
+    flex-direction: column-reverse;
+    text-align: center;
+    a {
+      margin-top: 10px;
+    }
+  }
+}
+.purple-button {
+  background: $purple;
+  border: $purple;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 40px;
+}
+.purple-button:hover {
+  background: #F9D116;
+  color: white;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+}
+.back-button {
+  border: 3px solid $grey;
+  color: $grey;
+  border-radius: 50px;
+  padding: 8px 35px;
+}
+.back-button:hover {
+  background: white;
+  color: black;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+}
+.grey-button {
+  background: #CCCCCC;
+  border: #CCCCCC;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 40px;
+}
+.grey-button:hover {
+  background: $grey;
+  color: white;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.4);
+}
 .signup-button{
   background-color: $brand-color;
   color: white;
   box-shadow: 0 0px 2px rgba(0,0,0,0.2);
   padding: 10px 30px;
   font-size: 20px;
+}
+.email-button {
+  background: $yellow;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 5px 15px;
+  margin-top: 5px;
+  max-width: 150px;
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  color: $black;
+}
+.email-button:hover {
+  color: $black;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+// Choice buttons
+.choice-button {
+  /* Additions */
+  cursor: pointer;
+  margin-right: 5px;
+  /* End Additions */
+
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 30px;
+  background-color: $purple;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.1));
+  border-radius: 3px;
+  color: #E0E0E0;
+  text-shadow: 0 1px 1px rgba(255,255,255,.7);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+}
+a.choice-button:hover {
+  color: #E0E0E0;
+}
+.choice-button:hover, .choice-button.hover {
+  background-color: $light-purple;
+}
+.choice-button:active, .choice-button.active {
+  background-color: $light-purple;
+  background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,0));
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2), inset 0 2px 5px rgba(0,0,0,.2), 0 1px rgba(255,255,255,.2);
+}
+
+.choice-button-alt {
+ /* Additions */
+  cursor: pointer;
+  margin-right: 5px;
+  /* End Additions */
+
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 30px;
+  background-color: #F1ECEC;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.1));
+  border-radius: 3px;
+  color: rgba(0,0,0,.6);
+  text-shadow: 0 1px 1px rgba(255,255,255,.7);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+}
+a.choice-button-alt:hover {
+  color: rgba(0,0,0,.6);
+}
+.choice-button-alt:hover, .choice-button-alt.hover {
+  background-color: #fff;
+}
+.choice-button-alt:active, .choice-button-alt.active {
+  background-color: #d0d3d6;
+  background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,0));
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2), inset 0 2px 5px rgba(0,0,0,.2), 0 1px rgba(255,255,255,.2);
+}
+
+.choice-button-green {
+  /* Additions */
+  cursor: pointer;
+  margin-right: 5px;
+  /* End Additions */
+
+  font-size: .825em;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 30px;
+  background-color: $green;
+  background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.1));
+  border-radius: 3px;
+  color: $beige;
+  text-shadow: 0 1px 1px rgba(255,255,255,.7);
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2), 0 1px 2px rgba(0,0,0,.2), inset 0 1px 2px rgba(255,255,255,.7);
+}
+a.choice-button-green:hover {
+  color: $beige;
+}
+.choice-button-green:hover, .choice-button-green.hover {
+  background-color: #54AC95;
+}
+.choice-button-green:active, .choice-button-green.active {
+  background-color: #54AC95;
+  background-image: linear-gradient(rgba(0,0,0,.1), rgba(0,0,0,0));
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2), inset 0 2px 5px rgba(0,0,0,.2), 0 1px rgba(255,255,255,.2);
+}
+
+// Add responsivness
+@media (max-width: 440px) {
+  #add-note {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .shorten-button {
+    padding: 10px;
+  }
+  #unlock-button {
+    padding: 12px 20px;
+    margin-bottom: 8px;
+  }
+
 }

@@ -1,0 +1,81 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
+
+<div class="navbar-box">
+  <div class="container">
+    <h3><%= t('Contact information') %></h3>
+
+    <p><%= t('contact description') %></p>
+  </div>
+</div>
+
+<div class="progress-width">
+  <div class="row bs-wizard" style="border-bottom:0;">
+    <div class="col-xs-3 bs-wizard-step active">
+      <div class="text-center bs-wizard-stepnum"><%= t('You') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Partner') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Children') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Guardians') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-box text-center">
+  <%= simple_form_for(@user, url: wizard_path, method: :put, class: "sign-up-form") do |f| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+        <%= f.input :phone_number, placeholder: '+44 7977 123123', label: t('what is your number') %>
+      </div>
+    </div>
+
+    <p class="sign-up-title top-margin"><%= t('what is your address') %></p>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0">
+        <%= f.input :address_line_1, placeholder: t('Address line 1'), label: false, input_html: { id: "user_address"} %>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-0">
+        <%= f.input :address_line_2, placeholder: t('Address line 2'), label: false %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+        <%= f.input :city, placeholder: t('City'), label: false, input_html: { id: "user_city"} %>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+        <%= f.input :postcode, placeholder: t('Postcode'), label: false %>
+      </div>
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-0">
+        <%= f.input :country, priority: ["United Kingdom"], placeholder: t('Country'), label: false %>
+      </div>
+    </div>
+
+    <div class="wizard-buttons">
+      <%= link_to t('back'), previous_wizard_path, class: "wizard-back-button" %>
+      <%= f.submit t('Next'), class: 'btn purple-button' %>
+    </div>
+  <% end %>
+</div>
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>"></script>
+<% end %>

@@ -3,114 +3,159 @@
 <% end %>
 
 <!-- Banner  -->
-<div class="home-image">
-  <%= image_tag('banner1.jpg') %>
+<div class="home-banner">
+  <div class="banner-gradient"></div>
+  <div id="slideshow">
+    <%= image_tag('banner1.jpg', class: "home-banner-image", id: "banner1") %>
+    <%= image_tag('banner2.jpg', class: "home-banner-image", id: "banner2") %>
+    <%= image_tag('banner3.jpg', class: "home-banner-image", id: "banner3") %>
+  </div>
 
-  <h2><span> Brexit Hedge:<span class='spacer'></span><br><span class='spacer'></span>Protect your residency</span></h2>
+  <div class="banner-content">
 
-  <div class="banner-button">
-    <%= link_to new_user_session_path, class: "white-text" do %>
-      <button class="btn btn-secondary white-button">Enroll now for our Beta Version</button>
+    <div class="banner-text" id="bt-1">
+      <h5><%= t('banner quote') %></h5><br/>
+    </div>
+    <div class="banner-text" id="bt-2">
+      <h4><strong><%= t('Protect your residency right') %></strong><br><br><%= t('collect proof, designate guardians') %><br><%= t('access anytime, anywhere') %></h4>
+    </div>
+
+    <div class="banner-button">
+      <% if user_signed_in? %>
+        <%= link_to user_profile_path(current_user) do %>
+          <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_registration_path do %>
+          <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
+        <% end %>
+        <%# link_to new_user_registration_path, data: { toggle: "modal", target: ".signup-modal-sm" } do %>
+         <!--  <button id="banner-button" class="btn btn-transparent">Protect your Resident Status</button> -->
+        <%# end %>
+      <% end %>
+    </div>
+
+    <!-- Floating Arrow -->
+    <%= link_to "#media-quotes", id: "home-arrow" do %>
+      <div class="floating">
+        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+      </div>
     <% end %>
   </div>
 </div>
 
-<!-- Floating Arrow -->
-<div id="home-arrow">
-  <div class="floating">
-    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+<!-- Sign-up modal -->
+<div class="modal fade signup-modal-sm" id="sign_up" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <% render 'pages/new_registration', resource: User.new, resource_name: :user %>
+    </div>
   </div>
 </div>
 
-<!-- Caroussel - Medias -->
-<div class="wrapper">
-  <section id="media-quotes" class="container content-section text-center home-section">
-    <h2>Why?</h2>
-    <p>Theresa May has not defined new immigration control rules yet and the eligibility criteria remain very uncertain.<br>History and recent political events remind us we need to be prepared to protect us and our relatives.</p>
-    <div id="carousel-container">
-    <div class="cloud9-carousel" id="cloud9-carousel">
-
-      <div class="cloud9-item teal-border black-links">
-        <%= link_to "http://www.independent.co.uk/news/uk/home-news/immigration-eu-citizens-brexit-referendum-deportation-home-office-3-million-a7451476.html", target: "_blank" do %>
-          <p>“One million EU citizens in Britain 'at risk of deportation' amid surge in permanent residency applications since Brexit vote"</p>
-          <%= image_tag('Independent_logo.png', class: "carousel-image") %>
-        <% end %>
-      </div>
-
-      <div class="cloud9-item orange-border black-links">
-        <%= link_to "https://www.theguardian.com/politics/2016/dec/14/eu-citizens-collect-proof-of-living-in-uk-helena-kenney-qc-lords-brexit-reports", target: "_blank" do %>
-          <p>“EU citizens should collect proof of living in the UK"</p>
-          <%= image_tag('theguardian.png', class: "carousel-image") %>
-        <% end %>
-      </div>
-      <div class="cloud9-item purple-border black-links">
-        <%= link_to "https://www.gov.uk/eea-registration-certificate/overview", target: "_blank" do %>
-          <p>“Prove your right to live in the UK as an EU citizen"</p>
-          <%= image_tag('logo-govuk.png', class: "carousel-image") %>
-        <% end %>
-      </div>
-      <div class="cloud9-item brown-border black-links">
-        <%= link_to "http://www.independent.co.uk/news/uk/home-news/brexit-eu-citizens-nationals-europe-lords-committee-helena-kennedy-eu-documents-prove-uk-britain-a7475171.html", target: "_blank" do %>
-          <p>“EU citizens urged to collect evidence they lived in UK prior to Brexit vote"</p>
-          <%= image_tag('Independent_logo.png', class: "carousel-image") %>
-        <% end %>
-      </div>
-      <div class="cloud9-item green-border black-links">
-        <%= link_to "http://www.theweek.co.uk/brexit/73161/will-eu-citizens-be-allowed-to-stay-in-uk-after-brexit", target: "_blank" do %>
-          <p>“Will EU citizens be allowed to stay after brexit?"</p>
-          <%= image_tag('theweek.png', class: "carousel-image") %>
-        <% end %>
-      </div>
+<div class="modal fade signin-modal-sm" id="sign_in" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <%= render 'pages/new_session', resource: User.new, resource_name: :user  %>
+      <%# render file: 'devise/sessions/new', resource: User.new, resource_name: :user %>
     </div>
+  </div>
+</div>
+
+<!-- Space below banner -->
+<!-- <div class="banner-space"></div> -->
+
+<!-- Caroussel - Medias -->
+<div class="wrapper overflow-hidden">
+  <section id="media-quotes" class="container content-section text-center home-section">
+    <h2><%= t('Why BrexitHedge') %></h2>
+    <p><%= t('why description html') %></p>
+    <div class="progress-width">
+      <div id="carousel-container">
+        <div class="cloud9-carousel" id="cloud9-carousel">
+
+          <div class="cloud9-item teal-border black-links">
+            <%= link_to "http://www.independent.co.uk/news/uk/home-news/immigration-eu-citizens-brexit-referendum-deportation-home-office-3-million-a7451476.html", target: "_blank" do %>
+              <p>“Three million EU citizens in Britain <strong>'at risk of deportation'</strong> amid surge in permanent residency applications since Brexit vote"</p>
+              <%= image_tag('Independent_logo.png', class: "carousel-image") %>
+            <% end %>
+          </div>
+
+          <div class="cloud9-item orange-border black-links">
+            <%= link_to "https://www.theguardian.com/politics/2016/dec/14/eu-citizens-collect-proof-of-living-in-uk-helena-kenney-qc-lords-brexit-reports", target: "_blank" do %>
+              <p>“EU citizens <strong>should collect proof </strong>of living in the UK"</p>
+              <%= image_tag('theguardian.png', class: "carousel-image") %>
+            <% end %>
+          </div>
+          <div class="cloud9-item purple-border black-links">
+            <%= link_to "https://www.gov.uk/eea-registration-certificate/overview", target: "_blank" do %>
+              <p>“<strong>Prove your right to live in the UK</strong> as an EU citizen"</p>
+              <%= image_tag('logo-govuk.png', class: "carousel-image") %>
+            <% end %>
+          </div>
+          <div class="cloud9-item brown-border black-links">
+            <%= link_to "http://www.independent.co.uk/news/uk/home-news/brexit-eu-citizens-nationals-europe-lords-committee-helena-kennedy-eu-documents-prove-uk-britain-a7475171.html", target: "_blank" do %>
+              <p>“EU citizens urged <strong>to collect evidence they lived in UK</strong> prior to Brexit vote"</p>
+              <%= image_tag('Independent_logo.png', class: "carousel-image") %>
+            <% end %>
+          </div>
+          <div class="cloud9-item green-border black-links">
+            <%= link_to "http://www.theweek.co.uk/brexit/73161/will-eu-citizens-be-allowed-to-stay-in-uk-after-brexit", target: "_blank" do %>
+              <p>“Will EU citizens be allowed <strong>to stay after brexit</strong>?"</p>
+              <%= image_tag('theweek.png', class: "carousel-image") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </div>
 
 <!-- What do we do for you? -->
 <section class="container text-center home-section" id="instructions">
-  <h2>What does MyWill do for me?</h2>
-  <p>MyWill helps EU citizens living in the UK protect their right to stay post Brexit.<br>MyWill provide a unique infrastructure of authenticity and trust, and give people the ability to unlock data.<br>MyWill servers are based in Norway.</p>
+  <h2><%= t('what does it do for me') %></h2>
+  <p><%= t('what description 1') %><br><%= t('what description 2') %></p>
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
-      <%= image_tag('NotaUK.png', class: "feature-image") %>
-      <h4>Collect and Save</h4>
-      <p class="text-justify">We help you to collect your proof of residency. We also securely save them to keep your personal data confidential. <strong>We never distribute or sell your data to anyone.</strong></p>
+      <%= image_tag('vault.png', class: "feature-image-vault") %>
+      <h4><strong><%= t('Collect and Save') %></strong></h4>
+      <p><%= t('collect description html') %></p>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
-      <%= image_tag('Vault1.png', class: "feature-image") %>
-      <h4>Unlock</h4>
-      <p class="text-justify">We offer a unique and secure unlocking process of your data and send it <strong>only to the people individually designated by you.</strong> </p>
+       <%= image_tag('guardian.png', class: "feature-image-guardian") %>
+      <h4><strong><%= t('Designate Guardians') %></strong></h4>
+      <p><%= t('designate description html') %></p>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-4">
     <div class="flexbox-vertical feature">
-      <%= image_tag('network1.png', class: "feature-image") %>
-      <h4>Authenticate</h4>
-      <p class="text-justify">We ensure the authenticity of data thanks to blockchain technology. We also use <strong>UK Guardians to confirm your information.</strong></p>
+      <%= image_tag('proof.png', class: "feature-image-proof") %>
+      <h4><strong><%= t('Unlock and Prove') %></strong></h4>
+      <p><%= t('unlock description html') %></strong></p>
     </div>
   </div>
 </section>
 
 <!-- Feedback -->
-<section class="home-section" id="feedback" style="background-image: linear-gradient(-225deg, rgba(0,101,128,0.4) 0%, rgba(0,36,51,0.4) 50%), url(<%= image_path('banner2.jpg') %>);">
+<section class="home-section" id="feedback" style="background-image: linear-gradient(-225deg, rgba(195,161,4,0.6) 20%, rgba(195,161,4,0.6) 80%), url(<%= image_path('door.jpg') %>);">
   <div class="container text-center" id="reviews">
-    <h2>Act now!</h2>
+    <h2><%= t('Act now') %></h2>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <div class="review-box">
-          <p>“I did not have any family in the UK when my parents passed away. I was devastated by the news and completely lost. I stayed more than 20 weeks alone under British Authorities control before being allowed to join my grand-parents in Poland. My parents had not named guardians as it is something you are never asked.“</p>
-          <p>Imre</p>
+          <p><%= t('home quote 1') %></p>
+          <p><strong><%= t('quote owner 1') %></strong></p>
         </div>
       </div>
 
       <div class="col-xs-12 col-sm-6">
         <div class="review-box">
-          <p>“When my sister had a deadly accident, she was divorced from her husband with two sons and living in the UK. My nephews have been placed in an orphanage as there was no named guardian and UK authorithies judge their father was not eligible. I finally got custody after four months and a long and painful process for them. I have myself named guardians. It should be as natural as it is for an insurance policy.“</p>
-          <p>Iva</p>
+          <p><%= t('home quote 2') %></p>
+          <p><strong><%= t('quote owner 2') %></strong></p>
         </div>
       </div>
     </div>
@@ -121,55 +166,35 @@
 
 <section class="home-section" id="comparison">
   <div class="container text-center">
-    <h2>Do I need to pay to use MyWill?</h2>
-    <p>To ensure the privacy of personal data MyWill pays for secure server storage.<br>MyWill does <strong>not</strong> redistribute or sell your data.</p>
+    <h2><%= t('do I need to pay') %></h2>
     <div class="row">
-        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <div class="comparison-box my-will">
-            <h3>Free</h3>
-            <h5>For the first users if you help us to propose<br>our services to your network</h5>
+            <h5><%= t('is completely') %></h5>
+            <h3><%= t('Free') %></h3>
+            <h5><%= t('made EU for EU') %></h5>
             <hr>
             <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Trust infrastructure: storage and authenticity</p>
+                <p>  <%= t('trust infrastructure') %></p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Update any time </p>
+                <p>  <%= t('designate guardians') %></p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Store personal data and designate your "guardians" </p>
+                <p>  <%= t('unlock anywhere') %></p>
               </li>
-            </ul>
-            <div class="versus-circle">
-              <p>VS</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-5 ">
-          <div class="comparison-box lawyer-will">
-            <h3>£200</h3>
-            <h5>Average Lawyer <br> hourly fee</h5>
-            <hr>
-            <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p class="green"> Trust infrastructure: storage and authenticity </p>
-              </li>
-              <li class="comparison-li text-left">
-                <%= icon('times', class: "comparison-icon") %>
-                <p> Update any time </p>
-              </li>
-              <li class="comparison-li text-left">
-                <%= icon('times', class: "comparison-icon") %>
-                <p> Store personal data and designate your "guardians" </p>
+                <p>  <%= t('update anytime') %></p>
               </li>
             </ul>
           </div>
         </div>
+        <br>
       </div>
     </div>
   </div>
@@ -178,31 +203,113 @@
 <!-- Call to Registration -->
 
 <section class="container text-center home-section" id="registration">
-  <h2> Sign up now </h3>
+  <h2><%= t('sign up now to prove residency') %></h2>
   <span class="registration text">
-  <p>  MyWill is in early stage development.<p>
   </span>
   <span class="call-to-action-text">
-    <p>Leave us your email address to be notified when our service is live:</p>
+    <p><%= t('call to sign up text') %></p>
   </span>
-  <%= form_tag("/subscribe", method: "POST", class: "form form-inline", remote: true) do %>
-    <%= email_field_tag("subscriber[email]", nil,
-      placeholder: "Email address",
-      class: "form-control") %>
-    <%= submit_tag("Subscribe", class: "btn btn-primary") %>
+  <%= link_to new_user_registration_path, class: "white-text" do %>
+    <button class="btn orange-button"><%= t('Sign Up') %></button>
   <% end %>
 </section>
 
 <%= content_for(:after_js) do %>
   <script>
+    // Devise modal AJAX
+    // $( "#productForm" ).submit(function( e ) {
+
+    //   e.preventDefault();
+
+    //   $.ajax({
+    //     type: "POST",
+    //     url: <% session_path(resource_name) %>,
+    //     data: $(this).serializeArray(),
+    //     contentType: "application/json",
+    //     success: function (form) {
+    //       $("#contact-success").modal('show');
+    //     }
+    //   });
+    // });
+
+    // $("#new_user").bind("ajax:success", function(e, data, status, xhr) {
+    //   console.log('hello');
+    //   if (data.success) {
+    //     $('#sign_up').modal('hide');
+    //     $('#sign_up_button').hide();
+    //     return $('#submit_comment').slideToggle(1000, "easeOutBack");
+    //   } else {
+    //     return alert('failure!');
+    //   }
+    // });
+    $('#new_user').bind('ajax:success', function(e, data, status, xhr){
+      console.log(data);
+      if(data.success){
+        $('.modal-form').prepend('<p>signed in<p>')
+      } else{
+        console.log('didnt work')
+        $('.modal-form').prepend('<p>login failed</p>')
+      }
+    })
+
+
     // Navbar colour change on scroll
     $(document).ready(function(){
       $(window).scroll(function(){
-        if($(window).scrollTop()>400)
-          $(".navbar-wagon").css({"background-color": "#57BB90", "box-shadow": "0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03)"});
+        if($(window).scrollTop()>200)
+          $(".navbar-wagon").css({"background-color":  "#4717F6", "box-shadow": "0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03)"});
         else
           $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
       });
+    });
+
+    // Banner image cycler
+    $("#banner2").hide();
+    $('#banner3').hide();
+
+    setInterval(function() {
+      $('#slideshow > img:first')
+        .fadeOut(2000)
+        .next()
+        .fadeIn(2000)
+        .end()
+        .appendTo('#slideshow');
+    }, 6000);
+
+    // Banner gradient resize
+    $(".banner-gradient").css({'height':($("#banner1").height()+'px')});
+
+    window.onresize = function() {
+      $(".banner-gradient").css({'height':($("#banner1").height()+'px')});
+    };
+
+    // Home arrow scroll
+    $('#home-arrow').click(function(e){
+      e.preventDefault();
+      $('html, body').animate({scrollTop : 750},800);
+      return false;
+    });
+
+    //// Footer Scrolls
+    // Home
+    $('#footer-home').click(function(e){
+      e.preventDefault();
+      $('html, body').animate({scrollTop : 0},1000);
+      return false;
+    });
+    // How
+    $("#footer-how").click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $("#instructions").offset().top
+      }, 1500);
+    });
+    // Pricing
+    $("#footer-price").click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({
+        scrollTop: $("#comparison").offset().top
+      }, 1500);
     });
   </script>
 <% end %>

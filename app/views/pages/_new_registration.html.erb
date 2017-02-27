@@ -1,0 +1,63 @@
+<div class="container modal-form">
+  <div class="row">
+    <div class="col-sm-5 col-md-4 col-lg-3 bg-grey">
+      <br>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :title, required: true, autofocus: true, collection: ["Mr", "Mrs", "Ms"] %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :first_name, required: true, autofocus: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :last_name, required: true, autofocus: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :email, required: true, autofocus: true %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+              <%= f.input :password_confirmation, required: true %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, "Register" %>
+        </div>
+      <% end %>
+
+      <div class="link-buttons">
+        <%= link_to "Already a member?", new_session_path(resource_name), "data-backdrop": "false", "data-dismiss": "modal", id: "modal-login" %><br />
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%= content_for(:after_js) do %>
+  <script>
+    $('#modal-login').on('click', function(e) {
+      console.log('hello')
+      e.preventDefault();
+      $('.signin-modal-sm').modal('toggle');
+    });
+  </script>
+<% end %>

@@ -1,3 +1,4 @@
+//= require sweetalert2
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
@@ -6,4 +7,5 @@
 //= require jquery.cloud9carousel
 //= require cloud9carouselInit
 //= require attachinary
+//= require sweet-alert2-rails
 //= require_tree .

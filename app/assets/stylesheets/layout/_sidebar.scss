@@ -1,3 +1,6 @@
+/* -------------------------------------
+ * Sidebar
+ * ------------------------------------- */
 .include-sidebar {
   padding-left: 250px;
 }
@@ -5,10 +8,10 @@
   height: 100%;
   width: 250px;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   top: 0;
   left: 0;
-  background-color: #DBF0E7;
+  background-color: $beige;
   overflow-x: hidden;
   margin-top: 50px;
   transition: 0.5s;
@@ -39,22 +42,19 @@
 .sidebar-header {
   padding: 4px 0;
   margin: 2px 0;
-  background-color: #77C9D3;
+  background-color: $orange;
 }
+
 // Sidebar Tabs
 .sidebar-item {
-
   display: inline-block;
-}
-.sidebar-tab {
-
 }
 .sidebar a:hover {
   color: #f1f1f1;
-  background-color: #5D908A;
+  background-color: $teal;
 }
 .sidebar-tab.active {
-  background-color: #015148;
+  background-color: $green;
   color: white;
   text-decoration: none;
   opacity: 1;

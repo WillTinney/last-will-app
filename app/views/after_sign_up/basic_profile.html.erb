@@ -4,18 +4,61 @@
 
 <div class="navbar-box">
   <div class="container">
-    <h3>Please enter some basic details about yourself.</h3>
+    <h3><%= t('enter details about yourself') %></h3>
 
-    <p>This is important so we identify you and set up an account.</p>
+    <p><%= t('this is important because') %></p>
   </div>
 </div>
 
-<div class="sign-up-box text-center">
-  <%= simple_form_for(@user, url: wizard_path, method: :put, class: "sign-up-form") do |f| %>
-    <%= f.input :first_name, placeholder: 'First Name' %>
-    <%= f.input :last_name, placeholder: 'Last Name' %>
-    <%= f.submit 'Next', class: 'btn btn-primary' %>
-  <% end %>
+<div class="progress-width">
+  <div class="row bs-wizard" style="border-bottom:0;">
+    <div class="col-xs-3 bs-wizard-step active">
+      <div class="text-center bs-wizard-stepnum"><%= t('You') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
 
-  <%= link_to 'back', previous_wizard_path %>
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Partner') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Children') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Guardians') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-box text-center">
+  <%= simple_form_for(@user, url: wizard_path, method: :put, class: "sign-up-form") do |f| %>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+        <%= f.input :citizenship, placeholder: 'Citizenship', label: t('What is your nationality?'), collection: Nationality::NATIONALITY, prompt: t('Citizenship') %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+        <%= f.input :date_of_birth, placeholder: t('Date of birth'), label: t('When were you born?'), as: :string, input_html: {type: :date} %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="wizard-buttons">
+          <%= f.submit t('Next'), class: 'btn purple-button' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

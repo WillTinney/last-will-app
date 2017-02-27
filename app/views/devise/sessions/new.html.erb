@@ -1,33 +1,36 @@
 <% content_for(:navbar) do %>
-  <%= render 'shared/navbars/navbar_sign_up' %>
+  <%= render 'shared/navbars/navbar_devise' %>
 <% end %>
 
 <div class="navbar-box">
   <div class="container">
-    <h3>Please sign-in to enter your account</h3>
+    <h3><%= t('sign in to enter') %></h3>
 
-    <p>using your email and set password.</p>
+    <p><%= t('using your email and password') %></p>
   </div>
 </div>
+
+<%= render 'shared/flashes' %>
 
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
       <br>
-      <h2>Log in</h2>
+      <h2><%= t('Log in') %></h2>
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
-          <%= f.input :email, required: false, autofocus: true %>
-          <%= f.input :password, required: false %>
+          <%= f.input :email, required: false, autofocus: true, label: t('Email') %>
+          <%= f.input :password, required: false, label: t('Password') %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, "Log in" %>
+        <div class="form-actions text-center">
+          <%= f.button :submit, t("Log in"), class: 'purple-button' %>
         </div>
       <% end %>
-
-      <%= render "devise/shared/links" %>
+      <div class="">
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
   </div>
 </div>

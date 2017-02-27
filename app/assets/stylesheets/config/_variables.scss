@@ -23,12 +23,47 @@ $base-height: 1.4;
 /* -------------------------------------
  * Colors
  * ------------------------------------- */
+
 // Scheme
-$brand-color: #003399;
+$brand-color: #4717F6;
+
+// Purple Scheme
+$black: #4C5159;
+$purple: #4717F6;
+$light-purple: #4717F6;
+$green: #45A58C;
+$teal: #F9D116;
+$orange: #FAA000;
+$beige: #E7DFDD;
+$grey: #A199A2;
+$background-grey: #F8F8F9;
+
+// Font-color
+body {
+  color: $black;
+}
+p {
+  color: $black;
+}
+a {
+  color: $black;
+}
+h1 {
+  color: $black;
+}
+h2 {
+  color: $black;
+}
+h3 {
+  color: $black;
+}
+h4 {
+  color: $black;
+}
+
 
 $red: #EE5F5B;
 $blue: #469AE0;
 $yellow: #FDB631;
-$orange: #E67E22;
 $green: #32B796;
 $gray: #000000;

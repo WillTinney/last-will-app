@@ -1,3 +1,6 @@
+/* -------------------------------------
+ * Cards and related classes
+ * ------------------------------------- */
 .card {
   height: 175px;
   margin: 20px 0;
@@ -29,15 +32,11 @@
     margin: 0 3px;
   }
 }
-.black-text {
-  color: black;
-}
-.black-links a {
-  color: black;
-}
+
 // Profile Cards
-.alt-card {
-  height: 220px;
+.assignee-card {
+  position: relative;
+  height: 340px;
   margin: 20px 0;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
   border-radius: 2px;
@@ -46,39 +45,89 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   hr {
-    border: 1px solid grey;
-    width: 95%;
+    border: 1px solid #EDE8E9;
+    width: 85%;
     margin: 4px 0;
+  }
+  h4 {
+    margin-top: 25px;
+  }
+  p {
+    margin: 3px;
+  }
+}
+.profile-warning {
+  color: $orange;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+.notice-text {
+  color: #A199A2;
+}
+#edit-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.alt-card {
+  position: relative;
+  min-height: 260px;
+  height: 25vh;
+  margin: 20px 0;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
+  border-radius: 2px;
+  background-size: cover !important;
+  background: #F8F8F9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  hr {
+    border: 1px solid #EDE8E9;
+    width: 85%;
+    margin: 4px 0;
+  }
+  h4 {
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  p {
+    margin: 3px;
+    font-size: 15px;
   }
 }
 .card-content {
   overflow-y: auto;
+  width: 80%;
+  color: #5C6068;
+  a {
+    color: #5C6068
+  }
 }
-#action-card {
-  border-left: 12px solid #63B0CD;
+.orange-border {
+  border: 4px solid $orange;
 }
-#guardian-card {
-  border-left: 12px solid #7F5A83;
+.small-orange-border {
+  border: 2px solid $orange;
+  margin: 2px 0;
 }
-#approver-card {
-  border-left: 12px solid #F6EFA6;
+.warning-circle {
+  position: absolute;
+  font-size: 20px;
+  color: $orange;
+  top: 6px;
+  right: 6px;
 }
-#recipient-card {
-  border-left: 12px solid #D17A22;
+.question-circle {
+  position: absolute;
+  font-size: 20px;
+  color: $black;
+  top: 6px;
+  right: 6px;
 }
-#admin-card {
-  border-left: 12px solid #D9F9A5;
-}
-#note-card {
-  border-left: 12px solid #A50104;
-}
-#photo-card {
-  border-left: 12px solid #95B2B8;
-}
-#video-card {
-  border-left: 12px solid #307351;
-}
+
 // Asset Cards
 .asset-card {
   height: 240px;
@@ -92,28 +141,64 @@
   flex-direction: column;
   align-items: center;
 }
+.note-card {
+  position: relative;
+  height: 280px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
+  border-radius: 2px;
+  background-size: cover !important;
+  background: $background-grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  hr {
+    border: 1px solid #EDE8E9;
+    width: 85%;
+    margin: 4px 0;
+  }
+}
 .note-title {
   text-align: center;
+  h4 {
+    margin-top: 25px;
+  }
   h5 {
-  margin-top: 6px;
+    margin-top: 6px;
+  }
+}
+@media (max-width: 500px) {
+  .note-title {
+    margin-top: 10px;
   }
 }
 .note-spacing {
-  height: 90%;
+  min-height: 30px;
   padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  // justify-content: space-around;
+}
+.card-buttons {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  a {
+    color: grey;
+    font-size: 18px;
+    margin: 0 5px;
+  }
 }
 .note-form {
   width: 90%;
   padding: 5px 5px 12px 5px;
+  margin-top: 30px;
 }
-.reference-card {
-  height: 280px;
+.document-card {
+  position: relative;
+  height: 310px;
   margin: 20px 0;
-  padding-top: 10px;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
   border-radius: 2px;
   background-size: cover !important;
@@ -121,4 +206,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  hr {
+    border: 1px solid #EDE8E9;
+    width: 85%;
+    margin: 4px 0;
+  }
+}
+.proof-spacing {
+  height: 90%;
+  width: 90%;
+  padding: 0 20px;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+@media (max-width: 500px) {
+  .proof-spacing {
+    flex-direction: column;
+    justify-content: center;
+    margin: 60px 0;
+  }
+}
+@media (max-width: 500px) {
+  .details-box {
+    margin-left: 0 !important;
+  }
+}
+.submit-button {
+  margin: 10px auto;
+}
+.margin-left {
+  margin-left: 30px;
+}
+.proof-comments {
+  max-height: 150px;
+  overflow-y: auto;
 }

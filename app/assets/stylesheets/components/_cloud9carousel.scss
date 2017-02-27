@@ -1,8 +1,10 @@
+/* -------------------------------------
+ * Cloud9 Carousel for news articles
+ * ------------------------------------- */
 .front-item {
   opacity: 1;
   transition: opacity 0.5s;
 }
-
 .side-item {
   opacity: 0.2;
   transition: opacity 0.3s;
@@ -10,11 +12,6 @@
 #carousel-container {
   margin: 30px auto;
 }
-// @media (min-width: 992px) {
-//   #carousel-container {
-//     margin-left: 17.5%;
-//   }
-// }
 .cloud9-carousel {
   width: 80%;
   height: 300px;
@@ -45,7 +42,7 @@
 .cloud9-item {
   border-radius: 50%;
   border: 4px solid;
-  background-color: white;
+  background-color: #F8F8F8;
   width: 400px;
   height: 400px;
   padding: 20px 35px;
@@ -54,15 +51,14 @@
   justify-content: center;
   align-items: center;
   p {
-    font-size: 15px !important;
+    font-size: 18px !important;
   }
 }
 @media (max-width: 768px) {
   .cloud9-item{
-    border: none;
     width: 300px;
     height: 300px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .carousel-image{
     max-width: 50px;
@@ -74,16 +70,71 @@
 }
 .teal-border{
   border-color: #8BC9BA;
+  strong {
+    color: #8BC9BA;
+  }
 }
 .orange-border{
   border-color: #FAA000;
+  strong {
+    color: #FAA000;
+  }
 }
 .purple-border{
   border-color: #6B648A;
+  strong {
+    color: #6B648A;
+  }
 }
 .brown-border{
   border-color: #B6A09D;
+  strong {
+    color: #B6A09D;
+  }
 }
 .green-border{
   border-color: #015148;
+  strong {
+    color: #015148;
+  }
 }
+
+// Mobile resposiveness
+// .mobile-cloud9-item {
+//   border-radius: 50%;
+//   border: 3px solid;
+//   background-color: #F8F8F8;
+//   width: 200px;
+//   height: 200px;
+//   padding: 10px 17.5px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   p {
+//     font-size: 12px !important;
+//   }
+//   .mobile-carousel-image{
+//     max-width: 50px;
+//   }
+// }
+// @media (max-width: 720px) {
+//   .mobile-cloud9-item {
+//     border-radius: 50%;
+//     border: 3px solid;
+//     background-color: #F8F8F8;
+//     width: 200px;
+//     height: 200px;
+//     padding: 10px 17.5px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     p {
+//       font-size: 12px !important;
+//     }
+//     .mobile-carousel-image{
+//       max-width: 50px;
+//     }
+//   }
+// }

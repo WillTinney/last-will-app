@@ -1,0 +1,23 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
+
+<div class="navbar-box">
+  <div class="container">
+    <h3>Welcome to BrexitProof</h3>
+
+    <p>A confirmation email has been sent to your account, please follow the link within to continue.</p>
+  </div>
+</div>
+
+<%= render 'shared/flashes' %>
+
+<div class="container">
+  <div class="devise-box">
+    <p class="sign-up-title">A confirmation email has been sent to your account, please follow the link within to continue.</p>
+
+    <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+    <div class="bottom-margin"></div>
+    <%= link_to "Back to homepage", root_path, class: "back-button" %>
+  </div>
+</div>

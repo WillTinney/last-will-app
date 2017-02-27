@@ -1,0 +1,76 @@
+require 'rails_helper'
+
+feature 'Guardian Create Page', js: false do
+  let(:user) { FactoryGirl.create(:user) }
+
+  before do
+    login_as(user, :scope => :user)
+    visit "/users/#{user.id}/assignees/new.Guardian"
+  end
+
+  it 'can be reached' do
+    expect(page.status_code).to eq(200)
+  end
+
+  # it 'has a profile picture upload field' do
+  #   expect(page).to have_field('assignee_profile_picture', type: 'file')
+  # end
+
+  it 'type is guardian' do
+    expect(find('#set_assignee_type', :visible => false).value).to eq('Guardian')
+  end
+
+  it 'relationship is not partner or child' do
+    expect(find('#assignee_relationship', :visible => false).value).not_to eq('Partner' || 'Child')
+  end
+
+  it 'has relevant fields' do
+    expect(page).to have_field('assignee_email')
+    expect(page).to have_field('assignee_title')
+    expect(page).to have_field('assignee_first_name', type: 'text')
+    expect(page).to have_field('assignee_middle_name', type: 'text')
+    expect(page).to have_field('assignee_last_name', type: 'text')
+    expect(page).to have_field('assignee_citizenship')
+    expect(page).to have_field('assignee_relationship', type: 'text')
+    expect(page).to have_field('assignee_phone_number', type: 'tel')
+    expect(page).to have_field('user_address', type: 'text')
+    expect(page).to have_field('assignee_address_line_2', type: 'text')
+    expect(page).to have_field('assignee_city', type: 'text')
+    expect(page).to have_field('assignee_postcode', type: 'text')
+  end
+
+  scenario 'user can add guardian details' do
+    assignee_fills_in_details
+    click_on 'Save'
+    # expect(page).to be('users/assignee_id/profile')
+    expect(page).to have_content('My Guardians')
+  end
+
+  # scenario 'user can upload a profile picture' do
+  #   assignee_uploads_profile_picture
+  #   click_on 'Save'
+  #   # expect(page).to be('users/assignee_id/profile')
+  #   expect(page).to have_content('My Details')
+  # end
+
+  private
+
+  def assignee_fills_in_details
+    select "Mr", from: "assignee_title"
+    fill_in 'assignee_email', with: 'test@example.com'
+    fill_in 'assignee_first_name', with: 'John'
+    fill_in 'assignee_last_name', with: 'Smith'
+    select "French", from: "assignee_citizenship"
+    fill_in 'assignee_relationship', with: 'Friend'
+    fill_in 'assignee_phone_number', with: '07123 123123'
+    fill_in 'user_address', with: '12 Example Road'
+    fill_in 'assignee_address_line_2', with: 'New Example'
+    fill_in 'assignee_city', with: 'Exampleville'
+    fill_in 'assignee_postcode', with: 'EX14 MPL'
+  end
+
+  # def assignee_uploads_profile_picture
+  #   click_on 'Change Picture'
+  #   attach_file 'assignee_profile_picture', 'spec/files/eu.png'
+  # end
+end
