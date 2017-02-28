@@ -6,7 +6,7 @@
       <% end %>
     </div>
     <div class="scrollitem <%= 'active' if params[:controller] == 'users' && params[:action] == 'profile' %>">
-      <%= link_to user_profile_path(current_user), class: 'scrollmenu-me' do %>
+      <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
         <div class="menu-icon">
           <i class="fa fa-home" aria-hidden="true"></i>
         </div>
@@ -15,26 +15,26 @@
     </div>
   </div>
 
-  <div class="scrollbox text-center">
+<!--   <div class="scrollbox text-center">
     <div>
-      <%= link_to user_path(current_user), class: "scrollmenu-link" do %>
-        <h3><%= t('Me') %></h3>
-      <% end %>
+      <%# link_to user_path(current_user), class: "scrollmenu-link" do %>
+        <h3><%# t('Me') %></h3>
+      <# end %>
     </div>
-    <div class="scrollitem <%= 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
-      <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
-        <% if current_user.profile_picture %>
-          <%= cl_image_tag(current_user.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
-        <% elsif @user.title == "Mr" %>
-          <%= image_tag('male.png', class: "menu-icon") %>
-        <% else %>
-          <%= image_tag('female.png', class: "menu-icon") %>
-          <!-- <div class="menu-icon placeholder"></div> -->
-        <% end %>
+    <div class="scrollitem <%# 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
+      <%# link_to user_path(current_user), class: 'scrollmenu-me' do %>
+        <%# if current_user.profile_picture %>
+          <%# cl_image_tag(current_user.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+        <%# elsif @user.title == "Mr" %>
+          <%# image_tag('male.png', class: "menu-icon") %>
+        <%# else %>
+          <%# image_tag('female.png', class: "menu-icon") %>
+          <div class="menu-icon placeholder"></div>
+        <%# end %>
         <h4><%= @user.first_name %></h4>
-      <% end %>
+      <%# end %>
     </div>
-  </div>
+  </div> -->
 
   <% if !@user.assignees.where('relationship = ?', 'Partner').empty? %>
     <div class="scrollbox text-center">
@@ -117,35 +117,59 @@
     </div>
   <% end %>
 
-  <div class="scrollbox">
-    <div>
-      <%= link_to user_proofs_path(current_user), class: "scrollmenu-link digital-link" do %>
-        <h3><%= t('Digital Assets') %></h3>
-      <% end %>
-    </div>
-    <div class="scrollitem <%= 'active' if params[:controller] == 'proofs' %>">
-      <%= link_to user_proofs_path(current_user), class: "margin-auto" do %>
-        <div class="menu-icon">
-          <i class="fa fa-file-text-o" id="proof-menu-icon" aria-hidden="true"></i>
+  <% if !@user.approvers.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_approvers_path(current_user), class: "scrollmenu-link approver-link" do %>
+          <h3><%= t('Approvers') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, type: 'Approver'), class: "add-icon" do %>
+            <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Approver') %></span></i>
+        <% end %>
+      </div>
+      <% @user.approvers.each do |approver| %>
+        <div class="scrollitem <%= 'active' if @approver && @approver.id == approver.id %>">
+          <%= link_to user_guardian_path(current_user, approver), class: 'scrollmenu-approvers' do %>
+            <% if approver.profile_picture %>
+              <%= cl_image_tag(approver.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif approver.title == "Mrs" || approver.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= approver.first_name %></h4>
+            <h6><%= approver.id %></h6>
+          <% end %>
         </div>
-        <h4><%= t('Proof of Residency') %></h4>
       <% end %>
     </div>
-    <div class="scrollitem digital-asset <%= 'active' if params[:controller] == 'notes' %>">
-      <%= link_to user_notes_path(current_user), class: "margin-auto" do %>
-        <div class="menu-icon">
-          <i class="fa fa-pencil-square-o" id="note-menu-icon" aria-hidden="true"></i>
+  <% end %>
+
+  <% if !@user.show_other.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_recipients_path(current_user), class: "scrollmenu-link recipient-link" do %>
+          <h3><%= t('Other Friends & Family') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, type: 'Recipient'), class: "add-icon" do %>
+            <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Recipient') %></span></i>
+        <% end %>
+      </div>
+      <% @user.show_other.each do |recipient| %>
+        <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
+          <%= link_to user_guardian_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
+            <% if recipient.profile_picture %>
+              <%= cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif recipient.title == "Mrs" || recipient.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= recipient.first_name %></h4>
+            <h6><%= recipient.id %></h6>
+          <% end %>
         </div>
-        <h4><%= t('My Notes') %></h4>
       <% end %>
     </div>
-    <div class="scrollitem digital-asset <%= 'active' if params[:action] == 'unlock' %>">
-      <%= link_to user_unlock_path(current_user), class: "margin-auto" do %>
-        <div class="menu-icon">
-          <i class="fa fa-unlock-alt" id="unlock-menu-icon" aria-hidden="true"></i>
-        </div>
-        <h4><%= t('Unlock Data') %></h4>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 </div>
