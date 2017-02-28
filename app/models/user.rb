@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :references, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_one :video, dependent: :destroy
+  has_one :call_to_action, dependent: :destroy
 
   # validates :email, uniqueness: true
   validates :title, presence: true

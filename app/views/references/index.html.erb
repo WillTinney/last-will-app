@@ -8,7 +8,7 @@
   <% if !@references.empty? %>
     <div class="header-box padding-15">
       <h2><%= t('Admin & Reference Documents') %></h2>
-      <%= link_to t("Add Reference"), new_user_note_path([I18n.locale, current_user, @note]), remote: true, class: "btn orange-button", id: "add-note" %>
+      <%= link_to t("Add Reference"), new_user_reference_path([I18n.locale, current_user, @reference]), remote: true, class: "btn orange-button", id: "add-reference" %>
     </div>
 
     <div class="blue-box detail-box side-margin-small top-margin">
@@ -17,7 +17,7 @@
 
     <div class="col-xs-12 col-md-6 invisible">
       <div class="note-card">
-        <div class="note-form" id="new-note-form"></div>
+        <div class="reference-form" id="new-reference-form"></div>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
               <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </div>
-          <div class="note-spacing" id="assignee-note-<%= reference.id %>">
+          <div class="note-spacing" id="assignee-reference-<%= reference.id %>">
             <div class="note-title">
               <h4><strong><%= reference.title %></strong></h4>
               <h5><strong>For:</strong> <%= Assignee.find(reference.assignee_id).first_name %></h5>
@@ -46,7 +46,7 @@
               <p><%= reference.comments %></p>
             </div>
           </div>
-          <div class="note-form" id="edit-note-form-<%= reference.id %>"></div>
+          <div class="reference-form" id="edit-reference-form-<%= reference.id %>"></div>
         </div>
       </div>
     <% end %>

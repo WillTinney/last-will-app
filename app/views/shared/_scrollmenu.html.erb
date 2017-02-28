@@ -5,7 +5,7 @@
         <h3><%= t('Home') %></h3>
       <% end %>
     </div>
-    <div class="scrollitem <%= 'active' if params[:controller] == 'users' && params[:action] == 'profile' %>">
+    <div class="scrollitem <%= 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
       <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
         <div class="menu-icon">
           <i class="fa fa-home" aria-hidden="true"></i>
