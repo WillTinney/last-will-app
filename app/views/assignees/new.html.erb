@@ -2,6 +2,10 @@
   <%= render 'shared/navbar' %>
 <% end %>
 
+<% content_for(:sidebar) do %>
+  <%= render 'shared/sidebars/sidebar_core' %>
+<% end %>
+
 <div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
   <div id="tab-content">
     <div class="container">
@@ -9,6 +13,8 @@
       <div class="grey-box relative">
         <% if params[:format] == 'Guardian' || params[:type] == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' %>
           <h3 class="new-title"><%= t('New Guardian') %></h3>
+        <% elsif params[:format] == 'Approver' || params[:type] == 'Approver' %>
+          <h3 class="new-title"><%= t('New Approver') %></h3>
         <% elsif params[:format] == 'Partner' || params[:relationship] == 'Partner' %>
           <h3 class="new-title"><%= t('New Partner') %></h3>
         <% else %>
