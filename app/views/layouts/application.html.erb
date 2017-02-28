@@ -11,17 +11,21 @@
   </head>
   <body>
     <%= yield(:navbar) %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'users' && params[:action] == 'profile' || params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' || params[:controller] == 'proofs' && params[:action] == 'index' || params[:controller] == 'notes' %>
+    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'users' && params[:action] == 'profile' || params[:controller] == 'assignees' && params[:controller] == 'show' %>
       <div class="include-sidebar">
         <%= yield(:sidebar) %>
         <%= render 'shared/scrollmenu' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
+        <%= render 'shared/footers/home_footer' unless params[:controller] == 'after_sign_up' || params[:controller] == 'devise/sessions' || params[:controller] == 'registrations' %>
       </div>
+    <% elsif params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' && params[:action] != 'show' || params[:controller] == 'proofs' && params[:action] == 'index' || params[:controller] == 'notes' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
     <% else %>
       <%= yield %>
+      <%= render 'shared/footers/home_footer' unless params[:controller] == 'after_sign_up' || params[:controller] == 'devise/sessions' || params[:controller] == 'registrations' %>
     <% end %>
-    <%= render 'shared/footers/home_footer' unless params[:controller] == 'after_sign_up' || params[:controller] == 'devise/sessions' || params[:controller] == 'registrations' %>
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
     <%= yield(:after_js) %>
