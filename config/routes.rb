@@ -24,12 +24,14 @@ Rails.application.routes.draw do
       get 'children', to: 'users#children'
       get 'unlock', to: 'users#unlock'
       post 'unlock_data', to: 'users#unlock_data'
-      get 'references', to: 'users#references'
-      get 'photos', to: 'users#photos'
+      # get 'references', to: 'users#references'
+      # get 'photos', to: 'users#photos'
       get 'video', to: 'users#video'
       resources :call_to_action, controller: 'call_to_action', only: [:index, :new, :create, :edit, :update, :destroy]
 
       resources :notes
+      resources :photos
+      resources :references
       resources :proofs
 
       # Assignee Pages

@@ -58,6 +58,9 @@
   color: white;
   text-decoration: none;
   opacity: 1;
+  i {
+    color: $background-grey
+  }
 }
 .profile-tab i {
   color: #57BB90;
