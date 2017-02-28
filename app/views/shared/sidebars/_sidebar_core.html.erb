@@ -1,0 +1,262 @@
+<!-- Sidebar for Core User Dashboard -->
+<div class="sidebar">
+  <div class="sidebar-header text-center">
+    <h4><strong>Me</strong></h4>
+  </div>
+  <div class="sidebar-tabs">
+    <%= link_to '#',
+      class: "sidebar-tab sidebar-tab-header active",
+      id: "profile-sidebar-tab",
+      remote: true do %>
+    <h5><strong>My Profile</strong></h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab profile-tab",
+        id: "call-to-action-sidebar-tab",
+        remote: true do %>
+        <h5><i class="fa fa-bell-o" aria-hidden="true"></i> My Call to Action</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab profile-tab",
+        id: "personal-details-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-id-card-o" aria-hidden="true"></i> My Personal Details</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab profile-tab",
+        id: "guardian-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-eye" aria-hidden="true"></i> My Guardians</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab profile-tab",
+        id: "approver-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-unlock-alt" aria-hidden="true"></i> My Approvers</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab profile-tab",
+        id: "recipient-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-users" aria-hidden="true"></i> My Family and Friends</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab sidebar-tab-header",
+        id: "digital-assets-sidebar-tab",
+        remote: true do %>
+      <h5><strong>My Digital Assets</strong></h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab digital-tab",
+        id: "proof-of-residency-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-home" aria-hidden="true"></i> Proof of Residency</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab digital-tab",
+        id: "admin-references-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-file-text-o" aria-hidden="true"></i> Admin References</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab digital-tab",
+        id: "notes-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-pencil-square-o" aria-hidden="true"></i> My Notes</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab digital-tab",
+        id: "photo-library-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-camera" aria-hidden="true"></i> My Photo Library</h5>
+    <% end %>
+
+    <hr>
+
+    <%= link_to '#',
+        class: "sidebar-tab digital-tab",
+        id: "video-library-sidebar-tab",
+        remote: true do %>
+      <h5><i class="fa fa-video-camera" aria-hidden="true"></i> My Video Library</h5>
+    <% end %>
+
+    <hr>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on a different tab changes the content shown on the page
+    $('.sidebar-tab').on('click', function(event){
+      $('.sidebar-tabs').children().removeClass("active");
+      $(this).addClass("active");
+      var childIndex = $(this).index();
+      $('#tab-content').children().addClass("hidden");
+      $('.' + childIndex).removeClass("hidden");
+      window.location.hash = $(this).attr('id').split("-")[0];
+    });
+    // AJAX to load tab content without a refresh
+    $('#profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/profile",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#call-to-action-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/call_to_action",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#personal-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#approver-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#guardian-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#recipient-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#digital-assets-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/digital",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#proof-of-residency-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/proof",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#admin-references-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/references",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/notes",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#photo-library-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#video-library-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>

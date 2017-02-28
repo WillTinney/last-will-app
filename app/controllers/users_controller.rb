@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def show
     authorize @user
-    @proofs = policy_scope(Proof)
-    @proof = Proof.new
+    # @proofs = policy_scope(Proof)
+    # @proof = Proof.new
   end
 
   def edit
