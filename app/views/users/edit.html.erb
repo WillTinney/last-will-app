@@ -1,84 +1,94 @@
-<div>
-  <%= link_to '#', class: 'profile-picture-inline' do %>
-    <% if @user.profile_picture %>
-      <%= cl_image_tag(@user.profile_picture.path, transformation: [{width: 120, height: 120, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-large") %>
-    <% elsif @user.title == "Mr" %>
-      <%= image_tag('male.png', class: "edit-icon") %>
-    <% else %>
-      <%= image_tag('female.png', class: "edit-icon") %>
+<div class="container">
+  <br>
+  <div class="grey-box relative">
+    <i class="fa fa-question-circle question-circle" aria-hidden="true"><span class="question-tooltip"><%= t('details tooltip') %></span></i>
+    <br>
+
+    <div>
+      <%= link_to '#', class: 'profile-picture-inline' do %>
+        <% if @user.profile_picture %>
+          <%= cl_image_tag(@user.profile_picture.path, transformation: [{width: 120, height: 120, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-large") %>
+        <% elsif @user.title == "Mr" %>
+          <%= image_tag('male.png', class: "edit-icon") %>
+        <% else %>
+          <%= image_tag('female.png', class: "edit-icon") %>
+        <% end %>
+        <p><%= t('Change Picture') %></p>
+        <%= simple_form_for @user, html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
+          <%= f.input :profile_picture, as: :attachinary, label: false, input_html: { class: 'profile-upload'} %>
+          <%= f.submit t("Upload"), class: 'profile-upload'  %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <h3 class="new-title padding-15">You</h3>
+
+    <%= simple_form_for(@user) do |f| %>
+      <div class="form-container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :title, collection: ["Mr", "Mrs", "Ms"], label: t('Title') %>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <%= f.input :email, label: t('Email'), disabled: true %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :first_name, label: t('First name') %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :middle_name, label: t('Middle name') %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :last_name, label: t('Last name') %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :citizenship, collection: Nationality::NATIONALITY, prompt: 'Citizenship', label: t('Citizenship') %>
+          </div>
+          <div class="col-xs-12 col-sm-4 date-of-birth">
+            <%= f.input :date_of_birth, as: :string, input_html: {type: :date}, label: t('Date of birth') %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :phone_number, label: t('Phone number') %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address_line_1, input_html: { id: "user_address"}, label: t('Address line 1') %>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <%= f.input :address_line_2, label: t('Address line 2') %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :city, label: t('City') %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :postcode, label: t('Postcode') %>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <%= f.input :country, priority: ["United Kingdom"], label: t('Country') %>
+          </div>
+        </div>
+
+        <div class="nav-buttons">
+          <%= link_to t("Back"), user_profile_path(current_user), class: "back-button" %>
+          <%= f.button :submit, t("Save"), class: "purple-button" %>
+        </div>
+      </div>
     <% end %>
-    <p><%= t('Change Picture') %></p>
-    <%= simple_form_for @user, html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
-      <%= f.input :profile_picture, as: :attachinary, label: false, input_html: { class: 'profile-upload'} %>
-      <%= f.submit t("Upload"), class: 'profile-upload'  %>
-    <% end %>
-  <% end %>
-</div>
 
-<%= simple_form_for(@user) do |f| %>
-  <div class="form-container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :title, collection: ["Mr", "Mrs", "Ms"], label: t('Title') %>
-      </div>
-      <div class="col-xs-12 col-sm-8">
-        <%= f.input :email, label: t('Email'), disabled: true %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :first_name, label: t('First name') %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :middle_name, label: t('Middle name') %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :last_name, label: t('Last name') %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :citizenship, collection: Nationality::NATIONALITY, prompt: 'Citizenship', label: t('Citizenship') %>
-      </div>
-      <div class="col-xs-12 col-sm-4 date-of-birth">
-        <%= f.input :date_of_birth, as: :string, input_html: {type: :date}, label: t('Date of birth') %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :phone_number, label: t('Phone number') %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :address_line_1, input_html: { id: "user_address"}, label: t('Address line 1') %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :address_line_2, label: t('Address line 2') %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :city, label: t('City') %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :postcode, label: t('Postcode') %>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <%= f.input :country, priority: ["United Kingdom"], label: t('Country') %>
-      </div>
-    </div>
-
-    <div class="nav-buttons">
-      <%= link_to t("Back"), user_profile_path(current_user), class: "back-button" %>
-      <%= f.button :submit, t("Save"), class: "purple-button" %>
-    </div>
+    <br>
   </div>
-<% end %>
-
-<br>
+</div>
 
 <%= content_for(:after_js) do %>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>"></script>

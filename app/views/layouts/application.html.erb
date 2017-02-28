@@ -12,9 +12,12 @@
   <body>
     <%= yield(:navbar) %>
     <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'users' && params[:action] == 'profile' || params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' || params[:controller] == 'proofs' && params[:action] == 'index' || params[:controller] == 'notes' %>
-      <%= render 'shared/scrollmenu' %>
-      <%= render 'shared/flashes' %>
-      <%= yield %>
+      <div class="include-sidebar">
+        <%= yield(:sidebar) %>
+        <%= render 'shared/scrollmenu' %>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      </div>
     <% else %>
       <%= yield %>
     <% end %>

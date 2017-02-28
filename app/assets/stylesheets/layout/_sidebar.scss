@@ -11,9 +11,9 @@
   z-index: 99;
   top: 0;
   left: 0;
-  background-color: $beige;
+  background-color: $background-grey;
   overflow-x: hidden;
-  margin-top: 50px;
+  margin-top: 65px;
   transition: 0.5s;
 }
 .sidebar i {
@@ -30,7 +30,7 @@
 }
 .sidebar hr {
   margin: 2px 0;
-  border-color: #DBF0E7;
+  border-color: $background-grey;
 }
 .sidebar h4 {
   color: white;
@@ -42,7 +42,7 @@
 .sidebar-header {
   padding: 4px 0;
   margin: 2px 0;
-  background-color: $orange;
+  background-color: $teal;
 }
 
 // Sidebar Tabs
