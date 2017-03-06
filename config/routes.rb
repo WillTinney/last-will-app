@@ -40,9 +40,9 @@ Rails.application.routes.draw do
         get 'references', to: 'assignees#references'
         get 'photos', to: 'assignees#photos'
         get 'video', to: 'assignees#video'
-        resources :notes, only: [:new, :create, :edit, :update, :destroy]
-        resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-        resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
+        # resources :notes, only: [:new, :create, :edit, :update, :destroy]
+        # resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
+        # resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
       end
 
       # Approver Pages
@@ -51,19 +51,19 @@ Rails.application.routes.draw do
         get 'references', to: 'assignees#references'
         get 'photos', to: 'assignees#photos'
         get 'video', to: 'assignees#video'
-        resources :notes, only: [:new, :create, :edit, :update, :destroy]
-        resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-        resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
+        # resources :notes, only: [:new, :create, :edit, :update, :destroy]
+        # resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
+        # resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
       end
 
       # Guardian Pages
       resources :guardians, controller: 'assignees', type: 'Guardian' do
-        get 'notes', to: 'assignees#notes'
+        # get 'notes', to: 'assignees#notes'
       end
 
       # Recipient Pages
       resources :recipients, controller: 'assignees', type: 'Recipient' do
-        get 'notes', to: 'assignees#notes'
+        # get 'notes', to: 'assignees#notes'
       end
 
       # Routes for wizard sign-up

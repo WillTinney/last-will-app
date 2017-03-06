@@ -82,18 +82,18 @@ class AssigneesController < ApplicationController
     end
   end
 
-  def notes
-    @note = Note.new
-  end
+  # def notes
+  #   @note = Note.new
+  # end
 
-  def admin
-  end
+  # def admin
+  # end
 
-  def photos
-  end
+  # def photos
+  # end
 
-  def videos
-  end
+  # def videos
+  # end
 
   private
 

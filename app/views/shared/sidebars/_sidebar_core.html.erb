@@ -69,15 +69,6 @@
 
     <%= link_to '#',
         class: "sidebar-tab digital-tab",
-        id: "proof-of-residency-sidebar-tab",
-        remote: true do %>
-      <h5><i class="fa fa-home" aria-hidden="true"></i> Proof of Residency</h5>
-    <% end %>
-
-    <hr>
-
-    <%= link_to '#',
-        class: "sidebar-tab digital-tab",
         id: "admin-references-sidebar-tab",
         remote: true do %>
       <h5><i class="fa fa-file-text-o" aria-hidden="true"></i> Admin References</h5>
@@ -197,17 +188,6 @@
       $.ajax({
           type: "GET",
           url: <%= @user.id %> + "/digital",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    $('#proof-of-residency-sidebar-tab').click(function(e){
-      e.preventDefault();
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/proof",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
