@@ -76,7 +76,7 @@ class AfterSignUpController < ApplicationController
   end
 
   def finish_wizard_path
-    user_profile_path(current_user)
+    user_path(current_user)
   end
 
   private
