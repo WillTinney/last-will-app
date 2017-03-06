@@ -1,10 +1,42 @@
-<div id="assignee-index">
-  <br>
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbar' %>
+<% end %>
 
-  <% if @type == "Recipient" %>
-    <%= render 'assignees/recipient_index' %>
-  <% else %>
-    <%= render 'assignees/core_index' %>
-  <% end %>
+<div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
+  <div id="tab-content">
+    <br>
+    <div class="container-box">
+      <div class="header-box padding-15">
+        <h2>My <%= @type.capitalize %>s</h2>
+        <%= link_to t("Add New") + " " + @type, new_user_assignee_path(I18n.locale, current_user, @type), class: "btn orange-button" %>
+      </div>
 
+      <div class="blue-box side-margin-small top-margin">
+        <p><%= t('guardian explanation') %></p>
+      </div>
+
+      <div class="assignees">
+        <% @assignees.where('type = ?', @type).each do |assignee| %>
+          <div class="col-xs-12 col-md-6 col-lg-4">
+            <div class="card">
+              <%= link_to user_assignee_path(current_user, assignee.id) do %>
+                <% if assignee.profile_picture %>
+                  <%= cl_image_tag(assignee.profile_picture.path, transformation: [{width: 100, height: 100, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-card push-right") %>
+                <% elsif assignee.title == "Mrs" || assignee.title == "Ms" %>
+                  <%= image_tag('guardian_female.png', class: "index-icon") %>
+                <% else %>
+                  <%= image_tag('guardian_male.png', class: "index-icon") %>
+                <% end %>
+                <div class="card-description">
+                  <h5 class="black-text"><strong><%= assignee.name_surname %></strong></h5>
+                  <%= link_to t("View"), user_assignee_path(current_user, assignee.id), class: "btn btn-info btn-default btn-ice reference-link" %>
+                  <%= link_to t("Delete"), user_assignee_path(current_user, assignee.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,22 +1,31 @@
+/* -------------------------------------
+ * Forms
+ * ------------------------------------- */
 .form-container {
   margin: 10px 50px;
 }
-.form-container input[type="submit"] {
-  display: block;
-  padding: 19px 39px 18px 39px;
-  color: #FFF;
-  margin: 20px auto;
-  background: #1abc9c;
-  font-size: 18px;
-  text-align: center;
-  font-style: normal;
-  width: 100%;
-  border: 1px solid #16a085;
-  border-width: 1px 1px 3px;
+@media (max-width: 450px) {
+  .form-container {
+  margin: 10px 20px;
+  }
 }
-.form-container input[type="submit"]:hover {
-  box-shadow: 0px 6px 15px 0px rgba(224,224,224,1);
-}
+// .form-container input[type="submit"] {
+//   display: block;
+//   padding: 9px 19px 8px 19px;
+//   color: #FFF;
+//   margin: 20px auto;
+//   background: $purple;
+//   font-size: 18px;
+//   // text-align: center;
+//   // font-style: normal;
+//   min-width: 100px;
+//   width: 100%;
+//   // border-radius: 30%;
+// }
+// .form-container input[type="submit"]:hover {
+//   box-shadow: 0px 6px 15px 0px rgba(224,224,224,1);
+// }
+
 // Proof of Residency form
 #proof-of-residency input[type="submit"] {
   display: block;
@@ -30,4 +39,44 @@
   width: 30%;
   border: 1px solid #16a085;
   border-width: 1px 1px 3px;
+}
+.new_proof {
+  ul {
+    list-style-type: none;
+  }
+  img {
+    min-height: 200px;
+    min-width: 200px;
+  }
+}
+.edit-profile-picture {
+  ul {
+    list-style-type: none;
+  }
+  img {
+    margin-top: 10px;
+  }
+}
+.relative {
+  position: relative;
+}
+.new-title {
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  color: $grey;
+}
+@media (min-width: 1000px) {
+  #assignee_date_of_birth_3i {
+    width: 25%;
+  }
+  #assignee_date_of_birth_2i {
+    width: 33%;
+  }
+  #assignee_date_of_birth_1i {
+    width: 37%;
+  }
+}
+.remove-asterisk abbr {
+  display: none;
 }

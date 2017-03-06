@@ -1,0 +1,6 @@
+<%= simple_form_for [current_user, @proof] do |f| %>
+  <%= f.input :title, label: t('Title') %>
+  <%= f.input :document, as: :attachinary, label: t('Document') %>
+  <%= f.input :comments, label: t('Comments') %>
+  <%= f.button :submit, label: t('Update Proof') %>
+<% end %>

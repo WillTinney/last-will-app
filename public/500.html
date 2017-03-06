@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
@@ -33,7 +33,7 @@
 
   h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #003399;
     line-height: 1.5em;
   }
 
@@ -51,16 +51,39 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+  div.four-wrapper {
+  background-color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+  div.four-content {
+    margin-bottom: 20%;
+  }
+
+  img {
+    height: 250px;
+    margin-bottom: 30px;
+  }
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+  <div class="four-wrapper banner">
+    <div class="four-content">
+      <div>
+        <img src="./eu.png">
+        <h1>We're sorry, but something went wrong.</h1>
+        <p>You seem to have hit a technical problem on the site, try reloading the page.</p>
+        <p>Please email <strong>contact@brexithedge.co.uk</strong> if you keep finding yourself on this page.</p>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>

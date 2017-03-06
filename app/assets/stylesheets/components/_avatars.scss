@@ -1,3 +1,6 @@
+/* -------------------------------------
+ * Avatars and profile pictures
+ * ------------------------------------- */
 .avatar {
   width: 70px;
   border-radius: 50%;
@@ -7,10 +10,16 @@
   border-radius: 50%;
 }
 .avatar-large {
-  width: 100px;
+  width: 120px;
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.6);
   margin-top: 35px;
+}
+.avatar-xl {
+  width: 180px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.6);
+  margin: 5px 0;
 }
 .avatar-edit {
   width: 100px;

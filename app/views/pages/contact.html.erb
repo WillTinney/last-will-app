@@ -1,0 +1,39 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_home' %>
+<% end %>
+
+<!-- Banner  -->
+<div class="page-section page-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.3) 0%, rgba(0,36,61,0.3) 50%), url(<%= image_path('contact.png') %>);">
+  <div class="container page-banner-content">
+    <h1 class="get-in-touch"><%= t('Get in touch') %></h1>
+  </div>
+</div>
+
+<section class="page-section" style="background-color: #F1F1F1;">
+  <div class="container">
+    <h3><%= t('Contact Us') %></h3>
+    <p>contact@brexithedge.com</p>
+    <p>0207 433 0329</p>
+  </div>
+</section>
+
+<section class="page-section">
+  <div class="container">
+    <h3><%= t('Careers') %></h3>
+    <p><%= t('careers description') %></p>
+  </div>
+</section>
+
+<%= content_for(:after_js) do %>
+  <script>
+    // Navbar colour change on scroll
+    $(document).ready(function(){
+      $(window).scroll(function(){
+        if($(window).scrollTop()>200)
+          $(".navbar-wagon").css({"background-color": "#57BB90", "box-shadow": "0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03)"});
+        else
+          $(".navbar-wagon").css({"background-color": "rgba(255, 255, 255, 0.2)", "box-shadow": "none"});
+      });
+    });
+  </script>
+<% end %>

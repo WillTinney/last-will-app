@@ -1,12 +1,12 @@
 <% content_for(:navbar) do %>
-  <%= render 'shared/navbars/navbar_sign_up' %>
+  <%= render 'shared/navbars/navbar_devise' %>
 <% end %>
 
 <div class="navbar-box">
   <div class="container">
-    <h3>To reset your password please enter your email below</h3>
+    <h3><%= t('To reset your password please enter your email below') %></h3>
 
-    <p>You should receive an email within 5 minutes with instructions.</p>
+    <p><%= t('recieve email in 5 minutes') %>.</p>
   </div>
 </div>
 
@@ -14,17 +14,17 @@
   <div class="row">
     <div class="col-sm-4 col-sm-offset-4">
       <br>
-      <h2>Forgot your password?</h2>
+      <h2><%= t('Forgot your password') %></h2>
 
       <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :email, required: true, autofocus: true %>
+          <%= f.input :email, required: true, autofocus: true, label: t('Email') %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Reset Password" %>
+          <%= f.button :submit, t("Reset Password") %>
         </div>
       <% end %>
 

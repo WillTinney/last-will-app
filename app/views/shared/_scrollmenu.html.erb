@@ -1,155 +1,175 @@
 <div class="scrollmenu">
-  <div class="scrollbox text-center">
-    <h3>Me</h3>
-    <div class="scrollitem <%= 'active' if @approver.nil? && @guardian.nil? && @recipient.nil? %>">
+  <div class="scrollbox text-center" id="home-scrollbox">
+    <div>
+      <%= link_to user_profile_path(current_user), class: "scrollmenu-link" do %>
+        <h3><%= t('Home') %></h3>
+      <% end %>
+    </div>
+    <div class="scrollitem <%= 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
       <%= link_to user_path(current_user), class: 'scrollmenu-me' do %>
-      <%= current_user.profile_picture ? cl_image_tag(current_user.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-        <h4><%= @user.first_name %></h4>
+        <div class="menu-icon">
+          <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <h4><%= t('Profile') %></h4>
       <% end %>
     </div>
   </div>
 
-  <div class="scrollbox text-center">
-    <h3>Partner</h3>
-    <% @user.show_partner.each do |recipient| %>
-      <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
-        <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
-          <%= recipient.profile_picture ? cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-          <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+<!--   <div class="scrollbox text-center">
+    <div>
+      <%# link_to user_path(current_user), class: "scrollmenu-link" do %>
+        <h3><%# t('Me') %></h3>
+      <# end %>
+    </div>
+    <div class="scrollitem <%# 'active' if params[:controller] == 'users' && params[:action] == 'show' %>">
+      <%# link_to user_path(current_user), class: 'scrollmenu-me' do %>
+        <%# if current_user.profile_picture %>
+          <%# cl_image_tag(current_user.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+        <%# elsif @user.title == "Mr" %>
+          <%# image_tag('male.png', class: "menu-icon") %>
+        <%# else %>
+          <%# image_tag('female.png', class: "menu-icon") %>
+          <div class="menu-icon placeholder"></div>
+        <%# end %>
+        <h4><%= @user.first_name %></h4>
+      <%# end %>
+    </div>
+  </div> -->
 
-  <div class="scrollbox">
-    <h3>Children</h3>
-    <% @user.show_children.each do |recipient| %>
-      <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
-        <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
-          <%= recipient.profile_picture ? cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-          <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
+  <% if !@user.assignees.where('relationship = ?', 'Partner').empty? %>
+    <div class="scrollbox text-center">
+      <div>
+        <%= link_to user_assignee_path(current_user, @user.partner.id), class: "scrollmenu-link partner-link" do %>
+          <h3><%= t('Partner') %></h3>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% @user.assignees.where('relationship = ?', 'Partner').each do |recipient| %>
+        <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
+          <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-partner' do %>
+            <% if recipient.profile_picture %>
+              <%= cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif @user.title == "Mr" %>
+              <%= image_tag('female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= recipient.first_name %></h4>
+            <h6><%= recipient.id %></h6>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div class="scrollbox">
-    <h3>Guardians</h3>
-    <% @user.guardians.each do |guardian| %>
-      <div class="scrollitem <%= 'active' if @guardian && @guardian.id == guardian.id %>">
-        <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
-          <%= guardian.profile_picture ? cl_image_tag(guardian.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-          <h4><%= guardian.first_name %></h4>
-          <h6><%= guardian.id %></h6>
+  <% if !@user.children.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_children_path(current_user), class: "scrollmenu-link children-link" do %>
+          <h3><%=  t('Children') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "add-icon" do %>
+          <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Child') %></span></i>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% @user.children.each do |recipient| %>
+        <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
+          <%= link_to user_recipient_path(current_user, recipient),class: 'scrollmenu-children' do %>
+            <% if recipient.profile_picture %>
+              <%= cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif recipient.title == "Mrs" || recipient.title == "Ms" %>
+              <%= image_tag('girl.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('boy.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= recipient.first_name %></h4>
+            <h6><%= recipient.id %></h6>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div class="scrollbox">
-    <h3>Approvers</h3>
-    <% @user.approvers.each do |approver| %>
-      <div class="scrollitem <%= 'active' if @approver && @approver.id == approver.id %>">
-        <%= link_to user_approver_path(current_user, approver), class: 'scrollmenu-approvers' do %>
-          <%= approver.profile_picture ? cl_image_tag(approver.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-          <h4><%= approver.first_name %></h4>
-          <h6><%= approver.id %></h6>
+  <% if !@user.guardians.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_guardians_path(current_user), class: "scrollmenu-link guardian-link" do %>
+          <h3><%= t('Guardians') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Guardian'), class: "add-icon" do %>
+            <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Guardian') %></span></i>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% @user.guardians.each do |guardian| %>
+        <div class="scrollitem <%= 'active' if @guardian && @guardian.id == guardian.id %>">
+          <%= link_to user_guardian_path(current_user, guardian), class: 'scrollmenu-guardians' do %>
+            <% if guardian.profile_picture %>
+              <%= cl_image_tag(guardian.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif guardian.title == "Mrs" || guardian.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= guardian.first_name %></h4>
+            <h6><%= guardian.id %></h6>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 
-  <div class="scrollbox">
-    <h3>Other Friends & Family</h3>
-    <% @user.show_other.each do |recipient| %>
-      <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
-        <%= link_to user_recipient_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
-          <%= recipient.profile_picture ? cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) : image_tag('user3.png') %>
-          <h4><%= recipient.first_name %></h4>
-          <h6><%= recipient.id %></h6>
+  <% if !@user.approvers.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_approvers_path(current_user), class: "scrollmenu-link approver-link" do %>
+          <h3><%= t('Approvers') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Approver'), class: "add-icon" do %>
+            <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Approver') %></span></i>
         <% end %>
       </div>
-    <% end %>
-  </div>
+      <% @user.approvers.each do |approver| %>
+        <div class="scrollitem <%= 'active' if @approver && @approver.id == approver.id %>">
+          <%= link_to user_guardian_path(current_user, approver), class: 'scrollmenu-approvers' do %>
+            <% if approver.profile_picture %>
+              <%= cl_image_tag(approver.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif approver.title == "Mrs" || approver.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= approver.first_name %></h4>
+            <h6><%= approver.id %></h6>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if !@user.show_other.empty? %>
+    <div class="scrollbox">
+      <div class="scrolltitle">
+        <%= link_to user_recipients_path(current_user), class: "scrollmenu-link recipient-link" do %>
+          <h3><%= t('Other Friends & Family') %></h3>
+        <% end %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, type: 'Recipient'), class: "add-icon" do %>
+            <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Recipient') %></span></i>
+        <% end %>
+      </div>
+      <% @user.show_other.each do |recipient| %>
+        <div class="scrollitem <%= 'active' if @recipient && @recipient.id == recipient.id %>">
+          <%= link_to user_guardian_path(current_user, recipient), class: 'scrollmenu-recipients' do %>
+            <% if recipient.profile_picture %>
+              <%= cl_image_tag(recipient.profile_picture.path, transformation: [{width: 70, height: 70, gravity: "face", radius: "max", crop: "fill"}]) %>
+            <% elsif recipient.title == "Mrs" || recipient.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "menu-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "menu-icon") %>
+            <% end %>
+            <h4><%= recipient.first_name %></h4>
+            <h6><%= recipient.id %></h6>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-<% content_for(:after_js) do %>
-  <script>
-    // // AJAX to load tab content without a refresh
-    // $('.scrollmenu-me').click(function(e){
-    //   e.preventDefault();
-    //   $('.sidebar-tabs').children().removeClass("active");
-    //   $('#profile-sidebar-tab').addClass("active");
-    //   $.ajax({
-    //       type: "GET",
-    //       url: <%= @user.id %> + "/profile",
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-    // $('.scrollmenu-partner').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //       url: <%= @user.id %> + "/recipients/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-    // $('.scrollmenu-children').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //       url: <%= @user.id %> + "/recipients/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-    // $('.scrollmenu-guardians').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //       url: <%= @user.id %> + "/guardians/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-    // $('.scrollmenu-approvers').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //     url: <%= @user.id %> + "/approvers/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-    // $('.scrollmenu-recipients').click(function(e){
-    //   e.preventDefault();
-    //   var showId = $(this).find("h6").text();
-    //   $.ajax({
-    //       type: "GET",
-    //       url: <%= @user.id %> + "/recipients/" + showId,
-    //       data: { },
-    //       success: function(data){
-    //           $('#tab-content').html(data);
-    //       }
-    //   });
-    // });
-  </script>
-<% end %>

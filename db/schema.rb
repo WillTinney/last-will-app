@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170128232438) do
+ActiveRecord::Schema.define(version: 20170227175407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "assignees", force: :cascade do |t|
+    t.string   "title"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -26,15 +27,15 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "phone_number"
     t.string   "address_line_1"
     t.string   "address_line_2"
-    t.string   "town"
+    t.string   "city"
     t.string   "country"
     t.string   "postcode"
     t.string   "profile_picture"
+    t.string   "profile_picture_seed"
     t.string   "type"
     t.integer  "user_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.string   "profile_picture_seed", default: "user3.png"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["user_id"], name: "index_assignees_on_user_id", using: :btree
   end
 
@@ -68,8 +69,8 @@ ActiveRecord::Schema.define(version: 20170128232438) do
   create_table "notes", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
-    t.integer  "assignee_id"
     t.integer  "user_id"
+    t.integer  "assignee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["assignee_id"], name: "index_notes_on_assignee_id", using: :btree
@@ -77,44 +78,45 @@ ActiveRecord::Schema.define(version: 20170128232438) do
   end
 
   create_table "photos", force: :cascade do |t|
+    t.string   "photo"
     t.string   "title"
     t.string   "caption"
-    t.string   "photo"
     t.integer  "assignee_id"
     t.integer  "user_id"
+    t.string   "photo_seed"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "photo_seed"
     t.index ["assignee_id"], name: "index_photos_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "references", force: :cascade do |t|
+    t.string   "document"
     t.string   "title"
     t.string   "comments"
-    t.string   "document"
     t.integer  "assignee_id"
     t.integer  "user_id"
+    t.string   "document_seed"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.string   "document_seed"
     t.index ["assignee_id"], name: "index_references_on_assignee_id", using: :btree
     t.index ["user_id"], name: "index_references_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",          null: false
-    t.string   "encrypted_password",     default: "",          null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,           null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "title"
     t.string   "first_name"
     t.string   "middle_name"
     t.string   "last_name"
@@ -123,16 +125,22 @@ ActiveRecord::Schema.define(version: 20170128232438) do
     t.string   "phone_number"
     t.string   "address_line_1"
     t.string   "address_line_2"
-    t.string   "town"
+    t.string   "city"
     t.string   "country"
     t.string   "postcode"
     t.float    "latitude"
     t.float    "longitude"
     t.string   "profile_picture"
-    t.string   "gender"
-    t.string   "proof_of_residency"
-    t.string   "proof_comments"
-    t.string   "profile_picture_seed",   default: "user3.png"
+    t.string   "profile_picture_seed"
+    t.boolean  "partner",                default: false
+    t.integer  "number_of_children"
+    t.integer  "number_of_guardians"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.boolean  "data_unlocked",          default: false
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

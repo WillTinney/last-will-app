@@ -1,7 +1,5 @@
 /* -------------------------------------
  * Utilities classes
- * These are examples of utilities classes
- * Feel free to change them and create your own
  * ------------------------------------- */
 
 // Paddings
@@ -9,13 +7,36 @@
   padding-top: 5em;
   padding-bottom: 5em;
 }
+.padding-15 {
+  padding: 0 15px;
+}
+
+// Margins
+.side-margin {
+  margin: 0 30px;
+}
+.side-margin-small {
+  margin: 0 15px;
+}
+.top-margin-large {
+  margin-top: 50px;
+}
+.top-margin {
+  margin-top: 30px;
+}
+.top-margin-small {
+  margin-top: 15px;
+}
+.bottom-margin {
+  margin-bottom: 30px;
+}
 
 // Backgrounds
 .bg-black {
   background: #4a4a4a;
 }
 .bg-grey {
-  background: #aeaeae;
+  background: $background-grey;
 }
 .bg-blue {
   background: #00a3e1;
@@ -26,7 +47,41 @@
 
 // White text
 .white-text {
-  color: white;
+  color: $background-grey;
+}
+.white-heading h2 {
+  color: $background-grey !important;
+}
+
+// Black text
+.black-text {
+  color: $black;
+}
+.black-links a {
+  color: $black;
+}
+
+// Grey text
+.grey-text {
+  color: $grey;
+}
+.grey-links a {
+  color: $grey;
+}
+
+// Text-align
+.align-left {
+  text-align: left;
+}
+
+// Other text classes
+.lighter {
+  font-weight: lighter;
+}
+@media (max-width: 400px) {
+  .hidden-xxs {
+    display: none;
+  }
 }
 
 // Variable Container Sizes

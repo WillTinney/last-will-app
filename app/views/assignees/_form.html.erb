@@ -1,74 +1,102 @@
-<div class="container-box">
-  <br>
-  <h2><%= params[:action].capitalize + ' ' + @type %></h2>
+<br>
+<%= link_to '#', class: 'profile-picture-inline' do %>
+  <% if @assignee.profile_picture %>
+    <%= cl_image_tag(@assignee.profile_picture.path, transformation: [{width: 100, height: 100, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-edit") %>
+  <% elsif params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' || params[:format] == 'Approver' || params[:type] == 'Approver' %>
+    <%= image_tag('guardian_male.png', class: "edit-icon") %>
+  <% elsif params[:format] == 'Approver' || @assignee.type == 'Approver' %>
 
-  <%= link_to '#', class: 'profile-picture-inline' do %>
-    <%= image_tag("user.png", class: "avatar-edit") %>
-    <p>Change Picture</p>
+  <% else %>
+    <%= image_tag('boy.png', class: "edit-icon") %>
   <% end %>
+<!--   <p><%# t('Change Picture') %></p>
+  <%# simple_form_for [current_user, @assignee], html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
+    <%# f.input :profile_picture, as: :attachinary, label: false, input_html: { class: 'profile-upload'} %>
+    <%# f.submit t("Upload"), class: 'profile-upload'  %>
+  <%# end %> -->
+<% end %>
 
-  <%= simple_form_for [current_user, @assignee] do |f| %>
-    <%= f.hidden_field :type, value: @type %>
-    <div class="form-container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :first_name %>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :middle_name %>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :last_name %>
-        </div>
+<%= simple_form_for [current_user, @assignee] do |f| %>
+  <%= f.hidden_field :type, value: @type || params[:type] %>
+  <div class="form-container">
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :title, collection: ["Mr", "Mrs", "Ms"] %>
       </div>
+      <div class="col-xs-12 col-sm-8">
+        <%= f.input :email %>
+      </div>
+    </div>
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :citizenship %>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :date_of_birth %>
-        </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :first_name %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :middle_name %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :last_name %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :citizenship, collection: Nationality::NATIONALITY, prompt: 'Citizenship' %>
+      </div>
+      <% if params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' || params[:format] == 'Approver' || params[:type] == 'Approver' %>
         <div class="col-xs-12 col-sm-4">
           <%= f.input :relationship %>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 col-sm-offset-2">
-          <%= f.input :email %>
-        </div>
+      <% else %>
         <div class="col-xs-12 col-sm-4">
-          <%= f.input :phone_number %>
+          <%= f.input :date_of_birth, as: :string, input_html: {type: :date} %>
         </div>
-      </div>
+      <% end %>
 
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :address_line_1 %>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :address_line_2 %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :town %>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :postcode %>
-        </div>
-        <div class="col-xs-12 col-sm-4">
-          <%= f.input :country %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-          <%= f.button :submit %>
-        </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :phone_number %>
       </div>
     </div>
-  <% end %>
-</div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :address_line_1, input_html: { id: "user_address"} %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :address_line_2 %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :city %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :postcode %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <%= f.input :country, priority: ["United Kingdom"] %>
+      </div>
+    </div>
+
+    <% if params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' %>
+      <%= f.hidden_field :type, value: 'Guardian', id: 'set_assignee_type' %>
+    <% elsif params[:format] == 'Approver' || params[:type] == 'Approver' %>
+      <%= f.hidden_field :type, value: 'Approver', id: 'set_assignee_type' %>
+    <% elsif params[:format] == 'Partner' || params[:relationship] == 'Partner' %>
+      <%= f.hidden_field :type, value: 'Recipient', id: 'set_assignee_type' %>
+      <%= f.hidden_field :relationship, value: 'Partner' %>
+    <% else %>
+      <%= f.hidden_field :type, value: 'Recipient', id: 'set_assignee_type' %>
+      <%= f.hidden_field :relationship, value: 'Child' %>
+    <% end %>
+
+    <div class="nav-buttons">
+      <%= link_to t("Back"), user_profile_path(current_user), class: "back-button" %>
+      <%= f.button :submit, t("Save"), class: "purple-button" %>
+    </div>
+  </div>
+<% end %>
+<br>

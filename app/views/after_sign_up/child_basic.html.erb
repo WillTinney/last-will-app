@@ -1,0 +1,68 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
+
+<div class="navbar-box">
+  <div class="container">
+    <h3><%= t('Your Children') %></h3>
+
+    <p><%= t('details about your children') %></p>
+  </div>
+</div>
+
+<div class="progress-width">
+  <div class="row bs-wizard" style="border-bottom:0;">
+    <div class="col-xs-3 bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum"><%= t('You') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Partner') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Children') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled"><!-- active -->
+      <div class="text-center bs-wizard-stepnum"><%= t('Guardians') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-box text-center">
+  <%= form_tag wizard_path, method: :put do %>
+    <% @user.number_of_children.times do |i|%>
+      <p class="sign-up-title list-title"><%= t('ask child name', count: (i+1)) %></p>
+
+      <%= hidden_field_tag :type, "", name: "children[][type]", value: 'Recipient' %>
+      <%= hidden_field_tag :relationship, "", name: "children[][relationship]", value: 'Child' %>
+      <%= hidden_field_tag :last_name, "", name: "children[][last_name]", value: @user.last_name %>
+
+
+      <div class="row">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
+          <%= text_field_tag :first_name, "", placeholder: t('First name'), name: "children[][first_name]", class: "form-control text-center", required: true %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div class="wizard-buttons">
+          <%= link_to t('back'), previous_wizard_path, class: "back-button" %>
+          <%= submit_tag 'Next', class: 'btn purple-button' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

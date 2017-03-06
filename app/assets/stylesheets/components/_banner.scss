@@ -1,3 +1,6 @@
+/* -------------------------------------
+ * Banner-related CSS
+ * ------------------------------------- */
 .banner {
   color: white;
   text-align: center;
@@ -20,8 +23,20 @@
   }
 }
 #home-banner{
-  height: 85vh;
+  max-height: 768px;
   width: 100%;
+}
+.banner-gradient {
+  background-size: cover;
+  background: linear-gradient(120deg, rgba(5,0,88,0.8) 20%, rgba(222,230,50,0.1) 90%);
+  min-height: 500px;
+  max-height: 800px;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+}
+@media (min-width: 1200px) {
+  height: 800px;
 }
 .banner-float {
   position: absolute;
@@ -49,14 +64,27 @@
   }
 }
 .banner-content {
-  margin-top: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #F8F8F8;
 }
 #home-arrow {
-  display: flex;
-  justify-content: center;
-  margin: 30px 0 10px 0;
+  margin: 40px auto;
+  z-index: 11;
+}
+@media (max-width: 1200px) {
+  #home-arrow {
+    display: none;
+  }
+}
+@media (min-width: 1200px) {
+  #home-arrow {
+    margin-top: 80px;
+  }
 }
 .fa-chevron-down{
-  font-size: 50px;
-  color: #6B648A;
+  font-size: 30px;
+  color: $background-grey;
 }

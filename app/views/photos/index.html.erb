@@ -1,0 +1,98 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbar' %>
+<% end %>
+
+<div class="container">
+  <br>
+
+  <% if !@photos.empty? %>
+    <div class="header-box padding-15">
+      <h2><%= t('Photos Library') %></h2>
+      <%= link_to t("Add Photo"), new_user_note_path([I18n.locale, current_user, @note]), remote: true, class: "btn orange-button", id: "add-note" %>
+    </div>
+
+    <div class="blue-box detail-box side-margin-small top-margin">
+      <p><%= t('note description html') %></p>
+    </div>
+
+    <div class="col-xs-12 col-md-6 invisible">
+      <div class="note-card">
+        <div class="note-form" id="new-note-form"></div>
+      </div>
+    </div>
+
+    <% @user.photos.reverse.each do |photo| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="note-card">
+          <div class="card-buttons">
+            <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo), remote: true do %>
+              <i class="fa fa-pencil" aria-hidden="true"> </i>
+            <% end %>
+            <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="note-spacing" id="assignee-note-<%= photo.id %>">
+            <div class="note-title">
+              <h4><strong><%= photo.title %></strong></h4>
+              <h5><strong>For:</strong> <%= Assignee.find(photo.assignee_id).first_name %></h5>
+            </div>
+            <hr>
+            <br>
+            <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo), class: "photo-link", "data-photo-id" => photo.id, "data-assignee-id" => photo.assignee_id do %>
+              <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
+            <% end %>
+            <div class="card-content card-overflow">
+              <p><%= photo.caption %></p>
+            </div>
+          </div>
+          <div class="note-form" id="edit-note-form-<%= photo.id %>"></div>
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+
+    <div class="side-margin white-text">
+      <h2>Photos</h2>
+
+      <div class="blue-box">
+        <p><%= t('note description html') %></p>
+      </div>
+    </div>
+
+    <div class="grey-box">
+      <h5><strong><%= t('not added notes') %></strong></h5>
+      <p><%= t('please use form below') %></p>
+      <%= simple_form_for([@user, @photo]) do |f| %>
+        <%= f.input :title, label: t('Title') %>
+        <%= f.input :caption, label: t('Content') %>
+        <div class="submit-button text-center">
+          <%= f.button :submit, t("Create"), class: "btn purple-button" %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on photo loads relevant show page
+    $('.photo-link').click(function(e){
+      e.preventDefault();
+      var photoId = $(this).data('photo-id');
+      var assigneeId = $(this).data('assignee-id');
+      var userId = <%= @user.id %>;
+      $('#tab-content').empty();
+      $.ajax({
+          type: "GET",
+          url: "/users/" + userId + "/assignees/" + assigneeId + "/photos/" + photoId,
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>

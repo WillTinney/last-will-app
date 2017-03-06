@@ -1,9 +1,22 @@
+/* -------------------------------------
+ * Additional Show Page Clases
+ * ------------------------------------- */
+
 // Core Dashboard Classes
 .dashboard-box {
   margin-top: 200px;
   margin-top: -30px;
-  min-height: 762px;
+  min-height: 752px;
   height: 100%;
+  background-color: #F8F8F9;
+  background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -webkit-background-size: cover;
+}
+.devise-box {
+  margin-top: 180px;
+  min-height: 380px;
   background-color: #F8F8F9;
   background-size: cover;
   -moz-background-size: cover;
@@ -12,29 +25,50 @@
 }
 .container-box {
   width: 95%;
+  max-width: 1200px;
   margin: auto;
 }
 .header-box {
+  color: $background-grey;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
+@media (max-width: 500px) {
+  .header-box {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+}
 .grey-box {
-  width: 95%;
   padding: 8px 24px;
-  margin: 20px auto;
-  background-color: white;
+  margin: 20px 30px;
+  background-color: $background-grey;
+  border-radius: 2px;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
+  abbr[title="required"] {
+    display: none;
+  }
+}
+@media (max-width: 440px) {
+  .grey-box {
+    margin: 20px 10px;
+  }
+}
+.grey-box a {
+  color: $black;
+}
+.blue-box {
+  padding: 8px 24px;
+  background-color: $beige;
   border-radius: 2px;
   box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.1);
 }
-.grey-box a {
-  color: black;
-}
-.blue-box {
-  color: white;
-  background-color: #4DB3D0;
-  border: 1px solid #969696;
-  border-radius: 3px;
+@media (max-width: 440px) {
+  .blue-box {
+    margin: 20px 10px;
+  }
 }
 .detail-box {
   display: flex;
@@ -61,7 +95,7 @@
   align-items: center;
   margin-bottom: 20px;
   input {
-    color: black;
+    color: $black;
     text-decoration: none;
     max-width: 220px;
   }
@@ -76,18 +110,13 @@
   margin-top: 0;
   margin-left: 10px;
 }
-// Buttons
-.button-height-default {
-  height: 36px;
-  margin-bottom: 10px;
-}
 // Navigation Icons
 .platform-box {
   display: flex;
   justify-content: space-around;
   margin: 20px 20px 5px 20px;
   :hover {
-    color: black;
+    color: $black;
     text-decoration: none;
   }
 }
@@ -99,7 +128,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: black;
+  color: $black;
   text-decoration: none;
 }
 .platform-profile:hover {
@@ -231,4 +260,31 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+// Data unlock
+.unlock-data {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 30px 15px;
+}
+.unlock-button {
+  text-align: center;
+  margin: 30px 0 10px 0;
+  a {
+  color: white;
+  }
+}
+
+.profile-card-link {
+  font-size: 17px;
+  font-weight: 500;
+}
+.category-tag {
+  // color: black;
+  font-weight: 600;
+}
+.name-tag {
+  font-size: 15.5px !important;
 }

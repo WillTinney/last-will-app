@@ -1,0 +1,49 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbars/navbar_sign_up' %>
+<% end %>
+
+<div class="navbar-box">
+  <div class="container">
+    <h3><%= t('Partner information') %></h3>
+
+    <p>Please enter some basic details about your partner.</p>
+  </div>
+</div>
+
+<div class="progress-width">
+  <div class="row bs-wizard" style="border-bottom:0;">
+    <div class="col-xs-3 bs-wizard-step complete">
+      <div class="text-center bs-wizard-stepnum"><%= t('You') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step active">
+      <div class="text-center bs-wizard-stepnum"><%= t('Partner') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled">
+      <div class="text-center bs-wizard-stepnum"><%= t('Children') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+
+    <div class="col-xs-3 bs-wizard-step disabled">
+      <div class="text-center bs-wizard-stepnum"><%= t('Guardians') %></div>
+      <div class="progress"><div class="progress-bar"></div></div>
+      <a href="#" class="bs-wizard-dot"></a>
+    </div>
+  </div>
+</div>
+
+<div class="wizard-box text-center">
+  <p class="sign-up-title top-margin"><%= t('do you have a partner') %></p>
+  <%= simple_form_for(@user, url: wizard_path, method: :put, class: "sign-up-form") do |f| %>
+    <div class="wizard-choice-buttons">
+      <%= f.submit t('No'), class: "purple-button side-margin-small" %>
+      <%= f.submit t('Yes'), class: "purple-button side-margin-small" %>
+    </div>
+  <% end %>
+</div>

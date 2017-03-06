@@ -1,226 +1,171 @@
-<br>
+<br><br>
 
-<div class="header-box">
-  <h2 class="title-margin">My Profile</h2>
-  <%= link_to "#", class: "btn btn-info btn-default btn-ice", id: "digital-icon" do %>
-    <i class="fa fa-cloud cloud-icon" aria-hidden="true"></i>
-    <h4>Digital Assets</h4>
-  <% end %>
-</div>
+<div class="container profile-cards">
 
-<div class="platform-box">
-  <%= link_to "#", class: "platform platform-profile", id: "user-action-icon" do %>
-    <i class="fa fa-bell-o" aria-hidden="true"></i>
-    <h4>Call to Action</h4>
-  <% end %>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <% unless @user.details_completed? %>
+        <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
 
-  <%= link_to "#", class: "platform platform-profile", id: "user-details-icon" do %>
-    <i class="fa fa-id-card-o" aria-hidden="true"></i>
-    <h4>Personal Details</h4>
-  <% end %>
+      <% end %>
+      <h4 class="profile-card-link"><%= link_to t('My Details'), user_path(current_user), class: "details-link" %><span class="card-tooltip"><%= t('my details tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <%= link_to user_path(current_user) do %>
+          <p class="name-tag"><strong><%= @user.try(:name_surname) %></strong></p>
+        <% end %>
 
-  <%= link_to "#", class: "platform platform-profile", id: "user-guardian-icon" do %>
-    <i class="fa fa-eye" aria-hidden="true"></i>
-    <h4>Guardians</h4>
-  <% end %>
+        <% if @user.citizenship %>
+          <p><%= @user.citizenship + " " + t('Citizen') %></p>
+        <% else %>
+          <p class="notice-text"><%= t('citizenship required') %></p>
+        <% end %>
 
-  <%= link_to "#", class: "platform platform-profile", id: "user-approver-icon" do %>
-    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-    <h4>Approvers</h4>
-  <% end %>
+        <% if @user.date_of_birth && @user.date_of_birth != "" %>
+          <p><span class="category-tag"><%= t('DoB') %></span><%= ": " + @user.date_of_birth %></p>
+        <% else %>
+          <p class="notice-text"><%= t('date of birth required') %></p>
+        <% end %>
 
-  <%= link_to "#", class: "platform platform-profile", id: "user-recipient-icon" do %>
-    <i class="fa fa-users" aria-hidden="true"></i>
-    <h4>Friends and Family</h4>
-  <% end %>
-</div>
+        <p><span class="category-tag"><%= t('Email')%></span><%= ": " + @user.email %></p>
 
-<div class="container-box">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="action-card">
-        <h4>Call to Action</h4>
+        <% if @user.phone_number && @user.phone_number != "" %>
+          <p><span class="category-tag"><%= t('Phone Number') %></span><%= ": " + @user.phone_number %></p>
+        <% else %>
+          <p class="notice-text"><%= t('phone number required') %></p>
+        <% end %>
+
+        <% if @user.address_line_1 && @user.address_line_1 != "" %>
+          <p><span class="category-tag"><%= t('Address') %></span><%= ": " + @user.address_line_1 %><%= ", " + @user.address_line_2 if @user.address_line_2 %></p>
+          <p><%= @user.try(:city) %><%= ", " + @user.postcode if @user.postcode %><%= ", " + @user.country if @user.country %></p>
+        <% else %>
+          <p class="notice-text"><%= t('address required') %></p>
+        <% end %>
+
+        <br>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <% if @user.assignees.where('relationship = ?', 'Partner').last %>
+
+      <div class="alt-card black-links">
+        <% @user.assignees.where('relationship = ?', 'Partner').each do |partner| %>
+          <% unless partner.details_completed? %>
+            <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+          <% end %>
+          <h4 class="profile-card-link"><%= link_to t("My Partner"), user_assignee_path(@user, partner) , class: "partner-link" %><span class="card-tooltip"><%= t('my partner tooltip') %></span></h4>
+          <hr>
+          <div class="card-content card-overflow">
+            <p class="name-tag"><strong><%= link_to partner.name_surname, user_assignee_path(@user, partner) %></strong></p>
+            <p><%= partner.phone_number %></p>
+            <br>
+          </div>
+        <% end %>
+      </div>
+
+    <% else %>
+
+      <div class="alt-card black-links">
+        <h4><%= link_to t("My Partner"), "#" , class: "partner-link" %></h4>
         <hr>
-        <div class="card-content">
-          <% if @user.call_to_action %>
-            <p>Your call to action is:</p>
-            <%= link_to "#" do %>
-              <p><strong><%= @user.call_to_action.event %></strong></p>
+        <div class="card-content card-overflow">
+          <p><%= link_to t("assign a partner"), new_user_assignee_path(I18n.locale, current_user, 'Recipient', relationship: 'Partner'), class: "proof-card" %></p>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "children-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.children.empty? %>
+
+          <% @user.assignees.where('relationship = ?', 'Child').each do |child| %>
+            <% unless child.details_completed? %>
+              <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
             <% end %>
-          <% else %>
-            <p>You have not set a call-to-action.</p>
+            <p class="name-tag"><strong><%= link_to child.try(:name_surname), user_assignee_path(@user, child) %></strong></p>
+            <p><%= child.try(:phone_number) %></p>
           <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="guardian-card">
-        <h4>Guardians</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.guardians.each do |guardian| %>
-            <p><%= link_to guardian.first_name + ' ' + guardian.last_name, user_assignee_path(@user, guardian) %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="approver-card">
-        <h4>Approvers</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.approvers.each do |approver| %>
-            <p><%= link_to approver.first_name + ' ' + approver.last_name, user_assignee_path(@user, approver) %></p>
-            <p><%=  %></p>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="recipient-card">
-        <h4>Friends & Family</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.recipients.each do |recipient| %>
-            <p><%= link_to recipient.first_name + ' ' + recipient.last_name, user_assignee_path(@user, recipient) %></p>
-          <% end %>
-        </div>
+
+        <% else %>
+
+          <p><%= link_to t('assign children'), new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "proof-card" %></p>
+
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="admin-card">
-        <h4>Admin Reference</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.references.each do |reference| %>
-            <p><%= reference.title %></p>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("My Guardians"), user_guardians_path(current_user), class: "guardian-link" %><span class="card-tooltip"><%= t('my guardians tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.guardians.empty? %>
+
+          <% @user.guardians.each do |guardian| %>
+            <% unless guardian.details_completed? %>
+              <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+            <% end %>
+            <p class="name-tag"><strong><%= link_to guardian.name_surname, user_assignee_path(@user, guardian) %></strong></p>
+            <p><%= guardian.try(:phone_number) %></p>
           <% end %>
-        </div>
+
+        <% else %>
+
+          <p><%= link_to t('assign guardians'), new_user_assignee_path(I18n.locale, current_user, 'Guardian'), class: "proof-card" %></p>
+
+        <% end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="note-card">
-        <h4>Notes</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.notes.each do |note| %>
-            <p><%= note.title %></p>
-          <% end %>
-        </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <%# if @user.proofs.empty? %>
+        <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('No proof of residency') %></span></i>
+      <%# end %>
+      <h4 class="profile-card-link"><%# link_to t("Proof of Residency"), user_proofs_path(current_user) %><span class="card-tooltip"><%= t('my proof tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <%# if !@user.proofs.empty? %>
+
+          <%# @user.proofs.each do |proof| %>
+            <!-- <p>- <%# proof.title %></strong></p> -->
+          <%# end %>
+
+        <%# else %>
+
+          <p><%# link_to t('assign proof'), user_proofs_path(current_user), class: "proof-card" %></p>
+
+        <%# end %>
       </div>
     </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="photo-card">
-        <h4>Photos</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.photos.each do |photo| %>
-            <p><%= photo.title %></p>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("Notes"), user_notes_path(current_user) %><span class="card-tooltip"><%= t('my notes tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.notes.empty? %>
+
+          <% @user.notes.reverse.each do |note| %>
+            <p><%= note.title %></strong></p>
           <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-md-3">
-      <div class="alt-card card-overflow black-links" id="video-card">
-        <h4>Videos</h4>
-        <hr>
-        <div class="card-content">
-          <% @user.videos.each do |video| %>
-            <p><%= video.title %>
-            <p><%= video.video %></p>
-          <% end %>
-        </div>
+
+        <% else %>
+
+          <p><%= link_to t('assign notes'), user_notes_path(current_user), class: "proof-card" %></p>
+
+        <% end %>
       </div>
     </div>
   </div>
 </div>
-
-<br>
-
-<% content_for(:after_js) do %>
-  <script>
-    // Clicking on platform icons on profile tab loads tab content
-    $('#user-action-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#call-to-action-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/call_to_action",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    $('#user-details-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#personal-details-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/edit",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    $('#user-guardian-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#guardian-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/guardians",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    $('#user-approver-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#approver-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/approvers",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    $('#user-recipient-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#recipient-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-    // Clicking on digital assets icon loads tab content
-    $('#digital-icon').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass('active');
-      $('#digital-assets-sidebar-tab').addClass('active')
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/digital",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      });
-    });
-  </script>
-<% end %>
