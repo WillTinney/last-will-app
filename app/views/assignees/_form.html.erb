@@ -45,7 +45,7 @@
       <div class="col-xs-12 col-sm-4">
         <%= f.input :citizenship, collection: Nationality::NATIONALITY, prompt: 'Citizenship' %>
       </div>
-      <% if params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' %>
+      <% if params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' || params[:format] == 'Approver' || params[:type] == 'Approver' %>
         <div class="col-xs-12 col-sm-4">
           <%= f.input :relationship %>
         </div>

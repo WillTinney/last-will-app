@@ -95,7 +95,7 @@
         <%= link_to user_guardians_path(current_user), class: "scrollmenu-link guardian-link" do %>
           <h3><%= t('Guardians') %></h3>
         <% end %>
-        <%= link_to new_user_assignee_path(I18n.locale, current_user, type: 'Guardian'), class: "add-icon" do %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Guardian'), class: "add-icon" do %>
             <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Guardian') %></span></i>
         <% end %>
       </div>
@@ -123,7 +123,7 @@
         <%= link_to user_approvers_path(current_user), class: "scrollmenu-link approver-link" do %>
           <h3><%= t('Approvers') %></h3>
         <% end %>
-        <%= link_to new_user_assignee_path(I18n.locale, current_user, type: 'Approver'), class: "add-icon" do %>
+        <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Approver'), class: "add-icon" do %>
             <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Approver') %></span></i>
         <% end %>
       </div>

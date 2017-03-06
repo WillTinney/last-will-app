@@ -42,7 +42,7 @@
     <% if user_signed_in? %>
 
       <!-- Profile picture and dropdown -->
-      <%= link_to user_profile_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+      <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
         <i class="fa fa-user"></i>
         <%= t('Profile') %>
       <% end %>
@@ -63,7 +63,7 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if user_signed_in? %>
           <li>
-            <%= link_to user_profile_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
+            <%= link_to user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" do %>
               <i class="fa fa-user"></i>
               <%= t('Profile') %>
             <% end %>
