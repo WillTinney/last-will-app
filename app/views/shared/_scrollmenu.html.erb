@@ -1,7 +1,7 @@
 <div class="scrollmenu">
   <div class="scrollbox text-center" id="home-scrollbox">
     <div>
-      <%= link_to user_profile_path(current_user), class: "scrollmenu-link" do %>
+      <%= link_to user_path(current_user), class: "scrollmenu-link" do %>
         <h3><%= t('Home') %></h3>
       <% end %>
     </div>
@@ -173,3 +173,52 @@
     </div>
   <% end %>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    $('.children-link').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('.guardian-link').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/guardians",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('.approver-link').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/approvers",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('.recipient-link').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @user.id %> + "/recipients",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      })
+    });
+  </script>
+<% end %>

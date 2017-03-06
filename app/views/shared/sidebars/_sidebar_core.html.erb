@@ -31,7 +31,7 @@
 
     <hr>
 
-    <%= link_to '#',
+    <%= link_to user_guardians_path(current_user),
         class: "sidebar-tab profile-tab",
         id: "guardian-sidebar-tab",
         remote: true do %>
@@ -40,7 +40,7 @@
 
     <hr>
 
-    <%= link_to '#',
+    <%= link_to user_approvers_path(current_user),
         class: "sidebar-tab profile-tab",
         id: "approver-sidebar-tab",
         remote: true do %>
@@ -49,7 +49,7 @@
 
     <hr>
 
-    <%= link_to '#',
+    <%= link_to user_recipients_path(current_user),
         class: "sidebar-tab profile-tab",
         id: "recipient-sidebar-tab",
         remote: true do %>

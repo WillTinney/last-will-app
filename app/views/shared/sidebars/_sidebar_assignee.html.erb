@@ -4,7 +4,7 @@
     <h4><strong><%= @assignee.first_name %></strong></h4>
   </div>
   <div class="sidebar-tabs">
-    <%= link_to '#',
+    <%= link_to user_assignee_path(current_user, @assignee),
       class: "sidebar-tab sidebar-tab-header active",
       id: "show-profile-sidebar-tab",
       remote: true do %>
@@ -74,6 +74,73 @@
       $('#tab-content').children().addClass("hidden");
       $('.' + childIndex).removeClass("hidden");
       window.location.hash = $(this).attr('id').split("-")[0];
+    });
+    //AJAX to load tab content without a refresh
+    $('#show-profile-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#show-details-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#show-notes-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/notes",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#show-admin-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/admin",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#show-photos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#show-videos-sidebar-tab').click(function(e){
+      e.preventDefault();
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/videos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
     });
   </script>
 <% end %>

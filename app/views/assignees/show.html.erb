@@ -8,13 +8,7 @@
 
 <div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
   <div id="tab-content">
-    <div class="container">
-      <br>
-      <div class="grey-box relative">
-        <i class="fa fa-question-circle question-circle" aria-hidden="true"><span class="question-tooltip"><%= t('details tooltip') %></span></i>
-        <%= render file: 'assignees/edit' %>
-      </div>
-    </div>
+    <%= render file: 'assignees/edit' %>
   </div>
 </div>
 

@@ -11,7 +11,7 @@
   </head>
   <body>
     <%= yield(:navbar) %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'assignees' && params[:action] == 'index' %>
+    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'children' %>
       <div class="include-sidebar">
         <%= yield(:sidebar) %>
         <%= render 'shared/scrollmenu' %>
