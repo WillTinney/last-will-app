@@ -11,6 +11,7 @@ class NotesController < ApplicationController
   def new
     @note = Note.new
     authorize @note
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def create

@@ -40,10 +40,10 @@ Rails.application.routes.draw do
 
       # Approver Pages
       resources :approvers, controller: 'assignees', type: 'Approver' do
-        get 'notes', to: 'assignees#notes'
-        get 'references', to: 'assignees#references'
+        # get 'notes', to: 'assignees#notes'
+        # get 'references', to: 'assignees#references'
         # get 'photos', to: 'assignees#photos'
-        get 'video', to: 'assignees#video'
+        # get 'video', to: 'assignees#video'
         resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
         resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
         resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
@@ -58,8 +58,6 @@ Rails.application.routes.draw do
 
       # Recipient Pages
       resources :recipients, controller: 'assignees', type: 'Recipient' do
-        get 'notes', to: 'assignees#notes'
-        get 'references', to: 'assignees#references'
         resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
         resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
         resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]

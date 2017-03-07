@@ -18,7 +18,7 @@
   <%= f.hidden_field :type, value: @type || params[:type] %>
   <div class="form-container">
 
-    <% if params[:format] == 'Other' %>
+    <% if params[:format] == 'Other' || params[:format] == 'Recipient' %>
       <div class="row">
         <div class="col-xs-12 col-sm-4 col-sm-offset-4">
           <%= f.input :relationship, label: false, placeholder: 'Relationship', required: true %>

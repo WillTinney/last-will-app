@@ -61,6 +61,7 @@
       <h5><strong><%= t('not added notes') %></strong></h5>
       <p><%= t('please use form below') %></p>
       <%= simple_form_for([@user, @assignee, @reference]) do |f| %>
+        <%= f.hidden_field :assignee_id, value: @assignee.id %>
         <%= f.input :title, label: t('Title') %>
         <%= f.input :comments, label: t('Content') %>
         <div class="submit-button text-center">
