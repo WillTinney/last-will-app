@@ -5,7 +5,7 @@ class NotesController < ApplicationController
   def index
     @notes = policy_scope(Note)
     @note = Note.new
-    @assignee = Assignee.find('id = ?', params[:approver_id] || params[:guardian_id] ||params[:recipient_id]).first
+    @assignee = Assignee.find(params[:approver_id] || params[:guardian_id] || params[:recipient_id]) if params[:approver_id] || params[:guardian_id] || params[:recipient_id]
   end
 
   def new
