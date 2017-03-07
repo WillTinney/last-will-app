@@ -1,7 +1,7 @@
 class AssigneesController < ApplicationController
   protect_from_forgery except: :new
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
-  before_action :set_assignee_id, only: [:notes, :admin, :photos, :videos]
+  before_action :set_assignee_id, only: [:notes, :references, :photos, :videos]
   before_action :set_type
 
 
@@ -82,15 +82,20 @@ class AssigneesController < ApplicationController
     end
   end
 
-  # def notes
-  #   @note = Note.new
-  # end
+  def notes
+    authorize @assignee
+    @note = Note.new
+  end
 
-  # def admin
-  # end
+  def references
+    authorize @assignee
+    @reference = Reference.new
+  end
 
-  # def photos
-  # end
+  def photos
+    authorize @assignee
+    @photo = Photo.new
+  end
 
   # def videos
   # end

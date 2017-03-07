@@ -1,14 +1,19 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbar' %>
+<% end %>
+
 <div class="container">
   <br>
 
-  <% if !@notes.empty? %>
+  <% if !@assignee.notes.empty? %>
     <div class="header-box padding-15">
       <h2><%= t('Notes Library') %></h2>
-      <%= link_to t("Add Note"), new_user_note_path([I18n.locale, current_user, @note]), remote: true, class: "btn orange-button", id: "add-note" %>
+      <%= link_to t("Add Note"), new_user_note_path([I18n.locale, current_user, @assignee, @note]), remote: true, class: "btn orange-button", id: "add-note" %>
     </div>
 
     <div class="blue-box detail-box side-margin-small top-margin">
       <p><%= t('note description html') %></p>
+      Assignee
     </div>
 
     <div class="col-xs-12 col-md-6 invisible">
@@ -17,7 +22,7 @@
       </div>
     </div>
 
-    <% @user.notes.reverse.each do |note| %>
+    <% @assignee.notes.reverse.each do |note| %>
       <div class="col-xs-12 col-sm-6">
         <div class="note-card">
           <div class="card-buttons">
@@ -57,7 +62,7 @@
     <div class="grey-box">
       <h5><strong><%= t('not added notes') %></strong></h5>
       <p><%= t('please use form below') %></p>
-      <%= simple_form_for([@user, @note]) do |f| %>
+      <%= simple_form_for([@user, @assignee, @note]) do |f| %>
         <%= f.input :title, label: t('Title') %>
         <%= f.input :content, label: t('Content') %>
         <div class="submit-button text-center">

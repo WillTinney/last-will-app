@@ -30,6 +30,22 @@ class AssigneePolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def notes?
+    user_is_owner?
+  end
+
+  def references?
+    user_is_owner?
+  end
+
+  def photos?
+    user_is_owner?
+  end
+
+  def videos?
+    user_is_owner?
+  end
+
   private
 
   def user_is_owner?

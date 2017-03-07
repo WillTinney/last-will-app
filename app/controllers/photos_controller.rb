@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   def index
     @photos = policy_scope(Photo)
     @photo = Photo.new
+    @assignee = Assignee.find(params[:approver_id] || params[:guardian_id] || params[:recipient_id])
   end
 
   def new

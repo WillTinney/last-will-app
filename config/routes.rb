@@ -24,8 +24,6 @@ Rails.application.routes.draw do
       get 'children', to: 'users#children'
       get 'unlock', to: 'users#unlock'
       post 'unlock_data', to: 'users#unlock_data'
-      # get 'references', to: 'users#references'
-      # get 'photos', to: 'users#photos'
       get 'video', to: 'users#video'
       resources :call_to_action, controller: 'call_to_action', only: [:index, :new, :create, :edit, :update, :destroy]
 
@@ -36,12 +34,13 @@ Rails.application.routes.draw do
 
       # Assignee Pages
       resources :assignees do
+        resources :notes
         get 'notes', to: 'assignees#notes'
         get 'references', to: 'assignees#references'
         get 'photos', to: 'assignees#photos'
         get 'video', to: 'assignees#video'
-        # resources :notes, only: [:new, :create, :edit, :update, :destroy]
-        # resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
+        resources :notes, only: [:new, :create, :edit, :update, :destroy]
+        resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
         # resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
       end
 
@@ -49,21 +48,26 @@ Rails.application.routes.draw do
       resources :approvers, controller: 'assignees', type: 'Approver' do
         get 'notes', to: 'assignees#notes'
         get 'references', to: 'assignees#references'
-        get 'photos', to: 'assignees#photos'
+        # get 'photos', to: 'assignees#photos'
         get 'video', to: 'assignees#video'
-        # resources :notes, only: [:new, :create, :edit, :update, :destroy]
+        resources :notes, only: [:new, :create, :edit, :update, :destroy]
         # resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
         # resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
       end
 
       # Guardian Pages
       resources :guardians, controller: 'assignees', type: 'Guardian' do
-        # get 'notes', to: 'assignees#notes'
+        get 'notes', to: 'assignees#notes'
+        get 'references', to: 'assignees#references'
+        get 'photos', to: 'assignees#photos'
       end
 
       # Recipient Pages
       resources :recipients, controller: 'assignees', type: 'Recipient' do
-        # get 'notes', to: 'assignees#notes'
+        get 'notes', to: 'assignees#notes'
+        get 'references', to: 'assignees#references'
+        # get 'photos', to: 'assignees#photos'
+        resources :photos, only: [ :index, :show, :new, :create, :edit, :update, :destroy]
       end
 
       # Routes for wizard sign-up

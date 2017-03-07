@@ -113,7 +113,7 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @assignee.id %> + "/admin",
+          url: <%= @assignee.id %> + "/references",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
