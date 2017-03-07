@@ -64,7 +64,7 @@
   <% if !@user.children.empty? %>
     <div class="scrollbox">
       <div class="scrolltitle">
-        <%= link_to user_children_path(current_user), class: "scrollmenu-link children-link" do %>
+        <%= link_to '#', class: "scrollmenu-link children-link" do %>
           <h3><%=  t('Children') %></h3>
         <% end %>
         <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "add-icon" do %>
@@ -92,7 +92,7 @@
   <% if !@user.guardians.empty? %>
     <div class="scrollbox">
       <div class="scrolltitle">
-        <%= link_to user_guardians_path(current_user), class: "scrollmenu-link guardian-link" do %>
+        <%= link_to '#', class: "scrollmenu-link guardian-link" do %>
           <h3><%= t('Guardians') %></h3>
         <% end %>
         <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Guardian'), class: "add-icon" do %>
@@ -120,7 +120,7 @@
   <% if !@user.approvers.empty? %>
     <div class="scrollbox">
       <div class="scrolltitle">
-        <%= link_to user_approvers_path(current_user), class: "scrollmenu-link approver-link" do %>
+        <%= link_to '#', class: "scrollmenu-link approver-link" do %>
           <h3><%= t('Approvers') %></h3>
         <% end %>
         <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Approver'), class: "add-icon" do %>
@@ -148,7 +148,7 @@
   <% if !@user.show_other.empty? %>
     <div class="scrollbox">
       <div class="scrolltitle">
-        <%= link_to user_recipients_path(current_user), class: "scrollmenu-link recipient-link" do %>
+        <%= link_to '#', class: "scrollmenu-link recipient-link" do %>
           <h3><%= t('Other Friends & Family') %></h3>
         <% end %>
         <%= link_to new_user_assignee_path(I18n.locale, current_user, 'Other'), class: "add-icon" do %>
@@ -177,57 +177,59 @@
 <% content_for(:after_js) do %>
   <script>
     // Clicking on assignee index links loads correct page and changes sidebar tab
-    $('.children-link').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass("active");
-      $('#recipient-sidebar-tab').addClass("active");
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/approvers",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
+    <% if params[:controller] == 'users' %>
+      $('.children-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#recipient-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/children",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
       });
-    });
-    $('.guardian-link').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass("active");
-      $('#guardian-sidebar-tab').addClass("active");
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/guardians",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
+      $('.guardian-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#guardian-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/guardians",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
       });
-    });
-    $('.approver-link').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass("active");
-      $('#approver-sidebar-tab').addClass("active");
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/approvers",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
+      $('.approver-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#approver-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/approvers",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
       });
-    });
-    $('.recipient-link').click(function(e){
-      e.preventDefault();
-      $('.sidebar-tabs').children().removeClass("active");
-      $('#recipient-sidebar-tab').addClass("active");
-      $.ajax({
-          type: "GET",
-          url: <%= @user.id %> + "/recipients",
-          data: { },
-          success: function(data){
-              $('#tab-content').empty().html(data);
-          }
-      })
-    });
+      $('.recipient-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#recipient-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/recipients",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        })
+      });
+    <% end %>
   </script>
 <% end %>
