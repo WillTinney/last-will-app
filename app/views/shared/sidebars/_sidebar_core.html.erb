@@ -108,7 +108,7 @@
 <% content_for(:after_js) do %>
   <script>
     // Clicking on a different tab changes the content shown on the page
-    $('.sidebar-tab').on('click', function(event){
+    $('.sidebar-tab').on('click', function(){
       $('.sidebar-tabs').children().removeClass("active");
       $(this).addClass("active");
       var childIndex = $(this).index();

@@ -41,8 +41,10 @@
       <h3 class="new-title padding-15">Approver</h3>
     <% elsif params[:relationship] == 'Partner' || @assignee.relationship == 'Partner' %>
       <h3 class="new-title padding-15">Partner</h3>
-    <% else %>
+    <% elsif params[:relationship] == 'Child' || @assignee.relationship == 'Child' %>
       <h3 class="new-title padding-15">Child</h3>
+    <% else %>
+      <h3 class="new-title padding-15"><%= @assignee.relationship %></h3>
     <% end %>
 
     <%= simple_form_for [current_user, @assignee] do |f| %>
