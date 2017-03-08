@@ -1,11 +1,15 @@
 class ReferencesController < ApplicationController
-  before_action :set_reference, only: [:edit, :update, :destroy]
+  before_action :set_reference, only: [:show, :edit, :update, :destroy]
   # before_action :set_assignee, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @references = policy_scope(Reference)
     @reference = Reference.new
     @assignee = Assignee.find(params[:approver_id] || params[:guardian_id] || params[:recipient_id]) if params[:approver_id] || params[:guardian_id] || params[:recipient_id]
+  end
+
+  def show
+    authorize @reference
   end
 
   def new
