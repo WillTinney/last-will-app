@@ -1,19 +1,42 @@
-<div class="container-box">
-  <div class="header-box">
-
-  </div>
-  <div class="photo-box">
-    <%= cl_image_tag(@photo.photo_seed, width: 800, height: 600) %>
-
-    <h3><%= @photo.title %></h3>
-    <p><%= @photo.caption %></p>
-    <div class="card-buttons">
-      <%= link_to "Edit", edit_user_assignee_photo_path(current_user, @photo.assignee_id, @photo), remote: true, class: "btn btn-success btn-default" %>
-      <%= link_to "Delete", user_assignee_photo_path(current_user, @photo.assignee_id, @photo), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+<div class="container">
+  <div class="grey-box text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        <%= cl_image_tag(@photo.photo_seed, class: "show-asset") %>
+      </div>
     </div>
+    <%= simple_form_for([@user, @assignee, @photo]) do |f| %>
+      <h3 data-text="title"><%= @photo.title %> <i class="fa fa-pencil show-edit-icon" aria-hidden="true" data-label="title"></i></h3>
+      <div class="row invisible" data-form="title">
+        <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+          <%= f.input :title, label: false %>
+        </div>
+      </div>
+      <p data-text="caption"><%= @photo.caption %> <i class="fa fa-pencil show-edit-icon" aria-hidden="true" data-label="caption"></i></p>
+      <div class="row invisible" data-form="caption">
+        <div class="col-xs-12 col-md-10 col-md-offset-1">
+          <%= f.input :caption, label: false %>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <%= link_to t("Back"), user_path(current_user), class: "back-button" %>
+        <%= f.button :submit, t("Save"), class: "purple-button" %>
+      </div>
+    <% end %>
+    <br>
   </div>
   <br>
-  <%= link_to "Back", user_assignee_path(@user, @photo.assignee_id), class: "title-margin btn btn-transparent btn-default" %>
-  <div id="edit-photo-form"></div>
-  <div id="new-photo-form"></div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on edit icon opens form
+    $('.show-edit-icon').click(function(e) {
+      var label = $(this).data('label');
+      console.log(label);
+      $('[data-form=' + label + ']').removeClass('invisible');
+      $(this).addClass('invisible');
+      $('[data-text=' + label + ']').addClass('invisible');
+    });
+  </script>
+<% end %>

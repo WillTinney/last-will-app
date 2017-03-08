@@ -24,46 +24,43 @@ Rails.application.routes.draw do
       get 'children', to: 'users#children'
       get 'unlock', to: 'users#unlock'
       post 'unlock_data', to: 'users#unlock_data'
-      # get 'references', to: 'users#references'
-      # get 'photos', to: 'users#photos'
       get 'video', to: 'users#video'
       resources :call_to_action, controller: 'call_to_action', only: [:index, :new, :create, :edit, :update, :destroy]
 
       resources :notes
       resources :photos
       resources :references
-      resources :proofs
 
       # Assignee Pages
       resources :assignees do
-        get 'notes', to: 'assignees#notes'
-        get 'references', to: 'assignees#references'
-        get 'photos', to: 'assignees#photos'
-        get 'video', to: 'assignees#video'
-        resources :notes, only: [:new, :create, :edit, :update, :destroy]
-        resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-        resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
+        resources :notes
+        resources :photos
+        resources :references
       end
 
       # Approver Pages
       resources :approvers, controller: 'assignees', type: 'Approver' do
-        get 'notes', to: 'assignees#notes'
-        get 'references', to: 'assignees#references'
-        get 'photos', to: 'assignees#photos'
-        get 'video', to: 'assignees#video'
-        resources :notes, only: [:new, :create, :edit, :update, :destroy]
-        resources :photos, only: [:show, :new, :create, :edit, :update, :destroy]
-        resources :references, only: [:show, :new, :create, :edit, :update, :destroy]
+        # get 'notes', to: 'assignees#notes'
+        # get 'references', to: 'assignees#references'
+        # get 'photos', to: 'assignees#photos'
+        # get 'video', to: 'assignees#video'
+        resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
+        resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
       end
 
       # Guardian Pages
       resources :guardians, controller: 'assignees', type: 'Guardian' do
-        get 'notes', to: 'assignees#notes'
+      resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
+      resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+      resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
       end
 
       # Recipient Pages
       resources :recipients, controller: 'assignees', type: 'Recipient' do
-        get 'notes', to: 'assignees#notes'
+        resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
+        resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
       end
 
       # Routes for wizard sign-up

@@ -31,10 +31,13 @@
 
       <h5>You have not uploaded a call to action.</h5>
       <p>Please use the form below to do so:</p>
+      <br>
 
       <%= simple_form_for [@user, @new_call_to_action], url: user_call_to_action_index_path, method: :post do |f| %>
         <%= f.input :event %>
-        <%= f.button :submit, "Confirm Call To Action" %>
+        <div class="text-center bottom-margin">
+          <%= f.button :submit, "Confirm Call To Action", class: "purple-button"  %>
+        </div>
       <% end %>
 
     <% end %>

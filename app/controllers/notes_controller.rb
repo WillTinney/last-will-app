@@ -5,16 +5,19 @@ class NotesController < ApplicationController
   def index
     @notes = policy_scope(Note)
     @note = Note.new
+    @assignee = Assignee.find(params[:approver_id] || params[:guardian_id] || params[:recipient_id]) if params[:approver_id] || params[:guardian_id] || params[:recipient_id]
   end
 
   def new
     @note = Note.new
     authorize @note
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def create
     @note = current_user.notes.create!(note_params)
     # @note[:user_id] = @assignee.user_id
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
     authorize @note
     if @note.save
       redirect_to user_notes_path(current_user), notice: 'Note was successfully created.'

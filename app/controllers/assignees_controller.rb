@@ -1,7 +1,7 @@
 class AssigneesController < ApplicationController
   protect_from_forgery except: :new
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
-  before_action :set_assignee_id, only: [:notes, :admin, :photos, :videos]
+  before_action :set_assignee_id, only: [:notes, :references, :photos, :videos]
   before_action :set_type
 
 
@@ -38,7 +38,7 @@ class AssigneesController < ApplicationController
           if @assignee.type == 'Guardian'
             redirect_to user_guardians_path(current_user), notice: 'Assignee was successfully created.'
           elsif @assignee.relationship == 'Partner'
-            redirect_to user_profile_path(current_user)
+            redirect_to user_path(current_user)
           else
             redirect_to user_children_path(current_user), notice: 'Assignee was successfully created.'
           end
@@ -62,7 +62,7 @@ class AssigneesController < ApplicationController
       if @assignee.type == 'Guardian'
         redirect_to user_guardians_path(current_user), notice: 'Assignee was successfully updated.'
       elsif @assignee.relationship == 'Partner'
-        redirect_to user_profile_path(current_user)
+        redirect_to user_path(current_user)
       else
         redirect_to user_children_path(current_user), notice: 'Assignee was successfully updated.'
       end
@@ -83,17 +83,22 @@ class AssigneesController < ApplicationController
   end
 
   def notes
+    authorize @assignee
     @note = Note.new
   end
 
-  def admin
+  def references
+    authorize @assignee
+    @reference = Reference.new
   end
 
   def photos
+    authorize @assignee
+    @photo = Photo.new
   end
 
-  def videos
-  end
+  # def videos
+  # end
 
   private
 

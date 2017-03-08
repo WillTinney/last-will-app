@@ -2,10 +2,6 @@
   <%= render 'shared/navbar' %>
 <% end %>
 
-<% content_for(:sidebar) do %>
-  <%= render 'shared/sidebars/sidebar_core' %>
-<% end %>
-
 <div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
   <div id="tab-content">
     <div class="container">
@@ -42,9 +38,3 @@
     </div>
   </div>
 </div>
-
-<% content_for(:after_js) do %>
-  <script>
-    $('.active').removeClass('active');
-  </script>
-<% end %>

@@ -17,8 +17,10 @@
           <h3 class="new-title"><%= t('New Approver') %></h3>
         <% elsif params[:format] == 'Partner' || params[:relationship] == 'Partner' %>
           <h3 class="new-title"><%= t('New Partner') %></h3>
-        <% else %>
+        <% elsif params[:format] == 'Child' || params[:relationship] == 'Child' %>
           <h3 class="new-title"><%= t('New Child') %></h3>
+        <% else %>
+          <h3 class="new-title"><%= t('New Recipient') %></h3>
         <% end %>
         <%= render 'assignees/form' %>
       </div>
@@ -28,4 +30,14 @@
 
 <%= content_for(:after_js) do %>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>"></script>
+  <script>
+    // Changes to relevant sidebar tab
+    $('.sidebar-tabs').children().removeClass("active");
+    console.log('<%= params[:format] %>');
+    if ('<%= params[:format] %>' == 'Guardian' || '<%= params[:format] %>' == 'Approver') {
+      $('#<%= params[:format].downcase %>-sidebar-tab').addClass("active");
+    } else {
+      $('#recipient-sidebar-tab').addClass("active");
+    }
+  </script>
 <% end %>

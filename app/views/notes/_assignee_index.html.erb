@@ -1,0 +1,71 @@
+<div class="container">
+  <br>
+
+  <% if !@assignee.notes.empty? %>
+    <div class="header-box padding-15">
+      <h2><%= t('Notes Library') %></h2>
+      <%= link_to t("Add Note"), new_user_assignee_note_path(I18n.locale, current_user.id, @assignee, @note), remote: true, class: "btn orange-button", id: "add-note" %>
+    </div>
+
+    <div class="blue-box detail-box side-margin-small top-margin">
+      <p><%= t('note description html') %></p>
+    </div>
+
+    <div class="col-xs-12 col-md-6 invisible">
+      <div class="note-card">
+        <div class="note-form" id="new-note-form"></div>
+      </div>
+    </div>
+
+    <% @assignee.notes.reverse.each do |note| %>
+      <div class="col-xs-12 col-sm-6">
+        <div class="note-card">
+          <div class="card-buttons">
+            <%= link_to edit_user_note_path(current_user, note.id), remote: true do %>
+              <i class="fa fa-pencil" aria-hidden="true"> </i>
+            <% end %>
+            <%= link_to user_note_path(current_user, note.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <div class="note-spacing" id="assignee-note-<%= note.id %>">
+            <div class="note-title">
+              <h4><strong><%= note.title %></strong></h4>
+              <h5><strong>For:</strong> <%= Assignee.find(note.assignee_id).first_name %></h5>
+            </div>
+            <hr>
+            <br>
+            <div class="card-content card-overflow">
+              <p><%= note.content %></p>
+            </div>
+          </div>
+          <div class="note-form" id="edit-note-form-<%= note.id %>"></div>
+        </div>
+      </div>
+    <% end %>
+
+  <% else %>
+
+    <div class="side-margin white-text">
+      <h2>Notes</h2>
+
+      <div class="blue-box">
+        <p><%= t('note description html') %></p>
+      </div>
+    </div>
+
+    <div class="grey-box">
+      <h5><strong><%= t('not added notes') %></strong></h5>
+      <p><%= t('please use form below') %></p>
+      <%= simple_form_for([@user, @assignee, @note]) do |f| %>
+        <%= f.hidden_field :assignee_id, value: @assignee.id %>
+        <%= f.input :title, label: t('Title') %>
+        <%= f.input :content, label: t('Content') %>
+        <div class="submit-button text-center">
+          <%= f.button :submit, t("Create"), class: "btn purple-button" %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>

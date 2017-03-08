@@ -2,12 +2,10 @@
 <%= link_to '#', class: 'profile-picture-inline' do %>
   <% if @assignee.profile_picture %>
     <%= cl_image_tag(@assignee.profile_picture.path, transformation: [{width: 100, height: 100, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-edit") %>
-  <% elsif params[:format] == 'Guardian' || params[:type] == 'Guardian' || @assignee.type == 'Guardian' || params[:assignee] && params[:assignee]['type'] == 'Guardian' || params[:format] == 'Approver' || params[:type] == 'Approver' %>
-    <%= image_tag('guardian_male.png', class: "edit-icon") %>
-  <% elsif params[:format] == 'Approver' || @assignee.type == 'Approver' %>
-
-  <% else %>
+  <% elsif params[:format] == 'Child' || params[:format] == 'Partner' || @assignee.relationship == 'Partner'|| @assignee.relationship == 'Child' %>
     <%= image_tag('boy.png', class: "edit-icon") %>
+  <% else %>
+    <%= image_tag('guardian_male.png', class: "edit-icon") %>
   <% end %>
 <!--   <p><%# t('Change Picture') %></p>
   <%# simple_form_for [current_user, @assignee], html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
@@ -19,6 +17,14 @@
 <%= simple_form_for [current_user, @assignee] do |f| %>
   <%= f.hidden_field :type, value: @type || params[:type] %>
   <div class="form-container">
+
+    <% if params[:format] == 'Other' || params[:format] == 'Recipient' %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+          <%= f.input :relationship, label: false, placeholder: 'Relationship', required: true %>
+        </div>
+      </div>
+    <% end %>
 
     <div class="row">
       <div class="col-xs-12 col-sm-4">
@@ -88,9 +94,11 @@
     <% elsif params[:format] == 'Partner' || params[:relationship] == 'Partner' %>
       <%= f.hidden_field :type, value: 'Recipient', id: 'set_assignee_type' %>
       <%= f.hidden_field :relationship, value: 'Partner' %>
-    <% else %>
+    <% elsif params[:format] == 'Child' || params[:relationship] == 'Child' %>
       <%= f.hidden_field :type, value: 'Recipient', id: 'set_assignee_type' %>
       <%= f.hidden_field :relationship, value: 'Child' %>
+    <% else %>
+      <%= f.hidden_field :type, value: 'Recipient', id: 'set_assignee_type' %>
     <% end %>
 
     <div class="nav-buttons">

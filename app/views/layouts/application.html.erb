@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BrexitHedge</title>
+    <title>MyWill</title>
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
@@ -11,7 +11,7 @@
   </head>
   <body>
     <%= yield(:navbar) %>
-    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'assignees' && params[:action] == 'index' %>
+    <% if params[:controller] == 'users' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'show' || params[:controller] == 'assignees' && params[:action] == 'new' || params[:controller] == 'users' && params[:action] == 'children' %>
       <div class="include-sidebar">
         <%= yield(:sidebar) %>
         <%= render 'shared/scrollmenu' %>
@@ -19,7 +19,7 @@
         <%= yield %>
         <%= render 'shared/footers/home_footer' unless params[:controller] == 'after_sign_up' || params[:controller] == 'devise/sessions' || params[:controller] == 'registrations' %>
       </div>
-    <% elsif params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' && params[:action] != 'show' || params[:controller] == 'proofs' && params[:action] == 'index' || params[:controller] == 'notes' || params[:controller] == 'call_to_action' || params[:controller] == 'users' && params[:action] == 'profile' %>
+    <% elsif params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' && params[:action] != 'show' || params[:controller] == 'references' || params[:controller] == 'photos' || params[:controller] == 'notes' || params[:controller] == 'call_to_action' || params[:controller] == 'users' && params[:action] == 'profile' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
     <% else %>
