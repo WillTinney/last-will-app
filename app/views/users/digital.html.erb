@@ -1,0 +1,19 @@
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("Notes"), user_notes_path(current_user) %><span class="card-tooltip"><%= t('my notes tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.notes.empty? %>
+
+          <% @user.notes.reverse.each do |note| %>
+            <p><%= note.title %></strong></p>
+          <% end %>
+
+        <% else %>
+
+          <p><%= link_to t('assign notes'), user_notes_path(current_user), class: "proof-card" %></p>
+
+        <% end %>
+      </div>
+    </div>
+  </div>

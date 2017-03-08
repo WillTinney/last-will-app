@@ -15,18 +15,18 @@
 
     <%= link_to '#',
         class: "sidebar-tab profile-tab",
-        id: "call-to-action-sidebar-tab",
+        id: "personal-details-sidebar-tab",
         remote: true do %>
-        <h5><i class="fa fa-bell-o" aria-hidden="true"></i> My Call to Action</h5>
+      <h5><i class="fa fa-id-card-o" aria-hidden="true"></i> My Personal Details</h5>
     <% end %>
 
     <hr>
 
     <%= link_to '#',
         class: "sidebar-tab profile-tab",
-        id: "personal-details-sidebar-tab",
+        id: "call-to-action-sidebar-tab",
         remote: true do %>
-      <h5><i class="fa fa-id-card-o" aria-hidden="true"></i> My Personal Details</h5>
+        <h5><i class="fa fa-bell-o" aria-hidden="true"></i> My Call to Action</h5>
     <% end %>
 
     <hr>
@@ -128,22 +128,22 @@
           }
       });
     });
-    $('#call-to-action-sidebar-tab').click(function(e){
+    $('#personal-details-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/call_to_action",
+          url: <%= @user.id %> + "/edit",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
           }
       });
     });
-    $('#personal-details-sidebar-tab').click(function(e){
+    $('#call-to-action-sidebar-tab').click(function(e){
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @user.id %> + "/edit",
+          url: <%= @user.id %> + "/call_to_action",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);

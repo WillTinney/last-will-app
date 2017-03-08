@@ -48,6 +48,24 @@
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("My Call to Action"), user_call_to_action_index_path(current_user), class: "call-to-action-link" %><span class="card-tooltip"><%= t('my call to action tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if @user.call_to_action %>
+
+          <%= @user.call_to_action.event %>
+
+        <% else %>
+
+          <p><%= link_to t('assign call_to_action'), new_user_call_to_action_path(I18n.locale, current_user, @call_to_action), class: "call-to-action-card" %></p>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6 col-md-4">
     <% if @user.assignees.where('relationship = ?', 'Partner').last %>
 
       <div class="alt-card black-links">
@@ -60,9 +78,28 @@
           <div class="card-content card-overflow">
             <p class="name-tag"><strong><%= link_to partner.name_surname, user_assignee_path(@user, partner) %></strong></p>
             <p><%= partner.phone_number %></p>
-            <br>
           </div>
         <% end %>
+
+        <!-- My Children -->
+        <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
+        <hr>
+        <div class="card-content card-overflow">
+          <% if !@user.children.empty? %>
+
+            <% @user.assignees.where('relationship = ?', 'Child').each do |child| %>
+              <% unless child.details_completed? %>
+                <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+              <% end %>
+              <p class="name-tag"><strong><%= link_to child.try(:name_surname), user_assignee_path(@user, child) %></strong></p>
+              <p><%= child.try(:phone_number) %></p>
+            <% end %>
+
+          <% else %>
+
+            <p><%= link_to t('assign children'), new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "proof-card" %></p>
+          <% end %>
+        </div>
       </div>
 
     <% else %>
@@ -73,33 +110,29 @@
         <div class="card-content card-overflow">
           <p><%= link_to t("assign a partner"), new_user_assignee_path(I18n.locale, current_user, 'Recipient', relationship: 'Partner'), class: "proof-card" %></p>
         </div>
+
+        <!-- My Children -->
+        <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
+        <hr>
+        <div class="card-content card-overflow">
+          <% if !@user.children.empty? %>
+
+            <% @user.assignees.where('relationship = ?', 'Child').each do |child| %>
+              <% unless child.details_completed? %>
+                <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+              <% end %>
+              <p class="name-tag"><strong><%= link_to child.try(:name_surname), user_assignee_path(@user, child) %></strong></p>
+              <p><%= child.try(:phone_number) %></p>
+            <% end %>
+
+          <% else %>
+
+            <p><%= link_to t('assign children'), new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "proof-card" %></p>
+          <% end %>
+        </div>
       </div>
 
     <% end %>
-  </div>
-
-  <div class="col-xs-12 col-sm-6 col-md-4">
-    <div class="alt-card black-links">
-      <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "children-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
-      <hr>
-      <div class="card-content card-overflow">
-        <% if !@user.children.empty? %>
-
-          <% @user.assignees.where('relationship = ?', 'Child').each do |child| %>
-            <% unless child.details_completed? %>
-              <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
-            <% end %>
-            <p class="name-tag"><strong><%= link_to child.try(:name_surname), user_assignee_path(@user, child) %></strong></p>
-            <p><%= child.try(:phone_number) %></p>
-          <% end %>
-
-        <% else %>
-
-          <p><%= link_to t('assign children'), new_user_assignee_path(I18n.locale, current_user, 'Child'), class: "proof-card" %></p>
-
-        <% end %>
-      </div>
-    </div>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4">
@@ -128,44 +161,81 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
-      <%# if @user.proofs.empty? %>
-        <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('No proof of residency') %></span></i>
-      <%# end %>
-      <h4 class="profile-card-link"><%# link_to t("Proof of Residency"), user_proofs_path(current_user) %><span class="card-tooltip"><%= t('my proof tooltip') %></span></h4>
+      <h4 class="profile-card-link"><%= link_to t("My Approvers"), user_approvers_path(current_user), class: "approver-link" %><span class="card-tooltip"><%= t('my approvers tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
-        <%# if !@user.proofs.empty? %>
+        <% if !@user.approvers.empty? %>
 
-          <%# @user.proofs.each do |proof| %>
-            <!-- <p>- <%# proof.title %></strong></p> -->
-          <%# end %>
+          <% @user.approvers.each do |approver| %>
+            <% unless approver.details_completed? %>
+              <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+            <% end %>
+            <p class="name-tag"><strong><%= link_to approver.name_surname, user_assignee_path(@user, approver) %></strong></p>
+            <p><%= approver.try(:phone_number) %></p>
+          <% end %>
 
-        <%# else %>
+        <% else %>
 
-          <p><%# link_to t('assign proof'), user_proofs_path(current_user), class: "proof-card" %></p>
+          <p><%= link_to t('assign approvers'), new_user_assignee_path(I18n.locale, current_user, 'Approver'), class: "proof-card" %></p>
 
-        <%# end %>
+        <% end %>
       </div>
     </div>
   </div>
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
-      <h4 class="profile-card-link"><%= link_to t("Notes"), user_notes_path(current_user) %><span class="card-tooltip"><%= t('my notes tooltip') %></span></h4>
+      <h4 class="profile-card-link"><%= link_to t("Other Friends & Family"),user_assignees_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my recipient tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
-        <% if !@user.notes.empty? %>
+        <% if !@user.show_other.empty? %>
 
-          <% @user.notes.reverse.each do |note| %>
-            <p><%= note.title %></strong></p>
+          <% @user.show_other.each do |recipient| %>
+            <% unless recipient.details_completed? %>
+              <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
+            <% end %>
+            <p class="name-tag"><strong><%= link_to recipient.try(:name_surname), user_assignee_path(@user, recipient) %></strong></p>
+            <p><%= recipient.try(:phone_number) %></p>
           <% end %>
 
         <% else %>
 
-          <p><%= link_to t('assign notes'), user_notes_path(current_user), class: "proof-card" %></p>
+          <p><%= link_to t('assign recipients'), new_user_assignee_path(I18n.locale, current_user, 'Other'), class: "proof-card" %></p>
 
         <% end %>
       </div>
     </div>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on card headings switches tab
+      $('.details-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#personal-details-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/edit",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
+      });
+      $('.call-to-action-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#call-to-action-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/call_to_action",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
+      });
+  </script>
+<% end %>
