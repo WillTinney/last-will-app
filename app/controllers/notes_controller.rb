@@ -17,6 +17,7 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.create!(note_params)
     # @note[:user_id] = @assignee.user_id
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
     authorize @note
     if @note.save
       redirect_to user_notes_path(current_user), notice: 'Note was successfully created.'
