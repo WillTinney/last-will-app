@@ -1,12 +1,36 @@
-  <div class="col-xs-12 col-sm-6 col-md-4">
+<br><br>
+
+<div class="container profile-cards">
+
+  <div class="col-xs-12 col-sm-6">
     <div class="alt-card black-links">
-      <h4 class="profile-card-link"><%= link_to t("Notes"), user_notes_path(current_user) %><span class="card-tooltip"><%= t('my notes tooltip') %></span></h4>
+      <h4 class="profile-card-link"><%= link_to t("Admin References"), user_references_path(current_user), class: "reference-link" %><span class="card-tooltip"><%= t('my references tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.references.empty? %>
+
+          <% @user.references.reverse.each do |reference| %>
+            <p><%= reference.title %> - <strong><%= reference.assignee_id ? Assignee.find(reference.assignee_id).first_name : 'Everyone' %></strong></p>
+          <% end %>
+
+        <% else %>
+
+          <p><%= link_to t('assign references'), user_references_path(current_user), class: "proof-card" %></p>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("Notes"), user_notes_path(current_user), class: "note-link" %><span class="card-tooltip"><%= t('my notes tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
         <% if !@user.notes.empty? %>
 
           <% @user.notes.reverse.each do |note| %>
-            <p><%= note.title %></strong></p>
+            <p><%= note.title %> - <strong><%= note.assignee_id ? Assignee.find(note.assignee_id).first_name : 'Everyone' %></strong></p>
           <% end %>
 
         <% else %>
@@ -17,3 +41,104 @@
       </div>
     </div>
   </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("Photos"), user_photos_path(current_user), class: "photo-link" %><span class="card-tooltip"><%= t('my photos tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <% if !@user.photos.empty? %>
+
+          <% @user.photos.reverse.each do |photo| %>
+            <p><%= photo.title %> - <strong><%= photo.assignee_id ? Assignee.find(photo.assignee_id).first_name : 'Everyone' %></strong></p>
+          <% end %>
+
+        <% else %>
+
+          <p><%= link_to t('assign photos'), user_photos_path(current_user), class: "proof-card" %></p>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-6">
+    <div class="alt-card black-links">
+      <h4 class="profile-card-link"><%= link_to t("Videos"), '#', class: "video-link" %><span class="card-tooltip"><%= t('my videos tooltip') %></span></h4>
+      <hr>
+      <div class="card-content card-overflow">
+        <%# if !@user.videos.empty? %>
+
+          <%# @user.videos.reverse.each do |video| %>
+            <p><%# video.title %></p>
+          <%# end %>
+
+        <%# else %>
+
+          <p><%# link_to t('assign videos'), user_notes_path(current_user), class: "proof-card" %></p>
+
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<% content_for(:after_js) do %>
+  <script>
+    // Clicking on card headings switches tab
+      $('.reference-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#admin-references-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/references",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
+      });
+      $('.note-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#notes-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/notes",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
+      });
+      $('.photo-link').click(function(e){
+        e.preventDefault();
+        $('.sidebar-tabs').children().removeClass("active");
+        $('#photo-library-sidebar-tab').addClass("active");
+        $.ajax({
+            type: "GET",
+            url: <%= @user.id %> + "/photos",
+            data: { },
+            success: function(data){
+                $('#tab-content').empty().html(data);
+            }
+        });
+      });
+      // $('.video-link').click(function(e){
+      //   e.preventDefault();
+      //   $('.sidebar-tabs').children().removeClass("active");
+      //   $('#video-library-sidebar-tab').addClass("active");
+      //   $.ajax({
+      //       type: "GET",
+      //       url: <%= @user.id %> + "/videos",
+      //       data: { },
+      //       success: function(data){
+      //           $('#tab-content').empty().html(data);
+      //       }
+      //   });
+      // });
+  </script>
+<% end %>
