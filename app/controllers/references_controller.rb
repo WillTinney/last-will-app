@@ -11,6 +11,7 @@ class ReferencesController < ApplicationController
   def new
     @reference = Reference.new
     authorize @reference
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def create
@@ -26,6 +27,7 @@ class ReferencesController < ApplicationController
 
   def edit
     authorize @reference
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def update

@@ -1,8 +1,8 @@
 <%= simple_form_for [current_user, @assignee, @photo] do |f| %>
-  <%= f.hidden_field :assignee_id, value: @assignee.id %>
+  <%= f.hidden_field :assignee_id, value: params[:assignee_id] %>
+  <%= f.input :photo, as: :attachinary %>
   <%= f.input :title %>
   <%= f.input :caption %>
-  <%= f.input :photo, as: :attachinary %>
   <%= f.button :submit %>
 <% end %>
 

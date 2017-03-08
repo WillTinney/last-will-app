@@ -11,6 +11,7 @@ class PhotosController < ApplicationController
   def new
     @photo = Photo.new
     authorize @photo
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def create
@@ -26,6 +27,7 @@ class PhotosController < ApplicationController
 
   def edit
     authorize @photo
+    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
   end
 
   def update
