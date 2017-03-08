@@ -1,48 +1,56 @@
+<% content_for(:navbar) do %>
+  <%= render 'shared/navbar' %>
+<% end %>
+
 <div class="container">
   <br>
 
   <% if !@assignee.photos.empty? %>
     <div class="header-box padding-15">
       <h2><%= t('Photos Library') %></h2>
-      <%= link_to t("Add Photo"), new_user_note_path([I18n.locale, current_user, @assignee, @note]), remote: true, class: "btn orange-button", id: "add-note" %>
+      <%= link_to t("Add Photo"), new_user_assignee_photo_path(I18n.locale, current_user, @assignee, @note), remote: true, class: "btn orange-button", id: "add-photo" %>
     </div>
 
     <div class="blue-box detail-box side-margin-small top-margin">
       <p><%= t('note description html') %></p>
     </div>
 
-    <div class="col-xs-12 col-md-6 invisible">
+    <div class="col-xs-12 col-sm-6 col-md-4 invisible">
       <div class="photo-card">
-        <div class="note-form" id="new-note-form"></div>
+        <div class="note-form" id="new-photo-form"></div>
       </div>
     </div>
 
     <% @assignee.photos.reverse.each do |photo| %>
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="photo-card">
           <div class="card-buttons">
-            <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo), remote: true do %>
-              <i class="fa fa-pencil" aria-hidden="true"> </i>
-            <% end %>
             <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo.id), data: {confirm: t('Are you sure')}, method: :delete do %>
               <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </div>
           <div class="note-spacing" id="assignee-note-<%= photo.id %>">
-            <div class="note-title">
-              <h4><strong><%= photo.title %></strong></h4>
-              <h5><strong>For:</strong> <%= Assignee.find(photo.assignee_id).first_name %></h5>
-            </div>
-            <hr>
             <br>
-            <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo), class: "photo-link", "data-photo-id" => photo.id, "data-assignee-id" => photo.assignee_id do %>
-              <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
+            <% if photo.assignee_id? %>
+              <%= link_to user_assignee_photo_path(current_user, photo.assignee_id, photo), class: "photo-link", "data-photo-id" => photo.id, "data-assignee-id" => photo.assignee_id do %>
+                <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
+              <% end %>
+            <% else %>
+              <%= link_to user_photo_path(current_user, photo), class: "photo-link", "data-photo-id" => photo.id, "data-assignee-id" => photo.assignee_id do %>
+                <%= cl_image_tag(photo.photo_seed, width: 200, height: 150) %>
+              <% end %>
             <% end %>
+            <br>
+            <hr>
+            <div class="text-center">
+              <h4><strong><%= photo.title %></strong></h4>
+              <h5><strong>For:</strong> <%= photo.assignee_id ? Assignee.find(photo.assignee_id).first_name : 'Everyone' %></h5>
+            </div>
             <div class="card-content card-overflow">
               <p><%= photo.caption %></p>
             </div>
           </div>
-          <div class="note-form" id="edit-note-form-<%= photo.id %>"></div>
+          <div class="note-form" id="edit-photo-form-<%= photo.id %>"></div>
         </div>
       </div>
     <% end %>
@@ -60,8 +68,7 @@
     <div class="grey-box">
       <h5><strong><%= t('not added notes') %></strong></h5>
       <p><%= t('please use form below') %></p>
-      <%= simple_form_for([@user, @assignee, @photo]) do |f| %>
-        <%= f.hidden_field :assignee_id, value: @assignee.id %>
+      <%= simple_form_for([@user, @photo]) do |f| %>
         <%= f.input :title, label: t('Title') %>
         <%= f.input :caption, label: t('Content') %>
         <div class="submit-button text-center">

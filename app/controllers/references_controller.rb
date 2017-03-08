@@ -61,6 +61,6 @@ class ReferencesController < ApplicationController
   # end
 
   def reference_params
-    params.require(:reference).permit(:title, :caption, :reference, :assignee_id)
+    params.require(:reference).permit(:title, :comments, :reference, :assignee_id)
   end
 end

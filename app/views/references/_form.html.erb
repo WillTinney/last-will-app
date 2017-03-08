@@ -1,7 +1,8 @@
 <%= simple_form_for [current_user, @assignee, @reference] do |f| %>
-  <%= f.hidden_field :assignee_id, value: @assignee.id %>
+  <%= f.hidden_field :assignee_id, value: params[:assignee_id] %>
+  <br>
+  <%= f.input :document, as: :attachinary %>
   <%= f.input :title %>
   <%= f.input :comments %>
-  <%= f.input :document, as: :attachinary %>
-  <%= f.button :submit %>
+  <%= f.button :submit, class: "purple-button pull-right" %>
 <% end %>

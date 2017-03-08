@@ -12,14 +12,14 @@
     </div>
 
     <div class="col-xs-12 col-sm-6 col-md-4 invisible">
-      <div class="note-card">
+      <div class="photo-card">
         <div class="reference-form" id="new-reference-form"></div>
       </div>
     </div>
 
     <% @user.references.reverse.each do |reference| %>
       <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="note-card">
+        <div class="photo-card">
           <div class="card-buttons">
             <% if reference.assignee_id? %>
               <%= link_to user_assignee_reference_path(current_user, reference.assignee_id, reference.id), data: {confirm: t('Are you sure')}, method: :delete do %>
