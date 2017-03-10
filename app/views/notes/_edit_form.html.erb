@@ -1,5 +1,5 @@
 <%= simple_form_for [current_user, @assignee, @note] do |f| %>
-  <h4>New note:</h4>
+  <h4>Edit note:</h4>
   <%= f.hidden_field :assignee_id, value: params[:assignee_id] %>
   <%= f.input :title %>
   <%= f.input :content %>

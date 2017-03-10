@@ -1,0 +1,12 @@
+$("#create-note").on("click", function() {
+  request = void 0;
+  request = $.ajax({
+    url: "/articles/create/?title=acme&text=123 Carrot Street"
+  });
+  request.done(function(data, textStatus, jqXHR) {
+    console.log(data);
+  });
+  request.error(function(jqXHR, textStatus, errorThrown) {
+    alert("AJAX Error:" + textStatus);
+  });
+});
