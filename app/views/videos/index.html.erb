@@ -20,6 +20,7 @@
   <div class="video-form">
     <%= simple_form_for [@user, @video]  do |f| %>
       <%= f.input :title %>
+      <%= f.input :description %>
       <%= f.input :video, as: :attachinary %>
       <%= f.submit %>
     <% end %>
