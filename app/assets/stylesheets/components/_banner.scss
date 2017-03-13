@@ -71,17 +71,19 @@
   background-color: #F8F8F8;
 }
 #home-arrow {
-  margin: 40px auto;
+  margin: 20px auto;
   z-index: 11;
+  display: flex;
+  justify-content: center;
 }
-@media (max-width: 1200px) {
+@media (min-width: 1600px) {
   #home-arrow {
     display: none;
   }
 }
 @media (min-width: 1200px) {
   #home-arrow {
-    margin-top: 80px;
+    margin-top: 60px;
   }
 }
 .fa-chevron-down{
