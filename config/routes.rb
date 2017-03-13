@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       get 'children', to: 'users#children'
       get 'unlock', to: 'users#unlock'
       post 'unlock_data', to: 'users#unlock_data'
-      get 'video', to: 'users#video'
+      resources :videos
       resources :call_to_action, controller: 'call_to_action', only: [:index, :new, :create, :edit, :update, :destroy]
 
       resources :notes
