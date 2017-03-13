@@ -1,0 +1,36 @@
+/* -------------------------------------
+ * Video Player
+ * ------------------------------------- */
+.video-box {
+  text-align: center;
+  video {
+    max-width: 100%;
+  }
+}
+.video-form {
+  margin-bottom: 50px;
+}
+
+// Buttons
+.video-buttons button {
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 40px;
+}
+#record {
+  background: #14CC60; // #14CC60 #09A129
+  border: #14CC60;
+}
+#download {
+  background: #777DA7;
+  border: #777DA7;
+}
+#upload {
+  background: #14CC60;
+  border: #14CC60;
+}
+#redo {
+  background: #F9D116;
+  border: #F9D116;
+}

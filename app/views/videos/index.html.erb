@@ -17,8 +17,8 @@
     <div class="video-buttons">
       <button id="record" disabled>Start Recording</button>
       <button id="play" class="invisible" disabled>Play</button>
-      <button id="download" disabled>Download</button>
-      <button id="upload" disabled>Upload</button>
+      <button id="upload" class="invisible">Upload</button>
+      <button id="download" class="invisible" disabled>Download</button>
       <button id="redo" class="invisible">Redo Recording</button>
     </div>
   </div>
@@ -31,7 +31,7 @@
       <%= f.input :description %>
       <%= f.input :video, as: :attachinary %>
       <%= cl_upload_tag(:video_id, options = {}) %>
-      <%= f.submit %>
+      <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
     <% end %>
   </div>
 </div>
@@ -121,6 +121,8 @@
     function toggleRedo() {
         $('#gum').removeClass('invisible');
         $('#record').removeClass('invisible');
+        $('#download').addClass('invisible');
+        $('#upload').addClass('invisible');
         $('#recorded').addClass('invisible');
         $('#redo').addClass('invisible');
     }
@@ -169,7 +171,7 @@
       mediaRecorder.start(10); // collect 10ms of data
       console.log('MediaRecorder started', mediaRecorder);
 
-      setTimeout(function() { toggleRecording(); }, 30000); // end video after 30 seconds
+      setTimeout(function() { if (mediaRecorder.state != 'inactive') { toggleRecording(); } }, 30500); // end video after 30 seconds
     }
 
     function stopRecording() {
@@ -181,6 +183,8 @@
     function play() {
       $('#recorded').removeClass('invisible');
       $('#redo').removeClass('invisible');
+      $('#download').removeClass('invisible');
+      $('#upload').removeClass('invisible');
       $('#gum').addClass('invisible');
       $('#record').addClass('invisible');
       var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
