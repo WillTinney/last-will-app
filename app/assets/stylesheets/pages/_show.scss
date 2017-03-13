@@ -110,6 +110,12 @@
   margin-top: 0;
   margin-left: 10px;
 }
+.video-box {
+  text-align: center;
+  video {
+    max-width: 100%;
+  }
+}
 // Navigation Icons
 .platform-box {
   display: flex;

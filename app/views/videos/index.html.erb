@@ -9,16 +9,21 @@
 
   <br>
 
-  <div id="webcam"></div>
-  <video id="gum" autoplay muted></video>
-  <video id="recorded" autoplay loop></video>
+  <div class="video-box">
+    <div id="webcam"></div>
+    <video id="gum" autoplay muted></video>
+    <video id="recorded" class="invisible" autoplay loop></video>
 
-  <div class="video-buttons">
-    <button id="record" disabled>Start Recording</button>
-    <button id="play" disabled>Play</button>
-    <button id="download" disabled>Download</button>
-    <button id="upload" disabled>Upload</button>
+    <div class="video-buttons">
+      <button id="record" disabled>Start Recording</button>
+      <button id="play" class="invisible" disabled>Play</button>
+      <button id="download" disabled>Download</button>
+      <button id="upload" disabled>Upload</button>
+      <button id="redo" class="invisible">Redo Recording</button>
+    </div>
   </div>
+
+  <br>
 
   <div class="video-form">
     <%= simple_form_for [@user, @video]  do |f| %>
@@ -52,9 +57,12 @@
     var recordButton = document.querySelector('button#record');
     var playButton = document.querySelector('button#play');
     var downloadButton = document.querySelector('button#download');
+    var redoButton = document.querySelector('button#redo');
+
     recordButton.onclick = toggleRecording;
     playButton.onclick = play;
     downloadButton.onclick = download;
+    redoButton.onclick = toggleRedo;
 
     // window.isSecureContext could be used for Chrome
     var isSecureOrigin = location.protocol === 'https:' ||
@@ -110,6 +118,13 @@
       console.log('Recorder stopped: ', event);
     }
 
+    function toggleRedo() {
+        $('#gum').removeClass('invisible');
+        $('#record').removeClass('invisible');
+        $('#recorded').addClass('invisible');
+        $('#redo').addClass('invisible');
+    }
+
     function toggleRecording() {
       if (recordButton.textContent === 'Start Recording') {
         startRecording();
@@ -118,6 +133,7 @@
         recordButton.textContent = 'Start Recording';
         playButton.disabled = false;
         downloadButton.disabled = false;
+        play();
       }
     }
 
@@ -161,6 +177,10 @@
     }
 
     function play() {
+      $('#recorded').removeClass('invisible');
+      $('#redo').removeClass('invisible');
+      $('#gum').addClass('invisible');
+      $('#record').addClass('invisible');
       var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
       recordedVideo.src = window.URL.createObjectURL(superBuffer);
     }
