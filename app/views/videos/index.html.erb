@@ -12,7 +12,7 @@
   <div class="video-box">
     <div id="webcam"></div>
     <video id="gum" autoplay muted></video>
-    <video id="recorded" class="invisible" autoplay loop></video>
+    <video id="recorded" class="invisible" autoplay></video>
 
     <div class="video-buttons">
       <button id="record" disabled>Start Recording</button>
@@ -168,6 +168,8 @@
       mediaRecorder.ondataavailable = handleDataAvailable;
       mediaRecorder.start(10); // collect 10ms of data
       console.log('MediaRecorder started', mediaRecorder);
+
+      setTimeout(function() { toggleRecording(); }, 30000); // end video after 30 seconds
     }
 
     function stopRecording() {
