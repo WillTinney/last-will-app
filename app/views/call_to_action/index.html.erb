@@ -19,13 +19,15 @@
       <h3>Your call to action:</h3>
 
       <div id="action-details">
-        <h4><strong><%= @call_to_action.event %></strong></h4>
+        <h2 class="side-margin bottom-margin"><strong> <%= @call_to_action.event %></strong></h2>
       </div>
 
       <div id="edit-action-form"></div>
 
-      <%= link_to "Edit", edit_user_call_to_action_path(@user, @call_to_action), remote: true, class: "btn btn-transparent btn-default" %>
-      <%= link_to "Remove", user_call_to_action_path(@user, @call_to_action), method: :delete, class: "btn btn-transparent btn-default" %>
+      <div class="action-buttons">
+        <%= link_to "Edit", edit_user_call_to_action_path(@user, @call_to_action), remote: true, class: "purple-button", id: "action-edit" %>
+        <%= link_to "Remove", user_call_to_action_path(@user, @call_to_action), method: :delete, class: "purple-button", id: "action-remove" %>
+      </div>
 
     <% else %>
 
