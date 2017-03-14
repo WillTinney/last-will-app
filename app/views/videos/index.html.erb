@@ -1,176 +1,303 @@
 <br>
 
 <div class="grey-box">
-  <h2>Video Library</h2>
+  <h2>My Nomiation Video</h2>
 
   <div class="blue-box">
     <p>Here you can add videos and memories that...</p>
   </div>
 
-  <div id="webcam"></div>
-  <video id="gum" autoplay muted></video>
-  <video id="recorded" autoplay loop></video>
+  <br>
+  <% if @videos.empty? %>
 
-  <div class="video-buttons">
-    <button id="record" disabled>Start Recording</button>
-    <button id="play" disabled>Play</button>
-    <button id="download" disabled>Download</button>
-  </div>
+    <div class="video-box">
+      <div id="webcam"></div>
+      <video id="gum" autoplay muted></video>
+      <video id="recorded" class="invisible" autoplay></video>
 
-  <div class="video-form">
-    <%= simple_form_for [@user, @video]  do |f| %>
-      <%= f.input :title %>
-      <%= f.input :video, as: :attachinary %>
-      <%= f.submit %>
-    <% end %>
-  </div>
+      <div class="video-buttons">
+        <button id="record" disabled>Start Recording</button>
+        <button id="play" class="invisible" disabled>Play</button>
+        <button id="upload" class="invisible">Upload</button>
+        <button id="download" class="invisible" disabled>Download</button>
+        <button id="redo" class="invisible">Redo Recording</button>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="video-form invisible">
+      <p>Please upload the video file downloaded using the form below:</p>
+
+      <%= simple_form_for [@user, @video]  do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
+
+        <div class="video-upload">
+          <%= f.input :video, as: :attachinary %>
+          <%# cl_upload_tag(:video_id, options = {}) %>
+        </div>
+        <div class="upload-success invisible">
+          <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+        </div>
+
+        <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
+        <br>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div id="show-video" class="video-box">
+      <%= cl_video_tag(@videos.last.video.path, crop: "scale", controls: true) %>
+      <div class="video-buttons">
+        <button id="download">Download</button>
+        <button id="reset">Redo Recording</button>
+      </div>
+      <br>
+    </div>
+
+    <div id="redo-section" class="invisible">
+      <div class="video-box">
+        <div id="webcam"></div>
+        <video id="gum" autoplay muted></video>
+        <video id="recorded" class="invisible" autoplay></video>
+
+        <div class="video-buttons">
+          <button id="record" disabled>Start Recording</button>
+          <button id="play" class="invisible" disabled>Play</button>
+          <button id="upload" class="invisible">Upload</button>
+          <button id="download" class="invisible" disabled>Download</button>
+          <button id="redo" class="invisible">Redo Recording</button>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="video-form invisible">
+        <p>Please upload the video file downloaded using the form below:</p>
+
+        <%= simple_form_for [@user, @video]  do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+
+          <div class="video-upload">
+            <%= f.input :video, as: :attachinary %>
+            <%# cl_upload_tag(:video_id, options = {}) %>
+          </div>
+          <div class="upload-success invisible">
+            <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+          </div>
+
+          <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
-<!-- include adapter for srcObject shim -->
-<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<%= content_for(:after_js) do %>
+  <!-- include adapter for srcObject shim -->
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 
-<script>
-  'use strict';
+  <script>
+    'use strict';
 
-  /* globals MediaRecorder */
+    /* globals MediaRecorder */
 
-  var mediaSource = new MediaSource();
-  mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
-  var mediaRecorder;
-  var recordedBlobs;
-  var sourceBuffer;
+    var mediaSource = new MediaSource();
+    mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
+    var mediaRecorder;
+    var recordedBlobs;
+    var sourceBuffer;
 
-  var gumVideo = document.querySelector('video#gum');
-  var recordedVideo = document.querySelector('video#recorded');
+    var gumVideo = document.querySelector('video#gum');
+    var recordedVideo = document.querySelector('video#recorded');
 
-  var recordButton = document.querySelector('button#record');
-  var playButton = document.querySelector('button#play');
-  var downloadButton = document.querySelector('button#download');
-  recordButton.onclick = toggleRecording;
-  playButton.onclick = play;
-  downloadButton.onclick = download;
+    var recordButton = document.querySelector('button#record');
+    var playButton = document.querySelector('button#play');
+    var downloadButton = document.querySelector('button#download');
+    var redoButton = document.querySelector('button#redo');
+    var uploadButton = document.querySelector('button#upload');
 
-  // window.isSecureContext could be used for Chrome
-  var isSecureOrigin = location.protocol === 'https:' ||
-  location.hostname === 'localhost';
-  if (!isSecureOrigin) {
-    alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
-      '\n\nChanging protocol to HTTPS');
-    location.protocol = 'HTTPS';
-  }
+    recordButton.onclick = toggleRecording;
+    playButton.onclick = play;
+    downloadButton.onclick = download;
+    redoButton.onclick = toggleRedo;
+    uploadButton.onclick = upload;
 
-  var constraints = {
-    audio: true,
-    video: true
-  };
-
-  function handleSuccess(stream) {
-    recordButton.disabled = false;
-    console.log('getUserMedia() got stream: ', stream);
-    window.stream = stream;
-    if (window.URL) {
-      gumVideo.src = window.URL.createObjectURL(stream);
-    } else {
-      gumVideo.src = stream;
+    // window.isSecureContext could be used for Chrome
+    var isSecureOrigin = location.protocol === 'https:' ||
+    location.hostname === 'localhost';
+    if (!isSecureOrigin) {
+      alert('getUserMedia() must be run from a secure origin: HTTPS or localhost.' +
+        '\n\nChanging protocol to HTTPS');
+      location.protocol = 'HTTPS';
     }
-  }
 
-  function handleError(error) {
-    console.log('navigator.getUserMedia error: ', error);
-  }
+    var constraints = {
+      audio: true,
+      video: true
+    };
 
-  navigator.mediaDevices.getUserMedia(constraints).
-      then(handleSuccess).catch(handleError);
-
-  function handleSourceOpen(event) {
-    console.log('MediaSource opened');
-    sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
-    console.log('Source buffer: ', sourceBuffer);
-  }
-
-  recordedVideo.addEventListener('error', function(ev) {
-    console.error('MediaRecording.recordedMedia.error()');
-    alert('Your browser can not play\n\n' + recordedVideo.src
-      + '\n\n media clip. event: ' + JSON.stringify(ev));
-  }, true);
-
-  function handleDataAvailable(event) {
-    if (event.data && event.data.size > 0) {
-      recordedBlobs.push(event.data);
-    }
-  }
-
-  function handleStop(event) {
-    console.log('Recorder stopped: ', event);
-  }
-
-  function toggleRecording() {
-    if (recordButton.textContent === 'Start Recording') {
-      startRecording();
-    } else {
-      stopRecording();
-      recordButton.textContent = 'Start Recording';
-      playButton.disabled = false;
-      downloadButton.disabled = false;
-    }
-  }
-
-  function startRecording() {
-    recordedBlobs = [];
-    var options = {mimeType: 'video/webm;codecs=vp9'};
-    if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-      console.log(options.mimeType + ' is not Supported');
-      options = {mimeType: 'video/webm;codecs=vp8'};
-      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-        console.log(options.mimeType + ' is not Supported');
-        options = {mimeType: 'video/webm'};
-        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-          console.log(options.mimeType + ' is not Supported');
-          options = {mimeType: ''};
-        }
+    function handleSuccess(stream) {
+      recordButton.disabled = false;
+      console.log('getUserMedia() got stream: ', stream);
+      window.stream = stream;
+      if (window.URL) {
+        gumVideo.src = window.URL.createObjectURL(stream);
+      } else {
+        gumVideo.src = stream;
       }
     }
-    try {
-      mediaRecorder = new MediaRecorder(window.stream, options);
-    } catch (e) {
-      console.error('Exception while creating MediaRecorder: ' + e);
-      alert('Exception while creating MediaRecorder: '
-        + e + '. mimeType: ' + options.mimeType);
-      return;
+
+    function handleError(error) {
+      console.log('navigator.getUserMedia error: ', error);
     }
-    console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
-    recordButton.textContent = 'Stop Recording';
-    playButton.disabled = true;
-    downloadButton.disabled = true;
-    mediaRecorder.onstop = handleStop;
-    mediaRecorder.ondataavailable = handleDataAvailable;
-    mediaRecorder.start(10); // collect 10ms of data
-    console.log('MediaRecorder started', mediaRecorder);
-  }
 
-  function stopRecording() {
-    mediaRecorder.stop();
-    console.log('Recorded Blobs: ', recordedBlobs);
-    recordedVideo.controls = true;
-  }
+    navigator.mediaDevices.getUserMedia(constraints).
+        then(handleSuccess).catch(handleError);
 
-  function play() {
-    var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-    recordedVideo.src = window.URL.createObjectURL(superBuffer);
-  }
+    function handleSourceOpen(event) {
+      console.log('MediaSource opened');
+      sourceBuffer = mediaSource.addSourceBuffer('video/webm; codecs="vp8"');
+      console.log('Source buffer: ', sourceBuffer);
+    }
 
-  function download() {
-    var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-    var url = window.URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'test.webm';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function() {
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    }, 100);
-  }
-</script>
+    recordedVideo.addEventListener('error', function(ev) {
+      console.error('MediaRecording.recordedMedia.error()');
+      alert('Your browser can not play\n\n' + recordedVideo.src
+        + '\n\n media clip. event: ' + JSON.stringify(ev));
+    }, true);
+
+    function handleDataAvailable(event) {
+      if (event.data && event.data.size > 0) {
+        recordedBlobs.push(event.data);
+      }
+    }
+
+    function handleStop(event) {
+      console.log('Recorder stopped: ', event);
+    }
+
+    function toggleRedo() {
+        $('#gum').removeClass('invisible');
+        $('#record').removeClass('invisible');
+        $('#download').addClass('invisible');
+        $('#upload').addClass('invisible');
+        $('#recorded').addClass('invisible');
+        $('#redo').addClass('invisible');
+    }
+
+    function toggleRecording() {
+      if (recordButton.textContent === 'Start Recording') {
+        startRecording();
+      } else {
+        stopRecording();
+        recordButton.textContent = 'Start Recording';
+        $("#record").css({"background":  "#57BB90"});
+        playButton.disabled = false;
+        downloadButton.disabled = false;
+        play();
+      }
+    }
+
+    function startRecording() {
+      recordedBlobs = [];
+      var options = {mimeType: 'video/webm;codecs=vp9'};
+      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+        console.log(options.mimeType + ' is not Supported');
+        options = {mimeType: 'video/webm;codecs=vp8'};
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+          console.log(options.mimeType + ' is not Supported');
+          options = {mimeType: 'video/webm'};
+          if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            console.log(options.mimeType + ' is not Supported');
+            options = {mimeType: ''};
+          }
+        }
+      }
+      try {
+        mediaRecorder = new MediaRecorder(window.stream, options);
+      } catch (e) {
+        console.error('Exception while creating MediaRecorder: ' + e);
+        alert('Exception while creating MediaRecorder: '
+          + e + '. mimeType: ' + options.mimeType);
+        return;
+      }
+      console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
+      recordButton.textContent = 'Stop Recording';
+      $("#record").css({"background":  "#FF495C"});
+      playButton.disabled = true;
+      downloadButton.disabled = true;
+      mediaRecorder.onstop = handleStop;
+      mediaRecorder.ondataavailable = handleDataAvailable;
+      mediaRecorder.start(10); // collect 10ms of data
+      console.log('MediaRecorder started', mediaRecorder);
+
+      setTimeout(function() { if (mediaRecorder.state != 'inactive') { toggleRecording(); } }, 30500); // end video after 30 seconds
+    }
+
+    function stopRecording() {
+      mediaRecorder.stop();
+      console.log('Recorded Blobs: ', recordedBlobs);
+      recordedVideo.controls = true;
+    }
+
+    function play() {
+      $('#recorded').removeClass('invisible');
+      $('#redo').removeClass('invisible');
+      // $('#download').removeClass('invisible');
+      $('#upload').removeClass('invisible');
+      $('#gum').addClass('invisible');
+      $('#record').addClass('invisible');
+      var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+      recordedVideo.src = window.URL.createObjectURL(superBuffer);
+    }
+
+    function download() {
+      var blob = new Blob(recordedBlobs, {type: 'video/webm'});
+      var url = window.URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'test.webm';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      }, 100);
+    }
+
+    function upload() {
+      download();
+      $('.video-form').removeClass('invisible');
+      $('.video-buttons').addClass('invisible');
+      $('#recorded').addClass('invisible');
+    }
+
+    /* Check for upload success */
+    window.setInterval(function uploadSuccess(){
+      var att_cont = $('.attachinary_container');
+      // var refreshIntervalId = setInterval(uploadSuccess, 5000);
+      if (att_cont.children('input').attr('value') != "") {
+        $('.upload-success').removeClass('invisible');
+        $('.video-upload').addClass('invisible');
+        // clearInterval(refreshIntervalId);
+      }
+    }, 3000);
+
+    /* Reset video on index page */
+    $('#reset').on('click', function() {
+      var confirmation = confirm("This action will overwrite your previous video! Do you want to continue?");
+      console.log(confirmation);
+
+      if (confirmation != false) {
+        $('#redo-section').removeClass('invisible');
+        $('#show-video').addClass('invisible');
+      }
+    });
+  </script>
+<% end %>

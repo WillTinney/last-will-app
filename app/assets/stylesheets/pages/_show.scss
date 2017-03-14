@@ -2,6 +2,10 @@
  * Additional Show Page Clases
  * ------------------------------------- */
 
+.container {
+  max-width: 100%;
+}
+
 // Core Dashboard Classes
 .dashboard-box {
   margin-top: 200px;
@@ -110,6 +114,7 @@
   margin-top: 0;
   margin-left: 10px;
 }
+
 // Navigation Icons
 .platform-box {
   display: flex;

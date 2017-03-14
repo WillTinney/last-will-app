@@ -20,7 +20,7 @@ class NotesController < ApplicationController
     @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
     authorize @note
     if @note.save
-      redirect_to user_notes_path(current_user), notice: 'Note was successfully created.'
+      redirect_to user_path(current_user), notice: 'Note was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class NotesController < ApplicationController
     authorize @note
     if @note.update(note_params)
       # redirect_to user_assignee_path(current_user, @note.assignee_id)
-      redirect_to user_notes_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class NotesController < ApplicationController
   def destroy
     authorize @note
     @note.destroy
-    redirect_to user_notes_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private

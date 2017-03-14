@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
     # @photo[:user_id] = @assignee.user_id
     authorize @photo
     if @photo.save
-      redirect_to user_photos_path(current_user), notice: 'Photo was successfully created.'
+      redirect_to user_path(current_user), notice: 'Photo was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
     authorize @photo
     if @photo.update(photo_params)
       # redirect_to user_assignee_path(current_user, @photo.assignee_id)
-      redirect_to user_photos_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class PhotosController < ApplicationController
   def destroy
     authorize @photo
     @photo.destroy
-    redirect_to user_photos_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private

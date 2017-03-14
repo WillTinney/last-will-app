@@ -1,0 +1,59 @@
+/* -------------------------------------
+ * Video Player
+ * ------------------------------------- */
+.video-box {
+  text-align: center;
+  video {
+    max-width: 100%;
+  }
+}
+.video-form {
+  margin-bottom: 50px;
+}
+.video-upload {
+  input {
+  border: 2px dashed #94AC99;
+  margin-left: 3px;
+  padding: 25px 30px;
+  }
+  ul {
+    display: none;
+  }
+}
+.upload-success {
+  margin-left: 3px;
+  padding: 35px 30px;
+  i {
+    color: #14CC60;
+  }
+}
+
+// Buttons
+.video-buttons button {
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+  padding: 10px 40px;
+  margin: 10px 0;
+}
+#record {
+  background: #14CC60; // #14CC60 #09A129
+  border: #14CC60;
+}
+#download {
+  background: #777DA7;
+  border: #777DA7;
+}
+#upload {
+  background: #14CC60;
+  border: #14CC60;
+}
+#redo {
+  background: #F9D116;
+  border: #F9D116;
+}
+
+#reset {
+  background: #FF495C;
+  border: #FF495C;
+}

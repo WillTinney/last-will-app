@@ -23,7 +23,7 @@ class ReferencesController < ApplicationController
     # @reference[:user_id] = @assignee.user_id
     authorize @reference
     if @reference.save
-      redirect_to user_references_path(current_user), notice: 'Reference was successfully created.'
+      redirect_to user_path(current_user), notice: 'Reference was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class ReferencesController < ApplicationController
     authorize @reference
     if @reference.update(reference_params)
       # redirect_to user_assignee_path(current_user, @reference.assignee_id)
-      redirect_to user_references_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class ReferencesController < ApplicationController
   def destroy
     authorize @reference
     @reference.destroy
-    redirect_to user_references_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private
