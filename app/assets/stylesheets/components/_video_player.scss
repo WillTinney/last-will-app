@@ -10,6 +10,23 @@
 .video-form {
   margin-bottom: 50px;
 }
+.video-upload {
+  input {
+  border: 2px dashed #94AC99;
+  margin-left: 3px;
+  padding: 35px 30px;
+  }
+  ul {
+    display: none;
+  }
+}
+.upload-success {
+  margin-left: 3px;
+  padding: 35px 30px;
+  i {
+    color: #14CC60;
+  }
+}
 
 // Buttons
 .video-buttons button {

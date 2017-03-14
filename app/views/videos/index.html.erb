@@ -25,13 +25,23 @@
 
   <br>
 
-  <div class="video-form">
+  <div class="video-form invisible">
+    <p>Please upload the video file downloaded using the form below:</p>
+
     <%= simple_form_for [@user, @video]  do |f| %>
       <%= f.input :title %>
       <%= f.input :description %>
-      <%= f.input :video, as: :attachinary %>
-      <%= cl_upload_tag(:video_id, options = {}) %>
+
+      <div class="video-upload">
+        <%= f.input :video, as: :attachinary %>
+        <%# cl_upload_tag(:video_id, options = {}) %>
+      </div>
+      <div class="upload-success invisible">
+        <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+      </div>
+
       <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
+      <br>
     <% end %>
   </div>
 </div>
@@ -58,11 +68,13 @@
     var playButton = document.querySelector('button#play');
     var downloadButton = document.querySelector('button#download');
     var redoButton = document.querySelector('button#redo');
+    var uploadButton = document.querySelector('button#upload');
 
     recordButton.onclick = toggleRecording;
     playButton.onclick = play;
     downloadButton.onclick = download;
     redoButton.onclick = toggleRedo;
+    uploadButton.onclick = upload;
 
     // window.isSecureContext could be used for Chrome
     var isSecureOrigin = location.protocol === 'https:' ||
@@ -133,6 +145,7 @@
       } else {
         stopRecording();
         recordButton.textContent = 'Start Recording';
+        $("#record").css({"background":  "#57BB90"});
         playButton.disabled = false;
         downloadButton.disabled = false;
         play();
@@ -164,6 +177,7 @@
       }
       console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
       recordButton.textContent = 'Stop Recording';
+      $("#record").css({"background":  "#FF495C"});
       playButton.disabled = true;
       downloadButton.disabled = true;
       mediaRecorder.onstop = handleStop;
@@ -183,7 +197,7 @@
     function play() {
       $('#recorded').removeClass('invisible');
       $('#redo').removeClass('invisible');
-      $('#download').removeClass('invisible');
+      // $('#download').removeClass('invisible');
       $('#upload').removeClass('invisible');
       $('#gum').addClass('invisible');
       $('#record').addClass('invisible');
@@ -205,5 +219,23 @@
         window.URL.revokeObjectURL(url);
       }, 100);
     }
+
+    function upload() {
+      download();
+      $('.video-form').removeClass('invisible');
+      $('.video-buttons').addClass('invisible');
+      $('#recorded').addClass('invisible');
+    }
+
+    /* Check for upload success */
+    window.setInterval(function uploadSuccess(){
+      var att_cont = $('.attachinary_container');
+      // var refreshIntervalId = setInterval(uploadSuccess, 5000);
+      if (att_cont.children('input').attr('value') != "") {
+        $('.video-success').removeClass('invisible');
+        $('.video-upload').addClass('invisible');
+        // clearInterval(refreshIntervalId);
+      }
+    }, 5000);
   </script>
 <% end %>
