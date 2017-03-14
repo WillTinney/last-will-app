@@ -23,7 +23,7 @@ class VideosController < ApplicationController
     # @video[:user_id] = @assignee.user_id
     authorize @video
     if @video.save
-      redirect_to user_videos_path(current_user), notice: 'Video was successfully created.'
+      redirect_to user_path(current_user), notice: 'Video was successfully created.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class VideosController < ApplicationController
     authorize @video
     if @video.update(video_params)
       # redirect_to user_assignee_path(current_user, @video.assignee_id)
-      redirect_to user_videos_path(current_user)
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class VideosController < ApplicationController
   def destroy
     authorize @video
     @video.destroy
-    redirect_to user_videos_path(current_user)
+    redirect_to user_path(current_user)
   end
 
   private
