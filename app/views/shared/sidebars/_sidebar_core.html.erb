@@ -122,7 +122,6 @@
     });
     // Clicking on mobile sidebar opens full sidebar
     $('.mobile-sidebar').click(function(e) {
-      console.log('hello');
       var sidebar = $('.sidebar');
       var mobileSidebar = $('.mobile-sidebar');
       if (sidebar.css('display') == 'none') {
@@ -130,7 +129,7 @@
         mobileSidebar.css({'left' : '250px'});
         mobileSidebar.text('<');
       } else {
-        sidebar.css({'display' : 'none'});
+        sidebar.removeAttr("style");
         mobileSidebar.css({'left' : '0'});
         mobileSidebar.text('>');
       }
