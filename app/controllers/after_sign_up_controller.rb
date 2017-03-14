@@ -67,7 +67,7 @@ class AfterSignUpController < ApplicationController
           @user.assignees.create(sign_up_params(child))
         end
         sign_in(@user, bypass: true)
-        redirect_to user_profile_path(current_user)
+        redirect_to user_path(current_user)
       else
         @user.update_attributes(user_params)
         sign_in(@user, bypass: true)
