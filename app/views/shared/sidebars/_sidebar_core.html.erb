@@ -1,5 +1,5 @@
 <!-- Sidebar for Core User Dashboard -->
-<div class="sidebar">
+<div class="sidebar hidden-sidebar">
   <div class="sidebar-header text-center">
     <h4><strong>Me</strong></h4>
   </div>
@@ -105,6 +105,10 @@
   </div>
 </div>
 
+<div class="mobile-sidebar">
+  >
+</div>
+
 <% content_for(:after_js) do %>
   <script>
     // Clicking on a different tab changes the content shown on the page
@@ -115,6 +119,21 @@
       $('#tab-content').children().addClass("hidden");
       $('.' + childIndex).removeClass("hidden");
       window.location.hash = $(this).attr('id').split("-")[0];
+    });
+    // Clicking on mobile sidebar opens full sidebar
+    $('.mobile-sidebar').click(function(e) {
+      console.log('hello');
+      var sidebar = $('.sidebar');
+      var mobileSidebar = $('.mobile-sidebar');
+      if (sidebar.css('display') == 'none') {
+        sidebar.css({'display' : 'unset'});
+        mobileSidebar.css({'left' : '250px'});
+        mobileSidebar.text('<');
+      } else {
+        sidebar.css({'display' : 'none'});
+        mobileSidebar.css({'left' : '0'});
+        mobileSidebar.text('>');
+      }
     });
     // AJAX to load tab content without a refresh
     $('#profile-sidebar-tab').click(function(e){
