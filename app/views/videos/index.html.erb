@@ -1,49 +1,100 @@
 <br>
 
 <div class="grey-box">
-  <h2>Video Library</h2>
+  <h2>My Nomiation Video</h2>
 
   <div class="blue-box">
     <p>Here you can add videos and memories that...</p>
   </div>
 
   <br>
+  <% if @videos.empty? %>
 
-  <div class="video-box">
-    <div id="webcam"></div>
-    <video id="gum" autoplay muted></video>
-    <video id="recorded" class="invisible" autoplay></video>
+    <div class="video-box">
+      <div id="webcam"></div>
+      <video id="gum" autoplay muted></video>
+      <video id="recorded" class="invisible" autoplay></video>
 
-    <div class="video-buttons">
-      <button id="record" disabled>Start Recording</button>
-      <button id="play" class="invisible" disabled>Play</button>
-      <button id="upload" class="invisible">Upload</button>
-      <button id="download" class="invisible" disabled>Download</button>
-      <button id="redo" class="invisible">Redo Recording</button>
+      <div class="video-buttons">
+        <button id="record" disabled>Start Recording</button>
+        <button id="play" class="invisible" disabled>Play</button>
+        <button id="upload" class="invisible">Upload</button>
+        <button id="download" class="invisible" disabled>Download</button>
+        <button id="redo" class="invisible">Redo Recording</button>
+      </div>
     </div>
-  </div>
 
-  <br>
+    <br>
 
-  <div class="video-form invisible">
-    <p>Please upload the video file downloaded using the form below:</p>
+    <div class="video-form invisible">
+      <p>Please upload the video file downloaded using the form below:</p>
 
-    <%= simple_form_for [@user, @video]  do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
+      <%= simple_form_for [@user, @video]  do |f| %>
+        <%= f.input :title %>
+        <%= f.input :description %>
 
-      <div class="video-upload">
-        <%= f.input :video, as: :attachinary %>
-        <%# cl_upload_tag(:video_id, options = {}) %>
+        <div class="video-upload">
+          <%= f.input :video, as: :attachinary %>
+          <%# cl_upload_tag(:video_id, options = {}) %>
+        </div>
+        <div class="upload-success invisible">
+          <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+        </div>
+
+        <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
+        <br>
+      <% end %>
+    </div>
+
+  <% else %>
+
+    <div id="show-video" class="video-box">
+      <%= cl_video_tag(@videos.last.video.path, crop: "scale", controls: true) %>
+      <div class="video-buttons">
+        <button id="download">Download</button>
+        <button id="reset">Redo Recording</button>
       </div>
-      <div class="upload-success invisible">
-        <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
-      </div>
-
-      <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
       <br>
-    <% end %>
-  </div>
+    </div>
+
+    <div id="redo-section" class="invisible">
+      <div class="video-box">
+        <div id="webcam"></div>
+        <video id="gum" autoplay muted></video>
+        <video id="recorded" class="invisible" autoplay></video>
+
+        <div class="video-buttons">
+          <button id="record" disabled>Start Recording</button>
+          <button id="play" class="invisible" disabled>Play</button>
+          <button id="upload" class="invisible">Upload</button>
+          <button id="download" class="invisible" disabled>Download</button>
+          <button id="redo" class="invisible">Redo Recording</button>
+        </div>
+      </div>
+
+      <br>
+
+      <div class="video-form invisible">
+        <p>Please upload the video file downloaded using the form below:</p>
+
+        <%= simple_form_for [@user, @video]  do |f| %>
+          <%= f.input :title %>
+          <%= f.input :description %>
+
+          <div class="video-upload">
+            <%= f.input :video, as: :attachinary %>
+            <%# cl_upload_tag(:video_id, options = {}) %>
+          </div>
+          <div class="upload-success invisible">
+            <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+          </div>
+
+          <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
 
 <%= content_for(:after_js) do %>
@@ -236,6 +287,16 @@
         $('.video-upload').addClass('invisible');
         // clearInterval(refreshIntervalId);
       }
-    }, 5000);
+    }, 3000);
+
+    $('#reset').on('click', function() {
+      var confirmation = confirm("This action will overwrite your previous video! Do you want to continue?");
+      console.log(confirmation);
+
+      if (confirmation != false) {
+        $('#redo-section').removeClass('invisible');
+        $('#show-video').addClass('invisible');
+      }
+    });
   </script>
 <% end %>
