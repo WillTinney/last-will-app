@@ -130,6 +130,13 @@
   top: 6px;
   right: 6px;
 }
+.card-info {
+  position: absolute;
+  font-size: 20px;
+  color: #7C8086;
+  top: 8px;
+  left: 10px;
+}
 
 // Asset Cards
 .asset-card {
@@ -211,10 +218,18 @@
     margin: 0 5px;
   }
 }
+.child-buttons {
+    top: 25px;
+    right: 20px;
+}
 .note-form {
   width: 90%;
   padding: 5px 5px 12px 5px;
   margin-top: 10px;
+}
+.reference-form {
+  width: 90%;
+  padding: 5px 5px 12px 5px;
 }
 .document-card {
   position: relative;

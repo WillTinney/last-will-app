@@ -110,3 +110,27 @@
 .profile-card-link:hover .card-tooltip {
   visibility: visible;
 }
+
+.info-tooltip {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 16px;
+  font-family: 'Lato', 'Helvetica Neue', Arial, sans-serif;
+  text-align: center;
+  padding: 5px;
+  border-radius: 6px;
+
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  right: -180px;
+}
+.card-info:hover {
+  color: $grey;
+  cursor: pointer;
+  .info-tooltip {
+    visibility: visible;
+  }
+}

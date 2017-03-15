@@ -1,7 +1,7 @@
 class AssigneesController < ApplicationController
   protect_from_forgery except: :new
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
-  before_action :set_assignee_id, only: [:notes, :references, :photos, :videos]
+  before_action :set_assignee_id, only: [:profile, :notes, :references, :photos, :videos]
   before_action :set_type
 
 
@@ -17,7 +17,7 @@ class AssigneesController < ApplicationController
 
   def new
     @assignee = Assignee.new
-    if params[:format] != 'Guardian'
+    if params[:format] == 'Partner' || params[:format] == 'Child'
       @assignee.address_line_1 = @user.address_line_1
       @assignee.address_line_2 = @user.address_line_2
       @assignee.city = @user.city
@@ -35,14 +35,8 @@ class AssigneesController < ApplicationController
       respond_to do |format|
         format.js
         format.html {
-          if @assignee.type == 'Guardian'
-            redirect_to user_guardians_path(current_user), notice: 'Assignee was successfully created.'
-          elsif @assignee.relationship == 'Partner'
-            redirect_to user_path(current_user)
-          else
-            redirect_to user_children_path(current_user), notice: 'Assignee was successfully created.'
-          end
-          }
+          redirect_to user_path(current_user)
+        }
       end
     else
       respond_to do |format|
@@ -59,13 +53,7 @@ class AssigneesController < ApplicationController
   def update
     authorize @assignee
     if @assignee.update(assignee_params)
-      if @assignee.type == 'Guardian'
-        redirect_to user_guardians_path(current_user), notice: 'Assignee was successfully updated.'
-      elsif @assignee.relationship == 'Partner'
-        redirect_to user_path(current_user)
-      else
-        redirect_to user_children_path(current_user), notice: 'Assignee was successfully updated.'
-      end
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -73,13 +61,11 @@ class AssigneesController < ApplicationController
 
   def destroy
     authorize @assignee
-    if @assignee.type == 'Guardian'
-      @assignee.destroy
-      redirect_to user_guardians_path(current_user)
-    else
-      @assignee.destroy
-      redirect_to user_children_path(current_user)
-    end
+    redirect_to user_path(current_user)
+  end
+
+  def profile
+    authorize @user
   end
 
   def notes
