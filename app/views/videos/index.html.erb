@@ -8,7 +8,7 @@
   </div>
 
   <br>
-  <% if @videos.empty? %>
+  <% if @videos.empty? %>W
 
     <div class="video-box">
       <div id="webcam"></div>
@@ -59,8 +59,20 @@
 
     <div id="redo-section" class="invisible">
       <div class="video-box">
+
+        <div class="countdown">
+          <div class="timer-group">
+            <div class="face">
+              <h2>30 secs</h2>
+              <p id="lazy">00</p>
+            </div>
+          </div>
+        </div>
+
         <div id="webcam"></div>
-        <video id="gum" autoplay muted></video>
+        <video id="gum" class="relative" autoplay muted>
+        </video>
+
         <video id="recorded" class="invisible" autoplay></video>
 
         <div class="video-buttons">
@@ -184,6 +196,7 @@
     function toggleRedo() {
         $('#gum').removeClass('invisible');
         $('#record').removeClass('invisible');
+        $('.countdown').removeClass('invisible');
         $('#download').addClass('invisible');
         $('#upload').addClass('invisible');
         $('#recorded').addClass('invisible');
@@ -197,6 +210,7 @@
         stopRecording();
         recordButton.textContent = 'Start Recording';
         $("#record").css({"background":  "#57BB90"});
+        $('.countdown').addClass('invisible');
         playButton.disabled = false;
         downloadButton.disabled = false;
         play();
@@ -236,7 +250,8 @@
       mediaRecorder.start(10); // collect 10ms of data
       console.log('MediaRecorder started', mediaRecorder);
 
-      setTimeout(function() { if (mediaRecorder.state != 'inactive') { toggleRecording(); } }, 40500); // end video after 30 seconds
+      countdown();
+      setTimeout(function() { if (mediaRecorder.state != 'inactive') { toggleRecording(); } }, 30000); // end video after 30 seconds
     }
 
     function stopRecording() {
@@ -299,5 +314,53 @@
         $('#show-video').addClass('invisible');
       }
     });
+
+  function countdown() {
+    // Countdown Timer
+    var defaults = {}
+      , one_second = 1000
+      , one_minute = one_second * 60
+      , one_hour = one_minute * 60
+      , one_day = one_hour * 24
+      , startDate = new Date()
+      , face = document.getElementById('lazy');
+
+    // http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+    var requestAnimationFrame = (function() {
+      return window.requestAnimationFrame       ||
+             window.webkitRequestAnimationFrame ||
+             window.mozRequestAnimationFrame    ||
+             window.oRequestAnimationFrame      ||
+             window.msRequestAnimationFrame     ||
+             function( callback ){
+               window.setTimeout(callback, 1000 / 60);
+             };
+    }());
+
+    tick();
+
+    function tick() {
+
+
+      var now = new Date()
+        , elapsed = now - startDate
+        , parts = [];
+
+      parts[0] = '' + Math.floor( elapsed / one_hour );
+      parts[1] = '' + Math.floor( (elapsed % one_hour) / one_minute );
+      parts[2] = '' + Math.floor( ( (elapsed % one_hour) % one_minute ) / one_second );
+
+      parts[0] = (parts[0].length == 1) ? '0' + parts[0] : parts[0];
+      parts[1] = (parts[1].length == 1) ? '0' + parts[1] : parts[1];
+      parts[2] = (parts[2].length == 1) ? '0' + parts[2] : parts[2];
+
+      face.innerText = parts[2]; // .join(':');
+
+      if (parts[2] < 30) {
+        requestAnimationFrame(tick);
+      }
+
+    }
+  }
   </script>
 <% end %>
