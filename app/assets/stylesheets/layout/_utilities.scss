@@ -81,6 +81,9 @@
 }
 
 // Other text classes
+.max-width {
+  width: 100%;
+}
 .lighter {
   font-weight: lighter;
 }
@@ -89,6 +92,7 @@
     display: none;
   }
 }
+
 
 // Variable Container Sizes
 .container-small, .container-large {
