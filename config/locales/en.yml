@@ -209,6 +209,12 @@ en:
     other: "What is the name of your next guardian?"
   guardian brief description: "Guardians are UK Citizens who can testify you match the residency criteria defined by the government."
   guardian footnote: "*guardian details can be edited at any time"
+  how many approvers: "How many approvers would you like to designate?"
+  ask approver name:
+    one: "What is the name of your first approver?"
+    other: "What is the name of your next approver?"
+  approver brief description: "Approvers are UK Citizens who can testify you match the residency criteria defined by the government."
+  approver footnote: "*approver details can be edited at any time"
   Partner information: "Partner information"
   partner description: "Please enter some basic details about your partner."
   do you have a partner: "Do you have a partner or spouse?"

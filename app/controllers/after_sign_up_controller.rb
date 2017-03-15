@@ -1,7 +1,7 @@
 class AfterSignUpController < ApplicationController
   include Wicked::Wizard
 
-  steps :sign_up, :basic_profile, :contact_info, :partner, :partner_basic, :children, :child_basic, :guardians, :guardian_basic
+  steps :sign_up, :basic_profile, :contact_info, :partner, :partner_basic, :children, :child_basic, :guardians, :guardian_basic, :approvers, :approver_basic
 
   def show
     if step == :partner_basic
@@ -20,6 +20,13 @@ class AfterSignUpController < ApplicationController
       @guardians = []
       @user.number_of_guardians.times do
         @guardians << @user.assignees.new
+      end
+    elsif step == :approver_basic
+      skip_step if @user.number_of_approvers == 0
+      @assignee = @user.assignees.new
+      @approvers = []
+      @user.number_of_approvers.times do
+        @approvers << @user.assignees.new
       end
     end
 
@@ -68,8 +75,18 @@ class AfterSignUpController < ApplicationController
         @user.save
         render_wizard @user
       when :guardian_basic
-        params['guardians'].each do |child|
-          @user.assignees.create(sign_up_params(child))
+        params['guardians'].each do |guardian|
+          @user.assignees.create(sign_up_params(guardian))
+        end
+        sign_in(@user, bypass: true)
+        redirect_to wizard_path(:approvers)
+      when :approvers
+        @user.number_of_approvers = params[:commit].to_i
+        @user.save
+        render_wizard @user
+      when :approver_basic
+        params['approvers'].each do |approver|
+          @user.assignees.create(sign_up_params(approver))
         end
         sign_in(@user, bypass: true)
         redirect_to user_path(current_user)
@@ -92,7 +109,6 @@ class AfterSignUpController < ApplicationController
       :address_line_1, :address_line_2, :city, :country, :postcode,
       :latitude, :longitude, :profile_picture)
   end
-
 
   def sign_up_params(params)
     params.permit(:first_name, :last_name, :type, :relationship)
