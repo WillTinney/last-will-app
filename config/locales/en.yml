@@ -145,6 +145,14 @@ en:
   not added notes: "You have not yet added any notes."
   Content: "Content"
 
+  # Photo Library
+  photo description html: "In this section, you can add photos and images that you want to save in your LifeLocker."
+  not added photos: "You have not yet added any photos."
+
+  # Reference Library
+  reference description html: "In this section, you can add references and documents that you want to save in your LifeLocker."
+  not added references: "You have not yet added any references."
+
   # Scrollmenu
   Home: "Home"
   Profile: "Profile"

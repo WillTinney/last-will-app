@@ -19,7 +19,7 @@
         <%= yield %>
         <%= render 'shared/footers/home_footer' unless params[:controller] == 'after_sign_up' || params[:controller] == 'devise/sessions' || params[:controller] == 'registrations' %>
       </div>
-    <% elsif params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' && params[:action] != 'show' || params[:controller] == 'references' || params[:controller] == 'photos' || params[:controller] == 'notes' || params[:controller] == 'videos' || params[:controller] == 'call_to_action' || params[:controller] == 'users' && params[:action] == 'profile' || params[:controller] == 'users' && params[:action] == 'digital' %>
+    <% elsif params[:controller] == 'users' && params[:action] == 'children' || params[:controller] == 'users' && params[:action] == 'unlock' || params[:controller] == 'assignees' && params[:action] != 'show' || params[:controller] == 'references' || params[:controller] == 'photos' || params[:controller] == 'notes' || params[:controller] == 'videos' || params[:controller] == 'call_to_action' || params[:controller] == 'users' && params[:action] == 'profile' || params[:controller] == 'users' && params[:action] == 'edit' || params[:controller] == 'users' && params[:action] == 'digital' %>
         <%= render 'shared/flashes' %>
         <%= yield %>
     <% else %>

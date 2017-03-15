@@ -8,7 +8,67 @@
 
 <div class="dashboard-box" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url(<%= asset_path('background.jpg') %>)">
   <div id="tab-content">
-    <%= render file: 'assignees/edit' %>
+    <div class="container">
+      <br>
+      <div class="grey-box">
+        <br>
+        <%= link_to '#', class: 'profile-picture-inline' do %>
+
+          <% if @assignee.profile_picture %>
+            <%= cl_image_tag(@assignee.profile_picture.path, transformation: [{width: 120, height: 120, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-edit") %>
+          <% elsif @assignee.relationship == 'Partner' %>
+            <% if @user.title == "Mr" %>
+              <%= image_tag('female.png', class: "edit-icon") %>
+            <% else %>
+              <%= image_tag('male.png', class: "edit-icon") %>
+            <% end %>
+          <% elsif %>
+            <% if @assignee.relationship == "Child"%>
+              <%= image_tag('girl.png', class: "edit-icon") %>
+            <% else %>
+              <%= image_tag('boy.png', class: "edit-icon") %>
+            <% end %>
+          <% else %>
+            <% if @assignee.title == "Mrs" || @assignee.title == "Ms" %>
+              <%= image_tag('guardian_female.png', class: "edit-icon") %>
+            <% else %>
+              <%= image_tag('guardian_male.png', class: "edit-icon") %>
+            <% end %>
+          <% end %>
+
+          <p><%= t('Change Picture') %></p>
+          <%= simple_form_for [current_user, @assignee], html: {class: 'form-inline edit-profile-picture invisible'} do |f| %>
+            <%= f.input :profile_picture, as: :attachinary, label: false, input_html: { class: 'profile-upload'} %>
+            <%= f.submit t("Upload"), class: 'profile-upload'  %>
+          <% end %>
+        <% end %>
+
+        <% if params[:format] == 'Guardian' || @assignee.type == 'Guardian' %>
+          <h3 class="new-title padding-15">Guardian</h3>
+        <% elsif params[:format] == 'Approver' || @assignee.type == 'Approver' %>
+          <h3 class="new-title padding-15">Approver</h3>
+        <% elsif params[:relationship] == 'Partner' || @assignee.relationship == 'Partner' %>
+          <h3 class="new-title padding-15">Partner</h3>
+        <% elsif params[:relationship] == 'Child' || @assignee.relationship == 'Child' %>
+          <h3 class="new-title padding-15">Child</h3>
+        <% else %>
+          <h3 class="new-title padding-15"><%= @assignee.relationship %></h3>
+        <% end %>
+
+        <hr>
+        Details
+        <hr>
+        Notes
+        <hr>
+        Photos
+        <hr>
+        Admin References
+        <hr>
+
+        <br>
+
+      </div>
+    </div>
   </div>
 </div>
 
@@ -22,80 +82,6 @@
     $('.scrollitem h6').filter(function () {
         return $(this).text() == assigneeId;
     }).parentsUntil('.scrollmenu').addClass('active');
-
-    // Progress bar
-    function step_process(from, to, dir) {
-        if (typeof(dir) === 'undefined') dir = 'asc';
-        var old_move = '';
-        var new_start = '';
-
-        var speed = 500;
-
-        if (dir == 'asc') {
-            old_move = '-';
-            new_start = '';
-        } else if (dir == 'desc') {
-            old_move = '';
-            new_start = '-';
-        }
-
-        $('#block'+from).animate({left: old_move+'100%'}, speed, function() {
-            $(this).css({left: '100%', 'background-color':'transparent', 'z-index':'2'});
-            $(this).addClass('invisible');
-        });
-        $('#block'+to).css({'z-index': '3', left:new_start+'100%'}).animate({left: '0%'}, speed, function() {
-            $(this).removeClass('invisible');
-            $(this).css({'z-index':'2'});
-        });
-
-        if (Math.abs(from-to) === 1) {
-            // Next Step
-            if (from < to) $("#step"+from).addClass('complete').removeClass('current');
-            else $("#step"+from).removeClass('complete').removeClass('current');
-            var width = (parseInt(to) - 1) * 20;
-            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, speed, function() {
-                $("#step"+to).removeClass('complete').addClass('current');
-            });
-        } else {
-            // Move to Step
-            var steps = Math.abs(from-to);
-            var step_speed = speed / steps;
-            if (from < to) {
-                move_to_step(from, to, 'asc', step_speed);
-            } else {
-                move_to_step(from, to, 'desc', step_speed);
-            }
-        }
-    }
-
-    function move_to_step(step, end, dir, step_speed) {
-        if (dir == 'asc') {
-            $("#step"+step).addClass('complete').removeClass('current');
-            var width = (parseInt(step+1) - 1) * 20;
-            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
-                $("#step"+(step+1)).removeClass('complete').addClass('current');
-                if (step+1 < end) move_to_step((step+1), end, dir, step_speed);
-            });
-        } else {
-            $("#step"+step).removeClass('complete').removeClass('current');
-            var width = (parseInt(step-1) - 1) * 20;
-            $(".progress_bar").find('.current_steps').animate({'width': width+'%'}, step_speed, function() {
-                $("#step"+(step-1)).removeClass('complete').addClass('current');
-                if (step-1 > end) move_to_step((step-1), end, dir, step_speed);
-            });
-        }
-    }
-
-    $(document).ready(function() {
-        $("body").on("click", ".progress_bar .step.complete", function() {
-            var from = $(this).parent().find('.current').data('step');
-            var to = $(this).data('step');
-            var dir = "desc";
-            if (from < to) dir = "asc";
-
-            step_process(from, to, dir);
-        });
-    });
 
     // Edit profile picture form
     $('.profile-picture-inline').click(function(e) {

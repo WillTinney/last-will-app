@@ -48,7 +48,7 @@
       <h2>Admin references</h2>
 
       <div class="blue-box">
-        <p><%= t('note description html') %></p>
+        <p><%= t('reference description html') %></p>
       </div>
     </div>
 
@@ -58,8 +58,8 @@
       <%= simple_form_for [current_user, @assignee, @reference] do |f| %>
         <%= f.hidden_field :assignee_id, value: @assignee.id %>
         <br>
-        <%= f.input :document, as: :attachinary %>
         <%= f.input :title %>
+        <%= f.input :document, as: :attachinary %>
         <%= f.input :comments %>
         <%= f.button :submit, class: "purple-button pull-right" %>
       <% end %>

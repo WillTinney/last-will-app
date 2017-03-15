@@ -13,6 +13,11 @@
       <div class="col-xs-12 col-md-6 col-lg-4">
         <div class="card">
           <%= link_to user_assignee_path(current_user, assignee.id) do %>
+            <div class="card-buttons">
+              <%= link_to user_assignee_path(current_user, note.assignee_id), data: {confirm: t('Are you sure')}, method: :delete do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </div>
             <% if assignee.profile_picture %>
               <%= cl_image_tag(assignee.profile_picture.path, transformation: [{width: 100, height: 100, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-card push-right") %>
             <% elsif assignee.title == "Mrs" || assignee.title == "Ms" %>
@@ -22,7 +27,6 @@
             <% end %>
             <div class="card-description">
               <h5 class="black-text"><strong><%= assignee.name_surname %></strong></h5>
-              <%= link_to t("View"), user_assignee_path(current_user, assignee.id), class: "btn btn-info btn-default btn-ice reference-link" %>
               <%= link_to t("Delete"), user_assignee_path(current_user, assignee.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
             </div>
           <% end %>

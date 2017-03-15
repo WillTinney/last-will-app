@@ -71,9 +71,9 @@
       <%= simple_form_for([@user, @assignee, @photo]) do |f| %>
         <%= f.hidden_field :assignee_id, value: @assignee.id %>
         <br>
-        <%= f.input :photo, as: :attachinary %>
         <%= f.input :title, label: t('Title') %>
-        <%= f.input :caption, label: t('Content') %>
+        <%= f.input :photo, as: :attachinary %>
+        <%= f.input :caption, label: t('Caption') %>
         <div class="submit-button text-center">
           <%= f.button :submit, t("Create"), class: "btn purple-button" %>
         </div>

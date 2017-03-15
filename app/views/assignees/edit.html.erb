@@ -123,8 +123,17 @@
     <% end %>
     <br>
 
-    <%= content_for(:after_js) do %>
-      <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>"></script>
-    <% end %>
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=<%= ENV['GOOGLE_API_BROWSER_KEY'] %>"></script>
+  <script>
+    // Edit profile picture form
+    $('.profile-picture-inline').click(function(e) {
+      e.preventDefault;
+      console.log('hello')
+      $('.edit-profile-picture').removeClass('invisible');
+    });
+  </script>
+<% end %>

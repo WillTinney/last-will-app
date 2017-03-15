@@ -99,7 +99,7 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @assignee.id %> + "/edit",
+          url: <%= @assignee.id %>,
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
