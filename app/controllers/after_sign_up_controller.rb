@@ -45,6 +45,11 @@ class AfterSignUpController < ApplicationController
         render_wizard @user
       when :partner_basic
         @assignee = @user.assignees.new
+        @assignee.address_line_1 = @user.address_line_1
+        @assignee.address_line_2 = @user.address_line_2
+        @assignee.city = @user.city
+        @assignee.postcode = @user.postcode
+        @assignee.country = @user.country
         @assignee.update_attributes(assignee_params)
         sign_in(@user, bypass: true)
         render_wizard @assignee

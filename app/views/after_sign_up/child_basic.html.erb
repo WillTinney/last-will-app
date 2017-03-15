@@ -47,6 +47,11 @@
       <%= hidden_field_tag :relationship, "", name: "children[][relationship]", value: 'Child' %>
       <%= hidden_field_tag :last_name, "", name: "children[][last_name]", value: @user.last_name %>
 
+      <%= hidden_field_tag :address_line_1, "", name: "children[][address_line_1]", value: @user.address_line_1 %>
+      <%= hidden_field_tag :address_line_2, "", name: "children[][address_line_2]", value: @user.address_line_2 %>
+      <%= hidden_field_tag :city, "", name: "children[][city]", value: @user.city %>
+      <%= hidden_field_tag :postcode, "", name: "children[][postcode]", value: @user.postcode %>
+      <%= hidden_field_tag :country, "", name: "children[][country]", value: @user.country %>
 
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2 col-sm-4 col-sm-offset-4">
