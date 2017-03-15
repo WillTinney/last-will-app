@@ -67,12 +67,19 @@ en:
   address required: "Please enter your address"
   details incomplete tooltip: "Details still to complete"
 
+  My Call to Action: "My Call to Action"
+  assign call_to_action: "You have not assigned a partner. Click here to add a call to action."
   My Partner: "My Partner"
   assign a partner: "You have not assigned a partner. Click here to add a partner."
   My Children: "My Children"
   assign children: "You have not assigned any children. Click here to add a child."
   My Guardians: "My Guardians"
   assign guardians: "You have not assigned any guardians. Click here to add a guardian."
+  My Approvers: "My Approvers"
+  assign approvers: "You have not assigned any approvers. Click here to add an approver."
+  Other Friends & Family: "Other Friends & Family"
+  assign recipients: "You have not assigned any other friends and family. Click here to do so."
+
   Proof of Residency: "Proof of Residency"
   No proof of residency: 'No proof of residency'
   assign proof: "You have not uploaded any proof of residency. Click here to go to our secure upload form."
