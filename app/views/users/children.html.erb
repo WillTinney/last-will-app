@@ -16,6 +16,11 @@
           <% @user.assignees.where('relationship = ?', 'Child').each do |assignee| %>
             <div class="col-xs-12 col-md-6 col-lg-4">
               <div class="card">
+                <div class="card-buttons child-buttons">
+                  <%= link_to user_assignee_path(current_user, assignee.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  <% end %>
+                </div>
                 <%= link_to user_assignee_path(current_user, assignee.id) do %>
                   <% if assignee.profile_picture %>
                     <%= cl_image_tag(assignee.profile_picture.path, transformation: [{width: 100, height: 100, gravity: "face", radius: "max", crop: "fill"}], class: "avatar-card push-right") %>
@@ -25,9 +30,10 @@
                     <%= image_tag('boy.png', class: "index-icon") %>
                   <% end %>
                   <div class="card-description">
-                    <h5 class="black-text"><strong><%= assignee.name_surname %></strong></h5>
-                    <%= link_to t("View"), user_assignee_path(current_user, assignee.id), class: "btn btn-info btn-default btn-ice reference-link" %>
-                    <%= link_to t("Delete"), user_assignee_path(current_user, assignee.id), data: {confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger btn-default" %>
+                    <%= link_to user_assignee_path(current_user, assignee.id) do %>
+                      <h5 class="black-text"><strong><%= assignee.name_surname %></strong></h5>
+                      <h7 class="black-text"><%= assignee.try(:relationship) %></h7>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
