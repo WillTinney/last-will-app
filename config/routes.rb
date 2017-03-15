@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
       # Assignee Pages
       resources :assignees do
+        get 'profile', to: 'assignees#profile'
         resources :notes
         resources :photos
         resources :references
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
         # get 'references', to: 'assignees#references'
         # get 'photos', to: 'assignees#photos'
         # get 'video', to: 'assignees#video'
+        get 'profile', to: 'assignees#profile'
         resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
         resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
         resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
@@ -51,13 +53,15 @@ Rails.application.routes.draw do
 
       # Guardian Pages
       resources :guardians, controller: 'assignees', type: 'Guardian' do
-      resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
-      resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-      resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        get 'profile', to: 'assignees#profile'
+        resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
+        resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+        resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]
       end
 
       # Recipient Pages
       resources :recipients, controller: 'assignees', type: 'Recipient' do
+        get 'profile', to: 'assignees#profile'
         resources :notes, only: [:index, :new, :create, :edit, :update, :destroy]
         resources :photos, only: [:index, :show, :new, :create, :edit, :update, :destroy]
         resources :references, only: [:index, :show, :new, :create, :edit, :update, :destroy]

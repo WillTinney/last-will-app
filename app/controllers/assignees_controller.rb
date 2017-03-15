@@ -1,7 +1,7 @@
 class AssigneesController < ApplicationController
   protect_from_forgery except: :new
   before_action :set_assignee, only: [:show, :edit, :update, :destroy]
-  before_action :set_assignee_id, only: [:notes, :references, :photos, :videos]
+  before_action :set_assignee_id, only: [:profile, :notes, :references, :photos, :videos]
   before_action :set_type
 
 
@@ -62,6 +62,10 @@ class AssigneesController < ApplicationController
   def destroy
     authorize @assignee
     redirect_to user_path(current_user)
+  end
+
+  def profile
+    authorize @user
   end
 
   def notes

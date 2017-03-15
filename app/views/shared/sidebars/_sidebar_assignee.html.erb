@@ -37,18 +37,18 @@
 
     <%= link_to '#',
         class: "sidebar-tab profile-tab",
-        id: "show-admin-sidebar-tab",
+        id: "show-photos-sidebar-tab",
         remote: true do %>
-      <h5><i class="fa fa-file-text-o" aria-hidden="true"></i> Admin References</h5>
+      <h5><i class="fa fa-camera" aria-hidden="true"></i> Photo Library</h5>
     <% end %>
 
     <hr>
 
     <%= link_to '#',
         class: "sidebar-tab profile-tab",
-        id: "show-photos-sidebar-tab",
+        id: "show-admin-sidebar-tab",
         remote: true do %>
-      <h5><i class="fa fa-camera" aria-hidden="true"></i> Photo Library</h5>
+      <h5><i class="fa fa-file-text-o" aria-hidden="true"></i> Admin References</h5>
     <% end %>
 
     <hr>
@@ -60,7 +60,7 @@
       <!-- <h5><i class="fa fa-video-camera" aria-hidden="true"></i> Video Library</h5> -->
     <%# end %>
 
-    <hr>
+    <!-- <hr> -->
   </div>
 </div>
 
@@ -99,7 +99,7 @@
       e.preventDefault();
       $.ajax({
           type: "GET",
-          url: <%= @assignee.id %>,
+          url: <%= @assignee.id %> + "/profile",
           data: { },
           success: function(data){
               $('#tab-content').empty().html(data);
