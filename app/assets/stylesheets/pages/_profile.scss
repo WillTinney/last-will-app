@@ -15,6 +15,13 @@
     color: $teal;
   }
 }
+.profile-details {
+  margin: 0 20px;
+  p {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+}
 .profile-content {
   display: flex;
   justify-content: space-between;

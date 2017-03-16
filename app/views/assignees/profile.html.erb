@@ -52,8 +52,36 @@
         <%= link_to "Edit", '#', id: "view-details" %>
       </div>
     </div>
-    <div class="profile-content">
+    <div class="profile-details">
+      <p class="name-tag"><%= @assignee.try(:name_surname) %></p>
 
+      <div class="row">
+        <div class="col-xs-12 col-lg-6">
+          <% if @assignee.citizenship %>
+            <p><span class="category-tag"><%= t('Citizenship') %></span><%= ": " + @assignee.citizenship + " " + t('Citizen') %></p>
+          <% end %>
+
+          <% if @assignee.date_of_birth && @assignee.date_of_birth != "" %>
+            <p><span class="category-tag"><%= t('DoB') %></span><%= ": " + @assignee.date_of_birth %></p>
+          <% end %>
+
+          <% if @assignee.email && @assignee.email != "" %>
+            <p><span class="category-tag"><%= t('Email')%></span><%= ": " + @assignee.email %></p>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <% if @assignee.phone_number && @assignee.phone_number != "" %>
+            <p><span class="category-tag"><%= t('Phone Number') %></span><%= ": " + @assignee.phone_number %></p>
+          <% end %>
+
+          <% if @assignee.address_line_1 && @assignee.address_line_1 != "" %>
+            <p><span class="category-tag"><%= t('Address') %></span><%= ": " + @assignee.address_line_1 %><%= ", " + @assignee.address_line_2 if @assignee.address_line_2 %></p>
+            <p><%= @assignee.try(:city) %><%= ", " + @assignee.postcode if @assignee.postcode %><%= ", " + @assignee.country if @assignee.country %></p>
+          <% else %>
+            <p class="notice-text"><%= t('address required') %></p>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <hr>
