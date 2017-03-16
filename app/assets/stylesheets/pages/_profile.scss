@@ -1,0 +1,87 @@
+/* -------------------------------------
+ * Additional Profile Page classes
+ * ------------------------------------- */
+
+/* Assignee Profile */
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  .fa-plus {
+    font-size: 14px;
+    margin-left: 2px;
+  }
+  .fa-plus:hover {
+    color: $teal;
+  }
+}
+.profile-details {
+  margin: 0 20px;
+  p {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+}
+.profile-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  h5 {
+    display: inline;
+    color: #4C5159;
+    margin: 0 0 11px;
+  }
+  p {
+    display: inline;
+    font-size: 14px;
+    color: $grey;
+  }
+}
+.profile-controls {
+  display: flex;
+  justify-content: space-around;
+  i {
+    margin: 0 3px 11px 3px;
+  }
+  i:hover {
+    color: $teal;
+  }
+}
+.profile-form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: -5px 10px 30px 10px;
+  border: 2px solid #D7D7D7;
+  border-radius: 5px;
+  background-color: white;
+  h4 {
+    font-size: 18px;
+    margin: 6px 0;
+  }
+  label {
+    font-size: 14px;
+  }
+  .form-control {
+    height: 30px;
+    font-size: 14px;
+  }
+  .purple-button {
+    font-size: 14px;
+    padding: 6px 40px;
+  }
+  .fa-times {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 18px;
+    color: $grey;
+  }
+  .fa-times:hover {
+    color: $black;
+    cursor: pointer;
+  }
+  .photo-form {
+    margin-top: 10px;
+  }
+}

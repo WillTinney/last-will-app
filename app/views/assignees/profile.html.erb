@@ -46,16 +46,219 @@
     <% end %>
 
     <hr>
-    Details
-    <hr>
-    Notes
-    <hr>
-    Photos
-    <hr>
-    Admin References
-    <hr>
+    <div class="profile-header">
+      <%= link_to t("Details"), '#' %>
+      <div class="profile-controls">
+        <%= link_to "Edit", '#', id: "view-details" %>
+      </div>
+    </div>
+    <div class="profile-details">
+      <p class="name-tag"><%= @assignee.try(:name_surname) %></p>
 
+      <div class="row">
+        <div class="col-xs-12 col-lg-6">
+          <% if @assignee.citizenship %>
+            <p><span class="category-tag"><%= t('Citizenship') %></span><%= ": " + @assignee.citizenship + " " + t('Citizen') %></p>
+          <% end %>
+
+          <% if @assignee.date_of_birth && @assignee.date_of_birth != "" %>
+            <p><span class="category-tag"><%= t('DoB') %></span><%= ": " + @assignee.date_of_birth %></p>
+          <% end %>
+
+          <% if @assignee.email && @assignee.email != "" %>
+            <p><span class="category-tag"><%= t('Email')%></span><%= ": " + @assignee.email %></p>
+          <% end %>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <% if @assignee.phone_number && @assignee.phone_number != "" %>
+            <p><span class="category-tag"><%= t('Phone Number') %></span><%= ": " + @assignee.phone_number %></p>
+          <% end %>
+
+          <% if @assignee.address_line_1 && @assignee.address_line_1 != "" %>
+            <p><span class="category-tag"><%= t('Address') %></span><%= ": " + @assignee.address_line_1 %><%= ", " + @assignee.address_line_2 if @assignee.address_line_2 %></p>
+            <p><%= @assignee.try(:city) %><%= ", " + @assignee.postcode if @assignee.postcode %><%= ", " + @assignee.country if @assignee.country %></p>
+          <% else %>
+            <p class="notice-text"><%= t('address required') %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+    <div class="profile-header">
+      <div>
+        Notes
+        <%= link_to new_user_assignee_note_path(I18n.locale, current_user.id, @assignee, @note), remote: true, id: "add-note" do %>
+          <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Note') %></span></i>
+      <% end %>
+      </div>
+      <div class="profile-controls">
+        <%= link_to "View All >>", '#', id: "view-notes" %>
+      </div>
+    </div>
+    <div class="profile-form hidden">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="note-form hidden" id="new-note-form"></div>
+    </div>
+    <% @assignee.notes.each do |note| %>
+      <div class="profile-content">
+        <div>
+          <h5><%= note.title %></h5>
+          <p><%= note.created_at.strftime("Created on  %d/%m/%Y") %></p>
+        </div>
+        <div class="profile-controls">
+          <%= link_to edit_user_assignee_note_path(current_user, note.assignee_id, note.id), remote: true do %>
+            <i class="fa fa-pencil" aria-hidden="true"> </i>
+          <% end %>
+          <%= link_to user_note_path(current_user, note.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="profile-form hidden">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div class="note-form hidden" id="edit-note-form-<%= note.id %>"></div>
+      </div>
+    <% end %>
+
+    <hr>
+    <div class="profile-header">
+      <div>
+        Photos
+        <%= link_to new_user_assignee_photo_path(I18n.locale, current_user.id, @assignee, @photo), remote: true, id: "add-photo" do %>
+          <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Photo') %></span></i>
+      <% end %>
+      </div>
+      <div class="profile-controls">
+        <%= link_to "View All >>", '#', id: "view-photos" %>
+      </div>
+    </div>
+    <div class="profile-form hidden">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="photo-form hidden" id="new-photo-form"></div>
+    </div>
+    <% @assignee.photos.each do |photo| %>
+      <div class="profile-content">
+        <div>
+          <h5><%= photo.title %></h5>
+          <p><%= photo.created_at.strftime("Created on  %d/%m/%Y") %></p>
+        </div>
+        <div class="profile-controls">
+          <%= link_to edit_user_assignee_photo_path(current_user, photo.assignee_id, photo.id), remote: true do %>
+            <i class="fa fa-pencil" aria-hidden="true"> </i>
+          <% end %>
+          <%= link_to user_photo_path(current_user, photo.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="profile-form hidden">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div class="photo-form hidden" id="edit-photo-form-<%= photo.id %>"></div>
+      </div>
+    <% end %>
+
+    <hr>
+    <div class="profile-header">
+      <div>
+        Admin References
+        <%= link_to new_user_assignee_reference_path(I18n.locale, current_user.id, @assignee, @reference), remote: true, id: "add-reference" do %>
+          <i class="fa fa-plus" aria-hidden="true"><span class="add-tooltip"><%= t('Add Reference') %></span></i>
+      <% end %>
+      </div>
+      <div class="profile-controls">
+        <%= link_to "View All >>", '#', id: "view-references" %>
+      </div>
+    </div>
+    <div class="profile-form hidden">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="reference-form hidden" id="new-reference-form"></div>
+    </div>
+    <% @assignee.references.each do |reference| %>
+      <div class="profile-content">
+        <div>
+          <h5><%= reference.title %></h5>
+          <p><%= reference.created_at.strftime("Created on  %d/%m/%Y") %></p>
+        </div>
+        <div class="profile-controls">
+          <%= link_to edit_user_assignee_reference_path(current_user, reference.assignee_id, reference.id), remote: true do %>
+            <i class="fa fa-pencil" aria-hidden="true"> </i>
+          <% end %>
+          <%= link_to user_reference_path(current_user, reference.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="profile-form hidden">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        <div class="reference-form hidden" id="edit-reference-form-<%= reference.id %>"></div>
+      </div>
+    <% end %>
+
+    <hr>
     <br>
 
   </div>
 </div>
+
+<% content_for(:after_js) do %>
+  <script>
+    /* Cancel add/edit form */
+    $('.fa-times').on('click', function() {
+      $(this).parent().addClass('hidden');
+    });
+    /* View all leads to correct tab */
+    $('#view-details').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass("active");
+      $('#show-details-sidebar-tab').addClass('active');
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/edit",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#view-notes').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass("active");
+      $('#show-notes-sidebar-tab').addClass('active');
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/notes",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#view-photos').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass("active");
+      $('#show-photos-sidebar-tab').addClass('active');
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/photos",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+    $('#view-references').click(function(e){
+      e.preventDefault();
+      $('.sidebar-tabs').children().removeClass("active");
+      $('#show-admin-sidebar-tab').addClass('active');
+      $.ajax({
+          type: "GET",
+          url: <%= @assignee.id %> + "/references",
+          data: { },
+          success: function(data){
+              $('#tab-content').empty().html(data);
+          }
+      });
+    });
+  </script>
+<% end %>

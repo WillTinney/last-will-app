@@ -16,11 +16,13 @@ class NotesController < ApplicationController
 
   def create
     @note = current_user.notes.create!(note_params)
-    # @note[:user_id] = @assignee.user_id
-    @assignee = Assignee.find(params[:assignee_id]) if params[:assignee_id]
     authorize @note
     if @note.save
-      redirect_to user_path(current_user), notice: 'Note was successfully created.'
+      if @note.assignee_id
+        redirect_to user_assignee_path(current_user, @note.assignee_id), notice: 'Note was successfully created.'
+      else
+        redirect_to user_path(current_user), notice: 'Note was successfully created.'
+      end
     else
       render :new
     end
@@ -33,8 +35,11 @@ class NotesController < ApplicationController
   def update
     authorize @note
     if @note.update(note_params)
-      # redirect_to user_assignee_path(current_user, @note.assignee_id)
-      redirect_to user_path(current_user)
+      if @note.assignee_id
+        redirect_to user_assignee_path(current_user, @note.assignee_id), notice: 'Note was successfully updated.'
+      else
+        redirect_to user_path(current_user), notice: 'Note was successfully updated.'
+      end
     else
       render :edit
     end
@@ -43,7 +48,11 @@ class NotesController < ApplicationController
   def destroy
     authorize @note
     @note.destroy
-    redirect_to user_path(current_user)
+    if @note.assignee_id
+      redirect_to user_assignee_path(current_user, @note.assignee_id), notice: 'Note was successfully deleted.'
+    else
+      redirect_to user_path(current_user), notice: 'Note was successfully deleted.'
+    end
   end
 
   private
