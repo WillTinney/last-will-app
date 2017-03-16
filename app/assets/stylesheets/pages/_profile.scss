@@ -3,6 +3,23 @@
  * ------------------------------------- */
 
 /* Assignee Profile */
-.profile-box {
-
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  h5 {
+    color: #4C5159;
+    margin: 0 0 11px;
+  }
+}
+.profile-controls {
+  display: flex;
+  justify-content: space-around;
+  p {
+    margin: 0 3px 11px 3px;
+  }
 }

@@ -46,35 +46,58 @@
     <% end %>
 
     <hr>
-    <div class="profile-box">
-      Details
+    <div class="profile-header">
+      <%= link_to t("Details"), '#' %>
       <div class="profile-controls">
-        Edit
+        <%= link_to "View All >>", '#' %>
       </div>
+    </div>
+    <div class="profile-content">
+
     </div>
 
     <hr>
-    <div class="profile-box">
-      Notes
+    <div class="profile-header">
+      <%= link_to t("Notes"), '#' %>
       <div class="profile-controls">
-        Edit
+        <%= link_to "View All >>", '#' %>
       </div>
+    </div>
+    <div class="profile-content">
+      <% @assignee.notes.each do |note| %>
+        <h5><%= note.title %></h5>
+        <p><%= note.created_at.strftime("Created on  %d/%m/%Y") %></p>
+        <div class="profile-controls">
+          <p>Edit</p>
+          <p>Delete</p>
+        </div>
+      <% end %>
+    </div>
+    <div class="profile-alter">
+      <div class="note-form" id="edit-note-form-<%= @assignee.notes.first.id %>"></div>
+      <div class="note-form" id="new-note-form"></div>
     </div>
 
     <hr>
-    <div class="profile-box">
-      Photos
+    <div class="profile-header">
+      <%= link_to t("Photos"), '#' %>
       <div class="profile-controls">
-        Edit
+        <%= link_to "View All >>", '#' %>
       </div>
+    </div>
+    <div class="profile-content">
+
     </div>
 
     <hr>
-    <div class="profile-box">
-      Admin References
+    <div class="profile-header">
+      <%= link_to t("Admin References"), '#' %>
       <div class="profile-controls">
-        Edit
+        <%= link_to "View All >>", '#' %>
       </div>
+    </div>
+    <div class="profile-content">
+
     </div>
 
     <hr>
