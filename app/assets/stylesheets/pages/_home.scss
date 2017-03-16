@@ -6,8 +6,8 @@
   overflow-y: hidden;
   overflow-x: hidden;
   background-size: cover !important;
-  height: 70vh;
-  min-height: 700px;
+  height: 75vh;
+  min-height: 600px;
   h2 {
     position: absolute;
     top: 50%;
@@ -235,7 +235,7 @@
   justify-content: center;
   margin-right: 5px;
 }
-.comparison-icon.green, p.green {
+.comparison-icon.green {
   color: $orange;
 }
 .my-will {
@@ -250,7 +250,7 @@
   top: 75px;
   z-index: 2;
   border-radius: 50%;
-  border: 2px solid rgb(150,150,150);
+  border: 2px solid #e6e6e6;
   background-color: #F8F8F8;
   display: flex;
   justify-content: center;
@@ -260,6 +260,7 @@
   p {
     font-size: 40px;
     margin-bottom: 0;
+    color: #e6e6e6;
   }
 }
 @media (max-width: 768px) {

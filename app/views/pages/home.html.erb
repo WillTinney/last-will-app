@@ -131,7 +131,7 @@
 </section>
 
 <!-- Feedback -->
-<section class="home-section" id="feedback" style="background-image: linear-gradient(-225deg, rgba(28,50, 40,0.6) 20%, rgba(57,147,134,0.6) 80%), url(<%= image_path('door.jpg') %>);">
+<section class="home-section" id="feedback" style="background-image: linear-gradient(-225deg, rgba(48,70,60,0.6) 20%, rgba(57,117,94,0.4) 80%), url(<%= image_path('home2.jpg') %>);">
   <div class="container text-center" id="reviews">
     <h2><%= t('Act now') %></h2>
     <div class="row">
@@ -155,36 +155,56 @@
 <!-- Pricing -->
 
 <section class="home-section" id="comparison">
-  <div class="container text-center">
+ <div class="container text-center">
     <h2><%= t('do I need to pay') %></h2>
+    <p>To ensure the privacy of personal data MyWill pays for secure server storage.<br>MyWill does <strong>not</strong> redistribute or sell your data.</p>
     <div class="row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <div class="comparison-box my-will">
-            <h5><%= t('is completely') %></h5>
-            <h3><%= t('Free') %></h3>
-            <h5><%= t('made EU for EU') %></h5>
+            <h3>Free</h3>
+            <h5>For the first users if you help us to propose<br>our services to your network</h5>
             <hr>
             <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p>  <%= t('trust infrastructure') %></p>
+                <p> Trust infrastructure: storage and authenticity</p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p>  <%= t('designate guardians') %></p>
+                <p> Update any time </p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p>  <%= t('unlock anywhere') %></p>
+                <p> Store personal data and designate your "guardians" </p>
               </li>
+            </ul>
+            <div class="versus-circle">
+              <p>VS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-5 ">
+          <div class="comparison-box lawyer-will">
+            <h3>£200</h3>
+            <h5>Average Lawyer <br> hourly fee</h5>
+            <hr>
+            <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p>  <%= t('update anytime') %></p>
+                <p class="green"> Trust infrastructure: storage and authenticity </p>
+              </li>
+              <li class="comparison-li text-left">
+                <%= icon('times', class: "comparison-icon") %>
+                <p> Update any time </p>
+              </li>
+              <li class="comparison-li text-left">
+                <%= icon('times', class: "comparison-icon") %>
+                <p> Store personal data and designate your "guardians" </p>
               </li>
             </ul>
           </div>
         </div>
-        <br>
       </div>
     </div>
   </div>

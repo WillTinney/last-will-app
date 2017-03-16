@@ -30,6 +30,10 @@ class AssigneePolicy < ApplicationPolicy
     user_is_owner?
   end
 
+  def profile?
+    user_is_user?
+  end
+
   def notes?
     user_is_owner?
   end

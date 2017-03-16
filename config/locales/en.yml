@@ -67,12 +67,19 @@ en:
   address required: "Please enter your address"
   details incomplete tooltip: "Details still to complete"
 
+  My Call to Action: "My Call to Action"
+  assign call_to_action: "You have not assigned a partner. Click here to add a call to action."
   My Partner: "My Partner"
   assign a partner: "You have not assigned a partner. Click here to add a partner."
   My Children: "My Children"
   assign children: "You have not assigned any children. Click here to add a child."
   My Guardians: "My Guardians"
   assign guardians: "You have not assigned any guardians. Click here to add a guardian."
+  My Approvers: "My Approvers"
+  assign approvers: "You have not assigned any approvers. Click here to add an approver."
+  Other Friends & Family: "Other Friends & Family"
+  assign recipients: "You have not assigned any other friends and family. Click here to do so."
+
   Proof of Residency: "Proof of Residency"
   No proof of residency: 'No proof of residency'
   assign proof: "You have not uploaded any proof of residency. Click here to go to our secure upload form."
@@ -138,6 +145,14 @@ en:
   not added notes: "You have not yet added any notes."
   Content: "Content"
 
+  # Photo Library
+  photo description html: "In this section, you can add photos and images that you want to save in your LifeLocker."
+  not added photos: "You have not yet added any photos."
+
+  # Reference Library
+  reference description html: "In this section, you can add references and documents that you want to save in your LifeLocker."
+  not added references: "You have not yet added any references."
+
   # Scrollmenu
   Home: "Home"
   Profile: "Profile"
@@ -194,6 +209,12 @@ en:
     other: "What is the name of your next guardian?"
   guardian brief description: "Guardians are UK Citizens who can testify you match the residency criteria defined by the government."
   guardian footnote: "*guardian details can be edited at any time"
+  how many approvers: "How many approvers would you like to designate?"
+  ask approver name:
+    one: "What is the name of your first approver?"
+    other: "What is the name of your next approver?"
+  approver brief description: "Approvers are UK Citizens who can testify you match the residency criteria defined by the government."
+  approver footnote: "*approver details can be edited at any time"
   Partner information: "Partner information"
   partner description: "Please enter some basic details about your partner."
   do you have a partner: "Do you have a partner or spouse?"

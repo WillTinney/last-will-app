@@ -1,2 +1,4 @@
-$('.invisible').removeClass('invisible');
+$('#new-reference-form').parent().parent().removeClass('invisible');
+$('#new-reference-form').parent().removeClass('hidden');
+$('#new-reference-form').removeClass('hidden');
 $('#new-reference-form').html("<%= j (render 'references/form')%>");

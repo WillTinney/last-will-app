@@ -4,6 +4,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
+      <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
       <% unless @user.details_completed? %>
         <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
 
@@ -49,6 +51,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
+      <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
       <h4 class="profile-card-link"><%= link_to t("My Call to Action"), user_call_to_action_index_path(current_user), class: "call-to-action-link" %><span class="card-tooltip"><%= t('my call to action tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
@@ -69,6 +73,8 @@
     <% if @user.assignees.where('relationship = ?', 'Partner').last %>
 
       <div class="alt-card black-links">
+        <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
         <% @user.assignees.where('relationship = ?', 'Partner').each do |partner| %>
           <% unless partner.details_completed? %>
             <i class="fa fa-exclamation-circle warning-circle" aria-hidden="true"><span class="warning-tooltip"><%= t('details incomplete tooltip') %></span></i>
@@ -82,6 +88,9 @@
         <% end %>
 
         <!-- My Children -->
+        <div class="relative max-width">
+          <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+        </div>
         <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
         <hr>
         <div class="card-content card-overflow">
@@ -105,13 +114,19 @@
     <% else %>
 
       <div class="alt-card black-links">
-        <h4><%= link_to t("My Partner"), "#" , class: "partner-link" %></h4>
+        <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
+        <h4 class="profile-card-link"><%= link_to t("My Partner"), "#" , class: "partner-link" %></h4>
         <hr>
         <div class="card-content card-overflow">
           <p><%= link_to t("assign a partner"), new_user_assignee_path(I18n.locale, current_user, 'Recipient', relationship: 'Partner'), class: "proof-card" %></p>
         </div>
 
         <!-- My Children -->
+        <div class="relative max-width">
+          <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+        </div>
+
         <h4 class="profile-card-link"><%= link_to t("My Children"),user_children_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my children tooltip') %></span></h4>
         <hr>
         <div class="card-content card-overflow">
@@ -137,6 +152,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
+      <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
       <h4 class="profile-card-link"><%= link_to t("My Guardians"), user_guardians_path(current_user), class: "guardian-link" %><span class="card-tooltip"><%= t('my guardians tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
@@ -161,6 +178,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
+      <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
       <h4 class="profile-card-link"><%= link_to t("My Approvers"), user_approvers_path(current_user), class: "approver-link" %><span class="card-tooltip"><%= t('my approvers tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">
@@ -185,6 +204,8 @@
 
   <div class="col-xs-12 col-sm-6 col-md-4">
     <div class="alt-card black-links">
+      <i class="fa fa-question-circle card-info" aria-hidden="true"><span class="info-tooltip">Explation text</span></i>
+
       <h4 class="profile-card-link"><%= link_to t("Other Friends & Family"),user_assignees_path(current_user), class: "recipient-link" %><span class="card-tooltip"><%= t('my recipient tooltip') %></span></h4>
       <hr>
       <div class="card-content card-overflow">

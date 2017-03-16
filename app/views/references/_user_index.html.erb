@@ -57,18 +57,19 @@
   <% else %>
 
     <div class="side-margin white-text">
-      <h2>references</h2>
+      <h2>Admin References</h2>
 
       <div class="blue-box">
-        <p><%= t('note description html') %></p>
+        <p><%= t('reference description html') %></p>
       </div>
     </div>
 
     <div class="grey-box">
-      <h5><strong><%= t('not added notes') %></strong></h5>
+      <h5><strong><%= t('not added references') %></strong></h5>
       <p><%= t('please use form below') %></p>
       <%= simple_form_for([@user, @reference]) do |f| %>
         <%= f.input :title, label: t('Title') %>
+        <%= f.input :document, as: :attachinary %>
         <%= f.input :comments, label: t('Content') %>
         <div class="submit-button text-center">
           <%= f.button :submit, t("Create"), class: "btn purple-button" %>
