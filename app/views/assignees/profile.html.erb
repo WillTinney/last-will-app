@@ -63,20 +63,28 @@
         <%= link_to "View All >>", '#' %>
       </div>
     </div>
-    <div class="profile-content">
-      <% @assignee.notes.each do |note| %>
-        <h5><%= note.title %></h5>
-        <p><%= note.created_at.strftime("Created on  %d/%m/%Y") %></p>
-        <div class="profile-controls">
-          <p>Edit</p>
-          <p>Delete</p>
-        </div>
-      <% end %>
+    <div class="profile-form">
+      <div class="note-form hidden" id="new-note-form"></div>
     </div>
-    <div class="profile-alter">
-      <div class="note-form" id="edit-note-form-<%= @assignee.notes.first.id %>"></div>
-      <div class="note-form" id="new-note-form"></div>
-    </div>
+    <% @assignee.notes.each do |note| %>
+      <div class="profile-content">
+          <h5><%= note.title %></h5>
+          <p><%= note.created_at.strftime("Created on  %d/%m/%Y") %></p>
+          <div class="profile-controls">
+            <p>Edit</p>
+            <%= link_to edit_user_assignee_note_path(current_user, note.assignee_id, note.id), remote: true do %>
+              <i class="fa fa-pencil" aria-hidden="true"> </i>
+            <% end %>
+            <p>Delete</p>
+            <%= link_to user_note_path(current_user, note.id), data: {confirm: t('Are you sure')}, method: :delete do %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </div>
+      </div>
+      <div class="profile-form">
+        <div class="note-form hidden" id="edit-note-form-<%= note.id %>"></div>
+      </div>
+    <% end %>
 
     <hr>
     <div class="profile-header">

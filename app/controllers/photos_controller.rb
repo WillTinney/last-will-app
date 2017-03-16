@@ -20,10 +20,13 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.create!(photo_params)
-    # @photo[:user_id] = @assignee.user_id
     authorize @photo
     if @photo.save
-      redirect_to user_path(current_user), notice: 'Photo was successfully created.'
+      if @photo.assignee_id
+        redirect_to user_assignee_path(current_user, @photo.assignee_id), notice: 'Photo was successfully created.'
+      else
+        redirect_to user_path(current_user), notice: 'Photo was successfully created.'
+      end
     else
       render :new
     end
@@ -37,8 +40,11 @@ class PhotosController < ApplicationController
   def update
     authorize @photo
     if @photo.update(photo_params)
-      # redirect_to user_assignee_path(current_user, @photo.assignee_id)
-      redirect_to user_path(current_user)
+      if @photo.assignee_id
+        redirect_to user_assignee_path(current_user, @photo.assignee_id), notice: 'Photo was successfully updated.'
+      else
+        redirect_to user_path(current_user), notice: 'Photo was successfully updated.'
+      end
     else
       render :edit
     end
@@ -47,7 +53,11 @@ class PhotosController < ApplicationController
   def destroy
     authorize @photo
     @photo.destroy
-    redirect_to user_path(current_user)
+    if @photo.assignee_id
+      redirect_to user_assignee_path(current_user, @photo.assignee_id), notice: 'Photo was successfully deleted.'
+    else
+      redirect_to user_path(current_user), notice: 'Photo was successfully deleted.'
+    end
   end
 
   private
