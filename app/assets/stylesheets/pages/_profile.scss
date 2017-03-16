@@ -6,6 +6,7 @@
 .profile-header {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
 }
 .profile-content {
   display: flex;
@@ -19,7 +20,30 @@
 .profile-controls {
   display: flex;
   justify-content: space-around;
-  p {
+  i {
     margin: 0 3px 11px 3px;
+  }
+}
+.profile-form {
+  display: flex;
+  justify-content: center;
+  margin: -5px 10px 30px 10px;
+  border: 2px solid #D7D7D7;
+  border-radius: 5px;
+  background-color: white;
+  h4 {
+    font-size: 18px;
+    margin: 6px 0;
+  }
+  label {
+    font-size: 14px;
+  }
+  .form-control {
+    height: 30px;
+    font-size: 14px;
+  }
+  .purple-button {
+    font-size: 14px;
+    padding: 6px 40px;
   }
 }

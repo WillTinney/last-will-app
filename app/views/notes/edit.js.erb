@@ -1,3 +1,4 @@
 $('#assignee-note-<%= @note.id %>').empty().removeClass('note-spacing')
+$('#edit-note-form-<%= @note.id %>').parent().removeClass('hidden');
 $('#edit-note-form-<%= @note.id %>').removeClass('hidden');
 $('#edit-note-form-<%= @note.id %>').html("<%= j (render 'notes/edit_form')%>");
