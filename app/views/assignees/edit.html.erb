@@ -116,7 +116,7 @@
         <%= f.hidden_field :relationship, value: @assignee.relationship %>
 
         <div class="nav-buttons">
-          <%= link_to t("Back"), user_profile_path(current_user), class: "back-button" %>
+          <%= link_to t("Back"), user_assignee_path(current_user, @assignee), class: "back-button" %>
           <%= f.button :submit, t("Save"), class: "purple-button" %>
         </div>
       </div>
