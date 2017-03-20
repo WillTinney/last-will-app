@@ -6,6 +6,6 @@ FactoryGirl.define do
     f.user_id { FactoryGirl.build(:user).id }
     # f.photo { "banner1.jpg" }
     f.title { "Test Video" }
-    f.comments { Faker::Lorem.word }
+    f.description { Faker::Lorem.word }
   end
 end

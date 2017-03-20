@@ -5,7 +5,7 @@ feature 'User Edit Page', js: false do
 
   before do
     login_as(user, :scope => :user)
-    visit "/users/#{user.id}"
+    visit "/users/#{user.id}/edit"
   end
 
   it 'can be reached' do
