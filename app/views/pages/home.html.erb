@@ -157,25 +157,25 @@
 <section class="home-section" id="comparison">
  <div class="container text-center">
     <h2><%= t('do I need to pay') %></h2>
-    <p>To ensure the privacy of personal data MyWill pays for secure server storage.<br>MyWill does <strong>not</strong> redistribute or sell your data.</p>
+    <p><%= t('pricing details html') %><br><%= t('privacy information html') %></p><br>
     <div class="row">
         <div class="col-xs-12 col-sm-5 col-sm-offset-1">
           <div class="comparison-box my-will">
             <h3>Free</h3>
-            <h5>For the first users if you help us to propose<br>our services to your network</h5>
+            <h5>For the basics functions<br>and before everything because kids are important.</h5>
             <hr>
             <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Trust infrastructure: storage and authenticity</p>
+                <p> <%= t('designate guardians') %></p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Update any time </p>
+                <p><%= t('update anytime') %></p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p> Store personal data and designate your "guardians" </p>
+                <p><%= t('trust infrastructure') %></p>
               </li>
             </ul>
             <div class="versus-circle">
@@ -192,15 +192,15 @@
             <ul>
               <li class="comparison-li text-left">
                 <%= icon('check', class: "comparison-icon green") %>
-                <p class="green"> Trust infrastructure: storage and authenticity </p>
+                <p class="green"> <%= t('designate guardians') %></p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('times', class: "comparison-icon") %>
-                <p> Update any time </p>
+                <p> <%= t('update anytime') %> </p>
               </li>
               <li class="comparison-li text-left">
                 <%= icon('times', class: "comparison-icon") %>
-                <p> Store personal data and designate your "guardians" </p>
+                <p><%= t('trust infrastructure') %></p>
               </li>
             </ul>
           </div>
