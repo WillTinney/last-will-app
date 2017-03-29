@@ -19,6 +19,9 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 
+# Etherum Gem
+gem 'ethereum'
+
 # Gems for file uploading
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
