@@ -33,9 +33,9 @@ en:
   what description 1: "LifeLocker helps you to make a digital will in providing a unique infrastructure of authenticity and trust."
   what description 2: "LifeLocker gives people the ability to store data they want to share with their family and friends in the future."
   Collect and Save: "Designate Guardians"
-  collect description html: "We permit parents to designate legal guardians via a video. We use a blockchain protocol as a digital trust and authenticity infrastructure."
+  collect description html: "You designate legal guardians for your children via a video. We use a blockchain protocol as a digital trust and authenticity infrastructure."
   Designate Guardians: "Store Your Data"
-  designate description html: "We help you to store your digital assets (paper will, administrative documents, photos, videos). Don't loose them anymore, and do share them with your relatives."
+  designate description html: "You store your digital assets (paper will, administrative documents, photos, videos). Save what is worth to you, and do share them with your relatives when needed."
   Unlock and Prove: "Unlock on Approver Consensus"
   unlock description html: "Your approvers will trigger the data release. Your designated relatives will have access to the data you have prepared for them."
   Act now: "Act now!"
@@ -52,8 +52,8 @@ en:
   designate guardians: "Designate legal guardians with a personal message"
   unlock anywhere: "Unlock your data access from anywhere"
   update anytime: "Update anytime"
-  sign up now to prove residency: "Sign up now to prove your right to residency"
-  call to sign up text: "In absence of future residency rules for EU citizens living in the UK, hedge your situation and be able to proove your right to stay anytime from anywhere."
+  sign up now to prove residency: "Do not let other people decide for you. Nominate legal guardians for your kids."
+  call to sign up text: "In absence of Legal Guardians nomination, the Court of England and Wales is responsibe to designate guardians for your children."
 
   # Profile Page
   My Details: "My Details"
