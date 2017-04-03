@@ -4,34 +4,34 @@
 
 <!-- Banner  -->
 <div class="home-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= asset_path('banner.jpg') %>);">
-    <div class="banner-text" id="bt-1">
-      <h5><%= t('banner quote') %></h5><br/>
-    </div>
-    <div class="banner-text" id="bt-2">
-      <h4><strong><%= t('Protect your residency right') %></strong><br><br><%= t('collect proof, designate guardians') %><br><%= t('access anytime, anywhere') %></h4>
-    </div>
+  <div class="banner-text" id="bt-1">
+    <h5><%= t('banner quote') %></h5><br/>
+  </div>
+  <div class="banner-text" id="bt-2">
+    <h4><strong><%= t('Protect your residency right') %></strong><br><br><%= t('collect proof, designate guardians') %><br><%= t('access anytime, anywhere') %></h4>
+  </div>
 
-    <div class="banner-button">
-      <% if user_signed_in? %>
-        <%= link_to user_profile_path(current_user) do %>
-          <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_registration_path do %>
-          <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
-        <% end %>
-        <%# link_to new_user_registration_path, data: { toggle: "modal", target: ".signup-modal-sm" } do %>
-         <!--  <button id="banner-button" class="btn btn-transparent">Protect your Resident Status</button> -->
-        <%# end %>
+  <div class="banner-button">
+    <% if user_signed_in? %>
+      <%= link_to user_profile_path(current_user) do %>
+        <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
       <% end %>
-    </div>
-
-    <!-- Floating Arrow -->
-    <%= link_to "#media-quotes", id: "home-arrow" do %>
-      <div class="floating">
-        <i class="fa fa-chevron-down" aria-hidden="true"></i>
-      </div>
+    <% else %>
+      <%= link_to new_user_registration_path do %>
+        <button id="banner-button" class="btn btn-transparent"><%= t('protect your resident status') %></button>
+      <% end %>
+      <%# link_to new_user_registration_path, data: { toggle: "modal", target: ".signup-modal-sm" } do %>
+       <!--  <button id="banner-button" class="btn btn-transparent">Protect your Resident Status</button> -->
+      <%# end %>
     <% end %>
+  </div>
+
+  <!-- Floating Arrow -->
+  <%= link_to "#media-quotes", id: "home-arrow" do %>
+    <div class="floating">
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    </div>
+  <% end %>
 </div>
 
 <!-- Sign-up modal -->

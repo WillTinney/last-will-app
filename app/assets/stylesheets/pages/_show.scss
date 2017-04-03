@@ -98,11 +98,33 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  .attachinary-input {
+    // border: 2px dashed #94AC99;
+    // margin-left: 3px;
+    // padding: 25px 30px;
+    margin-bottom: 9px;
+  }
   input {
     color: $black;
     text-decoration: none;
     max-width: 220px;
+    margin-top: 10px;
   }
+  input[type="submit"] {
+    // height: 20px;
+    border-radius: 50px;
+    border: none;
+    font-size: 14px;
+    padding: 4px 20px;
+    background: $teal;
+    color: $background-grey;
+  }
+  input[type="submit"]:hover {
+    background: #62A5AD;
+  }
+}
+.profile-picture-inline:hover {
+    text-decoration: none;
 }
 .invisible {
   display: none;
