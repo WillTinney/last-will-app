@@ -88,6 +88,33 @@ en:
   Notes: "Notes"
   assign notes: "You have not created any notes. Click here to go to open your notes library."
 
+  my details infotip: ""
+  call to action infotip: ""
+  partner infotip: ""
+  children infotip: ""
+  guardian infotip: ""
+  approver infotip: ""
+  recipient infotip: ""
+
+  my details tooltip: "Click to view your details page"
+  call to action tooltip: "Click to view your call to action page"
+  partner tooltip: "Click to view your partner page"
+  children tooltip: "Click to view your children page"
+  guardian tooltip: "Click to view your guardian page"
+  approver tooltip: "Click to view your approver page"
+  recipient tooltip: "Click to view your other recipient page"
+
+  # Digital Assets
+  notes infotip: ""
+  photos infotip: ""
+  references infotip: ""
+  videos infotip: ""
+
+  notes tooltip: "Click to view your notes page"
+  photos tooltip: "Click to view your photos page"
+  references tooltip: "Click to view your references page"
+  videos tooltip: "Click to view your other videos page"
+
   # My Details
   details tooltip: "The more accurate and complete the information you provide, the easier it will to prove your residency"
   Change Picture: "Change Picture"
@@ -154,6 +181,18 @@ en:
   # Reference Library
   reference description html: "In this section, you can add references and documents that you want to save in your LifeLocker."
   not added references: "You have not yet added any references."
+
+  # Video Library
+  My Video: "My Nomiation Video"
+  video description html: "Here you can add videos and memories that..."
+  Start Recording: "Start Recording"
+  Play: "Play"
+  Upload: "Upload"
+  Download: "Download"
+  Redo Recording: "Redo Recording"
+  upload instructions: "Please upload the video file downloaded using the form below:"
+  file ready: "File ready for upload"
+
 
   # Scrollmenu
   Home: "Home"

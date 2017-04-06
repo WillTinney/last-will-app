@@ -1,10 +1,10 @@
 <br>
 
 <div class="grey-box">
-  <h2>My Nomiation Video</h2>
+  <h2><%= t('My Video') %></h2>
 
   <div class="blue-box">
-    <p>Here you can add videos and memories that...</p>
+    <p><%= t('video description html') %></p>
   </div>
 
   <br>
@@ -16,18 +16,18 @@
       <video id="recorded" class="invisible" autoplay></video>
 
       <div class="video-buttons">
-        <button id="record" disabled>Start Recording</button>
-        <button id="play" class="invisible" disabled>Play</button>
-        <button id="upload" class="invisible">Upload</button>
-        <button id="download" class="invisible" disabled>Download</button>
-        <button id="redo" class="invisible">Redo Recording</button>
+        <button id="record" disabled><%= t('Start Recording') %></button>
+        <button id="play" class="invisible" disabled><%= t('Play') %></button>
+        <button id="upload" class="invisible"><%= t('Upload') %></button>
+        <button id="download" class="invisible" disabled><%= t('Download') %></button>
+        <button id="redo" class="invisible"><%= t('Redo Recording') %></button>
       </div>
     </div>
 
     <br>
 
     <div class="video-form invisible">
-      <p>Please upload the video file downloaded using the form below:</p>
+      <p><%= t('upload instructions') %></p>
 
       <%= simple_form_for [@user, @video]  do |f| %>
         <%= f.input :title %>
@@ -38,7 +38,7 @@
           <%# cl_upload_tag(:video_id, options = {}) %>
         </div>
         <div class="upload-success invisible">
-          <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+          <h5><i class="fa fa-check" aria-hidden="true"></i> <%= t('file ready') %></h5>
         </div>
 
         <%= f.submit 'Upload Video', class: "purple-button pull-right" %>
@@ -51,8 +51,8 @@
     <div id="show-video" class="video-box">
       <%= cl_video_tag(@videos.last.video.path, crop: "scale", controls: true) %>
       <div class="video-buttons">
-        <button id="download">Download</button>
-        <button id="reset">Redo Recording</button>
+        <button id="download"><%= t('Download') %></button>
+        <button id="reset"><%= t('Redo Recording') %></button>
       </div>
       <br>
     </div>
@@ -76,18 +76,18 @@
         <video id="recorded" class="invisible" autoplay></video>
 
         <div class="video-buttons">
-          <button id="record" disabled>Start Recording</button>
-          <button id="play" class="invisible" disabled>Play</button>
-          <button id="upload" class="invisible">Upload</button>
-          <button id="download" class="invisible" disabled>Download</button>
-          <button id="redo" class="invisible">Redo Recording</button>
+          <button id="record" disabled><%= t('Start Recording') %></button>
+          <button id="play" class="invisible" disabled><%= t('Play') %></button>
+          <button id="upload" class="invisible"><%= t('Upload') %></button>
+          <button id="download" class="invisible" disabled><%= t('Download') %></button>
+          <button id="redo" class="invisible"><%= t('Redo Recording') %></button>
         </div>
       </div>
 
       <br>
 
       <div class="video-form invisible">
-        <p>Please upload the video file downloaded using the form below:</p>
+        <p><%= t('upload instructions') %></p>
 
         <%= simple_form_for [@user, @video]  do |f| %>
           <%= f.input :title %>
@@ -98,7 +98,7 @@
             <%# cl_upload_tag(:video_id, options = {}) %>
           </div>
           <div class="upload-success invisible">
-            <h5><i class="fa fa-check" aria-hidden="true"></i> File ready for upload</h5>
+            <h5><i class="fa fa-check" aria-hidden="true"></i> <%= t('file ready') %></h5>
           </div>
 
           <%= f.submit 'Upload Video', class: "purple-button pull-right" %>

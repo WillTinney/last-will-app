@@ -47,7 +47,7 @@
   <% else %>
 
     <div class="side-margin white-text">
-      <h2>Notes</h2>
+      <h2><%= t('Notes') %></h2>
 
       <div class="blue-box">
         <p><%= t('note description html') %></p>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="grey-box">
-      <h5><strong>You have not yet added any notes for <%= @assignee.first_name %>.</strong></h5>
+      <h5><strong><%= t('not added notes') %></strong></h5>
       <p><%= t('please use form below') %></p>
       <%= simple_form_for([@user, @assignee, @note]) do |f| %>
         <%= f.hidden_field :assignee_id, value: @assignee.id %>
